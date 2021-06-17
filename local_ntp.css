@@ -219,7 +219,6 @@ button,
   align-items: center;
   text-align: center;
   justify-content: center;
-  gap: .5rem;
   border: 0px;
   color: #fff;
   background-color: #000;
@@ -482,7 +481,6 @@ input[type=radio]:not(.toggle):checked:after {
 #ntp_cnt {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
   padding: .5rem;
   margin:auto;
   max-width:700px;
@@ -494,7 +492,6 @@ input[type=radio]:not(.toggle):checked:after {
   display:flex;
   flex-direction: column;
   align-items: center;
-    gap: .5rem;
 }
 
 #sb_r img,
@@ -502,10 +499,15 @@ input[type=radio]:not(.toggle):checked:after {
   width:var(--v1);
   border-radius:var(--v2);
   max-width:300px;
+ 
 }
 .sb_preview{
   height: 45px;
   width: 100%;
+}
+#sb_input{
+  width: 100%;
+  margin-top: .5rem;
 }
 #sb_input,.sb_preview{
   border:1px solid var(--c5);
@@ -874,8 +876,10 @@ input[type=radio]:not(.toggle):checked:after {
   opacity:0;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
   padding-right: .6rem;
+}
+.flt_acs>*{
+  margin-top: .5rem;
 }
 
 .open .flt_acs {
@@ -902,8 +906,9 @@ input[type=radio]:not(.toggle):checked:after {
 .wdg_ntp {
   min-height:20px;
   background:#00000050;
-  padding:4px;
+  padding: .5rem;
   border-radius:8px;
+  margin-bottom: .5rem;
 }
 #wdg_0 {
   background:var(--c2);
