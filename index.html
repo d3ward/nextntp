@@ -1,0 +1,689 @@
+<!doctype html>
+<html>
+<script>
+  var newsServer = 'https://news.google.com/';
+  if (typeof window.chrome.embeddedSearch == "undefined") {
+    console.log("Oh , looks like window.chrome.embeddedSearch is undefined");
+    window.chrome = {
+      "embeddedSearch": {
+        "newTabPage": {
+          "isIncognito": false,
+        }
+      }
+    }
+    newsServer = 'https://chromecontentsuggestions-pa.kiwibrowser.com/testnews/?';
+  }
+
+  function reset_page() {
+    if (confirm("This will reset NTP back to default, are you sure ?")) {
+      localStorage.clear();
+      location.reload();
+    }
+  }
+
+  function fabAction() {
+    var el = document.getElementById('flt_btn');
+    el.classList.toggle('open');
+  }
+
+  function dismBox() {
+    document.getElementById("lrt").classList.toggle("show-lrt");;
+  }
+
+  function showBox(txt) {
+    document.getElementById("lrt_body").innerHTML = txt;
+    document.getElementById("lrt").classList.toggle("show-lrt");;
+  }
+</script>
+<!-- Copyright 2021 Eduard Ursu -->
+<!-- Licensed under https://creativecommons.org/licenses/by-nc-sa/4.0/ -->
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#000000">
+  <link rel="stylesheet" href="./local_ntp.css">
+  <meta charset="utf-8">
+  <meta name="google" value="notranslate">
+  <script>
+    //Load Theme Color
+    var metaTColor = document.querySelector("meta[name=theme-color]");
+    if (localStorage.ntp_mtc) {
+      metaTColor.setAttribute("content", localStorage.ntp_mtc);
+    } else {
+      localStorage.ntp_mtc = "#ffffff";
+      metaTColor.setAttribute("content", "#ffffff");
+    }
+  </script>
+</head>
+
+<body class="op">
+  <script>
+    var ntp_bdy = document.body;
+    //Get cached ntp_bdystyle
+    if (localStorage.ntp_bdy != undefined) ntp_bdy.setAttribute("style", (localStorage.ntp_bdy).replace('"', ''));
+  </script>
+  <div id="lrt" class="modal">
+    <div>
+      <div id="lrt_body">
+      </div>
+      <div class="lrt_ft"><button onclick="dismBox();"> Ok </button></div>
+    </div>
+  </div>
+  <div id="lrt_fl" class="modal">
+    <div>
+      <div id="lrt_bfl">
+      </div>
+      <div id="fld_editA" class="edit_mode">
+        <div id="edit_bin2"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+              clip-rule="evenodd"></path>
+          </svg></div>
+        <div id="edit_out2"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M15.707 4.293a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 011.414-1.414L10 8.586l4.293-4.293a1 1 0 011.414 0zm0 6a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L10 14.586l4.293-4.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"></path>
+          </svg></div>
+        <div id="edit_pencil2"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
+            <path fill-rule="evenodd"
+              d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+              clip-rule="evenodd"></path>
+          </svg></div>
+      </div>
+    </div>
+  </div>
+  <div id="cl_vn" class="modal">
+    <div>
+      <div id="cp_v">
+      </div>
+    </div>
+  </div>
+  <div id="dlg" class="modal">
+    <div>
+      <form id="dlg_frm" action="" autocomplete="off">
+        <div id="dlg_fl">
+          <div class="is_center">
+            <div class="tlg_item folder np">
+              <div class="tlg_img tlg_fld">
+                <div class="tlg_item"><a id="tile_target" class="tile_target"><img class="tlg_img"
+                      src="https://logos.kiwibrowser.com/amazon.com">
+                  </a></div>
+                <div class="tlg_item"><a id="tile_target" class="tile_target"><img class="tlg_img"
+                      src="https://logos.kiwibrowser.com/github.com">
+                  </a></div>
+                <div class="tlg_item"><a id="tile_target" class="tile_target"><img class="tlg_img"
+                      src="https://logos.kiwibrowser.com/github.com">
+                  </a></div>
+              </div>
+              <span id="tlg_span" class="tlg_title">Folder</span>
+            </div>
+          </div>
+          <br>
+          <div class="flex-column">
+          <label>Folder Label</label>
+          <input id="ft_lab" type="text" placeholder="Optional" />
+          </div>
+          
+        </div>
+        <div id="dlg_tg" class="row">
+          <div class="is_center">
+            <figure>
+              <img id="p_tile" onerror="f_gfi()" alt=""><br>
+              <figcaption><b>Preview Tile</b></figcaption>
+            </figure>
+          </div>
+          <div class="_flex-sb">
+            <label>Auto detect logo from url</label>
+            <input class="toggle" type="checkbox" value="_blank" id="t_ac" onchange="f_sac(this,1)" checked />
+          </div>
+          <div class="flex-column">
+            <label for="i_url">Icon Url</label>
+            <input id="i_url" onpaste="f_spti(this);" onblur="f_sptt(this);" type="text" style="text-align: center;"
+              disabled />
+          </div>
+          <div class="flex-column">
+            <label for="t_url">Website address</label>
+            <input id="t_url" onkeyup="f_sptt(this);" type="text" value="https://">
+          </div>
+          <div class="flex-column">
+            <label for="t_lab">Tile Label</label>
+            <input id="t_lab" type="text" placeholder="Optional" />
+          </div>
+
+        </div>
+        <div class=" is_center">
+          <button id="b_add" onclick="f_cnt()">Add</button>
+          <button id="b_add2" onclick="f_cnf()">Add</button>
+          <button id="b_save" class="btn-green" onclick="f_sedt()">Save</button>
+          <button  onclick="f_dlg_close()">Close</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+  <div id="dlg_st" class="modal">
+    <div>
+      <div>
+        <button topage="#p-home">
+          <svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+
+        <button class="close-modal" style="float: right;"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg></button>
+
+      </div>
+      <div class="pages">
+        <section id="p-home" class="page-active">
+          <div class="flex-column">
+            <button topage="#p-general"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z">
+                </path>
+              </svg>General</button>
+            <button topage="#p-background"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                  clip-rule="evenodd"></path>
+              </svg> Background</button>
+            <button topage="#p-widgets"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z">
+                </path>
+              </svg> Widgets</button>
+            <button topage="#p-search"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clip-rule="evenodd"></path>
+              </svg> Search Bar</button>
+            <button topage="#p-tiles"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                </path>
+              </svg> Tiles Grid</button>
+            <button topage="#p-news"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                  clip-rule="evenodd"></path>
+                <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z"></path>
+              </svg> News Section</button>
+            <button topage="#p-data"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.707 10.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V6h5a2 2 0 012 2v7a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h5v5.586l-1.293-1.293zM9 4a1 1 0 012 0v2H9V4z">
+                </path>
+              </svg> Backup&Restore</button>
+            <button topage="#p-about"><svg class="_icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>About</button>
+          </div>
+        </section>
+        <!-- General -->
+        <section id="p-general">
+          <div class="row flex-sb">
+            <div>
+              <label class="stt_lbl">Floating Button</label>
+            </div>
+            <div>
+              <label> Background Color </label>
+              <div class="stt_clfrt" id="stt_cl0" onclick="f_cp_rgb(0)"></div>
+            </div>
+            <div>
+              <label>Icon Color </label>
+              <div class="stt_clfrt" id="stt_cl1" onclick="f_cp_rgb(1)"></div>
+            </div>
+            <hr>
+            <div>
+              <label> Meta Theme Color </label>
+              <div class="stt_clfrt" id="sett_mtc" onclick="f_cp_mtc()"></div>
+            </div>
+            <div>
+              <label for="stt_opt0">Material Design Shadow</label>
+              <input id="stt_opt0" class="toggle" type="checkbox" value="rgba(0,0,0,0.6)"
+                onchange="set_option_t(this,'none',0)" />
+            </div>
+            <div>
+              <label for="stt_opt1">Widgets background blur effect</label>
+              <input id="stt_opt1" class="toggle" type="checkbox" value="blur(5px)"
+                onchange="set_option_t(this,' ',1)" />
+            </div>
+
+          </div>
+        </section>
+        <!-- NTP Background-->
+        <section id="p-background">
+          <div class="row">
+            <div> <label class="stt_lbl"> NTP Background</label></div>
+            <div>
+              <div id="bg_crop">
+                <div id="bg_pld">
+                  <div class="block">
+                  </div>
+                  <div>
+                    <button><input type="file" id="wllp_file" onchange="f_wallp1()"
+                        style="opacity: 0;position: absolute;z-index: -1;" />
+                      <svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
+                          clip-rule="evenodd"></path>
+                      </svg> Upload from file </i>
+                    </button>
+                    <button  onclick="f_wallp2();"><svg class="_icon" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+                          clip-rule="evenodd"></path>
+                      </svg> From
+                      Link</button></span>
+                    <button  onclick="f_cp_bg();"><svg class="_icon" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      Color</button></span>
+                  </div>
+                </div>
+                <div id="crop">
+                  <div class="block">
+                    <div class="stage">
+                      <div id="croppie"></div>
+                      <br>
+                      <h5>Move the image to fit the area you want to crop. <br>
+                        Use the slider to zoom
+                      </h5>
+                      <div>
+                        <button  onclick="cropCancel();">Cancel</button>
+                        <button  onclick="cropResult();">Next</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="result">
+                  <div class="block">
+                    <div class="stage"><img src="" id="imgRes" alt="" /></div>
+                  </div>
+                  <div>
+                    <button  onclick="cropCancel();">Cancel</button>
+                    <button  onclick="savebg_cropped(this);">Save&Apply</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Widgets order and status -->
+        <section id="p-widgets">
+          <ul id="stt_lwo">
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </section>
+        <!-- Search Bar-->
+        <section id="p-search">
+          <div class="row flex-sb">
+            <div>
+              <label class="stt_lbl">Search Bar Logo</label>
+            </div>
+            <div class="_as-center"><img id="sb_lgp" alt=""></img></div>
+            <div>
+              <label>Logo Size</label>
+            </div>
+
+            <div><input type="range" min="0" max="300" value="64" class="slr_rng" id="tg_r6"></div>
+            <div>
+              <label>Logo Rounding</label>
+            </div>
+            <div><input type="range" min="0" max="300" value="64" class="slr_rng" id="tg_r7"></div>
+            <div>
+              <button onclick="f_sb_lg2();"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                From Link</button>
+            </div>
+
+            <div>
+              <label class="btn"><input type="file" id="sb_lgf" onchange="f_sb_lg1()"
+                  style="opacity: 0;position: absolute;z-index: -1;" /><svg class="_icon" fill="currentColor"
+                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg> Upload from file
+              </label>
+            </div>
+
+            <hr>
+            <div>
+              <label class="stt_lbl">Search Bar Rounding</label>
+            </div>
+            <div>
+              <div class="sb_preview"></div>
+            </div>
+            <div><input type="range" min="0" max="25" value="8" class="slr_rng" id="tg_r5"></div>
+            <hr>
+            <div>
+              <label class="stt_lbl">Colors</label>
+            </div>
+            <div>
+              <label> Widget Background </label>
+              <div class="stt_clfrt" id="stt_cl2" onclick="f_cp_rgb(2)"></div>
+            </div>
+            <div>
+              <label> Background color </label>
+              <div class="stt_clfrt" id="stt_cl3" onclick="f_cp_rgb(3)"></div>
+            </div>
+            <div>
+              <label> Text color </label>
+              <div class="stt_clfrt" id="stt_cl4" onclick="f_cp_rgb(4)"></div>
+            </div>
+            <div>
+              <label> Border color </label>
+              <div class="stt_clfrt" id="stt_cl5" onclick="f_cp_rgb(5)"></div>
+            </div>
+            <hr>
+            <div>
+              <label class="stt_lbl">Search Bar Config</label>
+            </div>
+            <div>
+              <textarea id="sb_len"></textarea>
+            </div>
+            <div><button  style="width: calc(100% - 10px);" onclick="f_svsbc()">
+                Save config</button></div>
+          </div>
+
+
+
+
+        </section>
+        <!-- Tiles Grid-->
+        <section id="p-tiles">
+          <div class="row flex-sb">
+            <div>
+              <div class="stt_lbl">Colors</div>
+            </div>
+            <div>
+              <label> Widget Background </label>
+              <div class="stt_clfrt" id="stt_cl6" onclick="f_cp_rgb(6)"></div>
+            </div>
+            <div>
+              <label> Icon tile background</label>
+              <div class="stt_clfrt" id="stt_cl7" onclick="f_cp_rgb(7)"></div>
+            </div>
+            <div>
+              <label> Icon tile border </label>
+              <div class="stt_clfrt" id="stt_cl8" onclick="f_cp_rgb(8)"></div>
+            </div>
+            <div>
+              <label> Tile label text color </label>
+              <div class="stt_clfrt" id="stt_cl9" onclick="f_cp_rgb(9)"></div>
+            </div>
+            <div>
+              <label> Tile label background color </label>
+              <div class="stt_clfrt" id="stt_cl10" onclick="f_cp_rgb(10)"></div>
+            </div>
+            <div>
+              <label> Folder tile background</label>
+              <div class="stt_clfrt" id="stt_cl11" onclick="f_cp_rgb(11)"></div>
+            </div>
+            <div>
+              <label> Folder tile border </label>
+              <div class="stt_clfrt" id="stt_cl12" onclick="f_cp_rgb(12)"></div>
+            </div>
+            <div>
+              <label> Folder label text color </label>
+              <div class="stt_clfrt" id="stt_cl13" onclick="f_cp_rgb(13)"></div>
+            </div>
+            <div>
+              <label> Folder label background color </label>
+              <div class="stt_clfrt" id="stt_cl14" onclick="f_cp_rgb(14)"></div>
+            </div>
+            <div>
+              <label> Folder background on grid view </label>
+              <div class="stt_clfrt" id="stt_cl15" onclick="f_cp_rgb(15)"></div>
+            </div>
+            <hr>
+
+            <div>
+              <label class="stt_opt">Open tile in new tab </label>
+              <input id="stt_opt2" class="toggle" type="checkbox" value="_blank" onchange="set_option_t(this,' ',2)" />
+            </div>
+            <div>
+              <label class="stt_opt">Hide icon label </label>
+              <input id="stt_opt3" class="toggle" type="checkbox" value="none"
+                onchange="set_option_t(this,'inline-block',3)" />
+            </div>
+          </div>
+        </section>
+        <!-- News Section-->
+        <section id="p-news">
+          <div class="row flex-sb">
+            <div>
+              <label class="stt_lbl">News Section</label>
+            </div>
+            <div>
+              <label> Widget Background </label>
+              <div class="stt_clfrt" id="stt_cl21" onclick="f_cp_rgb(21)"></div>
+            </div>
+            <div>
+              <label> News Item Background color </label>
+              <div class="stt_clfrt" id="stt_cl22" onclick="f_cp_rgb(22)"></div>
+            </div>
+            <div>
+              <label> Text Color </label>
+              <div class="stt_clfrt" id="stt_cl23" onclick="f_cp_rgb(23)"></div>
+            </div>
+            <div>
+              <label> News Item border color </label>
+              <div class="stt_clfrt" id="stt_cl24" onclick="f_cp_rgb(24)"></div>
+            </div>
+            <div>
+              <label> Toolbar color</label>
+              <div class="stt_clfrt" id="stt_cl25" onclick="f_cp_rgb(25)"></div>
+            </div>
+            <hr>
+            <div>
+              <label> News Language</label>
+            </div>
+            <div>
+              <select id="newsL" onchange="f_nsrl(1)">
+                <option value="?hl=en-US&gl=US&ceid=US:en">English | United States</option>
+              </select>
+            </div>
+            <div>
+              <label> News Item Layout</label>
+            </div>
+            <div>
+              <label class="stt_opt">Compact view items </label>
+              <input id="stt_opt4" class="toggle" type="checkbox" value="150px"
+                onchange="set_option_t(this,'auto',4)" />
+            </div>
+            <hr>
+            <div><button style="width:100%;" onclick="f_nsrl(2)"><i class="fal fa-trash-alt"></i> Clean
+                Fetched News</button>
+            </div>
+
+          </div>
+
+
+
+        </section>
+        <!-- Bakcup&Restore-->
+        <section id="p-data">
+          <div class="row">
+            <div>
+              <button type="submit" id="btn-res" class="btn-red" onclick="reset_page()">Reset</button>
+              <button  onclick="show_changelog()">Changelog</button>
+            </div>
+            <div>
+              <button  id="exportJSON">Export</button>
+              <input type="file" name="file" id="file" style="opacity: 0;position: absolute;z-index: -1;width: 1px;">
+              <label for="file" class="btn">Import</label>
+            </div>
+          </div>
+
+
+        </section>
+        <!-- About-->
+        <section id="p-about">
+          <div class="row">
+            <div>
+              <h2>About</h2>
+            </div>
+            <div>
+              <p>
+                This NTP ( New Tab Page ) is inspired and based on the NTP from Kiwi Browser
+              </p>
+            </div>
+
+            <div>
+              <a class="btn" href="https://github.com/d3ward/ntp" style="color: #429dc0;">Changelog</a>
+              <a class="btn" href="https://github.com/d3ward/ntp" style="color: #429dc0;">Source Code</a>
+              <a class="btn" href="https://discordapp.com/invite/XyMppQq" style="color: #429dc0;">Discord Server of Kiwi
+                Browser</a>
+            </div>
+          </div>
+
+          <hr>
+
+          For any question , bug report , feature request ping me (@d3ward) on Discord Server of Kiwi Browser .
+          <br><br>
+          Thanks for using this NTP and contributing on it <br>
+          <br><br>
+          <hr>
+          <br>
+          <div style="width: 100%;text-align: center;">Made with <svg class="_icon" fill="currentColor"
+              viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                clip-rule="evenodd"></path>
+            </svg>
+            by Eduard Ursu (@d3ward)</div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div id="ntp_cnt">
+    <!--Widgets-->
+    <div id="wdg_0" class="wdg_ntp"></div>
+    <div id="wdg_1" class="wdg_ntp"></div>
+    <div id="wdg_2" class="wdg_ntp"></div>
+
+    <div id="flt_btn">
+      <div class="flt_acs">
+        <div class="btn" onclick="f_dlg(2)"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path clip-rule="evenodd"
+              d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V8a2 2 0 00-2-2h-5L9 4H4zm7 5a1 1 0 00-2 0v1H8a1 1 0 000 2h1v1a1 1 0 002 0v-1h1a1 1 0 000-2h-1V9z"
+              fill-rule="evenodd"></path>
+          </svg> Add new folder</div>
+        <div class="btn" onclick="f_dlg(0)"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+              clip-rule="evenodd"></path>
+          </svg> Add new tile</div>
+        <div class="btn" onclick="func_dlg_st(1);func_st_page(3);"><svg class="_icon" fill="currentColor"
+            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z">
+            </path>
+          </svg> Widgets
+        </div>
+        <div class="btn" onclick="reset_page()"> <svg class="_icon" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+            </path>
+          </svg> Reset NTP</div>
+        <div class="btn" id="settings-btn" data-toggle="dlg_st"><svg class="_icon" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+            </path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z">
+            </path>
+          </svg> Settings</div>
+      </div>
+      <div class="btn flt_trg " onclick="fabAction()" id="fb-eg"><svg class="close _icon" fill="currentColor"
+          viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+            clip-rule="evenodd"></path>
+        </svg><svg class="caret-up _icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div id="incognito" style="display: none;width: 100%;height: 100vh;background:black;">
+    <div style="text-align: center;padding-top:50px;">
+      <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0)">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M95.1401 45.971C95.6219 45.8376 95.5659 45.1405 95.0664 45.1135C84.2323 44.5292 73.9953 47.3209 65.3757 52.5725C63.3585 53.8012 60.7588 53.5286 58.8027 52.2054C56.0758 50.3606 52.8477 49.179 49.3316 48.9094C38.5271 48.0815 29.0963 56.1822 28.2673 67.003C27.8345 72.6516 29.8311 77.9248 33.376 81.7929C34.8788 83.4332 35.5292 85.7751 34.8394 87.8901C32.8412 94.0187 32.3176 100.964 33.6483 108.062C37.3437 127.773 53.939 141.203 70.7144 138.058C87.4898 134.912 98.0933 116.384 94.3979 96.6726C91.6353 81.9384 81.6652 70.7141 69.7997 67.299C68.3793 66.8901 67.3087 65.678 66.9893 64.2347C66.7093 62.9704 67.0213 61.6294 67.9893 60.7692C75.7084 53.9099 84.9695 48.7876 95.1401 45.971ZM51.8323 64.3852C53.1378 64.4854 54.277 63.5082 54.3769 62.203C54.477 60.8975 53.4998 59.7582 52.1947 59.6584C50.8892 59.5582 49.7499 60.5354 49.6501 61.8406C49.5499 63.1461 50.5271 64.2854 51.8323 64.3852Z"
+            fill="#FCFCFC" />
+          <g clip-path="url(#clip1)">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M28.585 128.374C20.8763 127.215 22.6562 112.624 33.9249 84.6006L25.001 74.0594L77.993 63.6002L76.713 77.6802L101.545 128.374C56.3708 128.502 32.0508 128.502 28.585 128.374Z"
+              fill="#282828" />
+            <path
+              d="M61.2577 54.8984C63.4052 58.3864 62.0174 63.0597 58.167 65.347C54.3054 67.6357 49.4483 66.6702 47.3057 63.1836L43.6911 65.329L37.6668 69.3039L36.3443 70.0942L34.4536 67.0145L59.8463 51.6531L62.6219 53.8723L61.2577 54.8984Z"
+              fill="#282828" />
+            <path
+              d="M25.5186 53.2518C25.5186 53.2518 23.2696 48.9387 27.8365 46.1888C28.6942 45.1947 36.5809 40.4399 38.0661 40.0177C42.6379 37.2615 45.8734 40.977 45.8734 40.977L50.0083 45.793L28.5036 58.7766L25.5186 53.2518Z"
+              fill="#282828" />
+            <path
+              d="M66.2943 44.2549L20.4111 72.8977C19.5555 73.4257 18.4751 73.2476 18 72.4949L28.5037 58.7766L48.3736 45.793L66.9405 41.9342C67.4407 42.6848 67.1388 43.7213 66.2943 44.2549Z"
+              fill="#282828" />
+            <path d="M28.752 58.1227C37.1993 55.1794 44.3979 50.1846 49.232 45.8347" stroke="white"
+              stroke-miterlimit="3" stroke-linecap="square" />
+          </g>
+        </g>
+        <defs>
+          <clipPath id="clip0">
+            <rect width="128" height="128" fill="white" />
+          </clipPath>
+          <clipPath id="clip1">
+            <rect width="128" height="128" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+      <br />
+      <span style="color: #fff;">
+        <h2>Private mode</h2>
+      </span>
+    </div>
+  </div>
+</body>
+<script src="./lib_min.js"></script>
+<script src="./local_ntp.js"></script>
+<!--crossorigin="anonymous"-->
+
+</html>
