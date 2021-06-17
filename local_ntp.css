@@ -485,7 +485,6 @@ input[type=radio]:not(.toggle):checked:after {
   padding: .5rem;
   margin:auto;
   max-width:700px;
-  height: 100%;
 }
 
 /************** Search Bar **************/
@@ -859,6 +858,7 @@ input[type=radio]:not(.toggle):checked:after {
   color:var(--c1);
   justify-content: flex-start;
   margin: 0;
+  margin-top: 5px;
 }
 
 .flt_acs {
