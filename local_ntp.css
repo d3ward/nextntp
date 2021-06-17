@@ -12,6 +12,7 @@ html {
 body, html {
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 html {
   color: #fff;
@@ -677,36 +678,31 @@ input[type=radio]:not(.toggle):checked:after {
   margin:auto;
   max-width:800px;
   height:var(--o4);
+  width: 100%;
   overflow:hidden;
+}
+#news{
+  display: flex;
+  flex-direction: column;
 }
 
 .news_item {
-  position:relative;
   transition:margin 0ms ease 0s;
-  width:calc(100% - 20px);
-  height:130px;
   margin:4px;
   background:var(--c22);
   border-radius:8px;
+  width: calc(100% - 10px);
   border:1px solid var(--c24);
-  padding:5px !important;
-  font-family:Helvetica, Arial, sans-serif;
+  padding:5px;
+  display: flex;
 }
 
 .news_cnt {
-  position:absolute;
-  font-size:125%;
   height:128px;
-  width:calc(100% - 145px);
-  max-width:790px;
-  margin-right:136px;
-  margin-left:auto;
+  padding: 5px;
 }
 
 .news_img {
-  position:absolute;
-  right:5px;
-  left:auto;
   width:128px;
   height:128px;
   object-fit:cover;
@@ -734,11 +730,6 @@ input[type=radio]:not(.toggle):checked:after {
 
 .news_attr img {
   max-height:12px;
-}
-
-.news_time {
-  position:absolute;
-  bottom:0px;
 }
 
 .news_loading {
@@ -904,7 +895,6 @@ input[type=radio]:not(.toggle):checked:after {
 
 
 .wdg_ntp {
-  min-height:20px;
   background:#00000050;
   padding: .5rem;
   border-radius:8px;
@@ -1191,11 +1181,6 @@ span.stt_lonr {
   text-align:center;
 }
 
-#bg_crop #bg_pld label {
-  display:block;
-  width:100%;
-  height:100%;
-}
 
 #bg_crop input[type="file"],
 #crop,

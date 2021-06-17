@@ -934,7 +934,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   } // End of Tiles Grid Widget Config
 
   //News Section Widget Config
-  if (ntp_sett.status[3]) {
+  if (ntp_sett.status[2]) {
     var forceReload = false;
     // Check if 30h passed and clean the news 
     function shouldIC() {
@@ -998,8 +998,8 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     //Function to cache the news section
     function fc_ns() {
       if ((typeof localStorage.cachedNewsUpdate == "undefined") || ((Date.now() / 1000) - localStorage.cachedNewsUpdate) >= 0.1) {
-        const y = ntp_sett.order[3];
-        ntp_wdg[3].cached = document.getElementById('wdg_' + y).innerHTML;
+        const y = ntp_sett.order[2];
+        ntp_wdg[2].cached = document.getElementById('wdg_' + y).innerHTML;
         localStorage.cachedNewsUpdate = (Date.now() / 1000);
         console.log("Cache news section : " + localStorage.cachedNewsUpdate);
       }
