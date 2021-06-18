@@ -567,7 +567,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     function f_tggl_t() {
       var state = gridT.option("disabled");
       gridT.option("disabled", !state);
-      document.getElementById("tlg_sldr").style.display = (!state) ? 'none' : 'block';
+      document.getElementById("tlg_sldr").style.display = (!state) ? 'none' : 'flex';
       document.getElementById("tlg_editA").style.display = (!state) ? 'none' : 'flex';
       if (!state) {
         f_cache_tl();
@@ -646,10 +646,10 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       if (!document.getElementById("tlg_sldr")) {
         var div = document.createElement("div");
         div.id = "tlg_sldr";
-        div.innerHTML = '<div id="sld_tg"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path></svg>   Grid Tiles Sliders</div><div id="sld_vw" class="row"><div><label>Number of Tiles</label><input type="range" min="0" max="8" value="50" class="slr_rng" id="tg_r1"></div>' +
-          '<div><label>Tile Width</label><input type="range" min="30" max="200" value="50" class="slr_rng" id="tg_r2"></div>' +
-          '<div><label>Tile Space</label><input type="range" min="0" max="100" value="50" class="slr_rng" id="tg_r3"></div>' +
-          '<div><label>Tile Rounding</label><input type="range" min="0" max="100" value="50" class="slr_rng" id="tg_r4"></div></div>';
+        div.innerHTML = '<div id="sld_tg"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path></svg>   Grid Tiles Sliders</div><div id="sld_vw" class="flex-column"><div><label>Number of Tiles : <span id="tg_r1v"></span> </label><input type="range" min="0" max="8" value="50" class="slr_rng" id="tg_r1"></div>' +
+          '<div><label>Tile Width : <span id="tg_r2v"></span> </label><input type="range" min="30" max="200" value="50" class="slr_rng" id="tg_r2"></div>' +
+          '<div><label>Tile Space : <span id="tg_r3v"></span> </label><input type="range" min="0" max="100" value="50" class="slr_rng" id="tg_r3"></div>' +
+          '<div><label>Tile Rounding : <span id="tg_r4v"></span> </label><input type="range" min="0" max="100" value="50" class="slr_rng" id="tg_r4"></div></div>';
         tlg.parentNode.prepend(div);
       }
       const wid = ((window.innerWidth) ? window.innerWidth : screen.width) - 28; //Get the width of device 
@@ -657,6 +657,10 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       const tg_r2 = document.getElementById('tg_r2');
       const tg_r3 = document.getElementById('tg_r3');
       const tg_r4 = document.getElementById('tg_r4');
+      const tg_r1v = document.getElementById('tg_r1v');
+      const tg_r2v = document.getElementById('tg_r2v');
+      const tg_r3v = document.getElementById('tg_r3v');
+      const tg_r4v = document.getElementById('tg_r4v');
       var ntp_tlg = {
         w: parseInt(ntp_bdy.style.getPropertyValue("--tile-w").replace("px", "")),
         m: parseInt(ntp_bdy.style.getPropertyValue("--tile-m").replace("px", "")),
@@ -673,23 +677,31 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
         setTLG();
       }
       tg_r1.value = ntp_tlg.n;
+      tg_r1v.innerText=ntp_tlg.n;
       tg_r2.value = ntp_tlg.w;
+      tg_r2v.innerText=ntp_tlg.w;
       tg_r3.value = ntp_tlg.m;
+      tg_r3v.innerText=ntp_tlg.m;
       tg_r4.setAttribute("max", ntp_tlg.w / 2);
       tg_r4.value = ntp_tlg.r;
+      tg_r4v.innerText=ntp_tlg.r;
       tg_r1.addEventListener("input", function () {
+        tg_r1v.innerText=tg_r1.value;
         ntp_tlg.n = parseInt(tg_r1.value);
         set_tg_r1();
       });
       tg_r2.addEventListener("input", function () {
+        tg_r2v.innerText=tg_r2.value;
         ntp_tlg.w = parseInt(tg_r2.value);
         set_tg_r2();
       });
       tg_r3.addEventListener("input", function () {
+        tg_r3v.innerText=tg_r3.value;
         ntp_tlg.m = parseInt(tg_r3.value);
         set_tg_r3();
       });
       tg_r4.addEventListener("input", function () {
+        tg_r4v.innerText=tg_r4.value;
         ntp_tlg.r = parseInt(tg_r4.value);
         setTLG();
       });
