@@ -93,6 +93,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     while (paras[0]) paras[0].parentNode.removeChild(paras[0]);
     
   }
+  theme();
   //Config Settings page 
   const dlg_st = new modal("#dlg_st");
   
@@ -1273,7 +1274,6 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
         if (locales[el] == localStorage.newsLe) opt.selected = true;
       }
     }
-    adaptColor("newsL", getComputedStyle(ntp_cnt).getPropertyValue("--c20"));
     preconnectTo(newsServer);
     loadGNews();
     //Add swipe to delete on news items
