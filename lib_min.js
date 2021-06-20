@@ -145,7 +145,7 @@ function modal(id){
       localStorage.ntp_ver = ntp_ver;
     };
     reader.readAsText(file);
-    //location.reload();
+    location.reload();
   };
 
   //Check if user is on touch enabled device
