@@ -136,17 +136,16 @@ function modal(id){
     var file = this.files[0];
     var reader = new FileReader();
     reader.onload = function (progressEvent) {
-      var test = this.result;
-      var test2 = JSON.parse(test);
-      var values = Object.values(test2),
-        keys = Object.keys(test2),
-        i = keys.length;
+      var str = this.result;
+      console.log(localStorage);
       localStorage.clear();
-      localStorage = test2;
+      var data = JSON.parse(str);
+      Object.assign(localStorage,data)
+      console.log(localStorage);
       localStorage.ntp_ver = ntp_ver;
     };
     reader.readAsText(file);
-    location.reload();
+    //location.reload();
   };
 
   //Check if user is on touch enabled device

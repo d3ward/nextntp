@@ -57,56 +57,16 @@ body {
   /* Folder label background  */
   --c15:#101010;
   /* Folder background on grid view  */
-
   --c16:#00000059;
-  /* Weather Widget Background   */
-  --c17:#ffffff00;
-  /* Weather Background           */
-  --c18:#ffffff;
-  /* Text and  Icons color     */
-  --c19:#00000094;
-  /*  City Label Background     */
-  --c20:#dddddd;
-  /*  City Label Text          */
-
-  --c21:#00000059;
   /*  News Section Widget Background  */
-  --c22:#00000094;
+  --c17:#00000094;
   /* News Item Background Color        */
-  --c23:#dddddd;
+  --c18:#dddddd;
   /* Text color        */
-  --c24:#00000094;
+  --c19:#00000094;
   /* Border color     */
-  --c25:#00000094;
-  /* Toolbar         */
+  --c20:#00000094;
 
-  --c26:#00000059;
-  /*  Tabs Widget Background  */
-  --c27:#00000094;
-  /* Active tab bg color       */
-  --c28:#dddddd;
-  /* Active tab icon color    */
-  --c29:#00000000;
-  /*  Not active tab bg color              */
-  --c30:#dddddd;
-  /*  Not active tab icon         */
-  --c31:#00000094;
-  /* Note Area Background        */
-  --c32:#dddddd;
-  /* Note Area Text color    */
-  --c33:#00000094;
-  /* Todo Input Background     */
-  --c34:#dddddd;
-  /* Todo Input Text    */
-  --c35:#00000000;
-  /* Todo Background   */
-  --c36:#00000094;/* Todo Item Background    */
-  --c37:#dddddd;/* Todo Text Background    */
-  --c38:#00000094;/*  Links Input Background    */
-  --c39:#dddddd;/* Links Input Text    */
-  --c40:#234234;/* Links Background   */
-  --c41:#00000094;/* Links Item Background  */
-  --c42:#dddddd;/* Links Text Background   */
   /******************************* OPTIONS *******************************/
   --o0:none;/*  Material design shadow         */
   --o1:blur(5px);/* Backdrop filter */
@@ -134,13 +94,12 @@ body {
   opacity: 1;
   transition:opacity 0.1s ease-in;
 }
-#stt_cl0{background:var(--c0)}#stt_cl1{background:var(--c1)}#stt_cl2{background:var(--c2)}#stt_cl3{background:var(--c3)}#stt_cl4{background:var(--c4)}#stt_cl5{background:var(--c5)}#stt_cl6{background:var(--c6)}#stt_cl7{background:var(--c7)}#stt_cl8{background:var(--c8)}#stt_cl9{background:var(--c9)}#stt_cl10{background:var(--c10)}#stt_cl11{background:var(--c11)}#stt_cl12{background:var(--c12)}#stt_cl13{background:var(--c13)}#stt_cl14{background:var(--c14)}#stt_cl15{background:var(--c15)}#stt_cl16{background:var(--c16)}#stt_cl17{background:var(--c17)}#stt_cl18{background:var(--c18)}#stt_cl19{background:var(--c19)}#stt_cl20{background:var(--c20)}#stt_cl21{background:var(--c21)}#stt_cl22{background:var(--c22)}#stt_cl23{background:var(--c23)}#stt_cl24{background:var(--c24)}#stt_cl25{background:var(--c25)}#stt_cl26{background:var(--c26)}#stt_cl27{background:var(--c27)}#stt_cl28{background:var(--c28)}#stt_cl29{background:var(--c29)}#stt_cl30{background:var(--c30)}#stt_cl31{background:var(--c31)}#stt_cl32{background:var(--c32)}#stt_cl33{background:var(--c33)}#stt_cl34{background:var(--c34)}#stt_cl35{background:var(--c35)}#stt_cl36{background:var(--c36)}#stt_cl37{background:var(--c37)}#stt_cl38{background:var(--c38)}#stt_cl39{background:var(--c39)}#stt_cl40{background:var(--c40)}#stt_cl41{background:var(--c41)}#stt_cl42{background:var(--c42)}
+#stt_cl0{background:var(--c0)}#stt_cl1{background:var(--c1)}#stt_cl2{background:var(--c2)}#stt_cl3{background:var(--c3)}#stt_cl4{background:var(--c4)}#stt_cl5{background:var(--c5)}#stt_cl6{background:var(--c6)}#stt_cl7{background:var(--c7)}#stt_cl8{background:var(--c8)}#stt_cl9{background:var(--c9)}#stt_cl10{background:var(--c10)}#stt_cl11{background:var(--c11)}#stt_cl12{background:var(--c12)}#stt_cl13{background:var(--c13)}#stt_cl14{background:var(--c14)}#stt_cl15{background:var(--c15)}#stt_cl16{background:var(--c16)}#stt_cl17{background:var(--c17)}#stt_cl18{background:var(--c18)}#stt_cl19{background:var(--c19)}#stt_cl20{background:var(--c20)}
 
 /* ----------- Grid columns and row ----------- */
 .grid {
   flex-wrap: wrap;
 }
-
 .row, .grid {
   display: flex;
   align-items: stretch;
@@ -189,6 +148,8 @@ body {
     width: auto;
   }
 }
+
+
 body.sl{
   overflow: hidden;
 }
@@ -214,6 +175,7 @@ body.sl{
   opacity:1 !important;
 }
 
+/* ------------------ Button ------------------ */
 button,
 [class^=btn] {
   display: inline-flex;
@@ -233,15 +195,6 @@ button,
   -webkit-tap-highlight-color: transparent;
 }
 
-.btn-black {
-  --bg-btn: var(--black);
-  --txt-btn: var(--white);
-}
-
-.btn-white {
-  --bg-btn: var(--white);
-  --txt-btn: var(--cl);
-}
 
 .btn-blue {
   --bg-btn: var(--blue);
@@ -256,13 +209,6 @@ button,
 .btn-green {
   background: #67e5a8;
   color: #000;
-}
-
-.field {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  flex-direction: column;
 }
 
 input[type=color] {
@@ -664,7 +610,7 @@ input[type=radio]:not(.toggle):checked:after {
 
 #newsT {
   height:30px;
-  color:var(--c25);
+  color:var(--c20);
   padding:5px;
 }
 
@@ -688,10 +634,10 @@ input[type=radio]:not(.toggle):checked:after {
 .news_item {
   transition:margin 0ms ease 0s;
   margin:4px;
-  background:var(--c22);
+  background:var(--c17);
   border-radius:8px;
   width: calc(100% - 10px);
-  border:1px solid var(--c24);
+  border:1px solid var(--c19);
   padding:5px;
   display: flex;
 }
@@ -711,7 +657,7 @@ input[type=radio]:not(.toggle):checked:after {
 .news_attr a,
 .news_title a,
 .news_time {
-  color:var(--c23);
+  color:var(--c18);
 }
 
 .news_title {
@@ -773,22 +719,15 @@ input[type=radio]:not(.toggle):checked:after {
   border-radius:8px;
   border:none;
   margin:5px;
-  position:relative;
+  padding: 5px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height:40px;
+  justify-content: space-between;
+  height:2.6rem;
 }
 
 #stt_lwo .srtb_ghost {
   opacity:0;
-}
-
-
-.togg_li {
-  position:absolute !important;
-  right:2px;
-  top:6px;
 }
 
 .b_dark {
@@ -860,7 +799,10 @@ input[type=radio]:not(.toggle):checked:after {
   margin: 0;
   margin-top: 5px;
 }
-
+.flt_acs .btn svg{
+  margin-right: 10px;
+  height: 1.3rem;
+}
 .flt_acs {
   height:0;
   visibility:hidden;
@@ -911,15 +853,6 @@ input[type=radio]:not(.toggle):checked:after {
 #wdg_2 {
   background:var(--c16);
 }
-
-#wdg_3 {
-  background:var(--c21);
-}
-
-#wdg_4 {
-  background:var(--c26);
-}
-
 
 /************ NewTile/editTile Dialog****************/
 
@@ -1343,7 +1276,7 @@ span.stt_lonr {
 
 #loadingNW svg path,
 #loadingNW svg rect {
-  fill:var(--c25);
+  fill:var(--c20);
 }
 
 .ns_readed {
@@ -1413,4 +1346,12 @@ hr {
 ._as-center{
   align-self: center;
 
+}
+
+
+#p-home button{
+  justify-content: flex-start;
+}
+#p-home button svg{
+  margin-right: 10px;
 }
