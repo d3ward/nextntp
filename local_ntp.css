@@ -139,9 +139,9 @@ body {
   /* Search bar radius*/
   -webkit-tap-highlight-color: transparent;
    /* Widget Spacing */
-  --oto1:10px
-  --oto2:10px
-  --oto0:10px
+  --oto1:10px;
+  --oto2:10px;
+  --oto0:10px;
 }
 
 body {
