@@ -7,7 +7,7 @@
 
 html,
 [data-theme=light] {
-  /* ------------- General Variables ------------ */
+  /* ------------- General Variables 1 ------------ */
   --black: #060609;
   --white: #f2f4f7;
   --primary: #0074D8;
