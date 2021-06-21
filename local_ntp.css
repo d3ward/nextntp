@@ -1229,6 +1229,7 @@ span.stt_lonr {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding:0.8rem
 }
 
 .modal>div>header>* {
@@ -1498,6 +1499,7 @@ span.stt_lonr {
 
 #tlg_sldr {
   flex-direction: column;
+  padding:0.8rem
 }
 
 #sld_tg {
