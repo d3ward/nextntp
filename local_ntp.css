@@ -7,7 +7,7 @@
 
 html,
 [data-theme=light] {
-  /* ------------- General Variables 4 ------------ */
+  /* ------------- General Variables ------------ */
   --black: #060609;
   --white: #f2f4f7;
   --primary: #0074D8;
@@ -138,6 +138,10 @@ body {
   --v2: "";
   /* Search bar radius*/
   -webkit-tap-highlight-color: transparent;
+   /* Widget Spacing */
+  --oto1:10px
+  --oto2:10px
+  --oto0:10px
 }
 
 body {
@@ -1033,15 +1037,18 @@ select:hover {
 }
 
 #wdg_0 {
-  background: var(--c2);
+  margin-top:var(--oto0);
+  background:var(--c2);
 }
 
 #wdg_1 {
-  background: var(--c6);
+  margin-top:var(--oto1);
+  background:var(--c6);
 }
 
 #wdg_2 {
-  background: var(--c16);
+  margin-top:var(--oto2);
+  background:var(--c16);
 }
 
 /************ NewTile/editTile Dialog****************/
