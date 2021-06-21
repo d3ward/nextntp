@@ -203,46 +203,57 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     save_ntpbdy();
   });
   
-  const otomar0 = document.getElementById('otomar0');
-  var otomar0v = parseInt(ntp_bdy.style.getPropertyValue("--oto0").replace("px", ""));
-  if (isNaN(otomar0)) {
-    otomar0v = 8;
-    ntp_bdy.style.setProperty("otomar0", otomar0 + "px");
+  const tms_r0 = document.getElementById('tms_r0');
+  const tms_r0v = document.getElementById('tms_r0v');
+  const tms_r1 = document.getElementById('tms_r1');
+  const tms_r1v = document.getElementById('tms_r1v');
+  const tms_r2 = document.getElementById('tms_r2');
+  const tms_r2v = document.getElementById('tms_r2v');
+
+  var tms_0 = parseInt(ntp_bdy.style.getPropertyValue("--tms0").replace("px", ""));
+  var tms_1 = parseInt(ntp_bdy.style.getPropertyValue("--tms1").replace("px", ""));
+  var tms_2 = parseInt(ntp_bdy.style.getPropertyValue("--tms2").replace("px", ""));
+
+ 
+  if (isNaN(tms_0)) {
+    tms_0 =10;
+    ntp_bdy.style.setProperty("--tms0", " 10px");
     save_ntpbdy();
   }
-  otomar0.value = otomar0v;
-  otomar0.addEventListener("input", function () {
-    otomar0v = parseInt(otomar0.value);
-    ntp_bdy.style.setProperty("--oto0", otomar0v + "px");
+  if (isNaN(tms_1)) {
+    tms_1 =10;
+    ntp_bdy.style.setProperty("--tms1", " 10px");
+    save_ntpbdy();
+  }
+  if (isNaN(tms_2)) {
+    tms_2 =10;
+    ntp_bdy.style.setProperty("--tms2", " 10px");
+    save_ntpbdy();
+  }
+  tms_r0.value = tms_0;
+  tms_r1.value = tms_1;
+  tms_r2.value = tms_2;
+  tms_r0v.innerText = tms_0;
+  tms_r1v.innerText = tms_1;
+  tms_r2v.innerText = tms_2;
+
+  tms_r0.addEventListener("input", function () {
+    tms_0 = parseInt(tms_r0.value);
+    tms_r0v.innerText = tms_0;
+    ntp_bdy.style.setProperty("--tms0", tms_0 + "px");
+    save_ntpbdy();
+  });
+  tms_r1.addEventListener("input", function () {
+    tms_1 = parseInt(tms_r1.value);
+    tms_r1v.innerText = tms_1;
+    ntp_bdy.style.setProperty("--tms1", tms_1 + "px");
     save_ntpbdy();
   });
 
-
-  const otomar1 = document.getElementById('otomar1');
-  var otomar1v = parseInt(ntp_bdy.style.getPropertyValue("--oto1").replace("px", ""));
-  if (isNaN(otomar1)) {
-    otomar1v = 8;
-    ntp_bdy.style.setProperty("otomar1", otomar1 + "px");
-    save_ntpbdy();
-  }
-  otomar1.value = otomar1v;
-  otomar1.addEventListener("input", function () {
-    otomar1v = parseInt(otomar1.value);
-    ntp_bdy.style.setProperty("--oto1", otomar1v + "px");
-    save_ntpbdy();
-  });
-
-  const otomar2 = document.getElementById('otomar2');
-  var otomar2v = parseInt(ntp_bdy.style.getPropertyValue("--oto2").replace("px", ""));
-  if (isNaN(otomar2)) {
-    otomar2v = 8;
-    ntp_bdy.style.setProperty("otomar2", otomar2 + "px");
-    save_ntpbdy();
-  }
-  otomar2.value = otomar2v;
-  otomar2.addEventListener("input", function () {
-    otomar2v = parseInt(otomar2.value);
-    ntp_bdy.style.setProperty("--oto2", otomar2v + "px");
+  tms_r2.addEventListener("input", function () {
+    tms_2 = parseInt(tms_r2.value);
+    tms_r2v.innerText = tms_2;
+    ntp_bdy.style.setProperty("--tms2", tms_2 + "px");
     save_ntpbdy();
   });
 
@@ -480,8 +491,6 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
         try {
           var img = item.querySelector('.tlg-img').backgroundImage;
         } catch {}
-        ft_ac.checked = false;
-        fi_url.disabled = false;
         ft_lab.value = title;
         f_dlg(5);
       } else {
