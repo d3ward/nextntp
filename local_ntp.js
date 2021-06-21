@@ -33,7 +33,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
         chd = '<div id="tlg"> <div class="tlg_item folder"> <div class="tlg_img tlg_fld"></div><span id="tlg_span" class="tlg_title">Folder</span></a> </div><div class="tlg_item"> <a id="tile_target" class="tile_target" href="https://kiwibrowser.com"> <img class="tlg_img" src="https://logos.kiwibrowser.com/kiwibrowser.com"onerror="f_iimg(this)"> <span id="tlg_span" class="tlg_title">Kiwi Browser</span> </a> </div></div>';
         break;
       case 2:
-        chd = '<div id="newsT" ><span onclick="f_tnv()" class="newsT_icon"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 7a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg></span><span onclick="f_nsrl(0)" class="newsT_icon"><i class="far fa-sync-alt newsT_icon"></i></span></div><div id="newsS"><div id="news"></div><div id="newsMore"></div></div>';
+        chd = '<div id="newsS"><div id="news"></div><div id="newsMore"></div></div>';
         break;
     }
     return chd;
@@ -275,7 +275,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   const tg_r6 = document.getElementById('tg_r6');
   var tg_r6v = parseInt(ntp_bdy.style.getPropertyValue("--v1").replace("px", ""));
   if (isNaN(tg_r6v)) {
-    tg_r6v = 70;
+    tg_r6v = 230;
     ntp_bdy.style.setProperty("--v1", tg_r6v + "px");
     save_ntpbdy();
   }
@@ -728,7 +728,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
           w: 64,
           m: 10,
           n: f_gncols(),
-          r: 6
+          r: 32
         };
         setTLG();
       }
