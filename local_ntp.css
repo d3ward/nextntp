@@ -411,11 +411,11 @@ input[type=color]::-webkit-color-swatch {
 textarea,
 input:not([type=color]):not([type=range]):not([type=radio]):not([type=checkbox]),
 select {
-  color: #fff;
-  background: #00000070;
+  color: var(--cl);
+  background: var(--bg2);
   padding: 0.6rem;
   border-radius: var(--radius);
-  border: 2px solid #00000070;
+  border: 2px solid var(--bg2);
   outline: none;
   height: 2.6rem;
 }

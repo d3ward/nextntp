@@ -491,8 +491,6 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
         try {
           var img = item.querySelector('.tlg-img').backgroundImage;
         } catch {}
-        ft_ac.checked = false;
-        fi_url.disabled = false;
         ft_lab.value = title;
         f_dlg(5);
       } else {
