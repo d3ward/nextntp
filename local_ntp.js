@@ -446,7 +446,8 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     function f_dlg_close(){
         p_tile.removeAttribute('src');
         i_url.value = "";
-        document.getElementById("dlg_frm").reset();
+        t_url.value="";
+        t_lab.value="";
         t_ac.checked = true;
         i_url.disabled = true;
         b_add.style.display = 'inline';
@@ -466,10 +467,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       f_dlg_close();
     }
     function fixURL(value){
-
-      alert(value.indexOf('https://') +"----"+ value.indexOf('http://'));
       if(value.indexOf('https://')<0 && value.indexOf('http://')<0) return "https://"+value;
-      alert(value);
       return value;
     }
     //Create a new tile from lrt
