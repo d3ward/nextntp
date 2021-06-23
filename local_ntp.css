@@ -146,6 +146,7 @@ body {
 body,
 [data-theme=light] {
   /* ------------- General Variables ------------ */
+  --sb-img: var(--sb-img-l);
   --black: #060609;
   --white: #f2f4f7;
   --green: #2ECC40;
