@@ -146,7 +146,6 @@ body {
 body,
 [data-theme=light] {
   /* ------------- General Variables ------------ */
-  --sb-img: var(--sb-img-l);
   --black: #060609;
   --white: #f2f4f7;
   --green: #2ECC40;
@@ -930,6 +929,7 @@ select:hover {
   width: var(--v1);
   border-radius: var(--v2);
   max-width: 300px;
+  content:var(--sb-img);
 }
 
 .sb_preview {

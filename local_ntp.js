@@ -29,7 +29,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     var chd;
     switch (i) {
       case 0:
-        chd = '<div id="sb_r"><img id="sb_logo" src="nextntpd.svg"/>' +
+        chd = '<div id="sb_r"><img id="sb_logo">' +
           '<input name="sb_input" type="text" id="sb_input" size="50" spellcheck="false" onkeydown="handleKeyPress(event)"></div>'
         break;
       case 1:
