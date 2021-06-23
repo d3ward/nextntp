@@ -12,21 +12,24 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     try {
       localStorage.ntp_bdy = ntp_bdy.getAttribute("style");
     } catch (err) {
-      showBox("Something gone wrong ! Info _:" + err.message);
+      ntoast.error("Something gone wrong ! Info _:" + err.message);
     }
   }
   //Check ntp_ver and show changelog
   if (localStorage.ntp_ver != ntp_ver || !localStorage.ntp_ver) {
     localStorage.clear();
     localStorage.ntp_ver = ntp_ver;
-    showBox("<b> New update -" + ntp_ver + "</b><br><br>");
   }
+  /* ---------------- Toast Alert --------------- */
+    var ntoast = new alert({
+      timeout: 2000
+    });
   //Function to get default widgets
   function f_dwdg(i) {
     var chd;
     switch (i) {
       case 0:
-        chd = '<div id="sb_r"><img id="sb_logo" src=""/>' +
+        chd = '<div id="sb_r"><img id="sb_logo" src="nextntpd.svg"/>' +
           '<input name="sb_input" type="text" id="sb_input" size="50" spellcheck="false" onkeydown="handleKeyPress(event)"></div>'
         break;
       case 1:
@@ -105,14 +108,13 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   load_widgets();
   ntp_bdy.classList.toggle("op");
   //Load settings option status and value
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < 6; i++) {
     var a = document.getElementById("stt_opt" + i);
     var b = getComputedStyle(ntp_bdy).getPropertyValue("--o" + i);
     if (i == 2) {
       var ar = document.getElementsByClassName("tile_target");
       for (var i = 0; i < ar.length; i++) ar[i].target = b;
     }
-    //console.log("|" + a.value + "==" + b + "|");
     if (a.value == b) a.checked = true;
     else a.checked = false;
   }
@@ -132,8 +134,8 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   //Search Bar Settings Config
   var ntp_sb = localGet("ntp_sb");
   if (ntp_sb == undefined) {
-    ntp_sb = { //SearchBar
-      logo: kiwiIcon,
+    ntp_sb = { //SearchBar kiwiIcon
+      logo: "./nextntpd.svg",
       sK: {
         "placeholder": "Search with commands..",
         "key": ",",
@@ -180,15 +182,17 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     }
     error = error || !(sKc['placeholder'] && sKc['key'] && sKc['default']);
     if (error) {
-      showBox("Looks like you removed important keywords like \n-placeholder\n-key\n-default\n Make sure to follow the syntax too :'k' -> 'value'");
+      ntoast.warn("Looks like you removed important keywords like \n-placeholder\n-key\n-default\n ");
+      ntoast.warn("Make sure to follow the syntax too :'k' -> 'value'");
     } else {
       ntp_sb.sK = sKc;
       localStore("ntp_sb", ntp_sb);
       f_setup_sb();
-      showBox("Search Bar Config saved !");
+      ntoast.success("Search Bar Config saved !");
     }
   }
 
+  //
   const tg_r5 = document.getElementById('tg_r5');
   var tg_r5v = parseInt(ntp_bdy.style.getPropertyValue("--v0").replace("px", ""));
   if (isNaN(tg_r5v)) {
@@ -203,18 +207,16 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     save_ntpbdy();
   });
   
+  //Top Margin Spacing sliders for widgets 
   const tms_r0 = document.getElementById('tms_r0');
   const tms_r0v = document.getElementById('tms_r0v');
   const tms_r1 = document.getElementById('tms_r1');
   const tms_r1v = document.getElementById('tms_r1v');
   const tms_r2 = document.getElementById('tms_r2');
   const tms_r2v = document.getElementById('tms_r2v');
-
   var tms_0 = parseInt(ntp_bdy.style.getPropertyValue("--tms0").replace("px", ""));
   var tms_1 = parseInt(ntp_bdy.style.getPropertyValue("--tms1").replace("px", ""));
   var tms_2 = parseInt(ntp_bdy.style.getPropertyValue("--tms2").replace("px", ""));
-
- 
   if (isNaN(tms_0)) {
     tms_0 =10;
     ntp_bdy.style.setProperty("--tms0", " 10px");
@@ -236,7 +238,6 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   tms_r0v.innerText = tms_0;
   tms_r1v.innerText = tms_1;
   tms_r2v.innerText = tms_2;
-
   tms_r0.addEventListener("input", function () {
     tms_0 = parseInt(tms_r0.value);
     tms_r0v.innerText = tms_0;
@@ -249,16 +250,13 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     ntp_bdy.style.setProperty("--tms1", tms_1 + "px");
     save_ntpbdy();
   });
-
   tms_r2.addEventListener("input", function () {
     tms_2 = parseInt(tms_r2.value);
     tms_r2v.innerText = tms_2;
     ntp_bdy.style.setProperty("--tms2", tms_2 + "px");
     save_ntpbdy();
   });
-
-
-
+  //Border radius slider for Search Bar Logo
   const tg_r7 = document.getElementById('tg_r7');
   var tg_r7v = parseInt(ntp_bdy.style.getPropertyValue("--v2").replace("px", ""));
   if (isNaN(tg_r7v)) {
@@ -272,6 +270,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     ntp_bdy.style.setProperty("--v2", tg_r7v + "px");
     save_ntpbdy();
   });
+  //Width slider for Search Bar Logo
   const tg_r6 = document.getElementById('tg_r6');
   var tg_r6v = parseInt(ntp_bdy.style.getPropertyValue("--v1").replace("px", ""));
   if (isNaN(tg_r6v)) {
@@ -326,7 +325,6 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   }
   //End of Search Bar Settings Config
 
-
   //Search Bar Widget Config 
   if (ntp_sett.status[0]) {
     function f_cache_sb() {
@@ -375,7 +373,6 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     }
     f_setup_sb();
   } // End of Search Bar Widget Config 
-
 
   //Tiles Grid Widget Config
   if (ntp_sett.status[1]) {
@@ -446,7 +443,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     function f_dlg_close(){
         p_tile.removeAttribute('src');
         i_url.value = "";
-        t_url.value="";
+        t_url.value="https://";
         t_lab.value="";
         t_ac.checked = true;
         i_url.disabled = true;
@@ -1092,7 +1089,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
         localStorage.removeItem('itemsNews');
         localStorage.newsLe = document.getElementById('newsL').value;
         document.getElementById('news').innerHTML = '';
-        if (t == 2) showBox("Fetched news cleaned !");
+        if (t == 2) ntoast.success("Fetched news cleaned !");
       }
       localStorage.removeItem('cachedNewsUpdate');
       forceReload = true;
@@ -1425,7 +1422,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     ntp_bdy.style.setProperty("--bg-cl", "#fff");
     save_ntpbdy();
     save_ntpbdy();
-    showBox(" Background saved !");
+    ntoast.success(" Background saved !");
     cropCancel();
   }
   const wllp_file = document.getElementById("wllp_file");
@@ -1517,13 +1514,17 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
 
   //********  Color picker ******/
   var cp_current_el;
+  var cp_type;
   var picker = new Picker({
     parent: document.querySelector('#cp_v'),
     popup: false,
     cancelButton: true,
     onDone: function (color) {
       if (cp_current_el != null && cp_current_el != "bgcl") {
-        ntp_bdy.style.setProperty("--c" + cp_current_el, color.hex);
+        if(cp_type == "clight")
+          ntp_bdy.style.setProperty("--cl" + cp_current_el, color.hex);
+        if(cp_type == "cdark")
+          ntp_bdy.style.setProperty("--cd" + cp_current_el, color.hex);
         save_ntpbdy();
       } else {
         if (cp_current_el == "bgcl") {
@@ -1556,7 +1557,15 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
 
   function f_cp_rgb(t) {
     cp_current_el = t;
-    let color = getComputedStyle(ntp_bdy).getPropertyValue("--c" + t);
+    cp_type="clight";
+    let color = getComputedStyle(ntp_bdy).getPropertyValue("--cl" + t);
+    picker.setColor(color, true);
+    cl_vn.show();
+  }
+  function f_cpd_rgb(t) {
+    cp_current_el = t;
+    cp_type="cdark";
+    let color = getComputedStyle(ntp_bdy).getPropertyValue("--cd" + t);
     picker.setColor(color, true);
     cl_vn.show();
   }
