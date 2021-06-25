@@ -3,7 +3,6 @@
 *:before {
   box-sizing: border-box;
   border-spacing: 0;
-  transition: all .2s ease;
 }
 body {
 
@@ -14,11 +13,11 @@ body {
   --bg-cl: #fff;
   --bg-img-l: url("./nextntpbg.svg");
   --bg-img-d: url("./nextntpbg_d.svg");
-  --bg-img: url("./nextntpbg.svg");
+  --bg-img: var(--bg-img-l);
 
   --sb-img-l: url("./nextntpl.svg"); 
   --sb-img-d: url("./nextntpd.svg");
-  --sb-img: url("./nextntpl.svg");
+  --sb-img: var(--sb-img-l);
   /****************************** COLORS ******************************/
   
   /*  Floating button background  */
@@ -97,11 +96,11 @@ body {
   /* Widget 3 Background  */
   --cd16: #00000059;
   /* News Item Background Color        */
-  --cd17: #0000009f;
+  --cd17: #14191f;
   /* Text color        */
   --cd18: #ffffff;
   /* Border color     */
-  --cd19: #0000009f;
+  --cd19: #14191f;
 
   /******************************* OPTIONS *******************************/
   /*  Material design shadow         */
@@ -932,6 +931,10 @@ select:hover {
   content:var(--sb-img);
 }
 
+#sb_bg_preview{
+  background: var(--bg3);
+  border-radius: var(--radius);
+}
 .sb_preview {
   height: 45px;
   width: 100%;
@@ -1080,8 +1083,9 @@ select:hover {
 #fld_editA,
 #tlg_sldr {
   display: none;
-  background: #000000aa;
+  background: var(--bg);
   border-radius: 8px;
+  color: var(--txt);
 }
 
 #tlg_editA .tlg_item,
@@ -1813,7 +1817,6 @@ span.stt_lonr {
 }
 
 #sld_tg {
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;

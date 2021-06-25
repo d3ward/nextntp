@@ -296,10 +296,9 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     if (file && file.type.match('image.*')) {
       var reader = new FileReader();
       reader.onload = function (e) {
-        sett_sblgp.src = e.target.result;
-        sb_logo.src = e.target.result;
-        ntp_sb.logo = e.target.result;
-        localStore("ntp_sb", ntp_sb);
+        ntp_bdy.style.setProperty("--sb-img-l", "url(" + e.target.result + ")");
+        ntp_bdy.style.setProperty("--sb-img-d", "var(--sb-img-l)");
+        save_ntpbdy();
       }
       reader.readAsDataURL(file);
     }
@@ -316,10 +315,9 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       ctx.drawImage(img, 0, 0);
       var dataURL = canvas.toDataURL("image/png");
       dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-        sett_sblgp.src = dataURL;
-        sb_logo.src = dataURL;
-        ntp_sb.logo = dataURL;
-        localStore("ntp_sb", ntp_sb);
+      ntp_bdy.style.setProperty("--sb-img-l", "url(" + dataURL + ")");
+      ntp_bdy.style.setProperty("--sb-img-d", "var(--sb-img-l)");
+      save_ntpbdy();
     };
     img.src = (url);
   }
@@ -1418,9 +1416,9 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   ntp_bdy.style.setProperty("--bg-ch", img_h + "px");
 
   function savebg_cropped(t) {
-    ntp_bdy.style.setProperty("--bg-img", "url(" + imgRes.src + ")");
+    ntp_bdy.style.setProperty("--bg-img-l", "url(" + imgRes.src + ")");
+    ntp_bdy.style.setProperty("--bg-img-d", "var(--bg-img-l)");
     ntp_bdy.style.setProperty("--bg-cl", "#fff");
-    save_ntpbdy();
     save_ntpbdy();
     ntoast.success(" Background saved !");
     cropCancel();
