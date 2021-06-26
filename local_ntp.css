@@ -253,9 +253,6 @@ html {
   height: 100%;
 }
 
-html {
-  color: #fff;
-}
 
 
 
@@ -633,11 +630,6 @@ html {
   }
 }
 
-
-body.sl {
-  overflow: hidden;
-}
-
 @supports (-webkit-backdrop-filter:none) or (backdrop-filter:none) {
   .wdg_ntp {
     -webkit-backdrop-filter: var(--o1);
@@ -655,15 +647,10 @@ body.sl {
   opacity: 0;
 }
 
-
-/* Show the body after all components are loaded */
-.inited {
-  opacity: 1 !important;
-}
 a{
   color: var(--primary);
-text-decoration: none;
-cursor: pointer;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* ------------------ Button ------------------ */
@@ -895,19 +882,7 @@ select:hover {
   }
 }
 
-/* Dialogs for new_tile, settings*/
-.dlg {
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: 105;
-  color: white;
-  background-color: #282828;
-  top: 0;
-  left: 0;
-}
-
-
+/* --------------- NTP Container -------------- */
 #ntp_cnt {
   display: flex;
   flex-direction: column;
@@ -916,7 +891,7 @@ select:hover {
   max-width: 700px;
 }
 
-/************** Search Bar **************/
+/* ---------------- Search Bar ---------------- */
 #sb_r {
   display: flex;
   flex-direction: column;
@@ -949,7 +924,6 @@ select:hover {
   opacity: .7;
 }
 
-
 #sb_input,
 .sb_preview {
   border: 1px solid var(--c5);
@@ -958,8 +932,7 @@ select:hover {
   border-radius: var(--v0);
 }
 
-
-/***************  Tiles Grid ************************/
+/* ---------------- Tiles Grid ---------------- */
 #tlg,#lrt_bfl {
   width: var(--content-width);
   margin: auto;
@@ -1105,7 +1078,7 @@ select:hover {
   border-radius: 8px;
 }
 
-/***************** News Section ***************/
+/* --------------- News Section --------------- */
 #newsL:focus {
   box-shadow: none;
   outline: none;
@@ -1207,8 +1180,8 @@ select:hover {
 }
 
 #stt_lwo li {
-  background: #00000060;
-  color: #fff;
+  background: var(--bg2);
+  color: var(--txt);
   border-radius: 8px;
   border: none;
   margin: 5px;
@@ -1222,18 +1195,7 @@ select:hover {
 #stt_lwo .srtb_ghost {
   opacity: 0;
 }
-.b_close {
-  float: right;
-  color: #fff;
-  background: #00000060;
-}
 
-
-
-
-.stt_cllb {
-  float: left;
-}
 .stt_clfrt:before{
   content: "";
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Cpath d='M1,0H0V1H2V2H1' fill='lightgrey'/%3E%3C/svg%3E") left top/contain white;
@@ -1254,23 +1216,7 @@ select:hover {
   background: transparent;
 }
 
-/********** Custom dialog ***********/
-.lrt_ft {
-  margin-top: 10px;
-}
-
-.lrt_ft button {
-  background-color: #000;
-  width: 80px;
-  height: 35px;
-  padding: 9px;
-  border-radius: 8px;
-  color: #efefef;
-  margin-bottom: 5px;
-}
-
-
-/********* Floating button ************/
+/* -------------- Floating Button ------------- */
 #flt_btn {
   position: fixed;
   bottom: 0;
@@ -1278,14 +1224,12 @@ select:hover {
   z-index: 10;
 }
 
-
 .flt_trg {
   background: var(--c0);
   color: var(--c1);
   z-index: 1;
   float: right;
 }
-
 
 .flt_acs {
   height: 0;
@@ -1338,8 +1282,7 @@ select:hover {
   display: block;
 }
 
-
-
+/* --------------- Widget Config -------------- */
 .wdg_ntp {
   background: #00000050;
   padding: .5rem;
@@ -1361,8 +1304,7 @@ select:hover {
   background:var(--c16);
 }
 
-/************ NewTile/editTile Dialog****************/
-
+/* --------------- New Tile Form -------------- */
 #p_tile {
   width: 50px;
   height: 50px;
@@ -1379,11 +1321,6 @@ select:hover {
   background: green;
 }
 
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
 
 .is_center {
   text-align: center;
@@ -1391,9 +1328,6 @@ select:hover {
 
 
 /************* Settings Dialog******************/
-
-
-
 .stt_lbl {
   display: block;
   color: var(--txt);
@@ -1413,87 +1347,6 @@ select:hover {
   background-color: var(--ntp-bgc);
   background-image: var(--ntp-bgi);
   background-size: var(--ntp-bgs);
-}
-
-#stt_lsbg {
-  text-align: left;
-  padding: 0;
-}
-
-#stt_lsbg li {
-  position: relative;
-  height: 45px;
-  line-height: 40px !important;
-  margin-top: 10px;
-  list-style: none;
-}
-
-#stt_lsbg label.checkbox {
-  position: relative;
-  padding: 0 0 0 25px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-#stt_lsbg label.checkbox input[type="checkbox"] {
-  display: none;
-}
-
-#stt_lsbg label.checkbox input[type="checkbox"]:checked+span {
-  opacity: 1;
-}
-
-#stt_lsbg label.checkbox::before {
-  position: absolute;
-  content: '';
-  top: 3px;
-  left: 0;
-  height: 14px;
-  width: 14px;
-  border-radius: 2px;
-  border: 2px solid #fff;
-}
-
-#stt_lsbg label.checkbox span {
-  position: absolute;
-  top: 3px;
-  left: 2px;
-  width: 12px;
-  height: 5px;
-  -ms-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  opacity: 0;
-  transition: opacity 500ms ease;
-}
-
-#stt_lsbg label.checkbox span::before {
-  position: absolute;
-  content: '';
-  left: 11px;
-  width: 3px;
-  height: 11px;
-  background-color: #fff;
-}
-
-#stt_lsbg label.checkbox span::after {
-  position: absolute;
-  content: '';
-  top: 8px;
-  left: 7px;
-  width: 4px;
-  height: 3px;
-  background-color: #fff;
-}
-
-span.stt_lonr {
-  display: none;
-  right: 0;
-  position: absolute;
-}
-
-#stt_lsbg button {
-  width: 45px;
 }
 
 /* ------------------- Modal ------------------ */
@@ -1569,7 +1422,7 @@ span.stt_lonr {
   color: var(--txt);
 }
 
-/* Slider range */
+/* --------------- Slider range --------------- */
 .slr_rng {
   -webkit-appearance: none;
   width: 100%;
@@ -1607,8 +1460,8 @@ span.stt_lonr {
   max-width: 280px;
   height: 250px;
   background: transparent;
-  color: #fff;
-  border: 1px solid#777;
+  color: var(--txt);
+  border: 1px solidvar(--bg2);
   border-radius: 6px;
   margin-top: 5px;
   padding: 5px;
@@ -1623,7 +1476,7 @@ span.stt_lonr {
   position: relative;
   background-size: cover;
   box-sizing: content-box;
-  border: 5px solid #fff;
+  border: 5px solid var(--bg2);
   margin: auto;
 }
 
@@ -1708,7 +1561,7 @@ span.stt_lonr {
   width: 24px;
   height: 24px;
   margin-top: -12px;
-  background-color: #fff;
+  background-color:var(--bg2);
   border-radius: 50%;
   border: none;
   -webkit-transform: scale(1);
