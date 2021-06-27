@@ -670,7 +670,6 @@ button,
   border-radius: var(--radius);
   margin: 0.5rem;
   height: 2.4rem;
-  transition: all 0.2s ease-in-out;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -1328,16 +1327,7 @@ select:hover {
 
 
 /************* Settings Dialog******************/
-.stt_lbl {
-  display: block;
-  color: var(--txt);
-  font-weight: bold;
-  margin: auto;
-  width: 100%;
-  padding: .5rem;
-  border-radius: var(--radius);
-  background: var(--bg2);
-}
+
 
 #stt_bgp {
   width: 150px;
@@ -1360,7 +1350,7 @@ select:hover {
   background: rgba(0, 0, 0, 0.4);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-  transition: all 0.3s ease-in;
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
   z-index: -1;
 }
 
@@ -1378,7 +1368,7 @@ select:hover {
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   transform: scale(0.9);
-  transition: all 0.3s ease-out;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 .modal>div>footer {
@@ -1407,7 +1397,6 @@ select:hover {
 .modal._show-modal>div {
   opacity: 1;
   transform: scale(1);
-  transition: all 0.2s ease-in;
 }
 #lrt_fl>div{
   width: calc(100% - 1rem);
@@ -1416,6 +1405,19 @@ select:hover {
 }
 #dlg_st>div {
   height: 90%;
+}
+#dlg_st h4{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .5rem;
+  color: var(--txt);
+  font-weight: bold;
+  margin: auto;
+  width: 100%;
+  padding: .5rem;
+  border-radius: var(--radius);
+  background: var(--bg2);
 }
 #p-home button{
   background: var(--bg2);

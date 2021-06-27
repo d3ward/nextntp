@@ -1405,8 +1405,8 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     imgRes = document.getElementById('imgRes'),
     crpp = document.getElementById('croppie');
   var cr, cr_img = '',
-    img_w = wDevice / 2,
-    img_h = hDevice / 2,
+    img_w = wDevice / 2.5,
+    img_h = hDevice / 2.5,
     isCrop = 0;
   while (img_w > 670) {
     img_w = img_w / 1.2;

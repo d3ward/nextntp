@@ -175,9 +175,8 @@ function modal(id){
     t.listeners();
 }
   //Function to export NTP settings and widgets
-  document.getElementById('exportJSON').onclick = function () {
+  document.getElementById('export-data').onclick = function () {
     //Create a copy of localstorage
-    
     var dataStr = JSON.stringify(localStorage);
     var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
     var date = new Date();
@@ -188,8 +187,30 @@ function modal(id){
     linkElement.setAttribute('download', exportFileDefaultName);
     linkElement.click();
   }
+  //Function to export NTP settings and widgets
+  document.getElementById('export-theme').onclick = function () {
+    //Create a copy of localstorage
+    var dataStr = JSON.stringify(localStorage);
+    console.log(dataStr);
+    delete dataStr.itemNews;
+    delete dataStr.ntp_sb;
+    delete dataStr.ntp_wdg;
+    delete dataStr.shouldIC;
+    delete dataStr.ntp_ver;
+    delete dataStr.cachedNewsUpdate;
+    delete dataStr.cachedGridUpdate;
+
+    var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+    var date = new Date();
+    var exportFileDefaultName = 'nextntp_theme' + date.getUTCFullYear() + '' + (date.getUTCMonth() + 1) + '' + date.getUTCDate() + '_' +
+      date.getHours() + '_' + date.getMinutes() + '.json';
+    var linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+  }
   //Function to import NTP settings and widgets
-  document.getElementById('file').onchange = function () {
+  document.getElementById('import-data').onchange = function () {
     var file = this.files[0];
     var reader = new FileReader();
     reader.onload = function (progressEvent) {
@@ -204,6 +225,24 @@ function modal(id){
     reader.readAsText(file);
     location.reload();
   };
+    //Function to import NTP Theme
+    document.getElementById('import-theme').onchange = function () {
+      var file = this.files[0];
+      var reader = new FileReader();
+      reader.onload = function (progressEvent) {
+        var str = this.result;
+        var data = JSON.parse(str);
+        console.log(data);
+        localStore("ntp_bdy",data.ntp_bdy);
+        localStore("ntp_sett",data.ntp_sett);
+        localStore("ntp_mtc",data.ntp_mtc);
+        localStore("theme",data.theme);
+        console.log(localStorage);
+        localStorage.ntp_ver = ntp_ver;
+      };
+      reader.readAsText(file);
+      //location.reload();
+    };
 
   //Check if user is on touch enabled device
   function is_td() {
