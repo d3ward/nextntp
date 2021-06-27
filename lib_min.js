@@ -190,17 +190,16 @@ function modal(id){
   //Function to export NTP settings and widgets
   document.getElementById('export-theme').onclick = function () {
     //Create a copy of localstorage
-    var dataStr = JSON.stringify(localStorage);
-    console.log(dataStr);
-    delete dataStr.itemNews;
+    var dataStr = localStorage;
+    delete dataStr.itemsNews;
+    delete dataStr.newsLe;
     delete dataStr.ntp_sb;
     delete dataStr.ntp_wdg;
     delete dataStr.shouldIC;
     delete dataStr.ntp_ver;
     delete dataStr.cachedNewsUpdate;
     delete dataStr.cachedGridUpdate;
-
-    var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+    var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(dataStr));
     var date = new Date();
     var exportFileDefaultName = 'nextntp_theme' + date.getUTCFullYear() + '' + (date.getUTCMonth() + 1) + '' + date.getUTCDate() + '_' +
       date.getHours() + '_' + date.getMinutes() + '.json';
@@ -232,16 +231,21 @@ function modal(id){
       reader.onload = function (progressEvent) {
         var str = this.result;
         var data = JSON.parse(str);
+        delete data.itemsNews;
+        delete data.newsLe;
+        delete data.ntp_sb;
+        delete data.ntp_wdg;
+        delete data.shouldIC;
+        delete data.ntp_ver;
+        delete data.cachedNewsUpdate;
+        delete data.cachedGridUpdate;
         console.log(data);
-        localStore("ntp_bdy",data.ntp_bdy);
-        localStore("ntp_sett",data.ntp_sett);
-        localStore("ntp_mtc",data.ntp_mtc);
-        localStore("theme",data.theme);
+        Object.assign(localStorage,data);
         console.log(localStorage);
         localStorage.ntp_ver = ntp_ver;
       };
       reader.readAsText(file);
-      //location.reload();
+      location.reload();
     };
 
   //Check if user is on touch enabled device
