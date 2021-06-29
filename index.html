@@ -398,45 +398,46 @@
         </section>
         <!-- Search Bar-->
         <section id="p-search">
-          <div class="row flex-sb">
+          <div class="row flex-column flex-sb">
             <h4>
               <label> Search Bar Logo</label>
             </h4>
             <br>
-            <div class="_as-center" id="sb_bg_preview"><img id="sb_lgp" alt=""></img></div>
-            <div>
-              <label>Logo Width</label>
-            </div>
-            <div><input type="range" min="0" max="300" value="64" class="slr_rng" id="tg_r6"></div>
-            <div>
-              <label>Logo Rounding</label>
-            </div>
-            <div><input type="range" min="0" max="300" value="64" class="slr_rng" id="tg_r7"></div>
-            <div>
-              <button onclick="f_sb_lg2();"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd"
-                    d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
-                    clip-rule="evenodd"></path>
-                </svg>
-                From Link</button>
-            </div>
-            <div>
-              <label class="btn"><input type="file" id="sb_lgf" onchange="f_sb_lg1()"
-                  style="opacity: 0;position: absolute;z-index: -1;" /><svg class="_icon" fill="currentColor"
-                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd"
-                    d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
-                    clip-rule="evenodd"></path>
-                </svg> Upload from file
-              </label>
-            </div>
-            <hr>
-            <h4> <label>Search Bar Rounding</label> </h4>
-            <div>
+            <div class="_as-center" id="sb_bg_preview">
+              <img id="sb_lgp" alt=""></img>
               <div class="sb_preview"></div>
             </div>
-            <div><input type="range" min="0" max="25" value="8" class="slr_rng" id="tg_r5"></div>
+            <div class="flex-column">
+              <label for="tg_r6">Logo Width : <span id="tg_r6v">4</span></label>
+              <input type="range" min="0" max="300" value="64" class="slr_rng" id="tg_r6">
+            </div>
+            <div class="flex-column">
+              <label for="tg_r7">Logo Rounding : <span id="tg_r7v">4</span></label>
+              <input type="range" min="0" max="300" value="64" class="slr_rng" id="tg_r7">
+            </div>
+            
+            <div class="flex-column"><label for="tg_r5">Input Radius : <span id="tg_r5v">4</span></label><input type="range" min="0" max="25"
+                value="8" class="slr_rng" id="tg_r5"></div>
+            <div class="flex-column">
+              <label for="tg_r8">Top Margin : <span id="tg_r8v">4</span></label><input type="range" min="0" max="300" value="64" class="slr_rng"
+                id="tg_r8"></div>
+                <div class="flex-column">
+                  <button onclick="f_sb_lg2();"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                    From Link</button>
+                  <label class="btn"><input type="file" id="sb_lgf" onchange="f_sb_lg1()"
+                      style="opacity: 0;position: absolute;z-index: -1;" /><svg class="_icon" fill="currentColor"
+                      viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                    </svg> Upload from file
+                  </label>
+                </div>
             <hr>
             <h4>
               <label>Search Bar Colors</label>
@@ -788,6 +789,5 @@
 </body>
 <script src="./lib_min.js"></script>
 <script src="./local_ntp.js"></script>
-<!--crossorigin="anonymous"-->
 
 </html>

@@ -193,19 +193,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   }
 
   //
-  const tg_r5 = document.getElementById('tg_r5');
-  var tg_r5v = parseInt(ntp_bdy.style.getPropertyValue("--v0").replace("px", ""));
-  if (isNaN(tg_r5v)) {
-    tg_r5v = 8;
-    ntp_bdy.style.setProperty("--v0", tg_r5v + "px");
-    save_ntpbdy();
-  }
-  tg_r5.value = tg_r5v;
-  tg_r5.addEventListener("input", function () {
-    tg_r5v = parseInt(tg_r5.value);
-    ntp_bdy.style.setProperty("--v0", tg_r5v + "px");
-    save_ntpbdy();
-  });
+ 
   
   //Top Margin Spacing sliders for widgets 
   const tms_r0 = document.getElementById('tms_r0');
@@ -256,25 +244,68 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     ntp_bdy.style.setProperty("--tms2", tms_2 + "px");
     save_ntpbdy();
   });
+
+  const tg_r5 = document.getElementById('tg_r5');
+  const tg_r5vs = document.getElementById("tg_r5v");
+  var tg_r5v = parseInt(ntp_bdy.style.getPropertyValue("--v0").replace("px", ""));
+  tg_r5vs.innerText=tg_r5v;
+  if (isNaN(tg_r5v)) {
+    tg_r5v = 8;
+    tg_r5vs.innerText=tg_r5v;
+    ntp_bdy.style.setProperty("--v0", tg_r5v + "px");
+    save_ntpbdy();
+  }
+  tg_r5.value = tg_r5v;
+  tg_r5.addEventListener("input", function () {
+    tg_r5v = parseInt(tg_r5.value);
+    tg_r5vs.innerText=tg_r5v;
+    ntp_bdy.style.setProperty("--v0", tg_r5v + "px");
+    save_ntpbdy();
+  });
   //Border radius slider for Search Bar Logo
   const tg_r7 = document.getElementById('tg_r7');
+  const tg_r7vs = document.getElementById('tg_r7v');
   var tg_r7v = parseInt(ntp_bdy.style.getPropertyValue("--v2").replace("px", ""));
+  tg_r7vs.innerText=tg_r7v;
   if (isNaN(tg_r7v)) {
-    tg_r6v = 8;
-    ntp_bdy.style.setProperty("--v2", tg_r6v + "px");
+    tg_r7v = 8;
+    tg_r7vs.innerText=tg_r7v;
+    ntp_bdy.style.setProperty("--v2", tg_r7v + "px");
     save_ntpbdy();
   }
   tg_r7.value = tg_r7v;
   tg_r7.addEventListener("input", function () {
     tg_r7v = parseInt(tg_r7.value);
+    tg_r7vs.innerText=tg_r7v;
     ntp_bdy.style.setProperty("--v2", tg_r7v + "px");
+    save_ntpbdy();
+  });
+  //Search bar top margin
+  const tg_r8 = document.getElementById('tg_r8');
+  const tg_r8vs = document.getElementById('tg_r8v');
+  var tg_r8v = parseInt(ntp_bdy.style.getPropertyValue("--v3").replace("px", ""));
+  tg_r8vs.innerText=tg_r8v;
+  if (isNaN(tg_r8v)) {
+    tg_r8v = 10;
+    tg_r8vs.innerText=tg_r8v;
+    ntp_bdy.style.setProperty("--v3", tg_r8v + "px");
+    save_ntpbdy();
+  }
+  tg_r8.value = tg_r8v;
+  tg_r8.addEventListener("input", function () {
+    tg_r8v = parseInt(tg_r8.value);
+    tg_r8vs.innerText=tg_r8v;
+    ntp_bdy.style.setProperty("--v3", tg_r8v + "px");
     save_ntpbdy();
   });
   //Width slider for Search Bar Logo
   const tg_r6 = document.getElementById('tg_r6');
+  const tg_r6vs = document.getElementById('tg_r6v');
   var tg_r6v = parseInt(ntp_bdy.style.getPropertyValue("--v1").replace("px", ""));
+  tg_r6vs.innerText=tg_r6v;
   if (isNaN(tg_r6v)) {
     tg_r6v = 230;
+    tg_r6vs.innerText=tg_r6v;
     ntp_bdy.style.setProperty("--v1", tg_r6v + "px");
     save_ntpbdy();
   }
@@ -282,9 +313,12 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   tg_r6.value = tg_r6v;
   tg_r6.addEventListener("input", function () {
     tg_r6v = parseInt(tg_r6.value);
+    tg_r6vs.innerText=tg_r6v;
     ntp_bdy.style.setProperty("--v1", tg_r6v + "px");
     save_ntpbdy();
   });
+
+
   const sb_logo = document.getElementById("sb_logo");
   const sett_sblgp = document.getElementById("sb_lgp");
   const sett_sb_lgf = document.getElementById("sb_lgf");

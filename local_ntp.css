@@ -118,13 +118,15 @@ body {
   --o6: "";
   --o7: "";
   --o8: "";
+
   /* Search Bar Radus */
   --v0: 8px;
   /* Search Bar Logo Size */
   --v1: 233px;
    /* Search Bar Logo Radius */
   --v2: "";
-  --v3: 130.4px;
+  /* Search Bar Top Margin */
+  --v3: 10px;
   
    /* Widget Spacing */
   --tms0:10px; 
@@ -909,15 +911,11 @@ select:hover {
 #sb_bg_preview{
   background: var(--bg3);
   border-radius: var(--radius);
+  flex-direction: column;
+  width: 100%;
 }
-.sb_preview {
+.sb_preview{
   height: 45px;
-  width: 100%;
-}
-
-#sb_input {
-  width: 100%;
-  margin-top: .5rem;
 }
 #sb_input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: var(--c4);
@@ -926,6 +924,8 @@ select:hover {
 
 #sb_input,
 .sb_preview {
+  margin-top: var(--v3)!important;
+  width: 100%;
   border: 1px solid var(--c5);
   color: var(--c4);
   background: var(--c3);
