@@ -1214,6 +1214,7 @@ select:hover {
   width: 30px;
   height: 30px;
   background: transparent;
+  margin-bottom: 0.8rem;
 }
 
 /* -------------- Floating Button ------------- */
