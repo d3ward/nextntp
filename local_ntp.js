@@ -1569,7 +1569,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
             document.getElementById("sett_mtc").style.background = color.hex;
           }else{
             mtc.dark=color.hex;
-            document.getElementById("sett_mtcd").style.background = color.hex;
+            document.getElementById("sett_mtc1").style.background = color.hex;
           }
           document.querySelector("meta[name=theme-color]").setAttribute("content", color.hex);
           localStorage.setItem("ntp_mtc", JSON.stringify(mtc));
@@ -1584,7 +1584,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       cp_current_el = "mtcl";
       picker.setColor(mtc.light, true);
     }else{
-      cp_current_el = "mtcl";
+      cp_current_el = "mtcd";
       picker.setColor(mtc.dark, true);
     }
     cl_vn.show();
