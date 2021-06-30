@@ -659,6 +659,7 @@ a{
 /* ------------------ Button ------------------ */
 button,
 [class^=btn] {
+  position: relative;
   display: inline-flex;
   align-items: center;
   text-align: center;
