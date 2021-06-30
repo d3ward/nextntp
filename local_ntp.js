@@ -1552,7 +1552,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     popup: false,
     cancelButton: true,
     onDone: function (color) {
-      if (cp_current_el != null && cp_current_el != "bgcl") {
+      if (cp_current_el != null && cp_current_el != "bgcl" && cp_current_el != "mtcl" && cp_current_el != "mtcd") {
         if(cp_type == "clight")
           ntp_bdy.style.setProperty("--cl" + cp_current_el, color.hex);
         if(cp_type == "cdark")
@@ -1564,19 +1564,29 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
           ntp_bdy.style.setProperty("--bg-cl", color.hex);
           save_ntpbdy();
         } else {
+          if(cp_current_el =="mtcl"){
+            mtc.light=color.hex;
+            document.getElementById("sett_mtc").style.background = color.hex;
+          }else{
+            mtc.dark=color.hex;
+            document.getElementById("sett_mtcd").style.background = color.hex;
+          }
           document.querySelector("meta[name=theme-color]").setAttribute("content", color.hex);
-          document.getElementById("sett_mtc").style.background = color.hex;
-          localStorage.ntp_mtc = color.hex;
+          localStorage.setItem("ntp_mtc", JSON.stringify(mtc));
         }
-
       }
       cl_vn.hide();
     }
   });
 
-  function f_cp_mtc() {
-    cp_current_el = null;
-    picker.setColor(document.getElementById("sett_mtc").style.background, true);
+  function f_cp_mtc(a) {
+    if(a == 0){
+      cp_current_el = "mtcl";
+      picker.setColor(mtc.light, true);
+    }else{
+      cp_current_el = "mtcl";
+      picker.setColor(mtc.dark, true);
+    }
     cl_vn.show();
   }
 

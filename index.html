@@ -38,11 +38,11 @@
   <script>
     //Load Theme Color
     var metaTColor = document.querySelector("meta[name=theme-color]");
-    if (localStorage.ntp_mtc) {
-      metaTColor.setAttribute("content", localStorage.ntp_mtc);
-    } else {
-      localStorage.ntp_mtc = "#ffffff";
-      metaTColor.setAttribute("content", "#ffffff");
+    var mtc = localStorage.getItem("ntp_mtc");
+    console.log(mtc);
+    if(mtc==undefined || mtc.light ==undefined){
+      mtc= {'light':"#ffffff",'dark':"#000000"};
+      localStorage.setItem("ntp_mtc", JSON.stringify(mtc));
     }
   </script>
 </head>
@@ -281,7 +281,8 @@
             <hr>
             <div>
               <label> Meta Theme Color </label>
-              <div class="stt_clfrt" id="sett_mtc" onclick="f_cp_mtc()"></div>
+              <div class="stt_clfrt" id="sett_mtc" onclick="f_cp_mtc(0)"></div>
+              <div class="stt_clfrt" id="sett_mtc1" onclick="f_cp_mtc(1)"></div>
             </div>
             <div>
               <label for="stt_opt0">Material Design Shadow</label>

@@ -263,14 +263,25 @@ function theme() {
   if (window.CSS && CSS.supports("color", "var(--bg)") && toggles) {
     var storedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ?
       "dark" : "light");
+    document.getElementById("sett_mtc").style.background = mtc.light;  
+    document.getElementById("sett_mtc1").style.background = mtc.dark;
     if (storedTheme)
       document.body.setAttribute('data-theme', storedTheme)
+    if(storedTheme === "light")
+      metaTColor.setAttribute("content", mtc.light);
+    else
+      metaTColor.setAttribute("content", mtc.dark);
     for (var i = 0; i < toggles.length; i++) {
       toggles[i].onclick = function () {
         var currentTheme = document.body.getAttribute("data-theme");
         var targetTheme = "light";
-        if (currentTheme === "light")
+        if (currentTheme === "light"){
           targetTheme = "dark";
+          metaTColor.setAttribute("content", mtc.dark);
+        }else{
+          metaTColor.setAttribute("content", mtc.light);
+        }
+          
         document.body.setAttribute('data-theme', targetTheme)
         localStorage.setItem('theme', targetTheme);
       };

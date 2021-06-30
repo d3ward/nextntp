@@ -1110,8 +1110,10 @@ select:hover {
 }
 
 .news_cnt {
+  display: flex;
+  flex-direction: column;
   height: 128px;
-  padding: 5px;
+  padding: .5rem;
 }
 
 .news_img {
