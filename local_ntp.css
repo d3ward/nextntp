@@ -19,7 +19,7 @@ body {
   --sb-img-d: url("./nextntpd.svg");
   --sb-img: var(--sb-img-l);
   /****************************** COLORS ******************************/
-  
+ 
   /*  Floating button background  */
   --cl0: #46afdf;
   /*  Floating button icons     */
@@ -60,6 +60,17 @@ body {
   --cl18: #000000;
   /* Border color     */
   --cl19: #ffffff9f;
+  /* Settings Text */
+  --cl20: #14191f;
+  /* Settings Text Inverted*/
+  --cl21: #f2f4f7;
+  /* Settings Background*/
+  --cl22: #f2f4f7;
+  /* Settings Background 2*/
+  --cl23: #dde2ea;
+  /* Settings Background 3*/
+  --cl24: #cfd6e1;
+
   /* ---------------- DARK COLORS --------------- */
   /*  Floating button background  */
   --cd0: #46afdf;
@@ -101,6 +112,16 @@ body {
   --cd18: #ffffff;
   /* Border color     */
   --cd19: #14191f;
+/* Settings Text */
+--cd20: #f2f4f7 ;
+/* Settings Text Inverted*/
+--cd21: #14191f;
+/* Settings Background*/
+--cd22:#14191f ;
+/* Settings Background 2*/
+--cd23: #242e37;
+/* Settings Background 3*/
+--cd24: #2c3844;
 
   /******************************* OPTIONS *******************************/
   /*  Material design shadow         */
@@ -154,11 +175,6 @@ body,
 	--red: #FF4132;
 	--yellow: #ffcd36;
   --primary: #0074D8;
-  --txt: #14191f;
-  --txt2: var(--white);
-  --bg: #f2f4f7;
-  --bg2: #dde2ea;
-  --bg3: #cfd6e1;
   --brd: #C4CDD5;
   --radius: .5rem;
 
@@ -182,10 +198,15 @@ body,
   --c17: var(--cl17);
   --c18: var(--cl18);
   --c19: var(--cl19);
+  --c20: var(--cl20);
+  --c21: var(--cl21);
+  --c22: var(--cl22);
+  --c23: var(--cl23);
+  --c24: var(--cl24);
 }
 
 [data-theme=dark] {
-  --bg-cl:var(--bg);
+  --bg-cl:var(--c22);
   --sb-img: var(--sb-img-d);
   --bg-img: var(--bg-img-d);
   --black: #060609;
@@ -195,20 +216,10 @@ body,
 	--red: #ff564d;
 	--yellow: #ffd24d;
   --primary: #4dacff;
-  --txt: #f2f4f7;
-  --txt2: #14191f;
-  --bg3: #2c3844;
-  --bg2: #242e37;
-  --bg: #14191f;
-  --bg-nav: var(--bg);
-  --bg-nav-hover: var(--bg2);
   --bg-btn: var(--primary);
   --bg-btn-hover: inset 0 0 100px 100px #00000033;
   --brd-btn: var(--primary);
-  --txt-btn: var(--black);
-  --bg-card: var(--bg3);
-  --bg-details: var(--bg2);
-  --bg-details2: var(--bg3);
+  --c20-btn: var(--black);
   --shadow: none;
   
   --c0: var(--cd0);
@@ -231,6 +242,11 @@ body,
   --c17: var(--cd17);
   --c18: var(--cd18);
   --c19: var(--cd19);
+  --c20: var(--cd20);
+  --c21: var(--cd21);
+  --c22: var(--cd22);
+  --c23: var(--cd23);
+  --c24: var(--cd24);
 }
 
 [data-theme=light] .light-icon,
@@ -333,10 +349,25 @@ html {
 #stt_cl18 {
   background: var(--cl18)
 }
-
 #stt_cl19 {
   background: var(--cl19)
 }
+#stt_cl20 {
+  background: var(--cl20)
+}
+#stt_cl21 {
+  background: var(--cl21)
+}
+#stt_cl22 {
+  background: var(--cl22)
+}
+#stt_cl23 {
+  background: var(--cl23)
+}
+#stt_cl24 {
+  background: var(--cl24)
+}
+
 #stt_cld0 {
   background: var(--cd0)
 }
@@ -417,6 +448,22 @@ html {
   background: var(--cd19)
 }
 
+#stt_cld20 {
+  background: var(--cd20)
+}
+
+#stt_cld21 {
+  background: var(--cd21)
+}
+#stt_cld22{
+  background: var(--cd22)
+}
+#stt_cld23 {
+  background: var(--cd23)
+}
+#stt_cld24 {
+  background: var(--cd24)
+}
 
 /* --------------- Toast Message -------------- */
 .notify-item {
@@ -427,7 +474,7 @@ html {
 	margin-bottom: 0.3rem;
 	display: flex;
 	background: var(--primary);
-  color: var(--txt);
+  color: var(--c20);
 	border-radius: var(--radius);
 	box-shadow: var(--shadow);
 	-webkit-animation: fade-in 0.3s;
@@ -445,22 +492,22 @@ html {
 
 .notify-item.success {
 	background: var(--green);
-  color: var(--txt);
+  color: var(--c20);
 }
 
 .notify-item.error {
 	background: var(--red);
-  color: var(--txt2);
+  color: var(--c21);
 }
 
 .notify-item.warn {
 	background: var(--yellow);
-  color: var(--txt2);
+  color: var(--c21);
 }
 
 .notify-item.info {
 	background: var(--blue);
-  color: var(--txt);
+  color: var(--c20);
 }
 
 .notify-item span {
@@ -665,7 +712,7 @@ button,
   text-align: center;
   justify-content: center;
   border: 0px;
-  color: var(--txt2);
+  color: var(--c21);
   background-color: var(--primary);
   outline: none;
   padding: 0.4rem;
@@ -707,11 +754,11 @@ input[type=color]::-webkit-color-swatch {
 textarea,
 input:not([type=color]):not([type=range]):not([type=radio]):not([type=checkbox]),
 select {
-  color: var(--txt);
-  background: var(--bg2);
+  color: var(--c20);
+  background: var(--c23);
   padding: 0.6rem;
   border-radius: var(--radius);
-  border: 2px solid var(--bg2);
+  border: 2px solid var(--c23);
   outline: none;
   height: 2.6rem;
 }
@@ -731,7 +778,7 @@ select:hover {
     width: 100%;
     height: 0.8rem;
     border-radius: var(--radius);
-    background: var(--bg2);
+    background: var(--c23);
     outline: none;
     margin-top: 0.8rem;
   }
@@ -743,17 +790,17 @@ select:hover {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: var(--txt);
+    background: var(--c20);
     cursor: pointer;
     transition: background 0.15s ease-in-out;
   }
 
   input[type=range]:hover::-webkit-slider-thumb {
-    box-shadow: 0 0 0 1px var(--bg2), 0 0 0 4px var(--primary);
+    box-shadow: 0 0 0 1px var(--c23), 0 0 0 4px var(--primary);
   }
 
   input[type=range]:hover::-moz-range-thumb {
-    box-shadow: 0 0 0 1px var(--bg2), 0 0 0 4px var(--primary);
+    box-shadow: 0 0 0 1px var(--c23), 0 0 0 4px var(--primary);
   }
 
   input[type=checkbox],
@@ -770,8 +817,8 @@ select:hover {
     vertical-align: middle;
     top: -1px;
     height: 21px;
-    border: 2px solid  var(--txt);
-    background: var(--bg2);
+    border: 2px solid  var(--c20);
+    background: var(--c23);
     transition: background 0.3s ease, border-color 0.3s ease;
   }
 
@@ -874,7 +921,7 @@ select:hover {
     top: -1px;
     left: -1px;
     border-radius: 50%;
-    background: var(--bg3);
+    background: var(--c24);
     opacity: 0;
     transform: scale(0.7);
   }
@@ -910,7 +957,7 @@ select:hover {
 }
 
 #sb_bg_preview{
-  background: var(--bg3);
+  background: var(--c24);
   border-radius: var(--radius);
   flex-direction: column;
   width: 100%;
@@ -1057,9 +1104,9 @@ select:hover {
 #fld_editA,
 #tlg_sldr {
   display: none;
-  background: var(--bg);
+  background: var(--c22);
   border-radius: 8px;
-  color: var(--txt);
+  color: var(--c20);
 }
 
 #tlg_editA .tlg_item,
@@ -1183,8 +1230,8 @@ select:hover {
 }
 
 #stt_lwo li {
-  background: var(--bg2);
-  color: var(--txt);
+  background: var(--c23);
+  color: var(--c20);
   border-radius: 8px;
   border: none;
   margin: 5px;
@@ -1244,12 +1291,12 @@ select:hover {
   margin-right: .6rem;
   padding:0 .5rem .5rem .5rem;
   border-radius: var(--radius);
-  background: var(--bg);
+  background: var(--c22);
 }
 
 .flt_acs .btn {
   background-color: transparent;
-  color: var(--txt);
+  color: var(--c20);
   justify-content: flex-start;
   margin: 0;
   margin-top: .5rem;
@@ -1368,8 +1415,8 @@ select:hover {
   max-width: 400px;
   min-height: 200px;
   opacity: 0;
-  color: var(--txt);
-  background: var(--bg);
+  color: var(--c20);
+  background: var(--c22);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   transform: scale(0.9);
@@ -1416,17 +1463,17 @@ select:hover {
   align-items: center;
   justify-content: flex-end;
   gap: .5rem;
-  color: var(--txt);
+  color: var(--c20);
   font-weight: bold;
   margin: auto;
   width: 100%;
   padding: .5rem;
   border-radius: var(--radius);
-  background: var(--bg2);
+  background: var(--c23);
 }
 #p-home button{
-  background: var(--bg2);
-  color: var(--txt);
+  background: var(--c23);
+  color: var(--c20);
 }
 
 /* --------------- Slider range --------------- */
@@ -1467,8 +1514,8 @@ select:hover {
   max-width: 280px;
   height: 250px;
   background: transparent;
-  color: var(--txt);
-  border: 1px solidvar(--bg2);
+  color: var(--c20);
+  border: 1px solid var(--c23);
   border-radius: 6px;
   margin-top: 5px;
   padding: 5px;
@@ -1483,7 +1530,7 @@ select:hover {
   position: relative;
   background-size: cover;
   box-sizing: content-box;
-  border: 5px solid var(--bg2);
+  border: 5px solid var(--c23);
   margin: auto;
 }
 
@@ -1568,7 +1615,7 @@ select:hover {
   width: 24px;
   height: 24px;
   margin-top: -12px;
-  background-color:var(--bg2);
+  background-color:var(--c23);
   border-radius: 50%;
   border: none;
   -webkit-transform: scale(1);
@@ -1767,5 +1814,5 @@ hr {
 #code_f{
   width: 100%;
     min-height: 150px;
-    border: 1px solid var(--txt);
+    border: 1px solid var(--c20);
 }
