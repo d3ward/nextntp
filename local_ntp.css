@@ -42,16 +42,16 @@ body {
   --cl9: #101010;
   /*  Tile label background  */
   --cl10: #ffffff9f;
-  /*  Folder icon background  */
+  /*  Folder tile background  */
   --cl11: #00000094;
-  /* Folder icon border    */
+  /* Folder tile border    */
   --cl12: #00000094;
   /* Folder label text      */
   --cl13: #ffffff;
   /* Folder label background  */
   --cl14: #00000094;
   /* Folder background on grid view  */
-  --cl15: #101010;
+  --cl15: #00000094;
   /* Widget 3 Background  */
   --cl16: #ffffff59;
   /* News Item Backgrosund Color        */
@@ -62,14 +62,10 @@ body {
   --cl19: #ffffff9f;
   /* Settings Text */
   --cl20: #14191f;
-  /* Settings Text Inverted*/
-  --cl21: #f2f4f7;
   /* Settings Background*/
-  --cl22: #f2f4f7;
-  /* Settings Background 2*/
-  --cl23: #dde2ea;
-  /* Settings Background 3*/
-  --cl24: #cfd6e1;
+  --cl21: #f2f4f7;
+  /* Settings Foreground*/
+  --cl22: #dde2ea;
 
   /* ---------------- DARK COLORS --------------- */
   /*  Floating button background  */
@@ -94,16 +90,16 @@ body {
   --cd9: #ffffff;
   /*  Tile label background  */
   --cd10: #0000009f;
-  /*  Folder icon background  */
+  /*  Folder tile background  */
   --cd11: #ffffff94;
-  /* Folder icon border    */
+  /* Folder tile border    */
   --cd12: #ffffff94;
   /* Folder label text      */
   --cd13: #101010;
   /* Folder label background  */
   --cd14: #ffffff94;
   /* Folder background on grid view  */
-  --cd15: #ffffff;
+  --cd15: #ffffff94f;
   /* Widget 3 Background  */
   --cd16: #00000059;
   /* News Item Background Color        */
@@ -112,16 +108,12 @@ body {
   --cd18: #ffffff;
   /* Border color     */
   --cd19: #14191f;
-/* Settings Text */
---cd20: #f2f4f7 ;
-/* Settings Text Inverted*/
---cd21: #14191f;
-/* Settings Background*/
---cd22:#14191f ;
-/* Settings Background 2*/
---cd23: #242e37;
-/* Settings Background 3*/
---cd24: #2c3844;
+  /* Settings Text */
+  --cd20: #f2f4f7 ;
+  /* Settings Background*/
+  --cd21:#14191f ;
+  /* Settings Foreground*/
+  --cd22: #242e37;
 
   /******************************* OPTIONS *******************************/
   /*  Material design shadow         */
@@ -201,12 +193,11 @@ body,
   --c20: var(--cl20);
   --c21: var(--cl21);
   --c22: var(--cl22);
-  --c23: var(--cl23);
   --c24: var(--cl24);
 }
 
 [data-theme=dark] {
-  --bg-cl:var(--c22);
+  --bg-cl:var(--c21);
   --sb-img: var(--sb-img-d);
   --bg-img: var(--bg-img-d);
   --black: #060609;
@@ -244,8 +235,8 @@ body,
   --c19: var(--cd19);
   --c20: var(--cd20);
   --c21: var(--cd21);
+  --c21: var(--cd21);
   --c22: var(--cd22);
-  --c23: var(--cd23);
   --c24: var(--cd24);
 }
 
@@ -359,10 +350,10 @@ html {
   background: var(--cl21)
 }
 #stt_cl22 {
-  background: var(--cl22)
+  background: var(--cl21)
 }
 #stt_cl23 {
-  background: var(--cl23)
+  background: var(--cl22)
 }
 #stt_cl24 {
   background: var(--cl24)
@@ -456,10 +447,10 @@ html {
   background: var(--cd21)
 }
 #stt_cld22{
-  background: var(--cd22)
+  background: var(--cd21)
 }
 #stt_cld23 {
-  background: var(--cd23)
+  background: var(--cd22)
 }
 #stt_cld24 {
   background: var(--cd24)
@@ -755,10 +746,10 @@ textarea,
 input:not([type=color]):not([type=range]):not([type=radio]):not([type=checkbox]),
 select {
   color: var(--c20);
-  background: var(--c23);
+  background: var(--c22);
   padding: 0.6rem;
   border-radius: var(--radius);
-  border: 2px solid var(--c23);
+  border: 2px solid var(--c22);
   outline: none;
   height: 2.6rem;
 }
@@ -778,7 +769,7 @@ select:hover {
     width: 100%;
     height: 0.8rem;
     border-radius: var(--radius);
-    background: var(--c23);
+    background: var(--c22);
     outline: none;
     margin-top: 0.8rem;
   }
@@ -796,11 +787,11 @@ select:hover {
   }
 
   input[type=range]:hover::-webkit-slider-thumb {
-    box-shadow: 0 0 0 1px var(--c23), 0 0 0 4px var(--primary);
+    box-shadow: 0 0 0 1px var(--c22), 0 0 0 4px var(--primary);
   }
 
   input[type=range]:hover::-moz-range-thumb {
-    box-shadow: 0 0 0 1px var(--c23), 0 0 0 4px var(--primary);
+    box-shadow: 0 0 0 1px var(--c22), 0 0 0 4px var(--primary);
   }
 
   input[type=checkbox],
@@ -818,7 +809,7 @@ select:hover {
     top: -1px;
     height: 21px;
     border: 2px solid  var(--c20);
-    background: var(--c23);
+    background: var(--c22);
     transition: background 0.3s ease, border-color 0.3s ease;
   }
 
@@ -899,11 +890,11 @@ select:hover {
     border-radius: 50%;
     width: 15px;
     height: 15px;
-    background: #fff;
+    background: var(--c20);
   }
 
   input[type=checkbox].toggle:checked:after {
-    background: #00000070;
+    background: var(--c20);
     transform: translateX(17px);
   }
 
@@ -921,7 +912,7 @@ select:hover {
     top: -1px;
     left: -1px;
     border-radius: 50%;
-    background: var(--c24);
+    background: var(--c22);
     opacity: 0;
     transform: scale(0.7);
   }
@@ -957,7 +948,7 @@ select:hover {
 }
 
 #sb_bg_preview{
-  background: var(--c24);
+  background: var(--c22);
   border-radius: var(--radius);
   flex-direction: column;
   width: 100%;
@@ -1104,7 +1095,7 @@ select:hover {
 #fld_editA,
 #tlg_sldr {
   display: none;
-  background: var(--c22);
+  background: var(--c21);
   border-radius: 8px;
   color: var(--c20);
 }
@@ -1230,7 +1221,7 @@ select:hover {
 }
 
 #stt_lwo li {
-  background: var(--c23);
+  background: var(--c22);
   color: var(--c20);
   border-radius: 8px;
   border: none;
@@ -1291,7 +1282,7 @@ select:hover {
   margin-right: .6rem;
   padding:0 .5rem .5rem .5rem;
   border-radius: var(--radius);
-  background: var(--c22);
+  background: var(--c21);
 }
 
 .flt_acs .btn {
@@ -1416,7 +1407,7 @@ select:hover {
   min-height: 200px;
   opacity: 0;
   color: var(--c20);
-  background: var(--c22);
+  background: var(--c21);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   transform: scale(0.9);
@@ -1453,7 +1444,7 @@ select:hover {
 #lrt_fl>div{
   width: calc(100% - 1rem);
   padding: .5rem;
-  background: var(--c11);
+  background: var(--c15);
 }
 #dlg_st>div {
   height: 90%;
@@ -1469,10 +1460,10 @@ select:hover {
   width: 100%;
   padding: .5rem;
   border-radius: var(--radius);
-  background: var(--c23);
+  background: var(--c22);
 }
 #p-home button{
-  background: var(--c23);
+  background: var(--c22);
   color: var(--c20);
 }
 
@@ -1515,7 +1506,7 @@ select:hover {
   height: 250px;
   background: transparent;
   color: var(--c20);
-  border: 1px solid var(--c23);
+  border: 1px solid var(--c22);
   border-radius: 6px;
   margin-top: 5px;
   padding: 5px;
@@ -1530,7 +1521,7 @@ select:hover {
   position: relative;
   background-size: cover;
   box-sizing: content-box;
-  border: 5px solid var(--c23);
+  border: 5px solid var(--c22);
   margin: auto;
 }
 
@@ -1615,7 +1606,7 @@ select:hover {
   width: 24px;
   height: 24px;
   margin-top: -12px;
-  background-color:var(--c23);
+  background-color:var(--c22);
   border-radius: 50%;
   border: none;
   -webkit-transform: scale(1);

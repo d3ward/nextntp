@@ -113,7 +113,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     var b = getComputedStyle(ntp_bdy).getPropertyValue("--o" + i);
     if (i == 2) {
       var ar = document.getElementsByClassName("tile_target");
-      for (var i = 0; i < ar.length; i++) ar[i].target = b;
+      for (var z = 0; z < ar.length; z++) ar[z].target = b;
     }
     if (a.value == b) a.checked = true;
     else a.checked = false;
@@ -124,9 +124,10 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     var value = (t.checked) ? t.value : f;
     ntp_bdy.style.setProperty("--o" + i, value);
     if (i == 2) {
-      var ar = document.getElementsByClassName("tile_target");
-      for (var i = 0; i < ar.length; i++) ar[i].target = value;
-      f_cache_tl();
+      if(targetBlank=="_self")
+        setTileTarget("_blank");
+      else
+        setTileTarget("_self");
     }
     save_ntpbdy();
   }
@@ -408,6 +409,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
 
   //Tiles Grid Widget Config
   if (ntp_sett.status[1]) {
+    var targetBlank = getComputedStyle(ntp_bdy).getPropertyValue("--o2");
     var gridT, fldT;
     var timeoutVariable;
     var currentEditedTile;
@@ -428,6 +430,19 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     const b_add2 = document.getElementById('b_add2');
     const fldb = document.getElementById("lrt_bfl");
     var fld_current;
+    function setTileTarget(value){
+      var ar = document.getElementsByClassName("tile_target");
+      for (var i = 0; i < ar.length; i++) ar[i].target = value;
+      targetBlank= value;
+      f_cache_tl();
+    }
+    if(targetBlank=="_self"){
+      setTileTarget("_self");
+      document.getElementById("stt_opt2").checked=false;
+    }else{
+      setTileTarget("_blank");
+      document.getElementById("stt_opt2").checked=true;
+    }
     //Function to cache the tiles 
     function f_cache_tl() {
       if ((typeof localStorage.cachedGridUpdate == "undefined") || ((Date.now() / 1000) - localStorage.cachedGridUpdate) >= 0.1) {
@@ -612,7 +627,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     }
     //Add a tile into the grid 
     function f_attg(item) {
-      const targetBlank = getComputedStyle(ntp_bdy).getPropertyValue("--o2");
+      
       var innerDiv = document.createElement('div');
       innerDiv.className = 'tlg_item';
       innerDiv.innerHTML =

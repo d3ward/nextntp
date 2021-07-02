@@ -3,12 +3,12 @@ html, [data-theme=light] {
   --black: #060609;
   --white: #f2f4f7;
   --green: #2ECC40;
-  --blue: #0074D8;
+  --blue: #022d5f;
   --red: #FF4132;
   --orange: #FF851A;
   --yellow: #ffcd36;
   --purple: #8f3da9;
-  --primary: var(--purple);
+  --primary: var(--blue);
   --cl: #14191f;
   --cl2: var(--white);
   --bg: #ffffff;
@@ -44,7 +44,7 @@ html, [data-theme=light] {
 [data-theme=dark] {
   --black: #060609;
   --white: #f2f4f7;
-  --blue: #4dacff;
+  --blue: #4ca3e2;
   --green: #67e5a8;
   --red: #ff564d;
   --orange: #ff9f4d;
