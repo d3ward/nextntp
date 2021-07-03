@@ -1,4 +1,3 @@
-
 function navbar(){
     var t = this;
     t.n = document.querySelector("nav");
@@ -138,87 +137,29 @@ function gotop(){
     }
   }
 
-function pagesRoute(){
-  var t=this;
-  const notFoundPage = document.querySelector("#notFound");
-  t.links = Array.from(document.querySelectorAll('[topage]'));
-  t.scrollTop = ()=>{
-    document.querySelector('html').scrollTop = 0;
-    document.querySelector('body').scrollTop = 0;
-  }
-  t.navigate = (id) =>{
-    //Hide current active page
-    var activePage = document.querySelector("section.page-active");
-    if (activePage) activePage.classList.remove("page-active");
-    var activeLink = document.querySelector('[topage].active');
-    if (activeLink) activeLink.classList.remove("active");
-    //Show the next page
-    var nextPage = document.querySelector(id);
-    if (nextPage) nextPage.classList.add("page-active");
-    var nextLink = document.querySelector("[topage='"+id+"']");
-    if(nextLink) nextLink.classList.add("active");
-    //Scroll to top
-    t.scrollTop();
-    //Set history state
-    if (history.pushState)
-      history.pushState(null, null, id);
-    else 
-      location.hash = id;
-  }
-  t.listeners= ()=>{
-    t.links.forEach((page)=>{
-      var id = page.getAttribute("topage");
-      page.addEventListener('click', ()=>{t.navigate(id)});
-    })
-  }
-  if(t.links){
-    if (window.location.hash)
-        t.navigate(window.location.hash);
-    t.listeners();
-    }
-}
+function createItems(){
+  var gi =document.getElementById("themeItems");
+  data.forEach(element => {
+    var d = document.createElement("div");
+    d.className = "col-4";
+    d.innerHTML = '<div class="card _aos">'+
+                  '<img src="'+element.img+'">'+
+                  '<div><span><b>'+element.title+'</b></span><span> by '+element.author+'</span></div>'+
+                  
+                  '<p>'+element.description+'</p>'+
 
-function carousel(){
-  var t = this;
-  t.slides= document.querySelectorAll(".slide");
-  t.next= document.querySelector(".next-btn");
-  t.prev= document.querySelector(".prev-btn");
-  t.dots = document.querySelectorAll(".dot");
-  t.index = 1;
-  t.next.addEventListener('click',()=>{
-    t.showSlides(t.index += 1);
-  })
-  t.prev.addEventListener('click',()=>{
-    t.showSlides(t.index += -1);
-  })
-  t.dots.forEach( (element,index) => {
-    element.addEventListener('click',(index)=>{
-      t.showSlides(index);
-    })
+                  '<a class="btn" href="'+element.file+'">Download</a>'+
+                  '</div>';
+    gi.appendChild(d);
   });
-  t.showSlides=(n)=>{
-    var i;
-    if (n > t.slides.length) t.index = 1
-    if (n < 1) t.index = slides.length
-    for (i = 0; i < slides.length; i++) {
-        t.slides[i].style.display = "none";
-    }
-    for (i = 0; i < t.dots.length; i++) {
-        t.dots[i].className = t.dots[i].className.replace(" active", "");
-    }
-    t.slides[t.index-1].style.display = "block";
-    t.dots[t.index-1].className += " active";
-  }
-  t.showSlides(t.index);
 }
-
 // Call the function when the DOM is loaded
 document.addEventListener("DOMContentLoaded", ()=>{
   themeManager();
   navbar();
   gotop();
-  aos();
+ 
   new modal("#mdl1");
-  pagesRoute();
-  carousel();
+  createItems(); aos();
+
 });

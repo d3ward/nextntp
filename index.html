@@ -20,7 +20,6 @@
       location.reload();
     }
   }
-
   function fabAction() {
     var el = document.getElementById('flt_btn');
     el.classList.toggle('open');
@@ -38,12 +37,19 @@
   <script>
     //Load Theme Color
     var metaTColor = document.querySelector("meta[name=theme-color]");
-    var mtc = JSON.parse(localStorage.getItem("ntp_mtc")) ;
-    console.log(mtc.light);
-    if(mtc==undefined || mtc.light ==undefined){
+    var mtc;
+    try{
+      mtc = JSON.parse(localStorage.getItem("ntp_mtc")) ;
+      console.log(mtc.light);
+      if(mtc==undefined || mtc.light ==undefined){
+        mtc= {light:"#ffffff",dark:"#14191f"};
+        localStorage.setItem("ntp_mtc", JSON.stringify(mtc));
+      }
+    }catch{
       mtc= {light:"#ffffff",dark:"#14191f"};
       localStorage.setItem("ntp_mtc", JSON.stringify(mtc));
     }
+    
   </script>
 </head>
 
