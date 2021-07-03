@@ -98,7 +98,7 @@ function aos() {
       //Create the observer
       let observer = new IntersectionObserver(callback, {
         root: null,
-        threshold: 0
+        threshold: 0.1
       });
       //Add each _aos element to the observer
       items.forEach((item) => {
