@@ -668,6 +668,7 @@ html {
   .grid:not(.keep-width)>[class*=col],
   .grid:not(.keep-width)>div {
     width: auto;
+    justify-content:left;
   }
 }
 
