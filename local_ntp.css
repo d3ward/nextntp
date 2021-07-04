@@ -99,7 +99,7 @@ body {
   /* Folder label background  */
   --cd14: #ffffff94;
   /* Folder background on grid view  */
-  --cd15: #ffffff94f;
+  --cd15: #ffffff94;
   /* Widget 3 Background  */
   --cd16: #00000059;
   /* News Item Background Color        */
@@ -668,6 +668,7 @@ html {
   .grid:not(.keep-width)>[class*=col],
   .grid:not(.keep-width)>div {
     width: auto;
+    justify-content:left;
   }
 }
 
@@ -1408,8 +1409,6 @@ select:hover {
   opacity: 0;
   color: var(--c20);
   background: var(--c21);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
   transform: scale(0.9);
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }

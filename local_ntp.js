@@ -1046,6 +1046,11 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   //News Section Widget Config
   if (ntp_sett.status[2]) {
     var forceReload = false;
+      if (getComputedStyle(ntp_bdy).getPropertyValue("--o4") == "150px") {
+        document.getElementById("stt_opt4").checked = false;
+      } else {
+        document.getElementById("stt_opt4").checked = true;
+      }
     // Check if 30h passed and clean the news 
     function shouldIC() {
       const date1 = new Date();

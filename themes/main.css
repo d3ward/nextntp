@@ -551,7 +551,7 @@ button > svg,
   height: 1.3rem;
   width: 1.3rem;
   fill: currentColor;
-  margin: 0 auto;
+  margin: 0;
   max-height: 1.7rem;
 }
 
@@ -1623,7 +1623,7 @@ svg.wave {
   height: 1.3rem;
   width: 1.3rem;
   fill: currentColor;
-  margin: 0 auto;
+  margin: 0;
 }
 
 ._fit-cover {

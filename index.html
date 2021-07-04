@@ -42,11 +42,11 @@
       mtc = JSON.parse(localStorage.getItem("ntp_mtc")) ;
       console.log(mtc.light);
       if(mtc==undefined || mtc.light ==undefined){
-        mtc= {light:"#ffffff",dark:"#14191f"};
+        mtc= {light:"#4ca3ef",dark:"#4ca3ef"};
         localStorage.setItem("ntp_mtc", JSON.stringify(mtc));
       }
     }catch{
-      mtc= {light:"#ffffff",dark:"#14191f"};
+      mtc= {light:"#4ca3ef",dark:"#4ca3ef"};
       localStorage.setItem("ntp_mtc", JSON.stringify(mtc));
     }
     
@@ -584,7 +584,7 @@
         <!-- News Section-->
         <section id="p-news">
           <div class="row flex-sb">
-            <h4>News Section Colors
+            <h4><label> News Section Colors</label>
               <svg class="_icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <use href="#cl-icon"></use>
               </svg>
@@ -619,8 +619,8 @@
               <label> News Item Layout</label>
             </h4>
             <div>
-              <label>Compact view items </label>
-              <input id="stt_opt4" class="toggle" type="checkbox" checked value="150px"
+              <label for="stt_opt4">Compact view items </label>
+              <input id="stt_opt4" class="toggle" type="checkbox" value="150px"
                 onchange="set_option_t(this,'auto',4)" />
             </div>
             <hr>
