@@ -42,11 +42,11 @@
       mtc = JSON.parse(localStorage.getItem("ntp_mtc")) ;
       console.log(mtc.light);
       if(mtc==undefined || mtc.light ==undefined){
-        mtc= {light:"#4ca3ef",dark:"#14191f"};
+        mtc= {light:"#4ca3ef",dark:"#4ca3ef"};
         localStorage.setItem("ntp_mtc", JSON.stringify(mtc));
       }
     }catch{
-      mtc= {light:"#4ca3ef",dark:"#14191f"};
+      mtc= {light:"#4ca3ef",dark:"#4ca3ef"};
       localStorage.setItem("ntp_mtc", JSON.stringify(mtc));
     }
     
