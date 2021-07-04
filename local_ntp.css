@@ -1409,8 +1409,6 @@ select:hover {
   opacity: 0;
   color: var(--c20);
   background: var(--c21);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
   transform: scale(0.9);
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
