@@ -704,8 +704,8 @@ button,
   text-align: center;
   justify-content: center;
   border: 0px;
-  color: var(--c21);
-  background-color: var(--primary);
+  color: var(--c1);
+  background-color: var(--c0);
   outline: none;
   padding: 0.4rem;
   font-size: inherit;
