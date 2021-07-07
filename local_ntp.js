@@ -99,7 +99,6 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   theme();
   //Config Settings page 
   const dlg_st = new modal("#dlg_st");
-  
   const cl_vn = new modal("#cl_vn");
   const lrt = new modal("#lrt");
   const lrt_fl = new modal("#lrt_fl");
@@ -115,7 +114,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       var ar = document.getElementsByClassName("tile_target");
       for (var z = 0; z < ar.length; z++) ar[z].target = b;
     }
-    if (a.value == b) a.checked = true;
+    if ((f_trim(a.value.toString())==f_trim(b.toString()))) a.checked = true;
     else a.checked = false;
   }
   //Function to set options with toggle
@@ -436,13 +435,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       targetBlank= value;
       f_cache_tl();
     }
-    if(targetBlank=="_self"){
-      setTileTarget("_self");
-      document.getElementById("stt_opt2").checked=false;
-    }else{
-      setTileTarget("_blank");
-      document.getElementById("stt_opt2").checked=true;
-    }
+    
     //Function to cache the tiles 
     function f_cache_tl() {
       if ((typeof localStorage.cachedGridUpdate == "undefined") || ((Date.now() / 1000) - localStorage.cachedGridUpdate) >= 0.1) {
@@ -1046,11 +1039,6 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   //News Section Widget Config
   if (ntp_sett.status[2]) {
     var forceReload = false;
-      if (getComputedStyle(ntp_bdy).getPropertyValue("--o4") == "150px") {
-        document.getElementById("stt_opt4").checked = false;
-      } else {
-        document.getElementById("stt_opt4").checked = true;
-      }
     // Check if 30h passed and clean the news 
     function shouldIC() {
       const date1 = new Date();
@@ -1122,15 +1110,12 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     }
     //Function to toggle news view mode ( compact / standard )
     function f_tnv() {
-      const x = document.getElementsByClassName("newsT_icon");
+      
       if (getComputedStyle(ntp_bdy).getPropertyValue("--o4") == "150px") {
         ntp_bdy.style.setProperty("--o4", "auto");
-        x[0].innerHTML = '<svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>';
-        document.getElementById("stt_opt4").checked = false;
+        
       } else {
         ntp_bdy.style.setProperty("--o4", "150px");
-        x[0].innerHTML = '<svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 7a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>';
-        document.getElementById("stt_opt4").checked = true;
       }
       save_ntpbdy();
       fc_ns();

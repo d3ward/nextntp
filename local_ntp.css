@@ -117,11 +117,11 @@ body {
 
   /******************************* OPTIONS *******************************/
   /*  Material design shadow         */
-  --o0: none;
+  --o0: rgba(0,0,0,0.6);
    /* Backdrop filter */
   --o1: blur(5px);
  /* Tile target                     */
-  --o2: " ";
+  --o2: _blank;
   /*  Tile label visibility          */
   --o3: inline-block;
   /* News compact mode               */
