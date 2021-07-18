@@ -1806,3 +1806,8 @@ hr {
     min-height: 150px;
     border: 1px solid var(--c20);
 }
+
+._2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

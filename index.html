@@ -31,7 +31,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#14191f">
-  <link rel="stylesheet" href="./local_ntp.css">
+  <link rel="stylesheet" href="./nextntp.min.css">
   <meta charset="utf-8">
   <meta name="google" value="notranslate">
   <script>
@@ -636,26 +636,29 @@
               <label> NTP Data</label>
             </h4>
             <div>
-              <button type="submit" id="btn-res" class="btn-red" onclick="reset_page()">Reset</button>
-              <button onclick="show_changelog()">Changelog</button>
-            </div>
-            <div>
+              <div class="_2-col">
+
               <button id="export-data">Export</button>
               <input type="file" name="file" id="import-data"
                 style="opacity: 0;position: absolute;z-index: -1;width: 1px;">
               <label for="import-data" class="btn">Import</label>
+              <button type="submit" id="btn-res" class="btn-red" onclick="reset_page()">Reset</button>
+              
+              </div>
+              
             </div>
             <div><span>This include all user data , tiles , settings and theme </span></div>
             <hr>
             <h4>
               <label>Theme Manager</label>
             </h4>
-            <div>
+            <div><div class="_2-col">
               <button id="export-theme">Export theme</button>
               <input type="file" name="file" id="import-theme"
                 style="opacity: 0;position: absolute;z-index: -1;width: 1px;">
               <label for="import-theme" class="btn">Import theme</label>
-            </div>
+            </div></div>
+            
             <div>
               <span>This make possible the theme sharing with other users!<br> Keep your data while importing cool
                 themes shared by others</span>
@@ -668,12 +671,12 @@
               <textarea id="code_f" cols="30" rows="10"></textarea>
             </div>
             <div>
-              <button onclick="f_codef_c()">Clean</button>
+              <div class="_2-col">
+<button onclick="f_codef_c()">Clean</button>
               <button onclick="f_codef_e()">Execute</button>
+              </div>
             </div>
           </div>
-
-
         </section>
         <!-- About-->
         <section id="p-about">
@@ -683,51 +686,47 @@
             </div>
             <div>
               <p>
-                Simple , powerful and customizable New Tab Page
+                Simple , powerful and customizable New Tab Page made for Kiwi Browser Community
               </p>
-            </div>
+            </div><hr>
             <div>
-              <hr>
-              For any question , bug report , feature request ping me (@d3ward) on Discord Server of <a
-                href="https://discordapp.com/invite/XyMppQq">Kiwi
-                Browser</a>
+              For any question , bug report , feature request : <br>
+              • Open an issue on GitHub <br>
+              • Contact me on <a href="https://discordapp.com/invite/XyMppQq" target="_blank">Kiwi Browser Discord</a><br>
+              • DM on Telegram(@d3ward)
+              <br>
               <br>
               Thanks for using this NTP and contributing on it
-              <hr>
-
-            </div>
+            </div><hr>
             <div class="_ta-center">
               <span>Version 0.0.1</span><br><br>
-              <a href="https://github.com/d3ward/nextntp" class="btn" target="_blank"><svg class="_icon" id="github-svg"
+              <a href="https://github.com/d3ward/nextntp" class="btn" target="_blank">
+                <svg class="_icon" id="github-svg" fill="currentColor"
                   role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <title>GitHub icon</title>
                   <path
                     d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12">
                   </path>
-                </svg> View on GitHub</a>
+                </svg> &nbsp; View on GitHub</a>
               <br>
-              Icons Set from <a href="https://heroicons.dev">HeroIcons</a><br>
+              Icons Set from <a href="https://heroicons.dev" target="_blank">HeroIcons</a><br>
               Made with <svg fill="currentColor" width="20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
                   d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
                   clip-rule="evenodd"></path>
-              </svg> by <a href="https://d3ward.github.io">d3ward</a><br>
-              Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">[NC-SA-4.0]</a>
+              </svg> by <a href="https://d3ward.github.io" target="_blank">d3ward</a><br>
+              Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">[NC-SA-4.0]</a>
             </div>
           </div>
-
-
         </section>
       </div>
     </div>
   </div>
-
   <div id="ntp_cnt">
     <!--Widgets-->
     <div id="wdg_0" class="wdg_ntp"></div>
     <div id="wdg_1" class="wdg_ntp"></div>
     <div id="wdg_2" class="wdg_ntp"></div>
-
     <div id="flt_btn">
       <div class="flt_acs">
         <div class="btn" onclick="f_dlg(2)"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
@@ -823,7 +822,6 @@
     </div>
   </div>
 </body>
-<script src="./lib_min.js"></script>
-<script src="./local_ntp.js"></script>
+<script src="./nextntp.min.js"></script>
 
 </html>
