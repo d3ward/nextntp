@@ -325,11 +325,11 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     var chd;
     switch (i) {
       case 0:
-        chd = '<div id="sb_r"><img id="sb_logo">' +
+        chd = '<div id="sb_r"><img id="sb_logo" alt="">' +
           '<input name="sb_input" type="text" id="sb_input" size="50" spellcheck="false" onkeydown="handleKeyPress(event)"></div>'
         break;
       case 1:
-        chd = '<div id="tlg"> <div class="tlg_item folder"> <div class="tlg_img tlg_fld"></div><span id="tlg_span" class="tlg_title">Folder</span></a> </div><div class="tlg_item"> <a id="tile_target" class="tile_target" href="https://kiwibrowser.com"> <img class="tlg_img" src="https://logos.kiwibrowser.com/kiwibrowser.com"onerror="f_iimg(this)"> <span id="tlg_span" class="tlg_title">Kiwi Browser</span> </a> </div></div>';
+        chd = '<div id="tlg"> <div class="tlg_item folder"> <div class="tlg_img tlg_fld"></div><span id="tlg_span" class="tlg_title">Folder</span></a> </div><div class="tlg_item"> <a id="tile_target" class="tile_target" href="https://kiwibrowser.com"> <img class="tlg_img" src="https://logos.kiwibrowser.com/kiwibrowser.com" onerror="f_iimg(this)" alt=""> <span id="tlg_span" class="tlg_title">Kiwi Browser</span> </a> </div></div>';
         break;
       case 2:
         chd = '<div id="newsS"><div id="news"></div><div id="newsMore"></div></div>';
@@ -1469,9 +1469,9 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       var innerDiv = document.createElement('div');
       innerDiv.className = 'news_item';
       innerDiv.id = itemID;
-      innerDiv.innerHTML = '<img src="' + image + '" class="news_img" />' +
+      innerDiv.innerHTML = '<img src="' + image + '" class="news_img" alt="Article Source" />' +
         '<div class="news_cnt">' +
-        '<span class="news_attr"><img src="' + source_logo + '"/>&nbsp;&nbsp;&nbsp;<a href="' + link + '">' + source +
+        '<span class="news_attr"><img src="' + source_logo + '"/ alt="Article Image">&nbsp;&nbsp;&nbsp;<a href="' + link + '">' + source +
         '</a></span>' +
         '<div class="news_title"><a href="' + link + '">' +
         title + '</a></div>' +
@@ -1498,6 +1498,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
         title = article.querySelector("h4 a.DY5T1d").innerHTML;
         try {
           image = article.querySelector(".QwxBBf").src;
+         
         } catch {}
         source = article.querySelector("a.wEwyrc").innerHTML;
         source_logo = article.querySelector(".wsLqz source").src;
