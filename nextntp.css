@@ -250,8 +250,8 @@ body,
   display: none !important;
 }
 
-html {
-  font-family:var(--custom-font) !important;
+body {
+  font-family:var(--custom-font);
   font-size: 13pt;
   scroll-behavior: smooth;
 }
