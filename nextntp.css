@@ -826,8 +826,8 @@ select:hover {
 
   input[type=checkbox]:checked,
   input[type=radio]:checked {
-    background: var(--primary);
-    border-color: var(--primary);
+    background: var(--c0);
+    border-color: var(--c0);
   }
 
   input[type=checkbox]:checked:after,
