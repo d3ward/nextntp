@@ -427,6 +427,8 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     save_ntpbdy();
   }
 
+  
+
   //Search Bar Settings Config
   var ntp_sb = localGet("ntp_sb");
   if (ntp_sb == undefined) {

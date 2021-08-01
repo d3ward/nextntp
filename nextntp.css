@@ -1025,7 +1025,7 @@ select:hover {
   transform: scale(0.7);
   position: absolute;
   pointer-events: none;
-  display: inline-block;
+  display: none;
   margin: 1px;
   overflow: unset;
   width: calc((var(--tile-w) - 8px) / 2);
@@ -1033,21 +1033,25 @@ select:hover {
 }
 
 .tlg_fld .tlg_item:nth-child(1) {
+  display: inline-block;
   right: 45%;
   bottom: 45%;
 }
 
 .tlg_fld .tlg_item:nth-child(2) {
+  display: inline-block;
   left: 45%;
   bottom: 45%;
 }
 
 .tlg_fld .tlg_item:nth-child(3) {
+  display: inline-block;
   right: 45%;
   top: 45%;
 }
 
 .tlg_fld .tlg_item:nth-child(4) {
+  display: inline-block;
   left: 45%;
   top: 45%;
 }
