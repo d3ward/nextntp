@@ -1288,6 +1288,7 @@ select:hover {
   padding:0 .5rem .5rem .5rem;
   border-radius: var(--radius);
   background: var(--c21);
+  box-shadow: var(--o0);
 }
 
 .flt_acs .btn {
