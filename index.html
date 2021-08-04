@@ -31,7 +31,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <meta name="theme-color" content="#14191f">
-  <link rel="stylesheet" href="./nextntp.min.css">
+  <link rel="stylesheet" href="./nextntp.css">
   <meta charset="utf-8">
   <meta name="google" value="notranslate">
   <script>
@@ -314,6 +314,17 @@
               <div class="stt_clfrt" id="sett_mtc" onclick="f_cp_mtc(0)"></div>
               <div class="stt_clfrt" id="sett_mtc1" onclick="f_cp_mtc(1)"></div>
             </div>
+            <div><label>Font </label>
+                <select id="font-selector" onchange="f_update_font()">
+                  <option value='-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif'> Default</option>
+                  <option value="Times New Roman"> Times New Roman </option>
+                  <option value="Monotype Corsiva"> Monotype Corsiva </option>
+                  <option value="Lucida Handwriting"> Lucida Handwriting </option>
+                  <option value="Comic Sans MS"> Comic Sans MS </option>
+                  <option value="Arial"> Arial </option>
+                  <option value="Courier"> Courier </option>
+                  <option value="Verdana"> Verdana </option>
+              </select></div>
             <div>
               <label for="stt_opt0">Material Design Shadow</label>
               <input id="stt_opt0" class="toggle" type="checkbox" value="rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px"
@@ -818,6 +829,6 @@
     </div>
   </div>
 </body>
-<script src="./nextntp.min.js"></script>
+<script src="./nextntp.js"></script>
 
 </html>
