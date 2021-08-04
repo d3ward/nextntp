@@ -18,9 +18,10 @@ body {
   --sb-img-l: url("./nextntpl.svg"); 
   --sb-img-d: url("./nextntpd.svg");
   --sb-img: var(--sb-img-l);
+  --custom-font : -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   /****************************** COLORS ******************************/
  
-  /*  Floating button background  */
+  /*  Floating background  */
   --cl0: #46afdf;
   /*  Floating button icons     */
   --cl1: #ffffff;
@@ -714,6 +715,7 @@ button,
   margin: 0.5rem;
   height: 2.4rem;
   -webkit-tap-highlight-color: transparent;
+ font-family: var(--custom-font)
 }
 
 .btn-red {
