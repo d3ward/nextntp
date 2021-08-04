@@ -251,7 +251,7 @@ body,
 }
 
 body {
-  font-family:var(--custom-font);
+  font-family:var(--custom-font) !important;
   font-size: 13pt;
   scroll-behavior: smooth;
 }
