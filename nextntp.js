@@ -437,7 +437,14 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     }
     save_ntpbdy();
   }
-
+//Font Changer
+  document.getElementById('font-selector').value = getComputedStyle(ntp_bdy).getPropertyValue("--custom-font");
+  function f_update_font(){
+    var font = document.getElementById("font-selector").value;
+    ntp_bdy.style.setProperty("--custom-font", font);
+    save_ntpbdy();
+    console.log(font);
+  }
   
 
   //Search Bar Settings Config
