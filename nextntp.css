@@ -250,11 +250,12 @@ body,
   display: none !important;
 }
 
-html {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+body {
+  font-family:var(--custom-font) !important;
   font-size: 13pt;
   scroll-behavior: smooth;
 }
+
 
 body,
 html {
