@@ -1213,6 +1213,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       new Sortable(document.getElementById("edit_bin"), {
         group: 'editM',
         animation: 150,
+        handle: '.handle',
         onAdd: function (evt) {
           var itemEl = evt.item;
           itemEl.parentNode.removeChild(itemEl);
@@ -1231,6 +1232,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       new Sortable(document.getElementById("edit_pencil"), {
         group: 'editM',
         animation: 150,
+        handle: '.handle',
         onAdd: function (evt) {
           var itemEl = evt.clone;
           f_etfg(itemEl);
@@ -1272,6 +1274,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       new Sortable(edit_b2, {
         group: 'editM2',
         animation: 150,
+        handle: '.handle',
         onAdd: function (evt) {
           var itemEl = evt.item;
           itemEl.parentNode.removeChild(itemEl);
@@ -1288,6 +1291,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       new Sortable(edit_o2, {
         group: 'editM2',
         animation: 150,
+        handle: '.handle',
         onAdd: function (evt) {
           var itemEl = evt.item;
           tlg.appendChild(itemEl);
@@ -1306,6 +1310,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       new Sortable(edit_p2, {
         group: 'editM2',
         animation: 150,
+        handle: '.handle',
         onAdd: function (evt) {
           var itemEl = evt.clone;
           f_etfg(itemEl);
