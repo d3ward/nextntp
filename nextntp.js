@@ -174,11 +174,19 @@ function modal(id){
   if(t.m)
     t.listeners();
 }
+  const safeData = [ "ntp_sett","ntp_sb","newsLe","ntp_wdg","theme","ntp_bdy","ntp_mtc"];
+  const safeDataT = [ "theme","ntp_bdy","ntp_mtc"];
   //Function to export NTP settings and widgets
   document.getElementById('export-data').onclick = function () {
     //Create a copy of localstorage
-    var dataStr = JSON.stringify(localStorage);
-    var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+    var dataStr = localStorage;
+    Object.keys(dataStr).forEach(key => {
+      if(safeData.includes(key))
+        console.log(key);
+      else
+        delete dataStr[key];
+    });
+    var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(dataStr));
     var date = new Date();
     var exportFileDefaultName = 'ntpB_' + date.getUTCFullYear() + '' + (date.getUTCMonth() + 1) + '' + date.getUTCDate() + '_' +
       date.getHours() + '_' + date.getMinutes() + '.json';
@@ -191,14 +199,12 @@ function modal(id){
   document.getElementById('export-theme').onclick = function () {
     //Create a copy of localstorage
     var dataStr = localStorage;
-    delete dataStr.itemsNews;
-    delete dataStr.newsLe;
-    delete dataStr.ntp_sb;
-    delete dataStr.ntp_wdg;
-    delete dataStr.shouldIC;
-    delete dataStr.ntp_ver;
-    delete dataStr.cachedNewsUpdate;
-    delete dataStr.cachedGridUpdate;
+    Object.keys(dataStr).forEach(key => {
+      if(safeDataT.includes(key))
+        console.log(key);
+      else
+        delete dataStr[key];
+    });
     var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(dataStr));
     var date = new Date();
     var exportFileDefaultName = 'nextntp_theme' + date.getUTCFullYear() + '' + (date.getUTCMonth() + 1) + '' + date.getUTCDate() + '_' +
@@ -217,6 +223,13 @@ function modal(id){
       console.log(localStorage);
       localStorage.clear();
       var data = JSON.parse(str);
+      Object.keys(data).forEach(key => {
+        if(safeData.includes(key))
+          console.log(key);
+        else
+          delete data[key];
+      });
+
       Object.assign(localStorage,data)
       console.log(localStorage);
       localStorage.ntp_ver = ntp_ver;
@@ -231,14 +244,12 @@ function modal(id){
       reader.onload = function (progressEvent) {
         var str = this.result;
         var data = JSON.parse(str);
-        delete data.itemsNews;
-        delete data.newsLe;
-        delete data.ntp_sb;
-        delete data.ntp_wdg;
-        delete data.shouldIC;
-        delete data.ntp_ver;
-        delete data.cachedNewsUpdate;
-        delete data.cachedGridUpdate;
+        Object.keys(data).forEach(key => {
+          if(safeDataT.includes(key))
+            console.log(key);
+          else
+            delete data[key];
+        });
         console.log(data);
         Object.assign(localStorage,data);
         console.log(localStorage);
