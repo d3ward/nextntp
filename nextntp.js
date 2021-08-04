@@ -174,11 +174,19 @@ function modal(id){
   if(t.m)
     t.listeners();
 }
+  const safeData = [ "ntp_sett","ntp_sb","newsLe","ntp_wdg","theme","ntp_bdy","ntp_mtc"];
+  const safeDataT = [ "theme","ntp_bdy","ntp_mtc"];
   //Function to export NTP settings and widgets
   document.getElementById('export-data').onclick = function () {
     //Create a copy of localstorage
-    var dataStr = JSON.stringify(localStorage);
-    var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+    var dataStr={};
+    Object.keys(localStorage).forEach(key => {
+      if(safeData.includes(key)){
+        console.log(key);
+        dataStr[key]=localStorage.getItem(key);
+      }
+    });
+    var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(dataStr));
     var date = new Date();
     var exportFileDefaultName = 'ntpB_' + date.getUTCFullYear() + '' + (date.getUTCMonth() + 1) + '' + date.getUTCDate() + '_' +
       date.getHours() + '_' + date.getMinutes() + '.json';
@@ -190,15 +198,13 @@ function modal(id){
   //Function to export NTP settings and widgets
   document.getElementById('export-theme').onclick = function () {
     //Create a copy of localstorage
-    var dataStr = localStorage;
-    delete dataStr.itemsNews;
-    delete dataStr.newsLe;
-    delete dataStr.ntp_sb;
-    delete dataStr.ntp_wdg;
-    delete dataStr.shouldIC;
-    delete dataStr.ntp_ver;
-    delete dataStr.cachedNewsUpdate;
-    delete dataStr.cachedGridUpdate;
+    var dataStr={};
+    Object.keys(localStorage).forEach(key => {
+      if(safeDataT.includes(key)){
+        console.log(key);
+        dataStr[key]=localStorage.getItem(key);
+      }
+    });
     var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(dataStr));
     var date = new Date();
     var exportFileDefaultName = 'nextntp_theme' + date.getUTCFullYear() + '' + (date.getUTCMonth() + 1) + '' + date.getUTCDate() + '_' +
@@ -217,6 +223,13 @@ function modal(id){
       console.log(localStorage);
       localStorage.clear();
       var data = JSON.parse(str);
+      Object.keys(data).forEach(key => {
+        if(safeData.includes(key))
+          console.log(key);
+        else
+          delete data[key];
+      });
+
       Object.assign(localStorage,data)
       console.log(localStorage);
       localStorage.ntp_ver = ntp_ver;
@@ -231,14 +244,12 @@ function modal(id){
       reader.onload = function (progressEvent) {
         var str = this.result;
         var data = JSON.parse(str);
-        delete data.itemsNews;
-        delete data.newsLe;
-        delete data.ntp_sb;
-        delete data.ntp_wdg;
-        delete data.shouldIC;
-        delete data.ntp_ver;
-        delete data.cachedNewsUpdate;
-        delete data.cachedGridUpdate;
+        Object.keys(data).forEach(key => {
+          if(safeDataT.includes(key))
+            console.log(key);
+          else
+            delete data[key];
+        });
         console.log(data);
         Object.assign(localStorage,data);
         console.log(localStorage);
@@ -426,15 +437,14 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     }
     save_ntpbdy();
   }
-  //Font Changer
+//Font Changer
   document.getElementById('font-selector').value = getComputedStyle(ntp_bdy).getPropertyValue("--custom-font");
   function f_update_font(){
     var font = document.getElementById("font-selector").value;
     ntp_bdy.style.setProperty("--custom-font", font);
     save_ntpbdy();
     console.log(font);
-  }
-  //Search Bar Settings Config
+  }  //Search Bar Settings Config
   var ntp_sb = localGet("ntp_sb");
   if (ntp_sb == undefined) {
     ntp_sb = { //SearchBar kiwiIcon
@@ -1214,10 +1224,10 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
           }
         });
       }
-     
       new Sortable(document.getElementById("edit_bin"), {
         group: 'editM',
         animation: 150,
+        handle: '.handle',
         onAdd: function (evt) {
           var itemEl = evt.item;
           itemEl.parentNode.removeChild(itemEl);
@@ -1236,6 +1246,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       new Sortable(document.getElementById("edit_pencil"), {
         group: 'editM',
         animation: 150,
+        handle: '.handle',
         onAdd: function (evt) {
           var itemEl = evt.clone;
           f_etfg(itemEl);
@@ -1246,13 +1257,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
         },
         onChange: function (evt) {
           fldtest.forEach((el)=>{
-            el.parentNode.classList.remove("fldHover");
-          })
-          document.getElementById("edit_bin").style.background = "transparent";
-          document.getElementById("edit_pencil").style.background = "green";
-        },
       });
-      const edit_b2 = document.getElementById("edit_bin2");
       const edit_p2 = document.getElementById("edit_pencil2");
       const edit_o2 = document.getElementById("edit_out2");
       fldT = new Sortable(fldb, {
@@ -1277,6 +1282,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       new Sortable(edit_b2, {
         group: 'editM2',
         animation: 150,
+        handle: '.handle',
         onAdd: function (evt) {
           var itemEl = evt.item;
           itemEl.parentNode.removeChild(itemEl);
@@ -1293,6 +1299,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       new Sortable(edit_o2, {
         group: 'editM2',
         animation: 150,
+        handle: '.handle',
         onAdd: function (evt) {
           var itemEl = evt.item;
           tlg.appendChild(itemEl);
@@ -1311,6 +1318,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       new Sortable(edit_p2, {
         group: 'editM2',
         animation: 150,
+        handle: '.handle',
         onAdd: function (evt) {
           var itemEl = evt.clone;
           f_etfg(itemEl);
@@ -1502,7 +1510,6 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
         title = article.querySelector("h4 a.DY5T1d").innerHTML;
         try {
           image = article.querySelector(".QwxBBf").src;
-         
         } catch {}
         source = article.querySelector("a.wEwyrc").innerHTML;
         source_logo = article.querySelector(".wsLqz source").src;
@@ -1921,5 +1928,3 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   function f_close_cl() {
     cl_vn.hide();
   }
-
-}
