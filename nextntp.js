@@ -179,12 +179,12 @@ function modal(id){
   //Function to export NTP settings and widgets
   document.getElementById('export-data').onclick = function () {
     //Create a copy of localstorage
-    var dataStr = localStorage;
-    Object.keys(dataStr).forEach(key => {
-      if(safeData.includes(key))
+    var dataStr={};
+    Object.keys(localStorage).forEach(key => {
+      if(safeData.includes(key)){
         console.log(key);
-      else
-        delete dataStr[key];
+        dataStr[key]=localStorage.getItem(key);
+      }
     });
     var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(dataStr));
     var date = new Date();
@@ -198,12 +198,12 @@ function modal(id){
   //Function to export NTP settings and widgets
   document.getElementById('export-theme').onclick = function () {
     //Create a copy of localstorage
-    var dataStr = localStorage;
-    Object.keys(dataStr).forEach(key => {
-      if(safeDataT.includes(key))
+    var dataStr={};
+    Object.keys(localStorage).forEach(key => {
+      if(safeDataT.includes(key)){
         console.log(key);
-      else
-        delete dataStr[key];
+        dataStr[key]=localStorage.getItem(key);
+      }
     });
     var dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(dataStr));
     var date = new Date();
