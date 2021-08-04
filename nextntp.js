@@ -327,6 +327,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     localStorage.clear();
     localStorage.ntp_ver = ntp_ver;
   }
+
   /* ---------------- Toast Alert --------------- */
     var ntoast = new alert({
       timeout: 2000
@@ -1257,7 +1258,13 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
         },
         onChange: function (evt) {
           fldtest.forEach((el)=>{
+            el.parentNode.classList.remove("fldHover");
+          })
+          document.getElementById("edit_bin").style.background = "transparent";
+          document.getElementById("edit_pencil").style.background = "green";
+        },
       });
+      const edit_b2 = document.getElementById("edit_bin2");
       const edit_p2 = document.getElementById("edit_pencil2");
       const edit_o2 = document.getElementById("edit_out2");
       fldT = new Sortable(fldb, {
@@ -1331,7 +1338,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
           edit_b2.style.background = "transparent";
           edit_o2.style.background = "transparent";
           edit_p2.style.background = "green";
-        },
+        }
       });
       f_evl_gtiles();
       f_setup_sldr();
@@ -1719,12 +1726,6 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   }
   //End of Config widgets ordering and toggle
 
-
-  
-  //End of Config Settings page 
-
-
-
   //Function to generate gradient color
   function random_gradient() {
     var colorOne = {
@@ -1928,3 +1929,4 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   function f_close_cl() {
     cl_vn.hide();
   }
+}
