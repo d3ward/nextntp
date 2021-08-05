@@ -1762,6 +1762,10 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   }
   ntp_bdy.style.setProperty("--bg-cw", img_w + "px");
   ntp_bdy.style.setProperty("--bg-ch", img_h + "px");
+  var bg_value_l = getComputedStyle(document.body).getPropertyValue("--bg-img-l");
+  document.getElementById("wllp_value_l").value = bg_value_l;
+  var bg_value_d = getComputedStyle(document.body).getPropertyValue("--bg-img-d");
+  document.getElementById("wllp_value_d").value = bg_value_d;
 
   function savebg_cropped(t) {
     ntp_bdy.style.setProperty("--bg-img-l", "url(" + imgRes.src + ")");
@@ -1771,10 +1775,25 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     ntoast.success(" Background saved !");
     cropCancel();
   }
-  const wllp_file = document.getElementById("wllp_file");
-
-  function f_wallp1() {
-    var file = wllp_file.files[0];
+  const wllp_file_l = document.getElementById("wllp_file_l");
+  const wllp_file_d = document.getElementById("wllp_file_d");
+  function random_gradient() {
+    var colorOne = {
+      R: Math.floor(Math.random() * 255),
+      G: Math.floor(Math.random() * 255),
+      B: Math.floor(Math.random() * 255)
+    };
+    var colorTwo = {
+      R: Math.floor(Math.random() * 255),
+      G: Math.floor(Math.random() * 255),
+      B: Math.floor(Math.random() * 255)
+    };
+    colorOne.rgb = 'rgb(' + colorOne.R + ',' + colorOne.G + ',' + colorOne.B + ')';
+    colorTwo.rgb = 'rgb(' + colorTwo.R + ',' + colorTwo.G + ',' + colorTwo.B + ')';
+    return 'radial-gradient(at top left, ' + colorOne.rgb + ', ' + colorTwo.rgb + ')';
+  }
+  function f_wallp1(a) {
+    var file = (a=="l")? wllp_file_l.files[0] : wllp_file_d.files[0] ;
     if (file && file.type.match('image.*')) {
       var reader = new FileReader();
       reader.onload = function (e) {
@@ -1808,6 +1827,55 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     };
     image.src = (url);
   }
+  function f_wallp3(a) {
+    var rg = random_gradient()
+    document.body.style.setProperty("--bg-img-"+a, rg);
+    document.getElementById("wllp_value_"+a).value = rg;
+  }
+  wllp_file_l.onchange = () => {
+    f_wallp1("l");
+  };
+  wllp_file_d.onchange = () => {
+    f_wallp1("d");
+  };
+  document.getElementById("wllp_url_l").onclick = () => {
+    f_wallp2("l");
+  };
+  document.getElementById("wllp_url_d").onclick = () => {
+    f_wallp2("d");
+  };
+  document.getElementById("wllp_gradient_l").onclick = () => {
+    f_wallp3("l");
+  };
+  document.getElementById("wllp_gradient_d").onclick = () => {
+    f_wallp3("d");
+  };
+  document.getElementById("wllp_bg_cl").onclick = () => {
+    f_cp_bg("l");
+  };
+  document.getElementById("wllp_bg_cd").onclick = () => {
+    f_cp_bg("d");
+  };
+  function f_wallp4(a) {
+    var v = document.getElementById("wllp_value_"+a).value;
+    document.body.style.setProperty("--bg-img-"+a, v);
+    document.body.style.setProperty("--bg-c"+a, v);
+    save_ntpbdy();
+    ntoast.success(" Background saved !");
+  }
+  document.getElementById("wllp_custom_l").onclick = () => {
+    f_wallp4("l");
+  };
+  document.getElementById("wllp_custom_d").onclick = () => {
+    f_wallp4("d");
+  };
+  document.getElementById("wllp_clearvalue_l").onclick = () => {
+    document.getElementById("wllp_value_l").value = "";
+  };
+  document.getElementById("wllp_clearvalue_d").onclick = () => {
+    document.getElementById("wllp_value_d").value = "";
+  };
+
 
   //********* Cropping  *********/
   function cropInit() {
@@ -1837,7 +1905,8 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       bg_pld.style.display = "inline";
       crop.style.display = "none";
       result.style.display = "none";
-      wllp_file.value = "";
+      wllp_file_l.value = "";
+      wllp_file_d.value = "";
       isCrop = 0;
     }
   }
@@ -1866,7 +1935,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     popup: false,
     cancelButton: true,
     onDone: function (color) {
-      if (cp_current_el != null && cp_current_el != "bgcl" && cp_current_el != "mtcl" && cp_current_el != "mtcd") {
+      if (cp_current_el != null && cp_current_el != "bgcl" && cp_current_el != "bgcd" && cp_current_el != "mtcl" && cp_current_el != "mtcd") {
         if(cp_type == "clight")
           ntp_bdy.style.setProperty("--cl" + cp_current_el, color.hex);
         if(cp_type == "cdark")
@@ -1874,8 +1943,12 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
         save_ntpbdy();
       } else {
         if (cp_current_el == "bgcl") {
-          ntp_bdy.style.setProperty("--bg-img", "none");
+          ntp_bdy.style.setProperty("--bg-img-l", "none");
           ntp_bdy.style.setProperty("--bg-cl", color.hex);
+          save_ntpbdy();
+        } else if (cp_current_el == "bgcd") {
+          ntp_bdy.style.setProperty("--bg-img-d", "none");
+          ntp_bdy.style.setProperty("--bg-cd", color.hex);
           save_ntpbdy();
         } else {
           if(cp_current_el =="mtcl"){
@@ -1904,9 +1977,9 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     cl_vn.show();
   }
 
-  function f_cp_bg() {
-    cp_current_el = "bgcl";
-    let color = getComputedStyle(ntp_bdy).getPropertyValue("--bg-cl");
+  function f_cp_bg(a) {
+    cp_current_el = "bgc"+a;
+    let color = getComputedStyle(ntp_bdy).getPropertyValue("--bg-c"+a);
     picker.setColor(color, true);
     cl_vn.show();
   }

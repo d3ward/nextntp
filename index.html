@@ -20,6 +20,7 @@
       location.reload();
     }
   }
+
   function fabAction() {
     var el = document.getElementById('flt_btn');
     el.classList.toggle('open');
@@ -31,25 +32,30 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <meta name="theme-color" content="#14191f">
-  <link rel="stylesheet" href="./nextntp.css">
+  <link rel="stylesheet" href="./nextntp.min.css">
   <meta charset="utf-8">
   <meta name="google" value="notranslate">
   <script>
     //Load Theme Color
     var metaTColor = document.querySelector("meta[name=theme-color]");
     var mtc;
-    try{
-      mtc = JSON.parse(localStorage.getItem("ntp_mtc")) ;
+    try {
+      mtc = JSON.parse(localStorage.getItem("ntp_mtc"));
       console.log(mtc.light);
-      if(mtc==undefined || mtc.light ==undefined){
-        mtc= {light:"#4ca3ef",dark:"#4ca3ef"};
+      if (mtc == undefined || mtc.light == undefined) {
+        mtc = {
+          light: "#4ca3ef",
+          dark: "#4ca3ef"
+        };
         localStorage.setItem("ntp_mtc", JSON.stringify(mtc));
       }
-    }catch{
-      mtc= {light:"#4ca3ef",dark:"#4ca3ef"};
+    } catch {
+      mtc = {
+        light: "#4ca3ef",
+        dark: "#4ca3ef"
+      };
       localStorage.setItem("ntp_mtc", JSON.stringify(mtc));
     }
-    
   </script>
 </head>
 
@@ -119,13 +125,13 @@
           <div class="is_center">
             <div class="tlg_item folder np">
               <div class="tlg_img tlg_fld">
-                <div class="tlg_item"><a class="tile_target"><img class="tlg_img"
+                <div class="tlg_item"><a class="tile_target">&nbsp;<img class="tlg_img" 
                       src="https://logos.kiwibrowser.com/amazon.com" alt="Example Tile">
                   </a></div>
-                <div class="tlg_item"><a class="tile_target"><img class="tlg_img"
+                <div class="tlg_item"><a class="tile_target">&nbsp;<img class="tlg_img"
                       src="https://logos.kiwibrowser.com/github.com" alt="Example Tile">
                   </a></div>
-                <div class="tlg_item"><a class="tile_target"><img class="tlg_img"
+                <div class="tlg_item"><a class="tile_target">&nbsp;<img class="tlg_img"
                       src="https://logos.kiwibrowser.com/github.com" alt="Example Tile">
                   </a></div>
               </div>
@@ -289,7 +295,7 @@
               <div class="stt_clfrt" id="stt_cl23" onclick="f_cp_rgb(22)"></div>
               <div class="stt_clfrt" id="stt_cld23" onclick="f_cpd_rgb(22)"></div>
             </div>
-            
+
             <h4>
               <label>Button Colors</label>
               <svg class="_icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -347,27 +353,101 @@
               <div class="block">
               </div>
               <div>
-                <label class="btn" for="wllp_file"><input type="file" id="wllp_file" onchange="f_wallp1()"
-                    style="opacity: 0;position: absolute;z-index: -1;" />
-                  <svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                      d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
-                      clip-rule="evenodd"></path>
-                  </svg> Upload from file </label>
-                <button onclick="f_wallp2();"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                      d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
-                      clip-rule="evenodd"></path>
-                  </svg> From
-                  Link</button></span>
-                <button onclick="f_cp_bg();"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                      d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  Color</button></span>
+                <div class="row flex-column bg-s" id="bg-sl">
+                  <div><label for="wllp_value">Background Value Light Theme</label></div>
+                  <div>
+                    <input type="text" id="wllp_value_l" style="width: 100%;">
+                  </div>
+                  <div>
+                    <div class="_2-col">
+                    <button id="wllp_custom_l"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"></path>
+                      </svg>Save</button> <button id="wllp_clearvalue_l"><svg class="_icon" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M6.707 4.879A3 3 0 018.828 4H15a3 3 0 013 3v6a3 3 0 01-3 3H8.828a3 3 0 01-2.12-.879l-4.415-4.414a1 1 0 010-1.414l4.414-4.414zm4 2.414a1 1 0 00-1.414 1.414L10.586 10l-1.293 1.293a1 1 0 101.414 1.414L12 11.414l1.293 1.293a1 1 0 001.414-1.414L13.414 10l1.293-1.293a1 1 0 00-1.414-1.414L12 8.586l-1.293-1.293z"
+                          clip-rule="evenodd"></path>
+                      </svg>Clear</button>
+                    <button id="wllp_bg_cl"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      Color</button></span>
+                    <button id="wllp_gradient_l">
+                      <svg fill="currentColor" class="_icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z">
+                        </path>
+                      </svg> Gradient</button>
+                      <label class="btn" for="wllp_file_l"><input type="file" id="wllp_file_l"
+                        style="opacity: 0;position: absolute;z-index: -1;" />
+                      <svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
+                          clip-rule="evenodd"></path>
+                      </svg> File </label>
+                    <button id="wllp_url_l"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+                          clip-rule="evenodd"></path>
+                      </svg> 
+                      Link</button>
+                    
+                    </div>
+                  </div>
+                  </div>
+                <div class="row flex-column bg-s" id="bg-sd">
+                  <div><label for="wllp_value">Background Value Dark Theme</label></div>
+                  <div>
+                    <input type="text" id="wllp_value_d" style="width: 100%;">
+                  </div>
+                  <div><div class="_2-col">
+                    <button id="wllp_custom_d"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"></path>
+                      </svg>Save</button> <button id="wllp_clearvalue_d"><svg class="_icon" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M6.707 4.879A3 3 0 018.828 4H15a3 3 0 013 3v6a3 3 0 01-3 3H8.828a3 3 0 01-2.12-.879l-4.415-4.414a1 1 0 010-1.414l4.414-4.414zm4 2.414a1 1 0 00-1.414 1.414L10.586 10l-1.293 1.293a1 1 0 101.414 1.414L12 11.414l1.293 1.293a1 1 0 001.414-1.414L13.414 10l1.293-1.293a1 1 0 00-1.414-1.414L12 8.586l-1.293-1.293z"
+                          clip-rule="evenodd"></path>
+                      </svg>Clear</button>
+                    <button id="wllp_bg_cd"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      Color</button></span>
+                    <button id="wllp_gradient_d">
+                      <svg fill="currentColor" class="_icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z">
+                        </path>
+                      </svg> Gradient</button>
+                      <label class="btn" for="wllp_file_d"><input type="file" id="wllp_file_d"
+                        style="opacity: 0;position: absolute;z-index: -1;" />
+                      <svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
+                          clip-rule="evenodd"></path>
+                      </svg> File </label>
+                    <button id="wllp_url_d"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+                          clip-rule="evenodd"></path>
+                      </svg> Link</button></div>
+
+                  </div>
+                </div>
               </div>
             </div>
             <div id="crop">
@@ -375,10 +455,10 @@
                 <div class="stage">
                   <div id="croppie"></div>
                   <br>
-                  <h5>Move the image to fit the area you want to crop. <br>
+                  <p>Move the image to fit the area you want to crop. <br>
                     Use the slider to zoom
-                  </h5>
-                  <div>
+                  </p>
+                  <div  class="_2-col">
                     <button onclick="cropCancel();">Cancel</button>
                     <button onclick="cropResult();">Next</button>
                   </div>
@@ -389,7 +469,7 @@
               <div class="block">
                 <div class="stage"><img src="" id="imgRes" alt="Result Cropped Background" /></div>
               </div>
-              <div>
+              <div class="_2-col">
                 <button onclick="cropCancel();">Cancel</button>
                 <button onclick="savebg_cropped(this);">Save&Apply</button>
               </div>
@@ -404,7 +484,7 @@
             <li></li>
           </ul><br>
           <div class="flex-sb">
-            <h4> <label >Top Margin Spacing</label> </h4><br>
+            <h4> <label>Top Margin Spacing</label> </h4><br>
             <div><label for="tms_r0v">Widget 1 : <span id="tms_r0v">4</span> </label></div>
             <div><input type="range" min="-10" max="100" value="10" class="slr_rng" id="tms_r0"></div>
             <div><label for="tms_r1v">Widget 2 : <span id="tms_r1v">4</span> </label></div>
@@ -459,29 +539,29 @@
               <label for="tg_r7">Logo Rounding : <span id="tg_r7v">4</span></label>
               <input type="range" min="0" max="300" value="64" class="slr_rng" id="tg_r7">
             </div>
-            
-            <div class="flex-column"><label for="tg_r5">Input Radius : <span id="tg_r5v">4</span></label><input type="range" min="0" max="25"
-                value="8" class="slr_rng" id="tg_r5"></div>
+
+            <div class="flex-column"><label for="tg_r5">Input Radius : <span id="tg_r5v">4</span></label><input
+                type="range" min="0" max="25" value="8" class="slr_rng" id="tg_r5"></div>
             <div class="flex-column">
-              <label for="tg_r8">Top Margin : <span id="tg_r8v">4</span></label><input type="range" min="0" max="300" value="64" class="slr_rng"
-                id="tg_r8"></div>
-                <div class="flex-column">
-                  <button onclick="f_sb_lg2();"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
-                        clip-rule="evenodd"></path>
-                    </svg>
-                    From Link</button>
-                  <label class="btn"><input type="file" id="sb_lgf" onchange="f_sb_lg1()"
-                      style="opacity: 0;position: absolute;z-index: -1;" /><svg class="_icon" fill="currentColor"
-                      viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd"
-                        d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd"></path>
-                    </svg> Upload from file
-                  </label>
-                </div>
+              <label for="tg_r8">Top Margin : <span id="tg_r8v">4</span></label><input type="range" min="0" max="300"
+                value="64" class="slr_rng" id="tg_r8"></div>
+            <div class="flex-column">
+              <button onclick="f_sb_lg2();"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                From Link</button>
+              <label class="btn"><input type="file" id="sb_lgf" onchange="f_sb_lg1()"
+                  style="opacity: 0;position: absolute;z-index: -1;" /><svg class="_icon" fill="currentColor"
+                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
+                    clip-rule="evenodd"></path>
+                </svg> Upload from file
+              </label>
+            </div>
             <hr>
             <h4>
               <label>Search Bar Colors</label>
@@ -575,7 +655,8 @@
             <hr>
             <div>
               <label for="stt_opt2">Open tile in new tab </label>
-              <input id="stt_opt2" class="toggle" type="checkbox" value="_blank" onchange="set_option_t(this,'_self',2)" />
+              <input id="stt_opt2" class="toggle" type="checkbox" value="_blank"
+                onchange="set_option_t(this,'_self',2)" />
             </div>
             <div>
               <label for="stt_opt3">Hide icon label </label>
@@ -646,27 +727,29 @@
             <div>
               <div class="_2-col">
 
-              <button id="export-data">Export</button>
-              <input type="file" name="file" id="import-data"
-                style="opacity: 0;position: absolute;z-index: -1;width: 1px;">
-              <label for="import-data" class="btn">Import</label>
-              <button type="submit" id="btn-res" class="btn-red" onclick="reset_page()">Reset</button>
-              
+                <button id="export-data">Export</button>
+                <input type="file" name="file" id="import-data"
+                  style="opacity: 0;position: absolute;z-index: -1;width: 1px;">
+                <label for="import-data" class="btn">Import</label>
+                <button type="submit" id="btn-res" class="btn-red" onclick="reset_page()">Reset</button>
+
               </div>
-              
+
             </div>
             <div><span>This include all user data , tiles , settings and theme </span></div>
             <hr>
             <h4>
               <label>Theme Manager</label>
             </h4>
-            <div><div class="_2-col">
-              <button id="export-theme">Export theme</button>
-              <input type="file" name="file" id="import-theme"
-                style="opacity: 0;position: absolute;z-index: -1;width: 1px;">
-              <label for="import-theme" class="btn">Import theme</label>
-            </div></div>
-            
+            <div>
+              <div class="_2-col">
+                <button id="export-theme">Export theme</button>
+                <input type="file" name="file" id="import-theme"
+                  style="opacity: 0;position: absolute;z-index: -1;width: 1px;">
+                <label for="import-theme" class="btn">Import theme</label>
+              </div>
+            </div>
+
             <div>
               <span>This make possible the theme sharing with other users!<br> Keep your data while importing cool
                 themes shared by others</span>
@@ -680,8 +763,8 @@
             </div>
             <div>
               <div class="_2-col">
-<button onclick="f_codef_c()">Clean</button>
-              <button onclick="f_codef_e()">Execute</button>
+                <button onclick="f_codef_c()">Clean</button>
+                <button onclick="f_codef_e()">Execute</button>
               </div>
             </div>
           </div>
@@ -696,21 +779,24 @@
               <p>
                 Simple , powerful and customizable New Tab Page made for Kiwi Browser Community
               </p>
-            </div><hr>
+            </div>
+            <hr>
             <div>
               For any question , bug report , feature request : <br>
               • Open an issue on GitHub <br>
-              • Contact me on <a href="https://discordapp.com/invite/XyMppQq" target="_blank">Kiwi Browser Discord</a><br>
+              • Contact me on <a href="https://discordapp.com/invite/XyMppQq" target="_blank">Kiwi Browser
+                Discord</a><br>
               • DM on Telegram(@d3ward)
               <br>
               <br>
               Thanks for using this NTP and contributing on it
-            </div><hr>
+            </div>
+            <hr>
             <div class="_ta-center">
               <span>Version 1.0.0</span><br><br>
               <a href="https://github.com/d3ward/nextntp" class="btn" target="_blank">
-                <svg class="_icon" id="github-svg" fill="currentColor"
-                  role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg class="_icon" id="github-svg" fill="currentColor" role="img" viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg">
                   <title>GitHub icon</title>
                   <path
                     d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12">
@@ -723,7 +809,8 @@
                   d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
                   clip-rule="evenodd"></path>
               </svg> by <a href="https://d3ward.github.io" target="_blank">d3ward</a><br>
-              Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">[NC-SA-4.0]</a>
+              Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                target="_blank">[NC-SA-4.0]</a>
             </div>
           </div>
         </section>

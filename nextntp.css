@@ -249,6 +249,14 @@ body,
 .theme-icon {
   display: none !important;
 }
+[data-theme=light] #bg-sl,
+[data-theme=dark] #bg-sd{
+  display: block !important;
+}
+
+.bg-s {
+  display: none !important;
+}
 
 body {
   font-family:var(--custom-font) !important;
@@ -1412,7 +1420,7 @@ select:hover {
   padding: 0.8em;
   overflow: hidden;
   width: calc(100% - 40px);
-  max-width: 400px;
+  max-width: 800px;
   min-height: 200px;
   opacity: 0;
   color: var(--c20);
@@ -1756,7 +1764,7 @@ select:hover {
 
 .pages>* {
   display: none;
-  max-width: 300px;
+  max-width: 500px;
   margin: auto;
 }
 
