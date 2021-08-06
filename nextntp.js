@@ -515,8 +515,10 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       localStore("ntp_sb", ntp_sb);
       f_setup_sb();
       render_se_list();
+      ntoast.success("Custom Search Engine added !");
+      sb_custom_form.reset();
     }
-    ntoast.success("Custom Search Engine added !");
+  
     e.preventDefault();
     return false;
   });
@@ -561,6 +563,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   function sb_delete_se(a){
     console.log(ntp_sb.custom_se);
     delete ntp_sb.custom_se[a];
+    delete ntp_sb.se[a];
     localStore("ntp_sb", ntp_sb);
     render_se_list();
     f_setup_sb();
