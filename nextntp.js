@@ -495,7 +495,6 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   const sb_custom_form = document.getElementById("sb_custom_form");
   if(sb_icon_default == undefined)
   {
-    var y = ntp_sett.order[0];
     customInner(document.getElementById('wdg_' + y),f_dwdg(0));
     const y = ntp_sett.order[0];
       ntp_wdg[0].cached = document.getElementById('wdg_' + y).innerHTML;
