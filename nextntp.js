@@ -336,8 +336,8 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     var chd;
     switch (i) {
       case 0:
-        chd = '<div id="sb_r"><img id="sb_logo" alt="">' +
-          '<input name="sb_input" type="text" id="sb_input" size="50" spellcheck="false" onkeydown="handleKeyPress(event)"></div>'
+        chd = '<div id="sb_r"><img id="sb_logo" alt=""><div class="sb_wrap"><span id="sb_icon_default"></span><ul id="sb_icon_menu"> </ul>' +
+          '<input name="sb_input" type="text" id="sb_input" size="50" spellcheck="false" onkeydown="handleKeyPress(event)"></div></div>'
         break;
       case 1:
         chd = '<div id="tlg"> <div class="tlg_item folder"> <div class="tlg_img tlg_fld"></div><span id="tlg_span" class="tlg_title">Folder</span></div><div class="tlg_item"> <a id="tile_target" class="tile_target" href="https://kiwibrowser.com" rel="noreferrer"> <img class="tlg_img" src="https://logos.kiwibrowser.com/kiwibrowser.com" onerror="f_iimg(this)" alt=""> <span id="tlg_span" class="tlg_title">Kiwi Browser</span> </a> </div></div>';
@@ -388,6 +388,8 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       if (status) {
         wdgn.style.display = "block";
         c = "checked";
+        if(ntp_wdg[z].name == "Search Bar")
+          wdgn.style.zIndex="1";
         customInner(wdgn, ntp_wdg[z].cached);
       } else {
         wdgn.style.display = "none";
@@ -444,30 +446,144 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     ntp_bdy.style.setProperty("--custom-font", font);
     save_ntpbdy();
     console.log(font);
-  }  //Search Bar Settings Config
+  }  
+  
+  //Search Bar Settings Config
+
+
+  //Search Engine Icons and color
+  var se_data_icons={
+    "Google": ["#4285F4",'<svg role="img" fill="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Google</title><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>'],
+    "Bing" : ["#258FFA",'<svg role="img" fill="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Microsoft Bing</title><path d="M20.176 15.406a6.48 6.48 0 01-1.736 4.414c1.338-1.47.803-3.869-1.003-4.635-.862-.305-2.488-.85-3.367-1.158a1.834 1.834 0 01-.932-.818c-.381-.975-1.163-2.968-1.548-3.948-.095-.285-.31-.625-.265-.938.046-.598.724-1.003 1.276-.754l3.682 1.888c.621.292 1.305.692 1.796 1.172a6.486 6.486 0 012.097 4.777zm-1.44 1.888c-.264-1.194-1.135-1.744-2.216-2.028-1.527.902-4.853 2.878-6.952 4.13-1.103.68-2.13 1.35-2.919 1.242a2.866 2.866 0 01-2.77-2.325c-.012-.048-.008-.03-.001.01a6.4 6.4 0 00.947 2.653 6.498 6.498 0 005.486 3.022c1.908.062 3.536-1.153 5.099-2.096.292-.188.804-.496 1.332-.831l1.423-1.51c.553-.577.764-1.426.571-2.267zm-12.04 2.97c.422 0 .822-.1 1.173-.29.355-.215.964-.579 1.7-1.018L9.57 4.502c0-.99-.497-1.864-1.257-2.382-.08-.059-2.91-1.901-2.99-1.956-.605-.432-1.523.045-1.5.797v14.887l.417 2.36a2.488 2.488 0 002.455 2.056z"/></svg>'],
+    "Youtube" : ["#FF0000",'<svg role="img" fill="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>YouTube</title><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>'],
+    "DuckDuckGo" : ["#DE5833",'<svg role="img" fill="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>DuckDuckGo</title><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 23C5.925 23 1 18.074 1 12S5.926 1 12 1s11 4.925 11 11-4.925 11-11 11zm10.219-11c0 4.805-3.317 8.833-7.786 9.925-.27-.521-.53-1.017-.749-1.438.645.249 1.93.718 2.208.615.376-.144.282-3.149-.14-3.245-.338-.075-1.632.837-2.141 1.209l.034.156c.078.397.144.993.03 1.247-.001.004-.002.01-.004.013a.218.218 0 0 1-.068.088c-.284.188-1.081.284-1.503.188a.516.516 0 0 1-.064-.02c-.694.396-2.01 1.109-2.25.971-.329-.188-.377-2.676-.329-3.288.035-.46 1.653.286 2.442.679.174-.163.602-.272.98-.31-.57-1.389-.99-2.977-.733-4.105 0 .002.002.002.002.002.356.248 2.73 1.05 3.91 1.027 1.18-.024 3.114-.743 2.903-1.323-.212-.58-2.135.51-4.142.324-1.486-.138-1.748-.804-1.42-1.29.414-.611 1.168.116 2.411-.256 1.245-.371 2.987-1.035 3.632-1.397 1.494-.833-.625-1.177-1.125-.947-.474.22-2.123.637-2.889.82.428-1.516-.603-4.149-1.757-5.3-.376-.376-.951-.612-1.603-.736-.25-.344-.654-.671-1.225-.977a5.772 5.772 0 0 0-3.595-.584l-.024.004-.034.004.004.002c-.148.028-.237.08-.357.098.148.016.705.276 1.057.418-.174.068-.412.108-.596.184a.828.828 0 0 0-.204.056c-.173.08-.303.375-.3.515.84-.086 2.082-.026 2.991.246-.644.09-1.235.258-1.661.482-.016.008-.03.018-.048.028-.054.02-.106.042-.152.066-1.367.72-1.971 2.405-1.611 4.424.323 1.824 1.665 8.088 2.29 11.064-3.973-1.4-6.822-5.186-6.822-9.639C1.781 6.356 6.356 1.781 12 1.781S22.219 6.356 22.219 12zM9.095 9.581a.758.758 0 1 0 0 1.516.758.758 0 0 0 0-1.516zm.338.702a.196.196 0 1 1 0-.392.196.196 0 0 1 0 .392zm4.724-1.043a.65.65 0 1 0 0 1.299.65.65 0 0 0 0-1.3zm.29.601a.168.168 0 1 1 0-.336.168.168 0 0 1 0 .336zM9.313 8.146s-.571-.26-1.125.09c-.554.348-.534.704-.534.704s-.294-.656.49-.978c.786-.32 1.17.184 1.17.184zm5.236-.052s-.41-.234-.73-.23c-.654.008-.831.296-.831.296s.11-.688.945-.55a.84.84 0 0 1 .616.484z"/></svg>'],
+    "Yahoo" : ["#6001D2",'<svg role="img" fill="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Yahoo!</title><path d="M18.86 1.56L14.27 11.87H19.4L24 1.56H18.86M0 6.71L5.15 18.27L3.3 22.44H7.83L14.69 6.71H10.19L7.39 13.44L4.62 6.71H0M15.62 12.87C13.95 12.87 12.71 14.12 12.71 15.58C12.71 17 13.91 18.19 15.5 18.19C17.18 18.19 18.43 16.96 18.43 15.5C18.43 14.03 17.23 12.87 15.62 12.87Z"/></svg>'],
+    "Brave": ["#FB542B",'<svg role="img" fill="#fff"viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Brave</title><path d="M15.68 0l2.096 2.38s1.84-.512 2.709.358c.868.87 1.584 1.638 1.584 1.638l-.562 1.381.715 2.047s-2.104 7.98-2.35 8.955c-.486 1.919-.818 2.66-2.198 3.633-1.38.972-3.884 2.66-4.293 2.916-.409.256-.92.692-1.38.692-.46 0-.97-.436-1.38-.692a185.796 185.796 0 01-4.293-2.916c-1.38-.973-1.712-1.714-2.197-3.633-.247-.975-2.351-8.955-2.351-8.955l.715-2.047-.562-1.381s.716-.768 1.585-1.638c.868-.87 2.708-.358 2.708-.358L8.321 0h7.36zm-3.679 14.936c-.14 0-1.038.317-1.758.69-.72.373-1.242.637-1.409.742-.167.104-.065.301.087.409.152.107 2.194 1.69 2.393 1.866.198.175.489.464.687.464.198 0 .49-.29.688-.464.198-.175 2.24-1.759 2.392-1.866.152-.108.254-.305.087-.41-.167-.104-.689-.368-1.41-.741-.72-.373-1.617-.69-1.757-.69zm0-11.278s-.409.001-1.022.206-1.278.46-1.584.46c-.307 0-2.581-.434-2.581-.434S4.119 7.152 4.119 7.849c0 .697.339.881.68 1.243l2.02 2.149c.192.203.59.511.356 1.066-.235.555-.58 1.26-.196 1.977.384.716 1.042 1.194 1.464 1.115.421-.08 1.412-.598 1.776-.834.364-.237 1.518-1.19 1.518-1.554 0-.365-1.193-1.02-1.413-1.168-.22-.15-1.226-.725-1.247-.95-.02-.227-.012-.293.284-.851.297-.559.831-1.304.742-1.8-.089-.495-.95-.753-1.565-.986-.615-.232-1.799-.671-1.947-.74-.148-.068-.11-.133.339-.175.448-.043 1.719-.212 2.292-.052.573.16 1.552.403 1.632.532.079.13.149.134.067.579-.081.445-.5 2.581-.541 2.96-.04.38-.12.63.288.724.409.094 1.097.256 1.333.256s.924-.162 1.333-.256c.408-.093.329-.344.288-.723-.04-.38-.46-2.516-.541-2.961-.082-.445-.012-.45.067-.579.08-.129 1.059-.372 1.632-.532.573-.16 1.845.009 2.292.052.449.042.487.107.339.175-.148.069-1.332.508-1.947.74-.615.233-1.476.49-1.565.986-.09.496.445 1.241.742 1.8.297.558.304.624.284.85-.02.226-1.026.802-1.247.95-.22.15-1.413.804-1.413 1.169 0 .364 1.154 1.317 1.518 1.554.364.236 1.355.755 1.776.834.422.079 1.08-.4 1.464-1.115.384-.716.039-1.422-.195-1.977-.235-.555.163-.863.355-1.066l2.02-2.149c.341-.362.68-.546.68-1.243 0-.697-2.695-3.96-2.695-3.96s-2.274.436-2.58.436c-.307 0-.972-.256-1.585-.461-.613-.205-1.022-.206-1.022-.206z"/></svg>'],
+    "Reddit" : ["#FF4500",'<svg role="img" fill="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Reddit</title><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>']
+  }
+  //Search Engine Query
+  var se_data_query={
+    "Google":"https://google.com/search?q=",
+    "Bing":"https://bing.com/search?q=",
+    "DuckDuckGo":"https://duckduckgo.com/?q=",
+    "Youtube":"https://www.youtube.com/results?q=",
+    "Reddit":"https://www.reddit.com/search?q=",
+    "Brave":"https://search.brave.com/search?q="
+  }
+  //Get SearchBar saved preferences
   var ntp_sb = localGet("ntp_sb");
-  if (ntp_sb == undefined) {
+  if (ntp_sb == undefined ||  ntp_sb.se == undefined || ntp_sb.placeholder== undefined) {
     ntp_sb = { 
-      sK: {
-        "placeholder": "Search with commands..",
-        "key": ",",
-        "default": "d",
-        "b": "https://bing.com/search?q=",
-        "g": "https://google.com/search?q=",
-        "d": "https://duckduckgo.com/?q=",
-        "r": "https://www.reddit.com/search?q=",
-        "y": "https://www.youtube.com/results?q="
+      se : {
+        "Google":true,
+        "Bing":true,
+        "DuckDuckGo":true,
+        "Youtube":false,
+        "Reddit":false,
+        "Brave":true
+      },
+      placeholder:["Search with"],
+      custom_se: {
+        "MySearch":["#000"]
       }
     };
     localStore("ntp_sb", ntp_sb);
   }
-  const sb_len = document.getElementById("sb_len");
-  var sk = ntp_sb.sK;
-  var sb_len_v = "";
-  for (var key in sk) {
-    sb_len_v += key + ' -> ' + sk[key] + '\n';
+  
+  const sb_dropdown_menu= document.getElementById("sb_icon_menu");
+  const sb_icon_default = document.getElementById("sb_icon_default");
+  const sb_custom_form = document.getElementById("sb_custom_form");
+  sb_custom_form.addEventListener('submit', (e) => {
+    var name = document.getElementById("custom_sb_name").value;
+    var query = document.getElementById("custom_sb_query").value;
+    var color = document.getElementById("custom_sb_color").value;
+    var svg = document.getElementById("custom_sb_svg").value;
+    if(name.length <1 && query.length < 1 && color.length < 1 && svg.length < 1){
+      ntoast.error("You need to complete all the rquired fields ");
+    }
+    else{
+      ntp_sb.se[name]=true;
+      ntp_sb.custom_se[name]=[color,svg,query];
+      localStore("ntp_sb", ntp_sb);
+      f_setup_sb();
+      render_se_list();
+    }
+    ntoast.success("Custom Search Engine added !");
+    e.preventDefault();
+    return false;
+  });
+  sb_icon_default.addEventListener('click', (e) => {
+    if (sb_dropdown_menu.classList.contains('active')) {
+      sb_dropdown_menu.classList.remove('active');
+    } else {
+      sb_dropdown_menu.classList.add('active');
+    }
+  })
+  
+  function render_se_list(){
+      const list = document.getElementById("stt_selist");
+      while(list.firstChild){
+        list.removeChild(list.firstChild);
+      }
+      Object.keys(ntp_sb.se).forEach((el,index)=>{
+      const se_status = ntp_sb.se[el];
+      var se_icon = se_data_icons[el];
+      console.log(se_status);
+      if(se_icon != undefined){
+        var setChecked =(se_status==true)?"checked":"";
+        var li = document.createElement("li");
+        li.innerHTML='<svg class="_icon stt_selisth" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>' +
+        '<div class="sb_item"><span class="sb_icon" style="background: '+se_icon[0]+' "> '+se_icon[1]+'</span>'+el + '</div><input '+
+        'class="toggle" type="checkbox" onchange="toggle_se_status(\'' + el + '\')" '+setChecked+' />';
+        list.appendChild(li); 
+      }else{
+        se_custom = ntp_sb.custom_se[el];
+        if(se_custom != undefined){
+          var setChecked =(se_status==true)?"checked":"";
+          var li = document.createElement("li");
+          li.innerHTML='<svg class="_icon stt_selisth" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>' +
+          '<div class="sb_item"><span class="sb_icon" style="background: '+se_custom[0]+' "> '+se_custom[1]+'</span>'+el + '</div><svg onclick="sb_delete_se(\''+el+'\')" class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg><input '+
+          'class="toggle" type="checkbox" onchange="toggle_se_status(\'' + el + '\')" '+setChecked+' />';
+          list.appendChild(li); 
+        }
+      }
+    })
   }
-  sb_len.value = sb_len_v;
+  render_se_list();
+  function sb_delete_se(a){
+    console.log(ntp_sb.custom_se);
+    delete ntp_sb.custom_se[a];
+    localStore("ntp_sb", ntp_sb);
+    render_se_list();
+    f_setup_sb();
+  }
+  //Config widgets ordering and toggle
+  Sortable.create(document.getElementById("stt_selist"), {
+    handle: '.stt_selisth',
+    animation: 150,
+    onEnd: function (evt) {
+      var se_list = {};
+      var list = document.getElementById("stt_selist").getElementsByTagName("li");
+      for (var z = 0; z < list.length; z++) {
+        var a= list[z].innerText;
+        var s = list[z].querySelector("input").checked;
+        se_list[a]=s;
+      }
+      ntp_sb.se=se_list;
+      console.log(ntp_sb);
+      localStore("ntp_sb", ntp_sb);
+      f_setup_sb();
+    }
+  });
+
+  function toggle_se_status(key_name) {
+    console.log(key_name);
+    const se_status = ntp_sb.se[key_name];
+    ntp_sb.se[key_name] = !se_status;
+    f_setup_sb();
+    localStore("ntp_sb", ntp_sb);
+  }
+  
   //Function to remove multiple, leading or trailing spaces 
   function f_trim(s) {
     s = s.replace(/(^\s*)|(\s*$)/gi, "");
@@ -475,34 +591,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     s = s.replace(/\n /, "\n");
     return s;
   }
-  //Function to save search bar config
-  function f_svsbc() {
-    var tlen = f_trim(document.getElementById("sb_len").value)+"\n";
-    var error = false;
-    var lines = tlen.split('\n');
-    lines.splice(-1, 1);
-    lines= lines.filter(function(e){ return e.replace(/(\r\n|\n|\r)/gm,"")});
-    var sKc = {};
-    for (var i = 0; i < lines.length; i++) {
-      var zlen = lines[i].split("->");
-      if (zlen.length != 2) {
-        i = lines.length;
-        error = true;
-      } else {
-        sKc[f_trim(zlen[0])] = f_trim(zlen[1]);
-      }
-    }
-    error = error || !(sKc['placeholder'] && sKc['key'] && sKc['default']);
-    if (error) {
-      ntoast.warn("Looks like you removed important keywords like \n-placeholder\n-key\n-default\n ");
-      ntoast.warn("Make sure to follow the syntax too :'k' -> 'value'");
-    } else {
-      ntp_sb.sK = sKc;
-      localStore("ntp_sb", ntp_sb);
-      f_setup_sb();
-      ntoast.success("Search Bar Config saved !");
-    }
-  }
+ 
 
   //Top Margin Spacing sliders for widgets 
   const tms_r0 = document.getElementById('tms_r0');
@@ -631,10 +720,8 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   const sb_logo = document.getElementById("sb_logo");
   const sett_sblgp = document.getElementById("sb_lgp");
   const sett_sb_lgf = document.getElementById("sb_lgf");
-  sett_sblgp.src = ntp_sb.logo;
 
   function f_sb_lg1() {
-    // fetch FileList object
     var file = sett_sb_lgf.files[0]; // get a reference to the selected file
     if (file && file.type.match('image.*')) {
       var reader = new FileReader();
@@ -681,11 +768,38 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     };
 
     function f_setup_sb() {
-      document.getElementById("sb_input").placeholder = ntp_sb.sK["placeholder"];
-      if (sb_logo.src != ntp_sb.logo) {
-        sb_logo.src = ntp_sb.logo;
-        f_cache_sb();
-      }
+      sb_dropdown_menu.innerHTML ="";
+      Object.keys(ntp_sb.se).forEach((el,index)=>{
+        const se_status = ntp_sb.se[el];
+        var se_icon = se_data_icons[el];
+        if(se_icon == undefined)
+          se_icon =ntp_sb.custom_se[el];
+        if(se_icon != undefined && se_status){
+            var si = document.createElement("li");
+            si.setAttribute('data-se', el);
+          si.addEventListener("click",(event)=>{
+            var q= sb_dropdown_menu.querySelector("li.active_sb");
+            q.classList.remove("active_sb");
+            event.target.classList.add("active_sb");
+            var sei = se_data_icons[event.target.innerText];
+            if(sei == undefined)
+              sei = ntp_sb.custom_se[event.target.innerText];
+            sb_icon_default.style.background = sei[0];
+            sb_icon_default.innerHTML =sei[1];
+            sb_dropdown_menu.classList.remove('active');
+          })
+          if(index == 0){
+            document.getElementById("sb_input").placeholder = ntp_sb.placeholder+" "+el;
+            sb_icon_default.style.background = se_icon[0];
+            sb_icon_default.innerHTML =se_icon[1];
+            si.className="active_sb";
+          }
+          si.innerHTML ='<span class="sb_icon" style="background: '+se_icon[0]+' "> '+se_icon[1]+'</span> '+el;
+          sb_dropdown_menu.appendChild(si);
+          
+        }
+        
+      })
     }
 
     function handleKeyPress(e) {
@@ -695,22 +809,9 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     }
 
     function search(text) {
-      var option = text.substr(1, text.indexOf(' ') - 1) || text.substr(1);
-      var subtext = text.substr(2 + option.length);
-      var sK = ntp_sb.sK;
-      var def_se = sK[sK["default"]];
-      var key_se = sK[option];
-      if (text[0] === sK["key"]) {
-        if (text.indexOf(' ') > -1 && key_se != undefined)
-          window.location = key_se + subtext;
-        else {
-          if (key_se != undefined)
-            window.location = (key_se).match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n\?\=]+)/im)[0];
-          else
-            window.location = def_se + subtext;
-        }
-      } else
-        window.location = def_se + text;
+      var key= sb_dropdown_menu.querySelector("li.active_sb").getAttribute('data-se');
+      var query = se_data_query[key];
+      window.location = query + text;
     }
     f_setup_sb();
   } // End of Search Bar Widget Config 
