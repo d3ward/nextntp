@@ -497,7 +497,9 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   {
     var y = ntp_sett.order[0];
     customInner(document.getElementById('wdg_' + y),f_dwdg(0));
-    f_cache_sb();
+    const y = ntp_sett.order[0];
+      ntp_wdg[0].cached = document.getElementById('wdg_' + y).innerHTML;
+      localStore("ntp_wdg", ntp_wdg);
   }
   sb_custom_form.addEventListener('submit', (e) => {
     var name = document.getElementById("custom_sb_name").value;
