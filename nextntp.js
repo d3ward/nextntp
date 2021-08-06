@@ -496,7 +496,8 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   if(sb_icon_default == undefined)
   {
     var y = ntp_sett.order[0];
-    customInner(document.getElementById('wdg_' + y),ntp_wdg[0].cached);
+    customInner(document.getElementById('wdg_' + y),f_dwdg(0));
+    f_cache_sb();
   }
   sb_custom_form.addEventListener('submit', (e) => {
     var name = document.getElementById("custom_sb_name").value;
@@ -763,7 +764,6 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     function f_cache_sb() {
       const y = ntp_sett.order[0];
       ntp_wdg[0].cached = document.getElementById('wdg_' + y).innerHTML;
-      localStorage.cachedNewsUpdate = (Date.now() / 1000);
       console.log("Cache search bar");
       localStore("ntp_wdg", ntp_wdg);
     }
