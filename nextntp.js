@@ -493,6 +493,11 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   const sb_dropdown_menu= document.getElementById("sb_icon_menu");
   const sb_icon_default = document.getElementById("sb_icon_default");
   const sb_custom_form = document.getElementById("sb_custom_form");
+  if(sb_icon_default == undefined)
+  {
+    var y = ntp_sett.order[0];
+    customInner(document.getElementById('wdg_' + y),ntp_wdg[0].cached);
+  }
   sb_custom_form.addEventListener('submit', (e) => {
     var name = document.getElementById("custom_sb_name").value;
     var query = document.getElementById("custom_sb_query").value;
