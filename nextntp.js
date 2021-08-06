@@ -791,6 +791,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
             var sei = se_data_icons[event.target.innerText];
             if(sei == undefined)
               sei = ntp_sb.custom_se[event.target.innerText];
+            console.log(ntp_sb);
             sb_icon_default.style.background = sei[0];
             sb_icon_default.innerHTML =sei[1];
             sb_dropdown_menu.classList.remove('active');
