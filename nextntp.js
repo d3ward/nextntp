@@ -502,9 +502,9 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
     localStore("ntp_wdg", ntp_wdg);
   }
   sb_custom_form.addEventListener('submit', (e) => {
-    var name = document.getElementById("custom_sb_name").value;
-    var query = document.getElementById("custom_sb_query").value;
-    var color = document.getElementById("custom_sb_color").value;
+    var name = f_trim(document.getElementById("custom_sb_name").value);
+    var query = f_trim(document.getElementById("custom_sb_query").value);
+    var color = f_trim(document.getElementById("custom_sb_color").value);
     var svg = document.getElementById("custom_sb_svg").value;
     if(name.length <1 && query.length < 1 && color.length < 1 && svg.length < 1){
       ntoast.error("You need to complete all the rquired fields ");
@@ -531,11 +531,18 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
   })
   
   function render_se_list(){
+     var se_keys =Object.keys(ntp_sb.se);
+     var se_custom_keys =Object.keys(ntp_sb.custom_se);
+     //Clean
+     se_custom_keys.forEach((el,index)=>{
+       if(! se_keys.includes(el))
+          delete ntp_sb.custom_se[el];
+     })
       const list = document.getElementById("stt_selist");
       while(list.firstChild){
         list.removeChild(list.firstChild);
       }
-      Object.keys(ntp_sb.se).forEach((el,index)=>{
+      se_keys.forEach((el,index)=>{
       const se_status = ntp_sb.se[el];
       var se_icon = se_data_icons[el];
       console.log(se_status);
@@ -555,6 +562,8 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
           '<div class="sb_item"><span class="sb_icon" style="background: '+se_custom[0]+' "> '+se_custom[1]+'</span>'+el + '</div><svg onclick="sb_delete_se(\''+el+'\')" class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg><input '+
           'class="toggle" type="checkbox" onchange="toggle_se_status(\'' + el + '\')" '+setChecked+' />';
           list.appendChild(li); 
+        }else{
+           console.log(se_custom,el);
         }
       }
     })
@@ -824,7 +833,12 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
 
     function search(text) {
       var key= sb_dropdown_menu.querySelector("li.active_sb").getAttribute('data-se');
+      console.log(key);
       var query = se_data_query[key];
+      if(query==undefined){
+        var sei = ntp_sb.custom_se[key];
+        query=sei[2];
+      }
       window.location = query + text;
     }
     f_setup_sb();
