@@ -789,15 +789,18 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
             si.setAttribute('data-se', el);
           si.addEventListener("click",(event)=>{
             var q= sb_dropdown_menu.querySelector("li.active_sb");
-            q.classList.remove("active_sb");
+            if(q!=undefined)
+              q.classList.remove("active_sb");
             event.target.classList.add("active_sb");
+            
             var sei = se_data_icons[event.target.innerText];
             if(sei == undefined)
               sei = ntp_sb.custom_se[event.target.innerText];
-            console.log(ntp_sb);
+            document.getElementById("sb_input").placeholder = ntp_sb.placeholder+" " + event.target.innerText;
             sb_icon_default.style.background = sei[0];
             sb_icon_default.innerHTML =sei[1];
             sb_dropdown_menu.classList.remove('active');
+            
           })
           if(index == 0){
             document.getElementById("sb_input").placeholder = ntp_sb.placeholder+" "+el;

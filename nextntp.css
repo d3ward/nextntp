@@ -1033,7 +1033,7 @@ select:hover {
   color: var(--c4);
   opacity: .7;
 }
-.sb_wrap{
+.sb_wrap,.sb_preview{
   margin-top: var(--v3)!important;
   position: relative;
 }
