@@ -1012,7 +1012,7 @@ select:hover {
   display: flex;
   align-items: center;
   gap: .5rem;
-  color: var(--c4);
+  color: var(--c20);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
