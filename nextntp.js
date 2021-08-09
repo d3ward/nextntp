@@ -547,7 +547,7 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
       sb_dropdown_menu.classList.remove('active');
     } else {
       sb_dropdown_menu.classList.add('active');
-      event.stopPropagation();
+      e.stopPropagation();
       document.addEventListener("click",hide_dropdown);
     }
   })
@@ -560,12 +560,10 @@ if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
        if(! se_keys.includes(el))
           delete ntp_sb.custom_se[el];
      })
-     console.log(se_keys,Object.keys(se_data_icons));
      //Fix missing keys
       Object.keys(se_data_icons).forEach((el,index)=>{
         if(! se_keys.includes(el)){
           ntp_sb.se[el]=false;
-          console.log(el);
         }
           
       })
