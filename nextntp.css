@@ -998,7 +998,7 @@ select:hover {
   top: calc(100% + .4rem);
   left: 0;
   width: 14rem;
-  padding: 0;
+  max-height: 250px;
   margin: 0;
   list-style: none;
   overflow-y: auto;
@@ -1837,7 +1837,11 @@ select:hover {
 .pages>.page-active {
   display: block;
 }
-
+._flex{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
 .flex-column {
   display: flex;
   flex-direction: column;
