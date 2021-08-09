@@ -10,7 +10,7 @@ You can try this NTP online from any browser (Desktop/Mobile) at https://d3ward.
 <img src="https://user-images.githubusercontent.com/39910418/128778613-fe733eb8-57ab-457f-b8c7-2fd109fe0fd2.png" height="500px">
 </p>
 
-### Features
+## Features
 - Dark/Light theme with customization
 - Powerful Search bar with search engine selector
 - Grid Tiles with folders
