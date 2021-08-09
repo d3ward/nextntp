@@ -5,15 +5,22 @@
 
 You can try this NTP online from any browser (Desktop/Mobile) at https://d3ward.github.io/nextntp/
 
-## Features
-- Powerful Search bar with shorcuts
+## Overview
+<p align="center">
+<img src="https://user-images.githubusercontent.com/39910418/128778613-fe733eb8-57ab-457f-b8c7-2fd109fe0fd2.png" height="500px">
+</p>
+
+### Features
+- Dark/Light theme with customization
+- Powerful Search bar with search engine selector
 - Grid Tiles with folders
-- News Section with marks as read
-- Theme Manager 
-- User data saved locally with localStorage API
+- News Section with Google news and marks as read on swipe
+- Import/Export your theme
+- Import/Export your data 
 
 
 ## How things works
+User data saved locally with localStorage API
 
 Once the page is loaded, the pre-rendered version of all enabled widgets is instantly displayed on screen 
 
@@ -23,6 +30,10 @@ Favicons are retrieved from
 
 News are fetched from a proxy server of Kiwi Browser
 
+
+## Contributing
+
+If you have a suggestion or want to report a bug feel free to share it by opening an issue
 
 ## Other projects & libraries included
  - (Sortable 1.10.0-rc3)[https://sortablejs.github.io/Sortable/] (MIT License)[https://github.com/SortableJS/Sortable/blob/master/LICENSE]  | JavaScript library for reorderable drag-and-drop lists 
