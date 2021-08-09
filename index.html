@@ -28,14 +28,16 @@
 </script>
 <!-- Copyright 2021 Eduard Ursu -->
 <!-- Licensed under https://creativecommons.org/licenses/by-nc-sa/4.0/ -->
+
 <head>
   <meta charset="utf-8">
   <title>NextNTP by d3ward</title>
+  <meta name="description" content="Higly customizable and mobile friendly startpage">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <meta name="theme-color" content="#14191f">
 
-  <link rel="stylesheet" href="./nextntp.min.css">
-  
+  <link rel="stylesheet" href="./nextntp.css">
+
   <script>
     //Load Theme Color
     var metaTColor = document.querySelector("meta[name=theme-color]");
@@ -126,7 +128,7 @@
           <div class="is_center">
             <div class="tlg_item folder np">
               <div class="tlg_img tlg_fld">
-                <div class="tlg_item"><a class="tile_target">&nbsp;<img class="tlg_img" 
+                <div class="tlg_item"><a class="tile_target">&nbsp;<img class="tlg_img"
                       src="https://logos.kiwibrowser.com/amazon.com" alt="Example Tile">
                   </a></div>
                 <div class="tlg_item"><a class="tile_target">&nbsp;<img class="tlg_img"
@@ -316,26 +318,29 @@
               <div class="stt_clfrt" id="stt_cld1" onclick="f_cpd_rgb(1)"></div>
             </div>
             <hr>
-              
-              <div>
+
+            <div>
               <label> Meta Theme Color </label>
               <div class="stt_clfrt" id="sett_mtc" onclick="f_cp_mtc(0)"></div>
               <div class="stt_clfrt" id="sett_mtc1" onclick="f_cp_mtc(1)"></div>
             </div>
             <div><label>Font </label>
-                <select id="font-selector" onchange="f_update_font()">
-                  <option value='-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif'> Default</option>
-                  <option value="Times New Roman"> Times New Roman </option>
-                  <option value="Monotype Corsiva"> Monotype Corsiva </option>
-                  <option value="Lucida Handwriting"> Lucida Handwriting </option>
-                  <option value="Comic Sans MS"> Comic Sans MS </option>
-                  <option value="Arial"> Arial </option>
-                  <option value="Courier"> Courier </option>
-                  <option value="Verdana"> Verdana </option>
+              <select id="font-selector" onchange="f_update_font()">
+                <option
+                  value='-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif'>
+                  Default</option>
+                <option value="Times New Roman"> Times New Roman </option>
+                <option value="Monotype Corsiva"> Monotype Corsiva </option>
+                <option value="Lucida Handwriting"> Lucida Handwriting </option>
+                <option value="Comic Sans MS"> Comic Sans MS </option>
+                <option value="Arial"> Arial </option>
+                <option value="Courier"> Courier </option>
+                <option value="Verdana"> Verdana </option>
               </select></div>
             <div>
               <label for="stt_opt0">Material Design Shadow</label>
-              <input id="stt_opt0" class="toggle" type="checkbox" value="rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px"
+              <input id="stt_opt0" class="toggle" type="checkbox"
+                value="rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px"
                 onchange="set_option_t(this,'none',0)" />
             </div>
             <div>
@@ -361,91 +366,92 @@
                   </div>
                   <div>
                     <div class="_2-col">
-                    <button id="wllp_custom_l"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clip-rule="evenodd"></path>
-                      </svg>Save</button> <button id="wllp_clearvalue_l"><svg class="_icon" fill="currentColor"
-                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M6.707 4.879A3 3 0 018.828 4H15a3 3 0 013 3v6a3 3 0 01-3 3H8.828a3 3 0 01-2.12-.879l-4.415-4.414a1 1 0 010-1.414l4.414-4.414zm4 2.414a1 1 0 00-1.414 1.414L10.586 10l-1.293 1.293a1 1 0 101.414 1.414L12 11.414l1.293 1.293a1 1 0 001.414-1.414L13.414 10l1.293-1.293a1 1 0 00-1.414-1.414L12 8.586l-1.293-1.293z"
-                          clip-rule="evenodd"></path>
-                      </svg>Clear</button>
-                    <button id="wllp_bg_cl"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
-                          clip-rule="evenodd"></path>
-                      </svg>
-                      Color</button></span>
-                    <button id="wllp_gradient_l">
-                      <svg fill="currentColor" class="_icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z">
-                        </path>
-                      </svg> Gradient</button>
+                      <button id="wllp_custom_l"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clip-rule="evenodd"></path>
+                        </svg>Save</button> <button id="wllp_clearvalue_l"><svg class="_icon" fill="currentColor"
+                          viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M6.707 4.879A3 3 0 018.828 4H15a3 3 0 013 3v6a3 3 0 01-3 3H8.828a3 3 0 01-2.12-.879l-4.415-4.414a1 1 0 010-1.414l4.414-4.414zm4 2.414a1 1 0 00-1.414 1.414L10.586 10l-1.293 1.293a1 1 0 101.414 1.414L12 11.414l1.293 1.293a1 1 0 001.414-1.414L13.414 10l1.293-1.293a1 1 0 00-1.414-1.414L12 8.586l-1.293-1.293z"
+                            clip-rule="evenodd"></path>
+                        </svg>Clear</button>
+                      <button id="wllp_bg_cl"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
+                            clip-rule="evenodd"></path>
+                        </svg>
+                        Color</button></span>
+                      <button id="wllp_gradient_l">
+                        <svg fill="currentColor" class="_icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z">
+                          </path>
+                        </svg> Gradient</button>
                       <label class="btn" for="wllp_file_l"><input type="file" id="wllp_file_l"
-                        style="opacity: 0;position: absolute;z-index: -1;" />
-                      <svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
-                          clip-rule="evenodd"></path>
-                      </svg> File </label>
-                    <button id="wllp_url_l"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
-                          clip-rule="evenodd"></path>
-                      </svg> 
-                      Link</button>
-                    
+                          style="opacity: 0;position: absolute;z-index: -1;" />
+                        <svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"></path>
+                        </svg> File </label>
+                      <button id="wllp_url_l"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+                            clip-rule="evenodd"></path>
+                        </svg>
+                        Link</button>
+
                     </div>
                   </div>
-                  </div>
+                </div>
                 <div class="row flex-column bg-s" id="bg-sd">
                   <div><label for="wllp_value">Background Value Dark Theme</label></div>
                   <div>
                     <input type="text" id="wllp_value_d" style="width: 100%;">
                   </div>
-                  <div><div class="_2-col">
-                    <button id="wllp_custom_d"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clip-rule="evenodd"></path>
-                      </svg>Save</button> <button id="wllp_clearvalue_d"><svg class="_icon" fill="currentColor"
-                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M6.707 4.879A3 3 0 018.828 4H15a3 3 0 013 3v6a3 3 0 01-3 3H8.828a3 3 0 01-2.12-.879l-4.415-4.414a1 1 0 010-1.414l4.414-4.414zm4 2.414a1 1 0 00-1.414 1.414L10.586 10l-1.293 1.293a1 1 0 101.414 1.414L12 11.414l1.293 1.293a1 1 0 001.414-1.414L13.414 10l1.293-1.293a1 1 0 00-1.414-1.414L12 8.586l-1.293-1.293z"
-                          clip-rule="evenodd"></path>
-                      </svg>Clear</button>
-                    <button id="wllp_bg_cd"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
-                          clip-rule="evenodd"></path>
-                      </svg>
-                      Color</button></span>
-                    <button id="wllp_gradient_d">
-                      <svg fill="currentColor" class="_icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z">
-                        </path>
-                      </svg> Gradient</button>
+                  <div>
+                    <div class="_2-col">
+                      <button id="wllp_custom_d"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clip-rule="evenodd"></path>
+                        </svg>Save</button> <button id="wllp_clearvalue_d"><svg class="_icon" fill="currentColor"
+                          viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M6.707 4.879A3 3 0 018.828 4H15a3 3 0 013 3v6a3 3 0 01-3 3H8.828a3 3 0 01-2.12-.879l-4.415-4.414a1 1 0 010-1.414l4.414-4.414zm4 2.414a1 1 0 00-1.414 1.414L10.586 10l-1.293 1.293a1 1 0 101.414 1.414L12 11.414l1.293 1.293a1 1 0 001.414-1.414L13.414 10l1.293-1.293a1 1 0 00-1.414-1.414L12 8.586l-1.293-1.293z"
+                            clip-rule="evenodd"></path>
+                        </svg>Clear</button>
+                      <button id="wllp_bg_cd"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M4 2a2 2 0 00-2 2v11a3 3 0 106 0V4a2 2 0 00-2-2H4zm1 14a1 1 0 100-2 1 1 0 000 2zm5-1.757l4.9-4.9a2 2 0 000-2.828L13.485 5.1a2 2 0 00-2.828 0L10 5.757v8.486zM16 18H9.071l6-6H16a2 2 0 012 2v2a2 2 0 01-2 2z"
+                            clip-rule="evenodd"></path>
+                        </svg>
+                        Color</button></span>
+                      <button id="wllp_gradient_d">
+                        <svg fill="currentColor" class="_icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z">
+                          </path>
+                        </svg> Gradient</button>
                       <label class="btn" for="wllp_file_d"><input type="file" id="wllp_file_d"
-                        style="opacity: 0;position: absolute;z-index: -1;" />
-                      <svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
-                          clip-rule="evenodd"></path>
-                      </svg> File </label>
-                    <button id="wllp_url_d"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                          d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
-                          clip-rule="evenodd"></path>
-                      </svg> Link</button></div>
+                          style="opacity: 0;position: absolute;z-index: -1;" />
+                        <svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"></path>
+                        </svg> File </label>
+                      <button id="wllp_url_d"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+                            clip-rule="evenodd"></path>
+                        </svg> Link</button></div>
 
                   </div>
                 </div>
@@ -459,7 +465,7 @@
                   <p>Move the image to fit the area you want to crop. <br>
                     Use the slider to zoom
                   </p>
-                  <div  class="_2-col">
+                  <div class="_2-col">
                     <button onclick="cropCancel();">Cancel</button>
                     <button onclick="cropResult();">Next</button>
                   </div>
@@ -540,13 +546,12 @@
               <label for="tg_r7">Logo Rounding : <span id="tg_r7v">4</span></label>
               <input type="range" min="0" max="300" value="64" class="slr_rng" id="tg_r7">
             </div>
-
             <div class="flex-column"><label for="tg_r5">Input Radius : <span id="tg_r5v">4</span></label><input
                 type="range" min="0" max="25" value="8" class="slr_rng" id="tg_r5"></div>
             <div class="flex-column">
               <label for="tg_r8">Top Margin : <span id="tg_r8v">4</span></label><input type="range" min="0" max="300"
                 value="64" class="slr_rng" id="tg_r8"></div>
-            <div class="flex-column">
+            <div class="_2-col">
               <button onclick="f_sb_lg2();"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd"
@@ -560,10 +565,10 @@
                   <path fill-rule="evenodd"
                     d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
                     clip-rule="evenodd"></path>
-                </svg> Upload from file
+                </svg> From File
               </label>
             </div>
-            <hr>
+            <hr><br>
             <h4>
               <label>Search Bar Colors</label>
               <svg class="_icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -588,13 +593,40 @@
               <div class="stt_clfrt" id="stt_cl5" onclick="f_cp_rgb(5)"></div>
               <div class="stt_clfrt" id="stt_cld5" onclick="f_cpd_rgb(5)"></div>
             </div>
-            <hr>
+            <hr><br>
             <h4> <label>Search Bar Config</label> </h4>
+            <br>
             <div>
-              <textarea id="sb_len"></textarea>
+              <ul id="stt_selist" class="flex-sb">
+              </ul>
             </div>
-            <div><button style="width: calc(100% - 10px);" onclick="f_svsbc()">
-                Save config</button></div>
+            <div>
+              <form id="sb_custom_form" class="row flex-column" onsubmit="return false">
+                <div>
+                  <h3>Want to add a custom one ?</h3>
+                </div>
+                <div>
+                  <label for="custom_sb_name">Name</label>
+                </div>
+                <div>
+                  <input type="text" id="custom_sb_name" placeholder="MyCustomSearch" required>
+                </div>
+                <div>
+                  <label for="custom_sb_query">Search Query</label>
+                </div>
+                <div>
+                  <input type="url" id="custom_sb_query" placeholder="https://mycustomsearch.com/search?q=" required>
+                </div>
+                <div><label for="custom_sb_color">BG Color Icon</label></div>
+                <div><input type="text" id="custom_sb_color" placeholder="Example : #f4f400" required></div>
+                <div><label for="custom_sb_svg">SVG Icon</label></div>
+                <div><input type="text" id="custom_sb_svg" placeholder="<svg fill='#fff' ..." required></div>
+                <div>
+                  <button type="submit">Add Custom Search Engine</button>
+                </div>
+              </form>
+            </div>
+
           </div>
         </section>
         <!-- Tiles Grid-->

@@ -764,6 +764,7 @@ select {
   border: 2px solid var(--c22);
   outline: none;
   height: 2.6rem;
+  width: 100%;
 }
 
 textarea:focus,
@@ -958,6 +959,66 @@ select:hover {
   max-width: 300px;
   content:var(--sb-img);
 }
+.sb_item{
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  flex-grow: 1;
+}
+.sb_icon,#sb_icon_default, #sb_icon_menu span{
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px -20px blue inset;
+}
+#sb_icon_default{
+  position: absolute;
+  margin: .3rem;
+}
+
+
+#sb_icon_menu.active  {
+  height: auto;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.2s linear;
+}
+
+#sb_icon_menu{
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: calc(100% + .4rem);
+  left: 0;
+  width: 14rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  overflow-y: auto;
+  padding: .5rem;
+  border-radius: var(--radius);
+  background: var(--c21);
+  box-shadow: var(--o0);
+}
+#sb_icon_menu li {
+  padding: .4rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--c20);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+#sb_icon_menu li.active_sb{
+  background: var(--c22);
+}
 
 #sb_bg_preview{
   background: var(--c22);
@@ -972,15 +1033,18 @@ select:hover {
   color: var(--c4);
   opacity: .7;
 }
-
+.sb_wrap,.sb_preview{
+  margin-top: var(--v3)!important;
+  position: relative;
+}
 #sb_input,
 .sb_preview {
-  margin-top: var(--v3)!important;
   width: 100%;
   border: 1px solid var(--c5);
   color: var(--c4);
   background: var(--c3);
   border-radius: var(--v0);
+  padding-left: 40px;
 }
 
 /* ---------------- Tiles Grid ---------------- */
@@ -1229,14 +1293,15 @@ select:hover {
 }
 
 /****************** Settings  ***************/
-#stt_lwo {
+#stt_lwo,#stt_selist {
   padding: 0;
   margin: auto;
   list-style: none;
-  max-width: 350px;
+  width: 100%;
+  max-width: 450px;
 }
 
-#stt_lwo li {
+#stt_lwo li ,#stt_selist li{
   background: var(--c22);
   color: var(--c20);
   border-radius: 8px;
@@ -1249,7 +1314,7 @@ select:hover {
   height: 2.6rem;
 }
 
-#stt_lwo .srtb_ghost {
+#stt_lwo .srtb_ghost ,#stt_selist .srtb_ghost{
   opacity: 0;
 }
 
@@ -1766,6 +1831,7 @@ select:hover {
   display: none;
   max-width: 500px;
   margin: auto;
+  padding: .5rem;
 }
 
 .pages>.page-active {
