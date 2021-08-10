@@ -827,7 +827,7 @@ if (wcentp) {
     };
 
     function f_setup_sb() {
-      sb_dropdown_menu.innerHTML ="";
+      document.getElementById("sb_icon_menu").innerHTML ="";
       Object.keys(ntp_sb.se).forEach((el,index)=>{
         const se_status = ntp_sb.se[el];
         var se_icon = se_data_icons[el];
@@ -861,7 +861,7 @@ if (wcentp) {
           if(se_icon[0]=="#ffffff")
             noshadow= "box-shadow:none;";
           si.innerHTML ='<span class="sb_icon" style="background: '+se_icon[0]+';'+noshadow+' "> '+se_icon[1]+'</span> '+el;
-          sb_dropdown_menu.appendChild(si);
+          document.getElementById("sb_icon_menu").appendChild(si);
           
         }
         
