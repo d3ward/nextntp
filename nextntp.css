@@ -1178,6 +1178,7 @@ select:hover {
   background: var(--c21);
   border-radius: 8px;
   color: var(--c20);
+  box-shadow: var(--o0);
 }
 
 #tlg_editA .tlg_item,
@@ -1492,6 +1493,7 @@ select:hover {
   background: var(--c21);
   transform: scale(0.9);
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  box-shadow: var(--o0);
 }
 
 .modal>div>footer {
