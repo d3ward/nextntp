@@ -2,7 +2,8 @@
 <html lang="en">
 <script>
   var newsServer = 'https://news.google.com/';
-  if (typeof window.chrome.embeddedSearch == "undefined") {
+  try {
+    if (typeof window.chrome.embeddedSearch == "undefined") {
     console.log("Oh , looks like window.chrome.embeddedSearch is undefined");
     window.chrome = {
       "embeddedSearch": {
@@ -13,6 +14,10 @@
     }
     newsServer = 'https://chromecontentsuggestions-pa.kiwibrowser.com/testnews/?';
   }
+  } catch (error) {
+    newsServer = 'https://chromecontentsuggestions-pa.kiwibrowser.com/testnews/?';
+  }
+  
 
   function reset_page() {
     if (confirm("This will reset NTP back to default, are you sure ?")) {

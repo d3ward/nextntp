@@ -303,8 +303,12 @@ function theme() {
   if(!isTD){
       mLstnr=['mousemove','mouseup','mousedown'];
   }
+var wcentp;
+try{
+  wcentp = window.chrome.embeddedSearch.newTabPage.isIncognito;
+}catch(error){wcentp = false;}
 
-if (window.chrome.embeddedSearch.newTabPage.isIncognito) {
+if (wcentp) {
   document.body.style.backgroundImage = 'none';
   document.body.style.backgroundColor = '#000';
   document.getElementById('incognito').style.display = 'inline';
