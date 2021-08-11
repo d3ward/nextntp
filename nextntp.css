@@ -14,7 +14,7 @@ body {
   --bg-img-l: url("./nextntpbg.svg");
   --bg-img-d: url("./nextntpbg_d.svg");
   --bg-img: var(--bg-img-l);
-
+  --bg-blur:0px;
   --sb-img-l: url("./nextntpl.svg"); 
   --sb-img-d: url("./nextntpd.svg");
   --sb-img: var(--sb-img-l);
@@ -118,7 +118,7 @@ body {
 
   /******************************* OPTIONS *******************************/
   /*  Material design shadow         */
-  --o0: rgba(0,0,0,0.25) 0px 14px 28px, rgba(0,0,0,0.22) 0px 10px 10px;
+
    /* Backdrop filter */
   --o1: blur(5px);
  /* Tile target                     */
@@ -152,7 +152,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: var(--bg-img);
+  height:100%;
   background-color: var(--bg-cl);
+  
   background-attachment: fixed !important;
   opacity: 1;
   transition: opacity 0.1s ease-in;
@@ -170,7 +172,8 @@ body,
   --primary: #0074D8;
   --brd: #C4CDD5;
   --radius: .5rem;
-
+  --o0: rgba(0,0,0,0.25) 0px 14px 28px, rgba(0,0,0,0.22) 0px 10px 10px;
+  --sb-shadow: 0px 3px 6px rgba(0,0,0,0.19), 0 3px 6px rgba(0,0,0,0.23);
   --c0: var(--cl0);
   --c1: var(--cl1);
   --c2: var(--cl2);
@@ -213,7 +216,8 @@ body,
   --brd-btn: var(--primary);
   --c20-btn: var(--black);
   --shadow: none;
-  
+  --o0:none; 
+  --sb-shadow: none;
   --c0: var(--cd0);
   --c1: var(--cd1);
   --c2: var(--cd2);
@@ -270,10 +274,9 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
+
+
 }
-
-
-
 
 #stt_cl0 {
   background: var(--cl0)
@@ -945,6 +948,10 @@ select:hover {
   max-width: 700px;
 }
 
+#blur_bg {
+  backdrop-filter: blur(var(--bg-blur));
+}
+
 /* ---------------- Search Bar ---------------- */
 #sb_r {
   display: flex;
@@ -1186,6 +1193,7 @@ select:hover {
   background: var(--c21);
   border-radius: 8px;
   color: var(--c20);
+  box-shadow: var(--o0);
 }
 
 #tlg_editA .tlg_item,
@@ -1500,6 +1508,7 @@ select:hover {
   background: var(--c21);
   transform: scale(0.9);
   transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  box-shadow: var(--o0);
 }
 
 .modal>div>footer {

@@ -86,13 +86,13 @@
       }
     }
   </script>
+  <div >
   <!-- ------------- Toast Message ------------- -->
   <div class="notify-container _top _center" id="nt1">
   </div>
-
+ <div id="blur_bg" style="height: 100%; width: 100%; position: fixed;">
   <!-- ------------- Folder Modal -------------- -->
   <div id="lrt_fl" class="modal">
-    <div>
       <div id="lrt_bfl">
       </div>
       <div id="fld_editA" class="edit_mode">
@@ -329,6 +329,10 @@
               <div class="stt_clfrt" id="sett_mtc" onclick="f_cp_mtc(0)"></div>
               <div class="stt_clfrt" id="sett_mtc1" onclick="f_cp_mtc(1)"></div>
             </div>
+            <div>      
+              <label>Background Blur Intensity: <span id="tg_r77v">4</span></label></div><div>
+              <input type="range" min="0" max="50" value="0" class="slr_rng" id="tg_r77"> 
+            </div>
             <div><label>Font </label>
               <select id="font-selector" onchange="f_update_font()">
                 <option
@@ -411,6 +415,7 @@
                         Link</button>
 
                     </div>
+                    
                   </div>
                 </div>
                 <div class="row flex-column bg-s" id="bg-sd">
