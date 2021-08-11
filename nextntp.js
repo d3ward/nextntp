@@ -2184,3 +2184,13 @@ function addShadow() {
 function removeShadow() {
   document.getElementById("sb_input").style.boxShadow = "none";
 }
+
+document.getElementById("tlg_item").addEventListener("focus", addShadow);
+document.getElementById("tlg_item").addEventListener("blur", removeShadow);
+
+function addShadow() {
+  document.getElementById("tlg_item").style.boxShadow = "var(--o0)";
+}
+function removeShadow() {
+  document.getElementById("tlg_item").style.boxShadow = "none";
+}
