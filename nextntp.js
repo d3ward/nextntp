@@ -2189,8 +2189,8 @@ document.getElementById("tlg_item").addEventListener("focus", addShadow1);
 document.getElementById("tlg_item").addEventListener("blur", removeShadow1);
 
 function addShadow1() {
-  document.getElementById("tlg_item").style.boxShadow = "var(--o0)";
+  document.getElementByClass("tlg_img").style.boxShadow = "var(--o0)";
 }
 function removeShadow1() {
-  document.getElementById("tlg_item").style.boxShadow = "none";
+  document.getElementByClass("tlg_img").style.boxShadow = "none";
 }
