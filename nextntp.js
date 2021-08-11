@@ -2184,3 +2184,11 @@ function addShadow() {
 function removeShadow() {
   document.getElementById("sb_input").style.boxShadow = "none";
 }
+
+function blurbg() {
+var x = document.getElementById("blur_sldr").value;
+var r = document.querySelector(':root');
+r.style.setProperty('--bg-blur', x);
+console.log("sdfsd");
+save_ntpbdy();
+}

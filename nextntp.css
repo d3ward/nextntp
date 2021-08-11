@@ -14,7 +14,7 @@ body {
   --bg-img-l: url("./nextntpbg.svg");
   --bg-img-d: url("./nextntpbg_d.svg");
   --bg-img: var(--bg-img-l);
-
+  --bg-blur:0px;
   --sb-img-l: url("./nextntpl.svg"); 
   --sb-img-d: url("./nextntpd.svg");
   --sb-img: var(--sb-img-l);
@@ -154,7 +154,7 @@ body {
   background-image: var(--bg-img);
   height:100%;
   background-color: var(--bg-cl);
-  backdrop-filter: blur(10px);
+  
   background-attachment: fixed !important;
   opacity: 1;
   transition: opacity 0.1s ease-in;
@@ -946,6 +946,10 @@ select:hover {
   padding: 0 .5rem 0 .5rem;
   margin: auto;
   max-width: 700px;
+}
+
+#blur_bg {
+  backdrop-filter: blur(var(--bg-blur));
 }
 
 /* ---------------- Search Bar ---------------- */

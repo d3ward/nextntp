@@ -86,13 +86,13 @@
       }
     }
   </script>
+  <div >
   <!-- ------------- Toast Message ------------- -->
   <div class="notify-container _top _center" id="nt1">
   </div>
-
+ <div id="blur_bg" style="height: 100%; width: 100%; position: fixed;">
   <!-- ------------- Folder Modal -------------- -->
   <div id="lrt_fl" class="modal">
-    <div>
       <div id="lrt_bfl">
       </div>
       <div id="fld_editA" class="edit_mode">
@@ -412,8 +412,9 @@
 
                     </div>
                     <div class="flex-column">
-                      <label for="tg_r6">Logo Width : <span id="tg_r6v">230</span></label>
-                      <input type="range" min="0" max="300" value="64" class="slr_rng" id="tg_r6">
+                      <button type="button" onlick="blurbg()">Blur</button>
+                      <label for="blur_sldr">Blur Intensity:</label>
+                      <input type="range" min="0" max="50" value="0" class="slr_rng" id="blur_sldr">
                     </div>
                   </div>
                 </div>
