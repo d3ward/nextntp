@@ -2185,10 +2185,20 @@ function removeShadow() {
   document.getElementById("sb_input").style.boxShadow = "none";
 }
 
-function blurbg() {
-var x = document.getElementById("blur_sldr").value;
-var r = document.querySelector(':root');
-r.style.setProperty('--bg-blur', x);
-console.log("sdfsd");
-save_ntpbdy();
-}
+const tg_r77 = document.getElementById('tg_r77');
+  const tg_r77vs = document.getElementById('tg_r77v');
+  var tg_r77v = parseInt(ntp_bdy.style.getPropertyValue("--bg-blur").replace("px", ""));
+  tg_r77vs.innerText=tg_r77v;
+  if (isNaN(tg_r77v)) {
+    tg_r77v = 0;
+    tg_r77vs.innerText=tg_r77v;
+    ntp_bdy.style.setProperty("--bg-blur", tg_r77v + "px");
+    save_ntpbdy();
+  }
+  tg_r77.value = tg_r77v;
+  tg_r77.addEventListener("input", function () {
+    tg_r77v = parseInt(tg_r77.value);
+    tg_r77vs.innerText=tg_r77v;
+    ntp_bdy.style.setProperty("--bg-blur", tg_r77v + "px");
+    save_ntpbdy();
+  });

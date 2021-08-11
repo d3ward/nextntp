@@ -329,6 +329,10 @@
               <div class="stt_clfrt" id="sett_mtc" onclick="f_cp_mtc(0)"></div>
               <div class="stt_clfrt" id="sett_mtc1" onclick="f_cp_mtc(1)"></div>
             </div>
+            <div>      
+              <label>Background Blur Intensity: <span id="tg_r77v">4</span></label></div><div>
+              <input type="range" min="0" max="50" value="0" class="slr_rng" id="tg_r77"> 
+            </div>
             <div><label>Font </label>
               <select id="font-selector" onchange="f_update_font()">
                 <option
@@ -411,11 +415,7 @@
                         Link</button>
 
                     </div>
-                    <div class="flex-column">
-                      <button type="button" onlick="blurbg()">Blur</button>
-                      <label for="blur_sldr">Blur Intensity:</label>
-                      <input type="range" min="0" max="50" value="0" class="slr_rng" id="blur_sldr">
-                    </div>
+                    
                   </div>
                 </div>
                 <div class="row flex-column bg-s" id="bg-sd">
