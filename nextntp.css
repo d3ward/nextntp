@@ -153,6 +153,7 @@ body {
   background-size: cover;
   background-image: var(--bg-img);
   background-color: var(--bg-cl);
+  backdrop-filter: blur(10px);
   background-attachment: fixed !important;
   opacity: 1;
   transition: opacity 0.1s ease-in;
@@ -270,7 +271,6 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
-  backdrop-filter: blur(50px) !important;
 }
 
 
