@@ -1059,6 +1059,8 @@ select:hover {
   width: var(--content-width);
   margin: auto;
   min-height: 100px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .srtb_ghost {
   border-color: red;
@@ -1071,15 +1073,21 @@ select:hover {
 .hidden {
   visibility: hidden;
 }
-
+.tlg_item a,.folder{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .tlg_item {
-  position: relative;
-  display: inline-table;
   width: var(--tile-w);
-  margin: calc(var(--tile-m) / 2);
-  font-size: 10px;
-  overflow: hidden;
-  text-align: center;
+    margin: calc(var(--tile-m)/ 2);
+    font-size: 10px;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tlg_title {
