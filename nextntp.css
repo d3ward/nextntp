@@ -118,7 +118,7 @@ body {
 
   /******************************* OPTIONS *******************************/
   /*  Material design shadow         */
-  --o0: rgba(0,0,0,0.25) 0px 14px 28px, rgba(0,0,0,0.22) 0px 10px 10px;
+
    /* Backdrop filter */
   --o1: blur(5px);
  /* Tile target                     */
@@ -170,7 +170,7 @@ body,
   --primary: #0074D8;
   --brd: #C4CDD5;
   --radius: .5rem;
-
+  --o0: rgba(0,0,0,0.25) 0px 14px 28px, rgba(0,0,0,0.22) 0px 10px 10px;
   --c0: var(--cl0);
   --c1: var(--cl1);
   --c2: var(--cl2);
@@ -213,7 +213,7 @@ body,
   --brd-btn: var(--primary);
   --c20-btn: var(--black);
   --shadow: none;
-  
+  --o0: rgba(255, 255, 255, 0.25) 0px 14px 28px, rgba(255, 255, 255, 0.22) 0px 10px 10px; 
   --c0: var(--cd0);
   --c1: var(--cd1);
   --c2: var(--cd2);
