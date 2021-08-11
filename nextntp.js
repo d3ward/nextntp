@@ -2185,12 +2185,12 @@ function removeShadow() {
   document.getElementById("sb_input").style.boxShadow = "none";
 }
 
-document.getElementById("tlg_item").addEventListener("focus", addShadow);
-document.getElementById("tlg_item").addEventListener("blur", removeShadow);
+document.getElementById("tlg_item").addEventListener("focus", addShadow1);
+document.getElementById("tlg_item").addEventListener("blur", removeShadow2);
 
-function addShadow() {
+function addShadow1() {
   document.getElementById("tlg_item").style.boxShadow = "var(--o0)";
 }
-function removeShadow() {
+function removeShadow2() {
   document.getElementById("tlg_item").style.boxShadow = "none";
 }
