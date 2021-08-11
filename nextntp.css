@@ -270,7 +270,7 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px) !important;
 }
 
 
