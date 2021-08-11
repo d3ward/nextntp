@@ -2179,7 +2179,7 @@ document.getElementById("sb_input").addEventListener("focus", addShadow);
 document.getElementById("sb_input").addEventListener("blur", removeShadow);
 
 function addShadow() {
-  document.getElementById("sb_input").style.boxShadow = "var(--o0)";
+  document.getElementById("sb_input").style.boxShadow = "var(--sb-shadow)";
 }
 function removeShadow() {
   document.getElementById("sb_input").style.boxShadow = "none";
