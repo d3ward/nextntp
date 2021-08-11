@@ -39,10 +39,32 @@
   <title>NextNTP by d3ward</title>
   <meta name="description" content="Higly customizable and mobile friendly startpage">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <meta name="theme-color" content="#14191f">
+  <meta name="theme-color" >
 
   <link rel="stylesheet" href="./nextntp.css">
 
+  <script>
+    //Load Theme Color
+    var metaTColor = document.querySelector("meta[name=theme-color]");
+    var mtc;
+    try {
+      mtc = JSON.parse(localStorage.getItem("ntp_mtc"));
+      console.log(mtc.light);
+      if (mtc == undefined || mtc.light == undefined) {
+        mtc = {
+          light: "#4ca3ef",
+          dark: "#4ca3ef"
+        };
+        localStorage.setItem("ntp_mtc", JSON.stringify(mtc));
+      }
+    } catch {
+      mtc = {
+        light: "#4ca3ef",
+        dark: "#4ca3ef"
+      };
+      localStorage.setItem("ntp_mtc", JSON.stringify(mtc));
+    }
+  </script>
 </head>
 
 <body class="op">
