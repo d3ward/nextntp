@@ -1,11 +1,10 @@
 // Choose a cache name
-const cacheName = 'letsplay-v0.0.1';
+const cacheName = 'nextntp_v1.0.0';
 // List the files to precache
 const precacheResources = [
     './', './index.html', 
     './nextntp.min.css', 
     './nextntp.min.js', 
-    './svg/c4_p.svg',
     './nextntp.svg',
     './nextntpbg_d.svg',
     './nextntpbg.svg',
