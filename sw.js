@@ -43,7 +43,7 @@ self.addEventListener('fetch', (e) => {
           const clonedResponse = networkResponse.clone();
     
           e.waitUntil((async function() {
-            const cache = await caches.open(CACHE_NAME);
+            const cache = await caches.open(cacheName);
             // This will be called after `return networkResponse`
             // so make sure you already have the clone!
             await cache.put(e.request, clonedResponse);
