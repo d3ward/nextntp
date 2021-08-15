@@ -234,7 +234,7 @@ function modal(id){
       localStorage.ntp_ver = ntp_ver;
     };
     reader.readAsText(file);
-    location.reload();
+    //location.reload();
   };
     //Function to import NTP Theme
     document.getElementById('import-theme').onchange = function () {
