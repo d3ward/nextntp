@@ -766,7 +766,7 @@ select {
   border-radius: var(--radius);
   border: 2px solid var(--c22);
   outline: none;
-  height: 2.6rem;
+  height: 2.8rem;
   width: 100%;
 }
 
@@ -984,7 +984,10 @@ select:hover {
 }
 #sb_icon_default{
   position: absolute;
-  margin: .3rem;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  margin-left: 0.3rem;
 }
 
 
