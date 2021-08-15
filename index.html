@@ -964,14 +964,12 @@
   </div>
 </body>
 <script src="./nextntp.min.js"></script>
-<script>
-  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+
+<!--<script>
+    navigator.serviceWorker.getRegistrations().then(function(registrations) {
  for(let registration of registrations) {
   registration.unregister()
-} })
-</script>
-<!--<script>
-         
+} })     
   // Register the service worker
   if ('serviceWorker' in navigator) {
       // Wait for the 'load' event to not block other work
