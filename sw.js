@@ -18,8 +18,21 @@ self.addEventListener('install', (event) => {
     event.waitUntil(caches.open(cacheName).then((cache) => cache.addAll(precacheResources)));
 });
 
-self.addEventListener('activate', (event) => {
-    console.log('Service worker activate event!');
+self.addEventListener('activate', function(event) {
+
+  var cacheAllowlist = ['nextntp_v1.0.0'];
+
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (cacheAllowlist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
 });
 
 // When there's an incoming fetch request, try and respond with a precached resource, otherwise fall back to the network
