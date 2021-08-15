@@ -766,7 +766,7 @@ select {
   border-radius: var(--radius);
   border: 2px solid var(--c22);
   outline: none;
-  height: 2.8rem;
+  height: 2.7rem;
   width: 100%;
 }
 
@@ -973,8 +973,8 @@ select:hover {
   flex-grow: 1;
 }
 .sb_icon,#sb_icon_default, #sb_icon_menu span{
-  height: 2rem;
-  width: 2rem;
+  height: 2.3rem;
+  width: 2.3rem;
   border-radius: 50%;
   padding: 5px;
   display: flex;
