@@ -232,9 +232,9 @@ function modal(id){
       Object.assign(localStorage,data)
       console.log(localStorage);
       localStorage.ntp_ver = ntp_ver;
+      location.reload();
     };
     reader.readAsText(file);
-    //location.reload();
   };
     //Function to import NTP Theme
     document.getElementById('import-theme').onchange = function () {
@@ -253,9 +253,10 @@ function modal(id){
         Object.assign(localStorage,data);
         console.log(localStorage);
         localStorage.ntp_ver = ntp_ver;
+        location.reload();
       };
       reader.readAsText(file);
-      location.reload();
+      
     };
 
   //Check if user is on touch enabled device
