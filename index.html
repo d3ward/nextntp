@@ -69,6 +69,7 @@
 
 <body class="op">
   <div id="blur_bg" style="height: 100%; width: 100%; position: fixed; z-index: -100;"></div>
+  <div class="dark_bg" id="dark_bg" style="height: 100%; width: 100%; position: fixed; z-index: -100;"></div>
   <script>
     var ntp_bdy = document.body;
     //Get cached ntp_bdystyle
@@ -335,6 +336,10 @@
             <div>      
               <label>Background Blur Intensity: <span id="tg_r77v">4</span></label></div><div>
               <input type="range" min="0" max="50" value="0" class="slr_rng" id="tg_r77"> 
+            </div>
+            <div>      
+              <label>Background Brightness: <span id="tg_r777v">4</span></label></div><div>
+              <input type="range" min="50" max="150" value="100" class="slr_rng" id="tg_r777"> 
             </div>
             <div><label>Font </label>
               <select id="font-selector" onchange="f_update_font()">

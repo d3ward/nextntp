@@ -2203,3 +2203,21 @@ const tg_r77 = document.getElementById('tg_r77');
     ntp_bdy.style.setProperty("--bg-blur", tg_r77v + "px");
     save_ntpbdy();
   });
+
+  const tg_r777 = document.getElementById('tg_r777');
+  const tg_r777vs = document.getElementById('tg_r777v');
+  var tg_r777v = parseInt(ntp_bdy.style.getPropertyValue("--bg-dark").replace("%", ""));
+  tg_r777vs.innerText=tg_r777v;
+  if (isNaN(tg_r777v)) {
+    tg_r777v = 100;
+    tg_r777vs.innerText=tg_r777v;
+    ntp_bdy.style.setProperty("--bg-dark", tg_r777v + "%");
+    save_ntpbdy();
+  }
+  tg_r777.value = tg_r777v;
+  tg_r777.addEventListener("input", function () {
+    tg_r777v = parseInt(tg_r777.value);
+    tg_r777vs.innerText=tg_r777v;
+    ntp_bdy.style.setProperty("--bg-dark", tg_r777v + "%");
+    save_ntpbdy();
+  });
