@@ -767,7 +767,7 @@ select {
   border-radius: var(--radius);
   border: 2px solid var(--c22);
   outline: none;
-  height: 2.7rem;
+  height: 2.8rem;
   width: 100%;
 }
 
@@ -1047,6 +1047,7 @@ select:hover {
 .sb_wrap,.sb_preview{
   margin-top: var(--v3)!important;
   position: relative;
+  width:97%;
 }
 #sb_input,
 .sb_preview {
