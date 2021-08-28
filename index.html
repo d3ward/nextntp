@@ -376,6 +376,9 @@
               <div class="block">
               </div>
               <div>
+                <span class="_txt"><small> Custom image from file or link will be the same for both theme due to
+                  local storage limitation
+                   </small></span>
                 <div class="row flex-column bg-s" id="bg-sl">
                   <div><label for="wllp_value">Background Value Light Theme</label></div>
                   <div>
@@ -775,6 +778,17 @@
             <h4>
               <label> NTP Data</label>
             </h4>
+            <div>
+              <span id="size_used">???</span> KBs / <span id="size">???</span> KBs.
+            </div>
+            <div>
+              <progress id="size_progress" value="1035" max="5000"></progress>
+            </div>
+            <div>
+              <button id="size_calc">
+                Calculate localStorage
+              </button>
+            </div>
             <div>
               <div class="_2-col">
 

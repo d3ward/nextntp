@@ -2221,3 +2221,55 @@ const tg_r77 = document.getElementById('tg_r77');
     ntp_bdy.style.setProperty("--bg-dark", tg_r777v + "%");
     save_ntpbdy();
   });
+
+  var ls_size= localGet("ls_size");
+  const size_p= document.getElementById('size_progress');
+  function gen(n) {
+    return new Array((n * 1024) + 1).join('a')
+  }
+  function set_maxSize(){
+    var size;
+    // Determine size of localStorage if it's not set
+    if (!localStorage.getItem('ls_size')) {
+      var i = 0;
+      try {
+          // Test up to 10 MB
+          for (i = 0; i <= 10000; i += 250) {
+              localStorage.setItem('test', gen(i));
+          }
+      } catch (e) {
+          localStorage.removeItem('test');
+          localStorage.setItem('ls_size', i ? i - 250 : 0);
+      }
+    }      
+    size= localStorage.getItem('ls_size');
+    document.getElementById('size').innerHTML = size;
+    size_p.setAttribute("maxValue",size);
+  }
+  function get_usedSize(){
+    var _lsTotal = 0,
+    _xLen, _x;
+    for (_x in localStorage) {
+      if (!localStorage.hasOwnProperty(_x)) {
+          continue;
+      }
+      _xLen = ((localStorage[_x].length + _x.length) * 2);
+      _lsTotal += _xLen;
+    };
+    var total = (_lsTotal / 1024).toFixed(0);
+    document.getElementById('size_used').innerHTML =total;
+    size_p.setAttribute("value",total);
+  }
+  if(ls_size==undefined){
+    get_usedSize();
+    set_maxSize();
+  }else{
+ 
+    document.getElementById('size').innerHTML = localStorage.getItem('ls_size');
+    get_usedSize();
+  }
+  
+  document.getElementById("size_calc").onclick=()=>{
+    get_usedSize();
+    set_maxSize();
+  }
