@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "NextNTP",
+  "description": "Higly customizable and mobile friendly startpage",
+  "version": "1.0.0",
+  "chrome_url_overrides": {
+    "newtab": "blank.html"
+  },
+  "browser_action": {
+    "default_icon":"./src/png/256x256.png"
+  },
+  "icons": {
+    "20": "src/png/20x20.png",
+    "48": "src/png/48x48.png",
+    "128": "src/png/128x128.png",
+    "256": "src/png/256x256.png"
+  }
+}
