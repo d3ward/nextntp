@@ -30,6 +30,9 @@ Favicons are retrieved from
 
 News are fetched from a proxy server of Kiwi Browser
 
+## Setup Extension on Kiwi Browser
+- Download .crx or .zip
+- Go to Settings>Home Page and set to "chrome://newtab"
 
 ## Contributing
 
