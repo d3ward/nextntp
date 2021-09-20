@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "NextNTP",
   "description": "Higly customizable and mobile friendly startpage",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "chrome_url_overrides": {
     "newtab": "blank.html"
   },

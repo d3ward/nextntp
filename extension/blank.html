@@ -83,22 +83,22 @@
         <div id="dlg_tg" class="row">
           <div class="is_center">
             <figure>
-              <img id="p_tile" onerror="f_gfi()" alt="Tile Preview"><br>
+              <img id="p_tile" alt="Tile Preview"><br>
               <figcaption><b>Preview Tile</b></figcaption>
             </figure>
           </div>
           <div class="_flex-sb">
             <label for="t_ac">Auto detect logo from url</label>
-            <input class="toggle" type="checkbox" value="_blank" id="t_ac" onchange="f_sac(this,1)" checked />
+            <input class="toggle" type="checkbox" value="_blank" id="t_ac"  checked />
           </div>
           <div class="flex-column">
             <label for="i_url">Icon Url</label>
-            <input id="i_url" onpaste="f_spti(this);" onblur="f_sptt(this);" type="text" style="text-align: center;"
+            <input id="i_url" type="text" style="text-align: center;"
               disabled />
           </div>
           <div class="flex-column">
             <label for="t_url">Website address</label>
-            <input id="t_url" onkeyup="f_sptt(this);" type="text" value="https://">
+            <input id="t_url" type="text" value="https://">
           </div>
           <div class="flex-column">
             <label for="t_lab">Tile Label</label>
@@ -107,10 +107,10 @@
 
         </div>
         <div class=" is_center">
-          <button id="b_add" onclick="f_cnt()">Add</button>
-          <button id="b_add2" onclick="f_cnf()">Add</button>
-          <button id="b_save" class="btn-green" onclick="f_sedt()">Save</button>
-          <button onclick="f_dlg_close()">Close</button>
+          <button id="b_add" >Add</button>
+          <button id="b_add2">Add</button>
+          <button id="b_save" class="btn-green">Save</button>
+          <button id="b_close">Close</button>
         </div>
       </div>
     </div>
@@ -217,18 +217,18 @@
               </svg></h4>
             <div>
               <label> Text</label>
-              <div class="stt_clfrt" id="stt_cl20" onclick="f_cp_rgb(20)"></div>
-              <div class="stt_clfrt" id="stt_cld20" onclick="f_cpd_rgb(20)"></div>
+              <div class="stt_clfrt" id="stt_cl_20"></div>
+              <div class="stt_clfrt" id="stt_cld_20"></div>
             </div>
             <div>
               <label> Background </label>
-              <div class="stt_clfrt" id="stt_cl22" onclick="f_cp_rgb(21)"></div>
-              <div class="stt_clfrt" id="stt_cld22" onclick="f_cpd_rgb(21)"></div>
+              <div class="stt_clfrt" id="stt_cl_21"></div>
+              <div class="stt_clfrt" id="stt_cld_21"></div>
             </div>
             <div>
               <label> Foreground</label>
-              <div class="stt_clfrt" id="stt_cl23" onclick="f_cp_rgb(22)"></div>
-              <div class="stt_clfrt" id="stt_cld23" onclick="f_cpd_rgb(22)"></div>
+              <div class="stt_clfrt" id="stt_cl_22"></div>
+              <div class="stt_clfrt" id="stt_cld_22"></div>
             </div>
 
             <h4>
@@ -241,31 +241,31 @@
               </svg></h4>
             <div>
               <label> Background </label>
-              <div class="stt_clfrt" id="stt_cl0" onclick="f_cp_rgb(0)"></div>
-              <div class="stt_clfrt" id="stt_cld0" onclick="f_cpd_rgb(0)"></div>
+              <div class="stt_clfrt" id="stt_cl_0"></div>
+              <div class="stt_clfrt" id="stt_cld_0"></div>
             </div>
             <div>
               <label>Foreground </label>
-              <div class="stt_clfrt" id="stt_cl1" onclick="f_cp_rgb(1)"></div>
-              <div class="stt_clfrt" id="stt_cld1" onclick="f_cpd_rgb(1)"></div>
+              <div class="stt_clfrt" id="stt_cl_1" ></div>
+              <div class="stt_clfrt" id="stt_cld_1"></div>
             </div>
             <hr>
 
             <div>
               <label> Meta Theme Color </label>
-              <div class="stt_clfrt" id="sett_mtc" onclick="f_cp_mtc(0)"></div>
-              <div class="stt_clfrt" id="sett_mtc1" onclick="f_cp_mtc(1)"></div>
+              <div class="stt_clfrt" id="sett_mtc" ></div>
+              <div class="stt_clfrt" id="sett_mtc1" ></div>
             </div>
             <div>      
-              <label>Background Blur Intensity: <span id="tg_r77v">4</span></label></div><div>
+              <label for="tg_r77">Background Blur Intensity: <span id="tg_r77v">4</span></label></div><div>
               <input type="range" min="0" max="50" value="0" class="slr_rng" id="tg_r77"> 
             </div>
             <div>      
-              <label>Background Brightness: <span id="tg_r777v">4</span></label></div><div>
+              <label for="tg_r777">Background Brightness: <span id="tg_r777v">4</span></label></div><div>
               <input type="range" min="50" max="150" value="100" class="slr_rng" id="tg_r777"> 
             </div>
             <div><label>Font </label>
-              <select id="font-selector" onchange="f_update_font()">
+              <select id="font-selector">
                 <option
                   value='-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif'>
                   Default</option>
@@ -280,13 +280,12 @@
             <div>
               <label for="stt_opt0">Material Design Shadow</label>
               <input id="stt_opt0" class="toggle" type="checkbox"
-                value="rgba(0,0,0,0.25) 0px 14px 28px,rgba(0,0,0,0.22) 0px 10px 10px"
-                onchange="set_option_t(this,'none',0)" />
+                value="rgba(0,0,0,0.25) 0px 14px 28px,rgba(0,0,0,0.22) 0px 10px 10px" />
             </div>
             <div>
               <label for="stt_opt1">Widgets background blur</label>
               <input id="stt_opt1" class="toggle" type="checkbox" value="blur(5px)"
-                onchange="set_option_t(this,' ',1)" />
+                />
             </div>
 
           </div>
@@ -303,7 +302,7 @@
                   local storage limitation
                    </small></span>
                 <div class="row flex-column bg-s" id="bg-sl">
-                  <div><label for="wllp_value">Background Value Light Theme</label></div>
+                  <div><label for="wllp_value_l">Background Value Light Theme</label></div>
                   <div>
                     <input type="text" id="wllp_value_l" style="width: 100%;">
                   </div>
@@ -353,9 +352,9 @@
                   </div>
                 </div>
                 <div class="row flex-column bg-s" id="bg-sd">
-                  <div><label for="wllp_value">Background Value Dark Theme</label></div>
+                  <div><label for="wllp_value_d">Background Value Dark Theme</label></div>
                   <div>
-                    <input type="text" id="wllp_value_d" style="width: 100%;">
+                    <input type="text" id="wllp_value_d" style="width: 100%;" ar>
                   </div>
                   <div>
                     <div class="_2-col">
@@ -410,8 +409,8 @@
                     Use the slider to zoom
                   </p>
                   <div class="_2-col">
-                    <button onclick="cropCancel();">Cancel</button>
-                    <button onclick="cropResult();">Next</button>
+                    <button id="b_cc">Cancel</button>
+                    <button id="b_cr">Next</button>
                   </div>
                 </div>
               </div>
@@ -421,8 +420,8 @@
                 <div class="stage"><img src="" id="imgRes" alt="Result Cropped Background" /></div>
               </div>
               <div class="_2-col">
-                <button onclick="cropCancel();">Cancel</button>
-                <button onclick="savebg_cropped(this);">Save&Apply</button>
+                <button id="b_cc2">Cancel</button>
+                <button id="b_sbgc">Save&Apply</button>
               </div>
             </div>
           </div>
@@ -455,18 +454,18 @@
             <br>
             <div>
               <label> Widget 1</label>
-              <div class="stt_clfrt" id="stt_cl2" onclick="f_cp_rgb(2)"></div>
-              <div class="stt_clfrt" id="stt_cld2" onclick="f_cpd_rgb(2)"></div>
+              <div class="stt_clfrt" id="stt_cl_2"></div>
+              <div class="stt_clfrt" id="stt_cld_2"></div>
             </div>
             <div>
               <label> Widget 2 </label>
-              <div class="stt_clfrt" id="stt_cl6" onclick="f_cp_rgb(6)"></div>
-              <div class="stt_clfrt" id="stt_cld6" onclick="f_cpd_rgb(6)"></div>
+              <div class="stt_clfrt" id="stt_cl_6" ></div>
+              <div class="stt_clfrt" id="stt_cld_6"></div>
             </div>
             <div>
               <label> Widget 3 </label>
-              <div class="stt_clfrt" id="stt_cl16" onclick="f_cp_rgb(16)"></div>
-              <div class="stt_clfrt" id="stt_cld16" onclick="f_cpd_rgb(16)"></div>
+              <div class="stt_clfrt" id="stt_cl_16"></div>
+              <div class="stt_clfrt" id="stt_cld_16"></div>
             </div>
           </div>
 
@@ -496,14 +495,14 @@
               <label for="tg_r8">Top Margin : <span id="tg_r8v">4</span></label><input type="range" min="0" max="300"
                 value="64" class="slr_rng" id="tg_r8"></div>
             <div class="_2-col">
-              <button onclick="f_sb_lg2();"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+              <button id="b_sbfl"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd"
                     d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
                     clip-rule="evenodd"></path>
                 </svg>
                 From Link</button>
-              <label class="btn"><input type="file" id="sb_lgf" onchange="f_sb_lg1()"
+              <label class="btn"><input type="file" id="sb_lgf"
                   style="opacity: 0;position: absolute;z-index: -1;" /><svg class="_icon" fill="currentColor"
                   viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd"
@@ -524,18 +523,18 @@
             </h4>
             <div>
               <label> Background</label>
-              <div class="stt_clfrt" id="stt_cl3" onclick="f_cp_rgb(3)"></div>
-              <div class="stt_clfrt" id="stt_cld3" onclick="f_cpd_rgb(3)"></div>
+              <div class="stt_clfrt" id="stt_cl_3" ></div>
+              <div class="stt_clfrt" id="stt_cld_3"></div>
             </div>
             <div>
               <label> Text</label>
-              <div class="stt_clfrt" id="stt_cl4" onclick="f_cp_rgb(4)"></div>
-              <div class="stt_clfrt" id="stt_cld4" onclick="f_cpd_rgb(4)"></div>
+              <div class="stt_clfrt" id="stt_cl_4"></div>
+              <div class="stt_clfrt" id="stt_cld_4"></div>
             </div>
             <div>
               <label> Border </label>
-              <div class="stt_clfrt" id="stt_cl5" onclick="f_cp_rgb(5)"></div>
-              <div class="stt_clfrt" id="stt_cld5" onclick="f_cpd_rgb(5)"></div>
+              <div class="stt_clfrt" id="stt_cl_5"></div>
+              <div class="stt_clfrt" id="stt_cld_5"></div>
             </div>
             <hr><br>
             <h4> <label>Search Bar Config</label> </h4>
@@ -586,64 +585,61 @@
               </svg></h4>
             <div>
               <label> Icon Tile background</label>
-              <div class="stt_clfrt" id="stt_cl7" onclick="f_cp_rgb(7)"></div>
-              <div class="stt_clfrt" id="stt_cld7" onclick="f_cpd_rgb(7)"></div>
+              <div class="stt_clfrt" id="stt_cl_7" ></div>
+              <div class="stt_clfrt" id="stt_cld_7"></div>
             </div>
             <div>
               <label> Icon Tile Border </label>
-              <div class="stt_clfrt" id="stt_cl8" onclick="f_cp_rgb(8)"></div>
-              <div class="stt_clfrt" id="stt_cld8" onclick="f_cpd_rgb(8)"></div>
+              <div class="stt_clfrt" id="stt_cl_8"></div>
+              <div class="stt_clfrt" id="stt_cld_8" ></div>
             </div>
             <div>
               <label> Tile Label Text </label>
-              <div class="stt_clfrt" id="stt_cl9" onclick="f_cp_rgb(9)"></div>
-              <div class="stt_clfrt" id="stt_cld9" onclick="f_cpd_rgb(9)"></div>
+              <div class="stt_clfrt" id="stt_cl_9" ></div>
+              <div class="stt_clfrt" id="stt_cld_9"></div>
             </div>
             <div>
               <label> Tile Label Background </label>
-              <div class="stt_clfrt" id="stt_cl10" onclick="f_cp_rgb(10)"></div>
-              <div class="stt_clfrt" id="stt_cld10" onclick="f_cpd_rgb(10)"></div>
+              <div class="stt_clfrt" id="stt_cl_10"></div>
+              <div class="stt_clfrt" id="stt_cld_10"></div>
             </div>
             <div>
               <label> Folder Tile Background</label>
-              <div class="stt_clfrt" id="stt_cl11" onclick="f_cp_rgb(11)"></div>
-              <div class="stt_clfrt" id="stt_cld11" onclick="f_cpd_rgb(11)"></div>
+              <div class="stt_clfrt" id="stt_cl_11"></div>
+              <div class="stt_clfrt" id="stt_cld_11"></div>
             </div>
             <div>
               <label> Folder Border </label>
-              <div class="stt_clfrt" id="stt_cl12" onclick="f_cp_rgb(12)"></div>
-              <div class="stt_clfrt" id="stt_cld12" onclick="f_cpd_rgb(12)"></div>
+              <div class="stt_clfrt" id="stt_cl_12"></div>
+              <div class="stt_clfrt" id="stt_cld_12"></div>
             </div>
             <div>
               <label> Folder Label Text </label>
-              <div class="stt_clfrt" id="stt_cl13" onclick="f_cp_rgb(13)"></div>
-              <div class="stt_clfrt" id="stt_cld13" onclick="f_cpd_rgb(13)"></div>
+              <div class="stt_clfrt" id="stt_cl_13"></div>
+              <div class="stt_clfrt" id="stt_cld_13"></div>
             </div>
             <div>
               <label> Folder Label Background </label>
-              <div class="stt_clfrt" id="stt_cl14" onclick="f_cp_rgb(14)"></div>
-              <div class="stt_clfrt" id="stt_cld14" onclick="f_cpd_rgb(14)"></div>
+              <div class="stt_clfrt" id="stt_cl14" ></div>
+              <div class="stt_clfrt" id="stt_cld_14"></div>
             </div>
             <div>
               <label> Folder Background Icon </label>
-              <div class="stt_clfrt" id="stt_cl15" onclick="f_cp_rgb(15)"></div>
-              <div class="stt_clfrt" id="stt_cld15" onclick="f_cpd_rgb(15)"></div>
+              <div class="stt_clfrt" id="stt_cl_15" ></div>
+              <div class="stt_clfrt" id="stt_cld_15"></div>
             </div>
             <hr>
             <div>
               <label for="stt_opt2">Open tile in new tab </label>
-              <input id="stt_opt2" class="toggle" type="checkbox" value="_blank"
-                onchange="set_option_t(this,'_self',2)" />
+              <input id="stt_opt2" class="toggle" type="checkbox" value="_blank" />
             </div>
             <div>
               <label for="stt_opt3">Hide icon label </label>
-              <input id="stt_opt3" class="toggle" type="checkbox" value="none"
-                onchange="set_option_t(this,'inline-block',3)" />
+              <input id="stt_opt3" class="toggle" type="checkbox" value="none" />
             </div>
             <div>
               <label for="stt_opt5">Hide icon label in folder</label>
-              <input id="stt_opt5" class="toggle" type="checkbox" value="none"
-                onchange="set_option_t(this,'inline-block',5)" />
+              <input id="stt_opt5" class="toggle" type="checkbox" value="none"/>
             </div>
           </div>
         </section>
@@ -659,25 +655,25 @@
               </svg></h4>
             <div>
               <label> Background</label>
-              <div class="stt_clfrt" id="stt_cl17" onclick="f_cp_rgb(17)"></div>
-              <div class="stt_clfrt" id="stt_cld17" onclick="f_cpd_rgb(17)"></div>
+              <div class="stt_clfrt" id="stt_cl_17"></div>
+              <div class="stt_clfrt" id="stt_cld_17"></div>
             </div>
             <div>
               <label> Text</label>
-              <div class="stt_clfrt" id="stt_cl18" onclick="f_cp_rgb(18)"></div>
-              <div class="stt_clfrt" id="stt_cld18" onclick="f_cpd_rgb(18)"></div>
+              <div class="stt_clfrt" id="stt_cl_18"></div>
+              <div class="stt_clfrt" id="stt_cld_18"></div>
             </div>
             <div>
               <label> Border</label>
-              <div class="stt_clfrt" id="stt_cl19" onclick="f_cp_rgb(19)"></div>
-              <div class="stt_clfrt" id="stt_cld19" onclick="f_cpd_rgb(19)"></div>
+              <div class="stt_clfrt" id="stt_cl_19"></div>
+              <div class="stt_clfrt" id="stt_cld_19"></div>
             </div>
             <hr>
             <h4>
               <label for="newsL"> News Language</label>
             </h4>
             <div>
-              <select id="newsL" onchange="f_nsrl(1)">
+              <select id="newsL">
                 <option value="?hl=en-US&gl=US&ceid=US:en">English | United States</option>
               </select>
             </div>
@@ -686,11 +682,10 @@
             </h4>
             <div>
               <label for="stt_opt4">Compact view items </label>
-              <input id="stt_opt4" class="toggle" type="checkbox" value="150px"
-                onchange="set_option_t(this,'auto',4)" />
+              <input id="stt_opt4" class="toggle" type="checkbox" value="150px"/>
             </div>
             <hr>
-            <div><button style="width:100%;" onclick="f_nsrl(2)"><i class="fal fa-trash-alt"></i> Clean
+            <div><button id="b_cfn" style="width:100%;" ><i class="fal fa-trash-alt"></i> Clean
                 Fetched News</button>
             </div>
           </div>
@@ -751,8 +746,8 @@
             </div>
             <div>
               <div class="_2-col">
-                <button onclick="f_codef_c()">Clean</button>
-                <button onclick="f_codef_e()">Execute</button>
+                <button id="b_codec">Clean</button>
+                <button id="b_codee">Execute</button>
               </div>
             </div>
           </div>
@@ -781,7 +776,7 @@
             </div>
             <hr>
             <div class="_ta-center">
-              <span>Version 1.0.0</span><br><br>
+              <span>Version 1.0.1</span><br><br>
               <a href="https://github.com/d3ward/nextntp" class="btn" target="_blank">
                 <svg class="_icon" id="github-svg" fill="currentColor" role="img" viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg">
@@ -812,13 +807,13 @@
     <div id="wdg_2" class="wdg_ntp"></div>
     <div id="flt_btn">
       <div class="flt_acs">
-        <div class="btn" onclick="f_dlg(2)"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+        <div class="btn" id="b_newf"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg">
             <path clip-rule="evenodd"
               d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V8a2 2 0 00-2-2h-5L9 4H4zm7 5a1 1 0 00-2 0v1H8a1 1 0 000 2h1v1a1 1 0 002 0v-1h1a1 1 0 000-2h-1V9z"
               fill-rule="evenodd"></path>
           </svg> Add new folder</div>
-        <div class="btn" onclick="f_dlg(0)"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
+        <div class="btn" id="b_newt"><svg class="_icon" fill="currentColor" viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd"
               d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
