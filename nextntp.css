@@ -11,6 +11,8 @@ body {
   --bg-cw: 0px;
   --bg-ch: 0px;
   --bg-cl: #fff;
+  --bg-cd:#060609;
+  --bg-c:var(--bg-cl);
   --bg-img-l: url("./nextntpbg.svg");
   --bg-img-d: url("./nextntpbg_d.svg");
   --bg-img: var(--bg-img-l);
@@ -154,7 +156,7 @@ body {
   background-size: cover;
   background-image: var(--bg-img);
   height:100%;
-  background-color: var(--bg-cl);
+  background-color: var(--bg-c);
   
   background-attachment: fixed !important;
   opacity: 1;
@@ -203,7 +205,8 @@ body,
 }
 
 [data-theme=dark] {
-  --bg-cl:#060609;
+  
+  --bg-c: var(--bg-cd);
   --sb-img: var(--sb-img-d);
   --bg-img: var(--bg-img-d);
   --black: #060609;
@@ -987,6 +990,10 @@ select:hover {
   justify-content: center;
   box-shadow: 0 10px 30px -20px blue inset;
 }
+.sb_icon svg,#sb_icon_default svg, #sb_icon_menu span svg{
+  max-height: 2.3rem;
+}
+
 #sb_icon_default{
   position: absolute;
   top: 0;
@@ -1621,7 +1628,7 @@ select:hover {
 
 #bg_crop .block {
   background-image: var(--bg-img);
-  background-color: var(--bg-cl);
+  background-color: var(--bg-c);
   width: var(--bg-cw);
   height: var(--bg-ch);
   position: relative;

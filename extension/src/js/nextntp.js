@@ -903,11 +903,12 @@ if (wcentp) {
       ntp_bdy.style.setProperty("--sb-img-l", "url(" + dataURL + ")");
       ntp_bdy.style.setProperty("--sb-img-d", "var(--sb-img-l)");
       save_ntpbdy();
-    };
-    document.getElementById("b_sbfl").onclick= ()=>{f_sb_lg2()};
-    document.getElementById("sb_lgf").onchange=()=>{f_sb_lg1()};
+    }
     img.src = (url);
-  }
+  } 
+  document.getElementById("b_sbfl").addEventListener("click",f_sb_lg2);
+  document.getElementById("sb_lgf").addEventListener("change",f_sb_lg1);
+  document.getElementById("sb_custom_form").addEventListener("submit",function (){ return false;});
   //End of Search Bar Settings Config
 
   //Search Bar Widget Config 
