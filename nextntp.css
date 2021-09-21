@@ -21,7 +21,7 @@ body {
   --sb-img-l: url("./nextntpl.svg"); 
   --sb-img-d: url("./nextntpd.svg");
   --sb-img: var(--sb-img-l);
-  --custom-font : -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --custom-font : -apple-system, system-ui, BlinkMacSystemFont, Roboto, sans-serif;
   /****************************** COLORS ******************************/
  
   /*  Floating background  */
@@ -283,194 +283,194 @@ html {
 
 }
 
-#stt_cl0 {
+#stt_cl_0 {
   background: var(--cl0)
 }
 
-#stt_cl1 {
+#stt_cl_1 {
   background: var(--cl1)
 }
 
-#stt_cl2 {
+#stt_cl_2 {
   background: var(--cl2)
 }
 
-#stt_cl3 {
+#stt_cl_3 {
   background: var(--cl3)
 }
 
-#stt_cl4 {
+#stt_cl_4 {
   background: var(--cl4)
 }
 
-#stt_cl5 {
+#stt_cl_5 {
   background: var(--cl5)
 }
 
-#stt_cl6 {
+#stt_cl_6 {
   background: var(--cl6)
 }
 
-#stt_cl7 {
+#stt_cl_7 {
   background: var(--cl7)
 }
 
-#stt_cl8 {
+#stt_cl_8 {
   background: var(--cl8)
 }
 
-#stt_cl9 {
+#stt_cl_9 {
   background: var(--cl9)
 }
 
-#stt_cl10 {
+#stt_cl_10 {
   background: var(--cl10)
 }
 
-#stt_cl11 {
+#stt_cl_11 {
   background: var(--cl11)
 }
 
-#stt_cl12 {
+#stt_cl_12 {
   background: var(--cl12)
 }
 
-#stt_cl13 {
+#stt_cl_13 {
   background: var(--cl13)
 }
 
-#stt_cl14 {
+#stt_cl_14 {
   background: var(--cl14)
 }
 
-#stt_cl15 {
+#stt_cl_15 {
   background: var(--cl15)
 }
 
-#stt_cl16 {
+#stt_cl_16 {
   background: var(--cl16)
 }
 
-#stt_cl17 {
+#stt_cl_17 {
   background: var(--cl17)
 }
 
-#stt_cl18 {
+#stt_cl_18 {
   background: var(--cl18)
 }
-#stt_cl19 {
+#stt_cl_19 {
   background: var(--cl19)
 }
-#stt_cl20 {
+#stt_cl_20 {
   background: var(--cl20)
 }
-#stt_cl21 {
+#stt_cl_21 {
   background: var(--cl21)
 }
-#stt_cl22 {
+#stt_cl_22 {
   background: var(--cl22)
 }
-#stt_cl23 {
+#stt_cl_23 {
   background: var(--cl23)
 }
-#stt_cl24 {
+#stt_cl_24 {
   background: var(--cl24)
 }
 
-#stt_cld0 {
+#stt_cld_0 {
   background: var(--cd0)
 }
 
-#stt_cld1 {
+#stt_cld_1 {
   background: var(--cd1)
 }
 
-#stt_cld2 {
+#stt_cld_2 {
   background: var(--cd2)
 }
 
-#stt_cld3 {
+#stt_cld_3 {
   background: var(--cd3)
 }
 
-#stt_cld4 {
+#stt_cld_4 {
   background: var(--cd4)
 }
 
-#stt_cld5 {
+#stt_cld_5 {
   background: var(--cd5)
 }
 
-#stt_cld6 {
+#stt_cld_6 {
   background: var(--cd6)
 }
 
-#stt_cld7 {
+#stt_cld_7 {
   background: var(--cd7)
 }
 
-#stt_cld8 {
+#stt_cld_8 {
   background: var(--cd8)
 }
 
-#stt_cld9 {
+#stt_cld_9 {
   background: var(--cd9)
 }
 
-#stt_cld10 {
+#stt_cld_10 {
   background: var(--cd10)
 }
 
-#stt_cld11 {
+#stt_cld_11 {
   background: var(--cd11)
 }
 
-#stt_cld12 {
+#stt_cld_12 {
   background: var(--cd12)
 }
 
-#stt_cld13 {
+#stt_cld_13 {
   background: var(--cd13)
 }
 
-#stt_cld14 {
+#stt_cld_14 {
   background: var(--cd14)
 }
 
-#stt_cld15 {
+#stt_cld_15 {
   background: var(--cd15)
 }
 
-#stt_cld16 {
+#stt_cld_16 {
   background: var(--cd16)
 }
 
-#stt_cld17 {
+#stt_cld_17 {
   background: var(--cd17)
 }
 
-#stt_cld18 {
+#stt_cld_18 {
   background: var(--cd18)
 }
 
-#stt_cld19 {
+#stt_cld_19 {
   background: var(--cd19)
 }
 
-#stt_cld20 {
+#stt_cld_20 {
   background: var(--cd20)
 }
 
-#stt_cld21 {
+#stt_cld_21 {
   background: var(--cd21)
 }
-#stt_cld22{
+#stt_cld_22{
   background: var(--cd22)
 }
-#stt_cld23 {
+#stt_cld_23 {
   background: var(--cd23)
 }
-#stt_cld24 {
+#stt_cld_24 {
   background: var(--cd24)
 }
 
@@ -1028,6 +1028,7 @@ select:hover {
   border-radius: var(--radius);
   background: var(--c21);
   box-shadow: var(--o0);
+  z-index: 2;
 }
 #sb_icon_menu li {
   padding: .4rem;
