@@ -21,7 +21,7 @@ body {
   --sb-img-l: url("./nextntpl.svg"); 
   --sb-img-d: url("./nextntpd.svg");
   --sb-img: var(--sb-img-l);
-  --custom-font : -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --custom-font : -apple-system, system-ui, BlinkMacSystemFont, Roboto, sans-serif;
   /****************************** COLORS ******************************/
  
   /*  Floating background  */
@@ -1028,6 +1028,7 @@ select:hover {
   border-radius: var(--radius);
   background: var(--c21);
   box-shadow: var(--o0);
+  z-index: 2;
 }
 #sb_icon_menu li {
   padding: .4rem;

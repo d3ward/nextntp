@@ -931,6 +931,9 @@ if (wcentp) {
 
   //Search Bar Widget Config 
   if (ntp_sett.status[0]) {
+    const sb_dropdown_menu = document.getElementById("sb_icon_menu");
+    const sb_icon_default = document.getElementById("sb_icon_default");
+    const sb_custom_form = document.getElementById("sb_custom_form");
     function f_cache_sb() {
       const y = ntp_sett.order[0];
       ntp_wdg[0].cached = document.getElementById('wdg_' + y).innerHTML;
@@ -944,9 +947,7 @@ if (wcentp) {
 
     function f_setup_sb() {
       console.log("Config setup sB")
-      const sb_dropdown_menu = document.getElementById("sb_icon_menu");
-      const sb_icon_default = document.getElementById("sb_icon_default");
-      const sb_custom_form = document.getElementById("sb_custom_form");
+      
 
       function hide_dropdown() {
         sb_dropdown_menu.classList.remove('active');
