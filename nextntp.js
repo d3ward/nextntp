@@ -1165,12 +1165,8 @@ if (wcentp) {
       f_attg(newt); //Create new tile and add to grid
       f_dlg_close();
     }
-    document.getElementById("b_add").onclick = () => {
-      f_cnt()
-    };
-    document.getElementById("b_add2").onclick = () => {
-      f_cnt()
-    };
+    document.getElementById("b_add").addEventListener("click",f_cnt);
+    document.getElementById("b_add2").addEventListener("click",f_cnf);
     //Edit a tile/folder from grid
     function f_etfg(item) {
       currentEditedTile = item;
@@ -1537,7 +1533,7 @@ if (wcentp) {
           '<div id="edit_pencil" ><svg class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg></div></div>';
         tlg.parentNode.appendChild(div);
       }
-      var fldtest = document.querySelectorAll(".tlg_fld");
+      
       gridT = new Sortable(tlg, {
         group: {
           name: 'editM',
@@ -1554,12 +1550,12 @@ if (wcentp) {
         onChange: function (evt) {
           document.getElementById("edit_bin").style.background = "transparent";
           document.getElementById("edit_pencil").style.background = "transparent";
-          fldtest.forEach((el) => {
+          document.querySelectorAll(".tlg_fld").forEach((el) => {
             el.parentNode.classList.remove("fldHover");
           })
         }
       });
-
+      var fldtest =document.querySelectorAll(".tlg_fld");
       for (var i = 0; i < fldtest.length; i++) {
         new Sortable(fldtest[i], {
           group: {
@@ -1572,7 +1568,7 @@ if (wcentp) {
           onAdd: function (evt) {
             var itemEl = evt.clone;
             itemEl.parentNode.removeChild(itemEl);
-            fldtest.forEach((el) => {
+            document.querySelectorAll(".tlg_fld").forEach((el) => {
               el.parentNode.classList.remove("fldHover");
             })
             document.getElementById("edit_bin").style.background = "transparent";
@@ -1597,7 +1593,7 @@ if (wcentp) {
           document.getElementById("edit_bin").style.background = "transparent";
         },
         onChange: function (evt) {
-          fldtest.forEach((el) => {
+          document.querySelectorAll(".tlg_fld").forEach((el) => {
             el.parentNode.classList.remove("fldHover");
           })
           document.getElementById("edit_pencil").style.background = "transparent";
@@ -1617,7 +1613,7 @@ if (wcentp) {
           f_evl_gtiles();
         },
         onChange: function (evt) {
-          fldtest.forEach((el) => {
+          document.querySelectorAll(".tlg_fld").forEach((el) => {
             el.parentNode.classList.remove("fldHover");
           })
           document.getElementById("edit_bin").style.background = "transparent";
