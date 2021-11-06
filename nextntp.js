@@ -1850,7 +1850,9 @@ if (wcentp) {
       var innerDiv = document.createElement('div');
       innerDiv.className = 'news_item';
       innerDiv.id = itemID;
-      innerDiv.innerHTML = '<img src="' + image + '" class="news_img" alt="Article Source" />' +
+      var imgrender = "";
+      if(image!=null) imgrender ='<img src="' + image + '" class="news_img" alt="Article Source" />';
+      innerDiv.innerHTML = imgrender+
         '<div class="news_cnt">' +
         '<span class="news_attr"><img src="' + source_logo + '"/ alt="Article Image">&nbsp;&nbsp;&nbsp;<a href="' + link + '">' + source +
         '</a></span>' +
@@ -1875,17 +1877,28 @@ if (wcentp) {
         var source = null;
         var source_logo = null;
         var news_time = null;
-        link = article.querySelector("a.VDXfz").href;
-        title = article.querySelector("h4 a.DY5T1d").innerHTML;
-        try {
-          image = article.querySelector(".QwxBBf").src;
-        } catch {}
-        source = article.querySelector("a.wEwyrc").innerHTML;
-        source_logo = article.querySelector(".wsLqz source").src;
         news_time = {
           'a': article.querySelector(".WW6dff").getAttribute("datetime"),
           'b': article.querySelector(".WW6dff").innerHTML
         };
+        try {
+          link = article.querySelector("a.VDXfz").href;
+          title = article.querySelector("h4 a.DY5T1d").innerText;
+        } catch {(err)=>{
+          console.log(err);
+        }}
+        if(article.querySelector(".QwxBBf"))
+        image = article.querySelector(".QwxBBf").src;
+          try{
+        
+        source = article.querySelector("a.wEwyrc").innerText;
+        source_logo = article.querySelector(".wsLqz source").src;
+      
+      } catch {(err)=>{
+        console.log(err);
+      }}
+        
+        //if(image==null)image ="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIiBjbGFzcz0iaW1nLWZsdWlkIHJvdW5kZWQgbXgtYXV0byBkLWJsb2NrIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+CiAgICAgICAgICAgICAgICAgICAgPHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNjY2NjY2MiPjwvcmVjdD4KICAgICAgICAgICAgICAgICAgICA8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIyNnB4IiBmaWxsPSIjMzMzMzMzIj5ub3QgZm91bmQ8L3RleHQ+ICAgCiAgICAgICAgICAgICAgICA8L3N2Zz4KICAgICAgICAgICAgICAgIDwhLS08YSBkb3dubG9hZD0iRklMRU5BTUUucG5nIiBocmVmPSJkYXRhOmltYWdlL3BuZztiYXNlNjQsYXNkYXNkLi4uIj5Eb3dubG9hZDwvYT4tLT4="
         if (link) link = link.replace(/.+?(?=articles)/, 'https://news.google.com/');
         if (link && image && title) {
           add_gnews(title, news_time, source, source_logo, link, image);
