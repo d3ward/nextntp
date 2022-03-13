@@ -1930,6 +1930,7 @@ if (wcentp) {
               return response.text();
             })
             .then(function (answer) {
+              console.log(answer);
               render_gnews(answer);
               localStorage.cachedNewsUpdate = (Date.now() / 1000);
             }).catch(function () {
