@@ -1,0 +1,17 @@
+{
+    "NextNTP" :{
+        "title" : "NextNTP",
+    	"author": "d3ward",   
+        "description": "Simple theme , default of nextntp",
+        "preview" :"default.png",
+        "screenshots" :["default.png"],
+        "file": "nextntp_standard.json"
+    },
+    "Material": {
+        "title" : "Material",
+        "author": "d3ward",   
+        "description": "Material clean theme",
+        "preview" :"material.png",
+        "file": "nextntp_material.json"
+    }
+}

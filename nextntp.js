@@ -948,7 +948,6 @@ if (wcentp) {
     function f_setup_sb() {
       console.log("Config setup sB")
       
-
       function hide_dropdown() {
         sb_dropdown_menu.classList.remove('active');
         document.removeEventListener("click", hide_dropdown);
@@ -977,7 +976,7 @@ if (wcentp) {
       }
       document.getElementById("sb_input").addEventListener("focus", addShadow);
       document.getElementById("sb_input").addEventListener("blur", removeShadow);
-      sb_dropdown_menu.innerHTML = "";
+      document.getElementById("sb_icon_menu").innerHTML = "";
       Object.keys(ntp_sb.se).forEach((el, index) => {
         const se_status = ntp_sb.se[el];
         var se_icon = se_data_icons[el];
