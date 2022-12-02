@@ -39,9 +39,9 @@ News are fetched from a proxy server of Kiwi Browser
 If you have a suggestion or want to report a bug feel free to share it by opening an issue
 
 ## Other projects & libraries included
- - (Sortable 1.10.0-rc3)[https://sortablejs.github.io/Sortable/] (MIT License)[https://github.com/SortableJS/Sortable/blob/master/LICENSE]  | JavaScript library for reorderable drag-and-drop lists 
- - (Croppie)[http://foliotek.github.io/Croppie/] | (MIT License)[https://github.com/Foliotek/Croppie/blob/master/LICENSE] A Javascript Image Cropper  
- - (Vanilla-Picker v2.10.1)[https://vanilla-picker.js.org] | (ISC License)[https://github.com/Sphinxxxx/vanilla-picker/blob/master/LICENSE.md] A simple, easy to use vanilla JS color picker with alpha selection.
+ - [Sortable 1.10.0-rc3](https://sortablejs.github.io/Sortable/) | [MIT License](https://github.com/SortableJS/Sortable/blob/master/LICENSE) JavaScript library for reorderable drag-and-drop lists 
+ - [Croppie](http://foliotek.github.io/Croppie/) | [MIT License](https://github.com/Foliotek/Croppie/blob/master/LICENSE) A Javascript Image Cropper
+ - [Vanilla-Picker v2.10.1](https://vanilla-picker.js.org) | [ISC License](https://github.com/Sphinxxxx/vanilla-picker/blob/master/LICENSE.md) A simple, easy to use vanilla JS color picker with alpha selection.
 
 ## License
 Licensed under https://creativecommons.org/licenses/by-nc-sa/4.0/
