@@ -1,0 +1,21 @@
+/* --------------- NTP Container -------------- */
+
+#ntp_cnt
+    display: flex
+    flex-direction: column
+    padding: 0 0.5rem 0 0.5rem
+    margin: auto
+    max-width: 700px
+
+.blur_bg,
+.dark_bg
+    height: 100%
+    width: 100%
+    position: fixed
+    z-index: -100
+
+.blur_bg
+    backdrop-filter: blur(var(--bg-blur))
+
+.dark_bg
+    backdrop-filter: brightness(var(--bg-dark))

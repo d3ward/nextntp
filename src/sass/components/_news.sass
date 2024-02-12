@@ -1,0 +1,81 @@
+
+/* --------------- News Section --------------- */
+
+#newsL:focus
+    box-shadow: none
+    outline: none
+
+#newsS
+    margin: auto
+    max-width: 800px
+    height: var(--o4)
+    width: 100%
+    overflow: hidden
+
+#news
+    display: flex
+    flex-direction: column
+
+.news_item
+    transition: margin 0ms ease 0s
+    margin: 4px
+    background: var(--c17)
+    border-radius: 10px
+    width: calc(100% - 10px)
+    border: 1px solid var(--c19)
+    padding: 5px
+    display: flex
+
+.news_cnt
+    display: flex
+    flex-direction: column
+    height: 128px
+    padding: 0.5rem
+
+.news_img
+    width: 128px
+    height: 128px
+    object-fit: cover
+    border-radius: 10px
+
+.news_attr a,
+.news_title a,
+.news_time
+    color: var(--c18)
+
+.news_title
+    padding: 2px
+    height: 80px
+    overflow: hidden
+    overflow-y: scroll
+
+.news_attr,
+.news_time
+    font-size: 12px
+    opacity: 0.7
+
+.news_attr img
+    max-height: 12px
+
+.news_loading
+    display: inline-block
+    width: 64px
+    height: 64px
+
+    &:after
+        content: ' '
+        display: block
+        width: 46px
+        height: 46px
+        margin: 1px
+        border-radius: 50%
+        border: 5px solid #aaa
+        border-color: #aaa transparent #aaa transparent
+        animation: news_loading 1.2s linear infinite
+
+@keyframes news_loading
+    0%
+        transform: rotate(0deg)
+
+    100%
+        transform: rotate(360deg)

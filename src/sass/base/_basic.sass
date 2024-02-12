@@ -1,0 +1,276 @@
+*,
+*:after,
+*:before
+	box-sizing: border-box
+	border-spacing: 0
+
+body
+	-webkit-tap-highlight-color: transparent
+	--tile-txt-s: 11px
+	--content-width: calc((var(--tile-n) * (var(--tile-w) + var(--tile-m))) + 1px)
+	--bg-cw: 0px
+	--bg-ch: 0px
+	--bg-cl: #fff
+	--bg-cd: #060609
+	--bg-c: var(--bg-cl)
+	--bg-img-l: url('../assets/nextntpbg.svg')
+	--bg-img-d: url('../assets/nextntpbg_d.svg')
+	--bg-img: var(--bg-img-l)
+	--bg-blur: 0px
+	--bg-dark: 100%
+	--sb-img-l: url('../assets/nextntpl.svg')
+	--sb-img-d: url('../assets/nextntpd.svg')
+	--sb-img: var(--sb-img-l)
+	--custom-font: -apple-system, system-ui, BlinkMacSystemFont, Roboto, sans-serif
+	/****************************** COLORS ******************************/
+	/*  Floating background  */
+	--cl0: #46afdf
+	/*  Floating button icons	 */
+	--cl1: #ffffff
+	/*  Widget 1 Background */
+	--cl2: #ffffff00
+	/* Search Bar background   */
+	--cl3: #ffffff59
+	/*  Search Bar Text		 */
+	--cl4: #101010
+	/*  Search Bar border	  */
+	--cl5: #00000000
+	/* Widget 2 Background   */
+	--cl6: #ffffff59
+	/*  Tile icon background	   */
+	--cl7: #ffffff9f
+	/*  Tile icon border		  */
+	--cl8: #ffffff9f
+	/*  Tile label text		  */
+	--cl9: #101010
+	/*  Tile label background  */
+	--cl10: #ffffff9f
+	/*  Folder tile background  */
+	--cl11: #00000094
+	/* Folder tile border	*/
+	--cl12: #00000094
+	/* Folder label text	  */
+	--cl13: #ffffff
+	/* Folder label background  */
+	--cl14: #00000094
+	/* Folder background on grid view  */
+	--cl15: #00000094
+	/* Widget 3 Background  */
+	--cl16: #ffffff59
+	/* News Item Backgrosund Color		*/
+	--cl17: #ffffff9f
+	/* Text color		*/
+	--cl18: #000000
+	/* Border color	 */
+	--cl19: #ffffff9f
+	/* Settings Text */
+	--cl20: #14191f
+	/* Settings Background*/
+	--cl21: #f2f4f7
+	/* Settings Foreground*/
+	--cl22: #dde2ea
+	/* ---------------- DARK COLORS --------------- */
+	/*  Floating button background  */
+	--cd0: #46afdf
+	/*  Floating button icons	 */
+	--cd1: #101010
+	/*  Widget 1 Background */
+	--cd2: #00000000
+	/* Search Bar background   */
+	--cd3: #00000059
+	/*  Search Bar Text		 */
+	--cd4: #ffffff
+	/*  Search Bar border	  */
+	--cd5: #00000000
+	/* Widget 2 Background   */
+	--cd6: #00000059
+	/*  Tile icon background	   */
+	--cd7: #0000009f
+	/*  Tile icon border		  */
+	--cd8: #0000009f
+	/*  Tile label text		  */
+	--cd9: #ffffff
+	/*  Tile label background  */
+	--cd10: #0000009f
+	/*  Folder tile background  */
+	--cd11: #ffffff94
+	/* Folder tile border	*/
+	--cd12: #ffffff94
+	/* Folder label text	  */
+	--cd13: #101010
+	/* Folder label background  */
+	--cd14: #ffffff94
+	/* Folder background on grid view  */
+	--cd15: #ffffff94
+	/* Widget 3 Background  */
+	--cd16: #00000059
+	/* News Item Background Color		*/
+	--cd17: #14191f
+	/* Text color		*/
+	--cd18: #ffffff
+	/* Border color	 */
+	--cd19: #14191f
+	/* Settings Text */
+	--cd20: #f2f4f7
+	/* Settings Background*/
+	--cd21: #14191f
+	/* Settings Foreground*/
+	--cd22: #242e37
+	/******************************* OPTIONS *******************************/
+	/*  Material design shadow		 */
+	/* Backdrop filter */
+	--o1: blur(5px)
+	/* Tile target					 */
+	--o2: _blank
+	/*  Tile label visibility		  */
+	--o3: inline-block
+	/* News compact mode			   */
+	--o4: 150px
+	/*  Tile label folder visibility		  */
+	--o5: inline-block
+	--o6: ''
+	--o7: ''
+	--o8: ''
+	/* Search Bar Radius */
+	--v0: 10px
+	/* Search Bar Logo Size */
+	--v1: 233px
+	/* Search Bar Logo Radius */
+	--v2: ''
+	/* Search Bar Top Margin */
+	--v3: 10px
+	/* Widget Spacing */
+	--tms0: 10px
+	--tms1: 10px
+	--tms2: 10px
+	margin: 0
+	overflow-x: hidden
+	background-repeat: no-repeat
+	background-size: cover
+	background-image: var(--bg-img)
+	height: 100%
+	background-color: var(--bg-c)
+	background-attachment: fixed !important
+	opacity: 1
+	transition: opacity 0.1s ease-in
+
+body,
+[data-theme='light']
+	--black: #060609
+	--white: #f2f4f7
+	--green: #2ecc40
+	--blue: #0074d8
+	--red: #ff4132
+	--yellow: #ffcd36
+	--primary: #0074d8
+	--brd: #c4cdd5
+	--radius: 0.5rem
+	--o0: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px
+	--sb-shadow: 0px 3px 6px rgba(0, 0, 0, 0.19), 0 3px 6px rgba(0, 0, 0, 0.23)
+	--c0: var(--cl0)
+	--c1: var(--cl1)
+	--c2: var(--cl2)
+	--c3: var(--cl3)
+	--c4: var(--cl4)
+	--c5: var(--cl5)
+	--c6: var(--cl6)
+	--c7: var(--cl7)
+	--c8: var(--cl8)
+	--c9: var(--cl9)
+	--c10: var(--cl10)
+	--c11: var(--cl11)
+	--c12: var(--cl12)
+	--c13: var(--cl13)
+	--c14: var(--cl14)
+	--c15: var(--cl15)
+	--c16: var(--cl16)
+	--c17: var(--cl17)
+	--c18: var(--cl18)
+	--c19: var(--cl19)
+	--c20: var(--cl20)
+	--c21: var(--cl21)
+	--c22: var(--cl22)
+	--c23: var(--cl23)
+	--c24: var(--cl24)
+
+[data-theme='dark']
+	--bg-c: var(--bg-cd)
+	--sb-img: var(--sb-img-d)
+	--bg-img: var(--bg-img-d)
+	--black: #060609
+	--white: #f2f4f7
+	--blue: #4dacff
+	--green: #67e5a8
+	--red: #ff564d
+	--yellow: #ffd24d
+	--primary: #4dacff
+	--bg-btn: var(--primary)
+	--bg-btn-hover: inset 0 0 100px 100px #00000033
+	--brd-btn: var(--primary)
+	--c20-btn: var(--black)
+	--shadow: none
+	--o0: none
+	--sb-shadow: none
+	--c0: var(--cd0)
+	--c1: var(--cd1)
+	--c2: var(--cd2)
+	--c3: var(--cd3)
+	--c4: var(--cd4)
+	--c5: var(--cd5)
+	--c6: var(--cd6)
+	--c7: var(--cd7)
+	--c8: var(--cd8)
+	--c9: var(--cd9)
+	--c10: var(--cd10)
+	--c11: var(--cd11)
+	--c12: var(--cd12)
+	--c13: var(--cd13)
+	--c14: var(--cd14)
+	--c15: var(--cd15)
+	--c16: var(--cd16)
+	--c17: var(--cd17)
+	--c18: var(--cd18)
+	--c19: var(--cd19)
+	--c20: var(--cd20)
+	--c21: var(--cd21)
+	--c22: var(--cd22)
+	--c23: var(--cd23)
+	--c24: var(--cd24)
+
+[data-theme='light'] .light-icon,
+[data-theme='dark'] .dark-icon
+	display: block !important
+
+.theme-icon
+	display: none !important
+
+[data-theme='light'] #bg-sl,
+[data-theme='dark'] #bg-sd
+	display: block !important
+
+.bg-s
+	display: none !important
+
+body
+	font-family: var(--custom-font) !important
+	font-size: 13pt
+	scroll-behavior: smooth
+
+body,
+html
+	margin: 0
+	padding: 0
+	height: 100%
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none)
+	.wdg_ntp
+		-webkit-backdrop-filter: var(--o1)
+		backdrop-filter: var(--o1)
+
+.op
+	opacity: 0
+
+a
+	color: var(--primary)
+	text-decoration: none
+	cursor: pointer

@@ -1,0 +1,49 @@
+
+/* -------------- Floating Button ------------- */
+
+#flt_btn
+    position: fixed
+    bottom: 0
+    right: 0
+    z-index: 10
+
+.flt_trg
+    background: var(--c0)
+    color: var(--c1)
+    z-index: 1
+    float: right
+    min-width: auto
+
+.flt_acs
+    height: 0
+    visibility: hidden
+    opacity: 0
+    display: flex
+    flex-direction: column
+    margin-right: 0.6rem
+    padding: 0 0.5rem 0.5rem 0.5rem
+    border-radius: var(--radius)
+    background: var(--c21)
+    box-shadow: var(--o0)
+
+    & .btn
+        background-color: transparent
+        color: var(--c20)
+
+    .open &
+        height: auto
+        visibility: visible
+        opacity: 1
+        transition: visibility 0s, opacity 0.2s linear
+
+#flt_btn .caret-up
+    display: block
+
+#flt_btn .close
+    display: none
+
+#flt_btn.open .caret-up
+    display: none
+
+#flt_btn.open .close
+    display: block

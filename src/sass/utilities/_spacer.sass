@@ -1,0 +1,6 @@
+/* -------------- Spacer Utility -------------- */
+$values: ("0": 0,"1": 1rem, "2": 2rem, "3": 3rem, "4": 4rem)
+
+@each $name, $value in $values
+    [class*="-#{$name}"]
+        --spacer: #{$value}!important

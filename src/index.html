@@ -1,0 +1,1242 @@
+<!doctype html>
+<html lang="en">
+<!-- Copyright 2022 Eduard Ursu -->
+<!-- Licensed under https://creativecommons.org/licenses/by-nc-sa/4.0/ -->
+
+<head>
+	<meta charset="utf-8">
+	<title>NextNTP by d3ward</title>
+	<meta name="description" content="Higly customizable and mobile friendly startpage">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<link rel="shortcut icon" href="./assets/nextntp_logo.svg" type="image/x-icon">
+	<meta name="theme-color" content="#14191f">
+</head>
+
+<body class="op">
+	<!-- -------------- BG Filter --------------- -->
+	<div class="blur_bg"></div>
+	<div class="dark_bg"></div>
+	<!-- -------------- Message dialog ----------- -->
+	<div class="dialog" id="mdl" aria-labelledby="your-dialog-title-id" aria-hidden="true">
+		<!-- 2. The dialog overlay -->
+		<div class="dialog-overlay" data-a11y-dialog-hide></div>
+		<!-- 3. The actual dialog -->
+		<div role="document" class="dialog-content">
+			<!-- 4. The close button -->
+			<button type="button" data-a11y-dialog-hide aria-label="Close dialog">
+				&times;
+			</button>
+			<!-- 5. The dialog title -->
+			<h1 id="your-dialog-title-id">Your dialog title</h1>
+			<!-- 6. Dialog content -->
+			<header>
+				<div></div>
+				<button class="close-modal">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path d="M18 6 6 18M6 6l12 12" />
+					</svg>
+				</button>
+			</header>
+			<div id="mdl_cnt">
+
+			</div>
+		</div>
+	</div>
+	<!-- -------------    Support    ------------- -->
+	<div class="dialog" id="dlg_support" data-a11y-dialog="dlg_support" aria-labelledby="dlg_support-title"
+		aria-hidden="true">
+		<div class="dialog-overlay" data-a11y-dialog-hide></div>
+		<div class="dialog-content">
+			<header>
+				<h3 id="dlg_support-title"><svg xmlns="http://www.w3.org/2000/svg"
+						class="icon icon-tabler icon-tabler-coffee" width="24" height="24" viewBox="0 0 24 24"
+						stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+						stroke-linejoin="round">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+						<path
+							d="M3 14c.83 .642 2.077 1.017 3.5 1c1.423 .017 2.67 -.358 3.5 -1c.83 -.642 2.077 -1.017 3.5 -1c1.423 -.017 2.67 .358 3.5 1">
+						</path>
+						<path d="M8 3a2.4 2.4 0 0 0 -1 2a2.4 2.4 0 0 0 1 2"></path>
+						<path d="M12 3a2.4 2.4 0 0 0 -1 2a2.4 2.4 0 0 0 1 2"></path>
+						<path d="M3 10h14v5a6 6 0 0 1 -6 6h-2a6 6 0 0 1 -6 -6v-5z"></path>
+						<path d="M16.746 16.726a3 3 0 1 0 .252 -5.555"></path>
+					</svg> Support me </h3>
+				<button data-a11y-dialog-hide><svg class="w-6 h-6" id="close-icon" fill="none" stroke="currentColor"
+						viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+						</path>
+					</svg></button>
+			</header>
+			<section>
+				<div class="grid">
+					<div>
+						<h2 class="_f-center">Thank you!</h2>
+					</div>
+					<div>
+
+						<p>
+							Until now, the number of people who got interested in my projects went way beyond
+							my expectations, I'm so happy to see it grow daily! <br>
+
+							If you use any of them or find them valuable, I'll be grateful for your support!
+						</p>
+					</div>
+
+					<br><br>
+					<div>
+						<h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+								stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+								stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<circle cx="12" cy="12" r="9"></circle>
+								<path
+									d="M13.867 9.75c-.246 -.48 -.708 -.769 -1.2 -.75h-1.334c-.736 0 -1.333 .67 -1.333 1.5c0 .827 .597 1.499 1.333 1.499h1.334c.736 0 1.333 .671 1.333 1.5c0 .828 -.597 1.499 -1.333 1.499h-1.334c-.492 .019 -.954 -.27 -1.2 -.75">
+								</path>
+								<path d="M12 7v2"></path>
+								<path d="M12 15v2"></path>
+								<path d="M6 6l1.5 1.5"></path>
+								<path d="M16.5 16.5l1.5 1.5"></path>
+							</svg> Free </h3>
+					</div>
+					<div>
+						<p>You can support me for free in these ways : </p>
+						<br>
+
+						<p class="_d-flex" style="align-items: center;"> <svg xmlns="http://www.w3.org/2000/svg"
+								class="icon icon-tabler icon-tabler-share" width="24" height="24" viewBox="0 0 24 24"
+								stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+								stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<circle cx="6" cy="12" r="3"></circle>
+								<circle cx="18" cy="6" r="3"></circle>
+								<circle cx="18" cy="18" r="3"></circle>
+								<line x1="8.7" y1="10.7" x2="15.3" y2="7.3"></line>
+								<line x1="8.7" y1="13.3" x2="15.3" y2="16.7"></line>
+							</svg> &nbsp; Share the projects with others (friends, family or community)</p>
+						<p class="_d-flex" style="align-items: center;"> <svg xmlns="http://www.w3.org/2000/svg"
+								class="icon icon-tabler icon-tabler-star" width="24" height="24" viewBox="0 0 24 24"
+								stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+								stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
+								</path>
+							</svg> &nbsp; Star and follow my projects </p>
+						<p class="_d-flex" style="align-items: center;"><svg xmlns="http://www.w3.org/2000/svg"
+								class="icon icon-tabler icon-tabler-brand-github" width="24" height="24"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+								stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path
+									d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5">
+								</path>
+							</svg> &nbsp; Contribute by opening issues or making PRs</p>
+
+					</div>
+
+					<br><br>
+					<div>
+						<h3>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+								stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+								stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572">
+								</path>
+								<path
+									d="M12 6l-3.293 3.293a1 1 0 0 0 0 1.414l.543 .543c.69 .69 1.81 .69 2.5 0l1 -1a3.182 3.182 0 0 1 4.5 0l2.25 2.25">
+								</path>
+								<path d="M12.5 15.5l2 2"></path>
+								<path d="M15 13l2 2"></path>
+							</svg> Donations & Referrals
+						</h3>
+					</div>
+					<div>
+						<p>
+							Some of my projects have some costs to be kept online, which I can thankfully afford,
+							but if you feel you want to contribute, here are some ways to do so.
+						</p>
+						<br>
+						<a href="https://ko-fi.com/d3ward" class="btn btn-red" style="--red:#FF5872">
+							<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24">
+								<path fill="#fff" fill-opacity="1" stroke="#030303" stroke-opacity="1" stroke-width="1"
+									d="M21.407 9.597c-.612-3.214-3.847-3.614-3.847-3.614H3.072c-.478 0-.537.628-.537.628s-.065 5.764-.018 9.303c.13 1.908 2.048 2.103 2.048 2.103s6.545-.018 9.474-.038c1.93-.336 2.124-2.02 2.104-2.939 3.446.189 5.876-2.228 5.264-5.443zM12.65 12.36c-.986 1.144-3.175 3.13-3.175 3.13s-.096.093-.246.017c-.06-.044-.085-.07-.085-.07-.351-.347-2.667-2.4-3.194-3.112-.562-.76-.824-2.125-.072-2.92.753-.794 2.379-.854 3.454.32 0 0 1.24-1.402 2.746-.757 1.507.645 1.45 2.37.572 3.392zm4.887.377c-.734.09-1.331.022-1.331.022V8.288h1.401s1.56.433 1.56 2.076c0 1.505-.78 2.099-1.63 2.373z" />
+								<path fill="#ff2858" fill-opacity="1" fill-rule="evenodd" stroke="none"
+									stroke-linecap="round" stroke-linejoin="round" stroke-opacity="1"
+									stroke-width="7.559"
+									d="M8.158 14.456c-2.353-2.2-2.67-2.643-2.675-3.737-.002-.653.098-.92.49-1.31.405-.402.655-.49 1.398-.49.752.001 1.1.129 1.645.605l.28.245.432-.324c.537-.403.996-.568 1.578-.565.862.003 1.598.542 1.832 1.34.153.523.105.93-.179 1.54-.158.34-.527.763-1.628 1.866-.783.785-1.559 1.535-1.724 1.666l-.3.239Z"
+									paint-order="stroke markers fill" />
+							</svg>
+							Support me on Ko-fi
+						</a><br><br>
+						If, on the other hand, you are a developer, try out Railway with the below link. For every
+						referral who incurs more than $10 worth of usage and pays their first bill, I get credits to use
+						on my projects. In addition, Railway provides $5 in credit each month for free! <br>
+						<br><a href="https://railway.app?referralCode=d3ward" class="btn btn-black">
+							<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+								<title>Railway</title>
+								<path
+									d="M.113 10.27A13.026 13.026 0 000 11.48h18.23c-.064-.125-.15-.237-.235-.347-3.117-4.027-4.793-3.677-7.19-3.78-.8-.034-1.34-.048-4.524-.048-1.704 0-3.555.005-5.358.01-.234.63-.459 1.24-.567 1.737h9.342v1.216H.113v.002zm18.26 2.426H.009c.02.326.05.645.094.961h16.955c.754 0 1.179-.429 1.315-.96zm-17.318 4.28s2.81 6.902 10.93 7.024c4.855 0 9.027-2.883 10.92-7.024H1.056zM11.988 0C7.5 0 3.593 2.466 1.531 6.108l4.75-.005v-.002c3.71 0 3.849.016 4.573.047l.448.016c1.563.052 3.485.22 4.996 1.364.82.621 2.007 1.99 2.712 2.965.654.902.842 1.94.396 2.934-.408.914-1.289 1.458-2.353 1.458H.391s.099.42.249.886h22.748A12.026 12.026 0 0024 12.005C24 5.377 18.621 0 11.988 0z" />
+							</svg>
+							Railway
+						</a>
+					</div>
+
+				</div>
+			</section>
+			<footer>
+				<button data-a11y-dialog-hide>
+					Close
+				</button>
+			</footer>
+		</div>
+	</div>
+	<!-- ------------- Toast Message ------------- -->
+	<div class="toast" id="nt1" toast-pos="top">
+	</div>
+	<!-- ------------- Folder Modal -------------- -->
+	<div class="dialog" id="lrt_fl" aria-hidden="true">
+		<div class="dialog-overlay" data-a11y-dialog-hide></div>
+		<div class="dialog-content" role="document">
+			<section>
+				<div id="lrt_bfl">
+				</div>
+				<div id="fld_editA" class="edit_mode">
+					<div id="edit_bin2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+							stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+							<path stroke="none" d="M0 0h24v24H0z" />
+							<path
+								d="M4 7h16m-10 4v6m4-6v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3" />
+						</svg></div>
+					<div id="edit_out2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+							stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+							<path stroke="none" d="M0 0h24v24H0z" />
+							<path d="M12 20V10M12 20l4-4M12 20l-4-4M4 4h16" />
+						</svg></div>
+					<div id="edit_pencil2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+							stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+							<path stroke="none" d="M0 0h24v24H0z" />
+							<path d="M7 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-1" />
+							<path d="M20.385 6.585a2.1 2.1 0 0 0-2.97-2.97L9 12v3h3l8.385-8.415zM16 5l3 3" />
+						</svg></div>
+				</div>
+			</section>
+
+		</div>
+	</div>
+
+	<!-- --------- New Tile/Folder Modal --------- -->
+	<div class="dialog" id="dlg_new_tf" aria-labelledby="dlg_new_tf-title" aria-hidden="true">
+		<div class="dialog-overlay" data-a11y-dialog-hide></div>
+		<div class="dialog-content">
+			<header>
+				<h3 id="dlg_new_tf-title"> New Tile </h3>
+				<button data-a11y-dialog-hide>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path d="M18 6 6 18M6 6l12 12" />
+					</svg>
+				</button>
+			</header>
+			<section>
+				<div id="dlg_frm">
+					<div id="dlg_fl" class="grid">
+						<div class="_f-center">
+							<div class="tlg_item folder np">
+								<div class="tlg_img tlg_fld">
+									<div class="tlg_item"><a class="tile_target"><img class="tlg_img"
+												src="https://logos.kiwibrowser.com/amazon.com" alt="Example Tile">
+										</a></div>
+									<div class="tlg_item"><a class="tile_target"><img class="tlg_img"
+												src="https://logos.kiwibrowser.com/kiwibrowser.com" alt="Example Tile">
+										</a></div>
+									<div class="tlg_item"><a class="tile_target"><img class="tlg_img"
+												src="https://logos.kiwibrowser.com/github.com" alt="Example Tile">
+										</a></div>
+								</div>
+								<span id="tlg_span" class="tlg_title">Folder</span>
+							</div>
+						</div>
+						<br>
+						<div>
+							<label for="ft_lab">Folder Label</label>
+							<input id="ft_lab" type="text" placeholder="Folder name .." />
+						</div>
+					</div>
+					<div id="dlg_tg" class="grid">
+						<div class="_f-center _txt-center">
+							<figure>
+								<img id="p_tile" alt="Tile Preview" src="./assets/nextntp_logo.svg"><br>
+								<figcaption><b>Preview Tile</b></figcaption>
+							</figure>
+						</div>
+						<div class="_flex-sb">
+							<label for="t_ac">Auto detect logo from url</label>
+							<input class="toggle" type="checkbox" value="_blank" id="t_ac" checked />
+						</div>
+						<div>
+							<label for="i_url">Icon Url</label>
+
+							<input id="i_url" type="text" style="text-align: center;" disabled />
+							<div>
+								<label class="btn _mw-unset _mt-1"><input type="file" id="i_file"
+										style="opacity: 0;position: absolute;z-index: -1;" />
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+										stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2">
+										<path stroke="none" d="M0 0h24v24H0z" />
+										<path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 9l5-5 5 5M12 4v12" />
+									</svg>
+									Upload logo (max 128x128)
+								</label>
+							</div>
+
+
+
+						</div>
+						<div>
+							<label for="t_url">Website address</label>
+							<input id="t_url" type="text" placeholder="https://">
+						</div>
+						<div>
+							<label for="t_lab">Tile Label</label>
+							<input id="t_lab" type="text" placeholder="Optional" />
+						</div>
+					</div>
+					<div class=" _f-center">
+
+					</div>
+				</div>
+			</section>
+			<footer class="_f-center">
+				<button id="b_add">Add</button>
+				<button id="b_add2">Add</button>
+				<button id="b_save" class="btn-green">Save</button>
+				<button data-a11y-dialog-hide>Close</button>
+			</footer>
+		</div>
+	</div>
+
+	<!-- ------------ Settings Modal ------------- -->
+	<div class="dialog" id="dlg_st" aria-hidden="true">
+		<div class="dialog-overlay" data-a11y-dialog-hide></div>
+		<div class="dialog-content">
+			<header>
+				<button topage="#p-home">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path d="M9 21v-6a2 2 0 0 1 2-2h1.6" />
+						<path
+							d="m20 11-8-8-9 9h2v7a2 2 0 0 0 2 2h4.159M16 18a2 2 0 1 0 4 0 2 2 0 1 0-4 0M18 14.5V16M18 20v1.5M21.032 16.25l-1.299.75M16.27 19l-1.3.75M14.97 16.25l1.3.75M19.733 19l1.3.75" />
+					</svg>
+				</button>
+				<button class="btn-black theme-toggle">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="light-icon theme-icon">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path fill="currentColor" stroke="none"
+							d="M12 1.992a10 10 0 1 0 9.236 13.838c.341-.82-.476-1.644-1.298-1.31a6.5 6.5 0 0 1-6.864-10.787l.077-.08c.551-.63.113-1.653-.758-1.653h-.266l-.068-.006-.06-.002z" />
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="dark-icon theme-icon">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path fill="currentColor" stroke="none"
+							d="M12 19a1 1 0 0 1 .993.883L13 20v1a1 1 0 0 1-1.993.117L11 21v-1a1 1 0 0 1 1-1zM18.313 16.91l.094.083.7.7a1 1 0 0 1-1.32 1.497l-.094-.083-.7-.7a1 1 0 0 1 1.218-1.567l.102.07zM7.007 16.993a1 1 0 0 1 .083 1.32l-.083.094-.7.7a1 1 0 0 1-1.497-1.32l.083-.094.7-.7a1 1 0 0 1 1.414 0zM4 11a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11h1zM21 11a1 1 0 0 1 .117 1.993L21 13h-1a1 1 0 0 1-.117-1.993L20 11h1zM6.213 4.81l.094.083.7.7a1 1 0 0 1-1.32 1.497l-.094-.083-.7-.7A1 1 0 0 1 6.11 4.74l.102.07zM19.107 4.893a1 1 0 0 1 .083 1.32l-.083.094-.7.7a1 1 0 0 1-1.497-1.32l.083-.094.7-.7a1 1 0 0 1 1.414 0zM12 2a1 1 0 0 1 .993.883L13 3v1a1 1 0 0 1-1.993.117L11 4V3a1 1 0 0 1 1-1zM12 7a5 5 0 1 1-4.995 5.217L7 12l.005-.217A5 5 0 0 1 12 7z" />
+					</svg>
+					Switch Theme
+				</button>
+				<button data-a11y-dialog-hide>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path d="M18 6 6 18M6 6l12 12" />
+					</svg>
+				</button>
+			</header>
+			<section>
+				<div class="pages">
+					<section id="p-home" class="page-active">
+						<div class="flex-column">
+							<button topage="#p-general"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+									fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2">
+									<path stroke="none" d="M0 0h24v24H0z" />
+									<path
+										d="M4 10a2 2 0 1 0 4 0 2 2 0 0 0-4 0M6 4v4M6 12v8M10 16a2 2 0 1 0 4 0 2 2 0 0 0-4 0M12 4v10M12 18v2M16 7a2 2 0 1 0 4 0 2 2 0 0 0-4 0M18 4v1M18 9v11" />
+								</svg>General</button>
+							<button topage="#p-background"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+									height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+									stroke-linejoin="round" stroke-width="2">
+									<path stroke="none" d="M0 0h24v24H0z" />
+									<path
+										d="M15 8h.01M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6z" />
+									<path d="m3 16 5-5c.928-.893 2.072-.893 3 0l5 5" />
+									<path d="m14 14 1-1c.928-.893 2.072-.893 3 0l3 3" />
+								</svg> Background</button>
+							<button topage="#p-widgets"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+									fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2">
+									<path stroke="none" d="M0 0h24v24H0z" />
+									<path
+										d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM4 16a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" />
+								</svg> Widgets</button>
+							<button topage="#p-search"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+									fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2">
+									<path stroke="none" d="M0 0h24v24H0z" />
+									<path d="M3 10a7 7 0 1 0 14 0 7 7 0 1 0-14 0M21 21l-6-6" />
+								</svg> Search Bar</button>
+							<button topage="#p-tiles"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+									fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2">
+									<path stroke="none" d="M0 0h24v24H0z" />
+									<path
+										d="M4 5a1 1 0 1 0 2 0 1 1 0 1 0-2 0M11 5a1 1 0 1 0 2 0 1 1 0 1 0-2 0M18 5a1 1 0 1 0 2 0 1 1 0 1 0-2 0M4 12a1 1 0 1 0 2 0 1 1 0 1 0-2 0M11 12a1 1 0 1 0 2 0 1 1 0 1 0-2 0M18 12a1 1 0 1 0 2 0 1 1 0 1 0-2 0M4 19a1 1 0 1 0 2 0 1 1 0 1 0-2 0M11 19a1 1 0 1 0 2 0 1 1 0 1 0-2 0M18 19a1 1 0 1 0 2 0 1 1 0 1 0-2 0" />
+								</svg> Tiles Grid</button>
+							<button topage="#p-news"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+									fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2">
+									<path stroke="none" d="M0 0h24v24H0z" />
+									<path
+										d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1-4 0V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a3 3 0 0 0 3 3h11M8 8h4M8 12h4M8 16h4" />
+								</svg> News Section</button>
+							<button topage="#p-data"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+									fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2">
+									<path stroke="none" d="M0 0h24v24H0z" />
+									<path d="M4 6a8 3 0 1 0 16 0A8 3 0 1 0 4 6" />
+									<path d="M4 6v6a8 3 0 0 0 16 0V6" />
+									<path d="M4 12v6a8 3 0 0 0 16 0v-6" />
+								</svg> Backup </button>
+							<button topage="#p-about"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+									fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2">
+									<path stroke="none" d="M0 0h24v24H0z" />
+									<path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0M12 9h.01" />
+									<path d="M11 12h1v4h1" />
+								</svg>About</button>
+						</div>
+
+
+					</section>
+					<!-- General -->
+					<section id="p-general">
+						<div class="row flex-column flex-sb">
+							<h4>
+								<label>General Settings Colors</label>
+								<svg id="cl-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+									stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2">
+									<path stroke="none" d="M0 0h24v24H0z" />
+									<path fill="currentColor" stroke="none"
+										d="M12 19a1 1 0 0 1 .993.883L13 20v1a1 1 0 0 1-1.993.117L11 21v-1a1 1 0 0 1 1-1zM18.313 16.91l.094.083.7.7a1 1 0 0 1-1.32 1.497l-.094-.083-.7-.7a1 1 0 0 1 1.218-1.567l.102.07zM7.007 16.993a1 1 0 0 1 .083 1.32l-.083.094-.7.7a1 1 0 0 1-1.497-1.32l.083-.094.7-.7a1 1 0 0 1 1.414 0zM4 11a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11h1zM21 11a1 1 0 0 1 .117 1.993L21 13h-1a1 1 0 0 1-.117-1.993L20 11h1zM6.213 4.81l.094.083.7.7a1 1 0 0 1-1.32 1.497l-.094-.083-.7-.7A1 1 0 0 1 6.11 4.74l.102.07zM19.107 4.893a1 1 0 0 1 .083 1.32l-.083.094-.7.7a1 1 0 0 1-1.497-1.32l.083-.094.7-.7a1 1 0 0 1 1.414 0zM12 2a1 1 0 0 1 .993.883L13 3v1a1 1 0 0 1-1.993.117L11 4V3a1 1 0 0 1 1-1zM12 7a5 5 0 1 1-4.995 5.217L7 12l.005-.217A5 5 0 0 1 12 7z" />
+								</svg>
+								<svg id="cd-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+									stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2">
+									<path stroke="none" d="M0 0h24v24H0z" />
+									<path fill="currentColor" stroke="none"
+										d="M12 1.992a10 10 0 1 0 9.236 13.838c.341-.82-.476-1.644-1.298-1.31a6.5 6.5 0 0 1-6.864-10.787l.077-.08c.551-.63.113-1.653-.758-1.653h-.266l-.068-.006-.06-.002z" />
+								</svg>
+							</h4>
+							<div>
+								<label> Text</label>
+								<div class="stt_clfrt" id="stt_cl_20"></div>
+								<div class="stt_clfrt" id="stt_cld_20"></div>
+							</div>
+							<div>
+								<label> Background </label>
+								<div class="stt_clfrt" id="stt_cl_21"></div>
+								<div class="stt_clfrt" id="stt_cld_21"></div>
+							</div>
+							<div>
+								<label> Foreground</label>
+								<div class="stt_clfrt" id="stt_cl_22"></div>
+								<div class="stt_clfrt" id="stt_cld_22"></div>
+							</div>
+
+							<h4>
+								<label>Button Colors</label>
+								<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+									<use href="#cl-icon"></use>
+								</svg>
+								<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+									<use href="#cd-icon"></use>
+								</svg>
+							</h4>
+							<div>
+								<label> Background </label>
+								<div class="stt_clfrt" id="stt_cl_0"></div>
+								<div class="stt_clfrt" id="stt_cld_0"></div>
+							</div>
+							<div>
+								<label>Foreground </label>
+								<div class="stt_clfrt" id="stt_cl_1"></div>
+								<div class="stt_clfrt" id="stt_cld_1"></div>
+							</div>
+							<hr>
+
+							<div>
+								<label> Meta Theme Color </label>
+								<div class="stt_clfrt" id="sett_mtcl"></div>
+								<div class="stt_clfrt" id="sett_mtcd"></div>
+							</div>
+
+							<div><label>Font </label>
+								<select id="font-selector">
+									<option value="Default">Default</option>
+									<option value="Times New Roman"> Times New Roman </option>
+									<option value="Monotype Corsiva"> Monotype Corsiva </option>
+									<option value="Lucida Handwriting"> Lucida Handwriting </option>
+									<option value="Comic Sans MS"> Comic Sans MS </option>
+									<option value="Arial"> Arial </option>
+									<option value="Courier"> Courier </option>
+									<option value="Verdana"> Verdana </option>
+								</select>
+							</div>
+							<div>
+								<label for="stt_opt0">Material Design Shadow</label>
+								<input id="stt_opt0" class="toggle" type="checkbox"
+									value="rgba(0,0,0,0.25) 0px 14px 28px,rgba(0,0,0,0.22) 0px 10px 10px" />
+							</div>
+							<div>
+								<label for="stt_opt1">Widgets background blur</label>
+								<input id="stt_opt1" class="toggle" type="checkbox" value="blur(5px)" />
+							</div>
+
+						</div>
+					</section>
+					<!-- NTP Background-->
+					<section id="p-background">
+						<div class="row flex-column _p-1" id="bg_crop">
+							<h4> <label>NTP Background</label> </h4>
+							<div id="bg_pld">
+								<div class="block">
+									<div class="blur_bg"></div>
+									<div class="dark_bg"></div>
+								</div>
+								<div class="_max-500">
+									<span class="_txt"><small> Custom image from file/url will be the same for both
+											theme and limited to 2MB
+										</small></span>
+									<div class="row flex-column">
+										<div>
+											<label for="wllp_value">Background Value Theme</label>
+											<textarea type="text" id="wllp_value" style="width: 100%;"> </textarea>
+										</div>
+										<div>
+											<button id="wllp_custom"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+												height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+												stroke-linejoin="round" stroke-width="2">
+												<path stroke="none" d="M0 0h24v24H0z" />
+												<path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0" />
+												<path d="m9 12 2 2 4-4" />
+											</svg>Save custom value</button>
+										</div>
+										<div>
+											<div class="_2-col">
+												<button id="wllp_clearvalue"><svg xmlns="http://www.w3.org/2000/svg"
+														width="24" height="24" fill="none" stroke="currentColor"
+														stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+														<path stroke="none" d="M0 0h24v24H0z" />
+														<path
+															d="M20 6a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5-5a1.5 1.5 0 0 1 0-2l5-5zM12 10l4 4m0-4-4 4" />
+													</svg>Clear</button>
+													
+												<button id="wllp_bg">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+														fill="none" stroke="currentColor" stroke-linecap="round"
+														stroke-linejoin="round" stroke-width="2">
+														<path stroke="none" d="M0 0h24v24H0z" />
+														<path
+															d="M19 3h-4a2 2 0 0 0-2 2v12a4 4 0 0 0 8 0V5a2 2 0 0 0-2-2" />
+														<path
+															d="m13 7.35-2-2a2 2 0 0 0-2.828 0L5.344 8.178a2 2 0 0 0 0 2.828l9 9" />
+														<path
+															d="M7.3 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h12M17 17v.01" />
+													</svg>
+													Color</button>
+												<button id="wllp_gradient">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+														fill="none" stroke="currentColor" stroke-linecap="round"
+														stroke-linejoin="round" stroke-width="2">
+														<path stroke="none" d="M0 0h24v24H0z" />
+														<path d="M22 17c0-5.523-4.477-10-10-10S2 11.477 2 17" />
+														<path d="M18 17a6 6 0 1 0-12 0" />
+														<path d="M14 17a2 2 0 1 0-4 0" />
+													</svg> Gradient</button>
+												<label class="btn" for="wllp_file"><input type="file" id="wllp_file"
+														style="opacity: 0;position: absolute;z-index: -1;" />
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+														fill="none" stroke="currentColor" stroke-linecap="round"
+														stroke-linejoin="round" stroke-width="2">
+														<path stroke="none" d="M0 0h24v24H0z" />
+														<path
+															d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 9l5-5 5 5M12 4v12" />
+													</svg> File </label>
+												<button id="wllp_url">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+														fill="none" stroke="currentColor" stroke-linecap="round"
+														stroke-linejoin="round" stroke-width="2">
+														<path stroke="none" d="M0 0h24v24H0z" />
+														<path
+															d="m9 15 6-6M11 6l.463-.536a5 5 0 0 1 7.071 7.072L18 13M13 18l-.397.534a5.068 5.068 0 0 1-7.127 0 4.972 4.972 0 0 1 0-7.071L6 11" />
+													</svg>
+													Link</button>
+												<button id="wllp_default">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+														fill="none" stroke="currentColor" stroke-linecap="round"
+														stroke-linejoin="round" stroke-width="2">
+														<path stroke="none" d="M0 0h24v24H0z" />
+														<path d="m11 7-5 5 5 5M17 7l-5 5 5 5" />
+													</svg>Default</button>
+											</div>
+										</div>
+									</div>
+
+									<hr>
+									<div>
+										<label for="tg_r77">Background Blur Intensity: <span
+												id="tg_r77v">4</span></label>
+									</div>
+									<div>
+										<input type="range" min="0" max="50" value="0" class="slr_rng" id="tg_r77">
+									</div>
+									<div>
+										<label for="tg_r777">Background Brightness: <span id="tg_r777v">4</span></label>
+									</div>
+									<div>
+										<input type="range" min="50" max="150" value="100" class="slr_rng" id="tg_r777">
+									</div>
+								</div>
+							</div>
+							<div id="crop">
+								<div class="block">
+									<div class="stage">
+										<div id="croppie"></div>
+									</div>
+								</div>
+								<p class="_pt-4 _pb-1">Move the image to fit the area you want to crop. <br>
+									Use the slider to zoom
+								</p>
+								<div class="_2-col">
+									<button id="b_cc">Cancel</button>
+									<button id="b_cr">Next</button>
+								</div>
+							</div>
+							<div id="result">
+								<div class="block">
+									<div class="stage"><img id="imgRes" alt="Result Cropped Background" /></div>
+								</div>
+								<div class="_2-col _pt-2">
+									<button id="b_cc2">Cancel</button>
+									<button id="b_sbgc">Save&Apply</button>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!-- Widgets order and status -->
+					<section id="p-widgets">
+						<ul id="stt_lwo" class="flex-sb">
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+
+						<br>
+						<div class="grid flex-sb">
+							<h4> <label>Top Margin Spacing</label> </h4><br>
+							<div><label for="tms_r0v">Widget 1 : <span id="tms_r0v">4</span> </label></div>
+							<div><input type="range" min="-10" max="1000" value="10" class="slr_rng" id="tms_r0"></div>
+							<div><label for="tms_r1v">Widget 2 : <span id="tms_r1v">4</span> </label></div>
+							<div><input type="range" min="-10" max="1000" value="10" class="slr_rng" id="tms_r1"></div>
+							<div><label for="tms_r2v">Widget 3 : <span id="tms_r2v">4</span> </label></div>
+							<div><input type="range" min="-10" max="1000" value="10" class="slr_rng" id="tms_r2"></div>
+							<br>
+							<h4>
+								<label>Background Color</label>
+								<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+									<use href="#cl-icon"></use>
+								</svg>
+								<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+									<use href="#cd-icon"></use>
+								</svg>
+							</h4>
+							<br>
+							<div>
+								<label> Widget 1</label>
+								<div class="stt_clfrt" id="stt_cl_2"></div>
+								<div class="stt_clfrt" id="stt_cld_2"></div>
+							</div>
+							<div>
+								<label> Widget 2 </label>
+								<div class="stt_clfrt" id="stt_cl_6"></div>
+								<div class="stt_clfrt" id="stt_cld_6"></div>
+							</div>
+							<div>
+								<label> Widget 3 </label>
+								<div class="stt_clfrt" id="stt_cl_16"></div>
+								<div class="stt_clfrt" id="stt_cld_16"></div>
+							</div>
+						</div>
+
+					</section>
+					<!-- Search Bar-->
+					<section id="p-search">
+						<div class="row flex-column flex-sb">
+							<h4>
+								<label> Search Bar Logo</label>
+							</h4>
+							<br>
+							<div class="_as-center" id="sb_bg_preview">
+								<img id="sb_lgp" alt="Background Preview"></img>
+								<div class="sb_preview"></div>
+							</div>
+							<div class="flex-column">
+								<label for="tg_r6">Logo Width : <span id="tg_r6v">4</span></label>
+								<input type="range" min="0" max="300" value="64" class="slr_rng" id="tg_r6">
+							</div>
+							<div class="flex-column">
+								<label for="tg_r7">Logo Rounding : <span id="tg_r7v">4</span></label>
+								<input type="range" min="0" max="300" value="64" class="slr_rng" id="tg_r7">
+							</div>
+							<div class="flex-column"><label for="tg_r5">Input Radius : <span
+										id="tg_r5v">4</span></label><input type="range" min="0" max="25" value="8"
+									class="slr_rng" id="tg_r5"></div>
+							<div class="flex-column">
+								<label for="tg_r8">Top Margin : <span id="tg_r8v">4</span></label><input type="range"
+									min="0" max="300" value="64" class="slr_rng" id="tg_r8">
+							</div>
+							<div class="_2-col">
+								<button id="b_sbfl">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+										stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2">
+										<path stroke="none" d="M0 0h24v24H0z" />
+										<path
+											d="m9 15 6-6M11 6l.463-.536a5 5 0 0 1 7.071 7.072L18 13M13 18l-.397.534a5.068 5.068 0 0 1-7.127 0 4.972 4.972 0 0 1 0-7.071L6 11" />
+									</svg>
+									From Link</button>
+								<label class="btn"><input type="file" id="sb_lgf"
+										style="opacity: 0;position: absolute;z-index: -1;" />
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+										stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2">
+										<path stroke="none" d="M0 0h24v24H0z" />
+										<path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 9l5-5 5 5M12 4v12" />
+									</svg> From File
+								</label>
+							</div>
+							<hr><br>
+							<h4>
+								<label>Search Bar Colors</label>
+								<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+									<use href="#cl-icon"></use>
+								</svg>
+								<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+									<use href="#cd-icon"></use>
+								</svg>
+							</h4>
+							<div>
+								<label> Background</label>
+								<div class="stt_clfrt" id="stt_cl_3"></div>
+								<div class="stt_clfrt" id="stt_cld_3"></div>
+							</div>
+							<div>
+								<label> Text</label>
+								<div class="stt_clfrt" id="stt_cl_4"></div>
+								<div class="stt_clfrt" id="stt_cld_4"></div>
+							</div>
+							<div>
+								<label> Border </label>
+								<div class="stt_clfrt" id="stt_cl_5"></div>
+								<div class="stt_clfrt" id="stt_cld_5"></div>
+							</div>
+							<hr><br>
+							<h4> <label>Search Bar Config</label> </h4>
+							<br>
+							<div>
+								<ul id="stt_selist" class="flex-sb">
+								</ul>
+							</div>
+							<div>
+								<form id="sb_custom_form" class="row flex-column" style="width: 100%;">
+									<div>
+										<h3>Want to add a custom one ?</h3>
+									</div>
+									<div>
+										<label for="custom_sb_name">Name</label>
+									</div>
+									<div>
+										<input type="text" id="custom_sb_name" placeholder="MyCustomSearch" required>
+									</div>
+									<div>
+										<label for="custom_sb_query">Search Query</label>
+									</div>
+									<div>
+										<input type="url" id="custom_sb_query"
+											placeholder="https://mycustomsearch.com/search?q=" required>
+									</div>
+									<div><label>Icon Preview</label></div>
+									
+									<div>
+										<div class="sb_item"><span id="custom_sb_preview" class="sb_icon" style="background: #FF0000;"> </span></div>
+									</div>
+									<div><textarea id="custom_sb_value" placeholder="<svg fill='#fff' ..."
+										required> </textarea></div>
+									<div class="_2-col">
+										<button id="custom_sb_link">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+												<path stroke="none" d="M0 0h24v24H0z"></path>
+												<path d="m9 15 6-6M11 6l.463-.536a5 5 0 0 1 7.071 7.072L18 13M13 18l-.397.534a5.068 5.068 0 0 1-7.127 0 4.972 4.972 0 0 1 0-7.071L6 11"></path>
+											</svg>
+											From Link</button>
+										<label class="btn"><input type="file" id="custom_sb_file" style="opacity: 0;position: absolute;z-index: -1;">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+												<path stroke="none" d="M0 0h24v24H0z"></path>
+												<path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 9l5-5 5 5M12 4v12"></path>
+											</svg> From File
+										</label>
+									</div>
+									<div>
+										<button type="submit">Add Custom Search Engine</button>
+									</div>
+								</form>
+							</div>
+
+						</div>
+					</section>
+					<!-- Tiles Grid-->
+					<section id="p-tiles">
+						<div class="row flex-column flex-sb">
+							<h4>
+								<label>Grid Tile Colors</label>
+								<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+									<use href="#cl-icon"></use>
+								</svg>
+								<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+									<use href="#cd-icon"></use>
+								</svg>
+							</h4>
+							<div>
+								<label> Icon Tile background</label>
+								<div class="stt_clfrt" id="stt_cl_7"></div>
+								<div class="stt_clfrt" id="stt_cld_7"></div>
+							</div>
+							<div>
+								<label> Icon Tile Border </label>
+								<div class="stt_clfrt" id="stt_cl_8"></div>
+								<div class="stt_clfrt" id="stt_cld_8"></div>
+							</div>
+							<div>
+								<label> Tile Label Text </label>
+								<div class="stt_clfrt" id="stt_cl_9"></div>
+								<div class="stt_clfrt" id="stt_cld_9"></div>
+							</div>
+							<div>
+								<label> Tile Label Background </label>
+								<div class="stt_clfrt" id="stt_cl_10"></div>
+								<div class="stt_clfrt" id="stt_cld_10"></div>
+							</div>
+							<div>
+								<label> Folder Tile Background</label>
+								<div class="stt_clfrt" id="stt_cl_11"></div>
+								<div class="stt_clfrt" id="stt_cld_11"></div>
+							</div>
+							<div>
+								<label> Folder Border </label>
+								<div class="stt_clfrt" id="stt_cl_12"></div>
+								<div class="stt_clfrt" id="stt_cld_12"></div>
+							</div>
+							<div>
+								<label> Folder Label Text </label>
+								<div class="stt_clfrt" id="stt_cl_13"></div>
+								<div class="stt_clfrt" id="stt_cld_13"></div>
+							</div>
+							<div>
+								<label> Folder Label Background </label>
+								<div class="stt_clfrt" id="stt_cl14"></div>
+								<div class="stt_clfrt" id="stt_cld_14"></div>
+							</div>
+							<div>
+								<label> Folder Background </label>
+								<div class="stt_clfrt" id="stt_cl_15"></div>
+								<div class="stt_clfrt" id="stt_cld_15"></div>
+							</div>
+							<hr>
+							<div>
+								<label for="stt_opt2">Open tile in new tab </label>
+								<input id="stt_opt2" class="toggle" type="checkbox" value="_blank" />
+							</div>
+							<div>
+								<label for="stt_opt3">Hide icon label </label>
+								<input id="stt_opt3" class="toggle" type="checkbox" value="none" />
+							</div>
+							<div>
+								<label for="stt_opt5">Hide icon label in folder</label>
+								<input id="stt_opt5" class="toggle" type="checkbox" value="none" />
+							</div>
+						</div>
+					</section>
+					<!-- News Section-->
+					<section id="p-news">
+						<div class="row flex-column flex-sb">
+							<h4><label> News Section Colors</label>
+								<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+									<use href="#cl-icon"></use>
+								</svg>
+								<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+									<use href="#cd-icon"></use>
+								</svg>
+							</h4>
+							<div>
+								<label> Background</label>
+								<div class="stt_clfrt" id="stt_cl_17"></div>
+								<div class="stt_clfrt" id="stt_cld_17"></div>
+							</div>
+							<div>
+								<label> Text</label>
+								<div class="stt_clfrt" id="stt_cl_18"></div>
+								<div class="stt_clfrt" id="stt_cld_18"></div>
+							</div>
+							<div>
+								<label> Border</label>
+								<div class="stt_clfrt" id="stt_cl_19"></div>
+								<div class="stt_clfrt" id="stt_cld_19"></div>
+							</div>
+							<hr>
+							<h4>
+								<label for="newsL"> News Language</label>
+							</h4>
+							<div>
+								<select id="newsL">
+									<option value="?hl=en-US&gl=US&ceid=US:en">English | United States</option>
+								</select>
+							</div>
+							<h4>
+								<label> News Item Layout</label>
+							</h4>
+							<div>
+								<label for="stt_opt4">Compact view items </label>
+								<input id="stt_opt4" class="toggle" type="checkbox" value="150px" />
+							</div>
+							<hr>
+							<div><button id="b_cfn" style="width:100%;"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clear-all" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+								<path d="M8 6h12"></path>
+								<path d="M6 12h12"></path>
+								<path d="M4 18h12"></path>
+							 </svg> Clean
+									Fetched News</button>
+							</div>
+						</div>
+					</section>
+					<!-- Bakcup&Restore-->
+					<section id="p-data">
+						<div class="row flex-column _ta-center">
+							<h4>
+								<label> NTP Data</label>
+							</h4>
+							<div>
+								<span id="size_used">???</span> KBs / <span id="size">???</span> KBs.
+							</div>
+							<div>
+								<progress id="size_progress" value="1035" max="5000"></progress>
+							</div>
+							<div>
+								<button id="size_calc">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-leak" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3"></path>
+										<path d="M4 6v12c0 1.657 3.582 3 8 3s8 -1.343 8 -3v-12"></path>
+										<path d="M4 15a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1"></path>
+									 </svg>
+									Calculate localStorage
+								</button>
+							</div>
+							<div>
+								<div class="_2-col">
+									<button id="export-data">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3"></path>
+											<path d="M4 6v6c0 1.657 3.582 3 8 3c1.118 0 2.183 -.086 3.15 -.241"></path>
+											<path d="M20 12v-6"></path>
+											<path d="M4 12v6c0 1.657 3.582 3 8 3c.157 0 .312 -.002 .466 -.005"></path>
+											<path d="M16 19h6"></path>
+											<path d="M19 16l3 3l-3 3"></path>
+										 </svg>
+										Export</button>
+									<input type="file" name="file" id="import-data"
+										style="opacity: 0;position: absolute;z-index: -1;width: 1px;">
+									<label for="import-data" class="btn">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3"></path>
+											<path d="M4 6v6c0 1.657 3.582 3 8 3c.856 0 1.68 -.05 2.454 -.144m5.546 -2.856v-6"></path>
+											<path d="M4 12v6c0 1.657 3.582 3 8 3c.171 0 .341 -.002 .51 -.006"></path>
+											<path d="M19 22v-6"></path>
+											<path d="M22 19l-3 -3l-3 3"></path>
+										 </svg>Import</label>
+									<button type="submit" id="btn-res" class="btn-red"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"></path>
+										<path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"></path>
+										<path d="M12 9l0 3"></path>
+										<path d="M12 15l.01 0"></path>
+									 </svg>Reset</button>
+
+								</div>
+
+							</div>
+							<div><span>This include all user data , tiles , settings and theme </span></div>
+							<hr>
+							<h4>
+								<label>Theme Manager</label>
+							</h4>
+							<div>
+								<div class="_2-col">
+									<button id="export-theme">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M12 21l-8 -4.5v-9l8 -4.5l8 4.5v4.5"></path>
+											<path d="M12 12l8 -4.5"></path>
+											<path d="M12 12v9"></path>
+											<path d="M12 12l-8 -4.5"></path>
+											<path d="M15 18h7"></path>
+											<path d="M19 15l3 3l-3 3"></path>
+										 </svg>
+										Export theme</button>
+									<input type="file" name="file" id="import-theme"
+										style="opacity: 0;position: absolute;z-index: -1;width: 1px;">
+									<label for="import-theme" class="btn">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M12 21l-8 -4.5v-9l8 -4.5l8 4.5v4.5"></path>
+											<path d="M12 12l8 -4.5"></path>
+											<path d="M12 12v9"></path>
+											<path d="M12 12l-8 -4.5"></path>
+											<path d="M22 18h-7"></path>
+											<path d="M18 15l-3 3l3 3"></path>
+										 </svg> Import theme</label>
+								</div>
+							</div>
+
+							<div>
+								<span>This make possible the theme sharing with other users!<br> Keep your data while
+									importing cool
+									themes shared by others</span>
+							</div>
+							<hr>
+							<h4>
+								<label>Code Inject Tool</label>
+							</h4>
+							<div>
+								<textarea id="code_f" cols="30" rows="10"></textarea>
+							</div>
+							<div>
+								<div class="_2-col">
+									<button id="b_codec">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M8 6h12"></path>
+											<path d="M6 12h12"></path>
+											<path d="M4 18h12"></path>
+										 </svg>Clean</button>
+									<button id="b_codee">
+										<svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M7 4v16l13 -8z"></path>
+										 </svg>
+										 Execute</button>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!-- About-->
+					<section id="p-about">
+						<div class="flex-column">
+							<div>
+								<h2>About</h2>
+							</div>
+							<div>
+								<p>
+									Simple , powerful and customizable New Tab Page made for Kiwi Browser Community
+								</p>
+							</div>
+							<hr>
+							<div>
+								For any question , bug report , feature request : <br>
+								• Open an issue on GitHub <br>
+								• Contact me on <a href="https://discordapp.com/invite/XyMppQq" target="_blank">Kiwi
+									Browser
+									Discord</a><br>
+								• DM on Telegram(@d3ward)
+								<br>
+								<br>
+								Thanks for using this NTP and contributing on it
+							</div>
+							<hr>
+							<div class="_ta-center">
+								<span>Version 1.0.4</span><br><br>
+								<a href="https://github.com/d3ward/nextntp" class="btn" target="_blank">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+										stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+										stroke-width="2">
+										<path stroke="none" d="M0 0h24v24H0z" />
+										<path
+											d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" />
+									</svg> &nbsp; View on GitHub</a>
+								<br>
+								Icons from <a href="https://tabler-icons.io/" target="_blank">Tabler</a><br>
+								Made with &#9829; by <a href="https://d3ward.github.io" target="_blank">d3ward</a><br>
+								Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+									target="_blank">[NC-SA-4.0]</a>
+							</div>
+						</div>
+					</section>
+				</div>
+			</section>
+			
+		</div>
+	</div>
+	<!-- ---------- Color Picker Modal ----------- -->
+	<div class="dialog" id="dlg_clvn" aria-labelledby="dlg_clvn-title" aria-hidden="true">
+		<div class="dialog-overlay" data-a11y-dialog-hide></div>
+		<div class="dialog-content">
+			<header>
+				<h3 id="dlg_clvn-title"> Color Picker </h3>
+				<button data-a11y-dialog-hide>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+					stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+					<path stroke="none" d="M0 0h24v24H0z" />
+					<path d="M18 6 6 18M6 6l12 12" />
+				</svg>
+				</button>
+			</header>
+			<section>
+				<div id="cp_v"></div>
+			</section>
+			<footer class="_f-center">
+				<button data-a11y-dialog-hide>Cancel</button>
+				<button id="cp_ok">OK</button>
+			</footer>
+		</div>
+	</div>
+	<div id="ntp_cnt">
+		<!--Widgets-->
+		<div id="wdg_0" class="wdg_ntp"></div>
+		<div id="wdg_1" class="wdg_ntp"></div>
+		<div id="wdg_2" class="wdg_ntp"></div>
+		<div id="flt_btn">
+			<div class="flt_acs">
+				<div class="btn" id="b_newf">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path d="M12 19H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4l3 3h7a2 2 0 0 1 2 2v3.5M16 19h6M19 16v6" />
+					</svg>
+					Add new folder
+				</div>
+				<div class="btn" id="b_newt">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path d="M12 5v14M5 12h14" />
+					</svg> Add new tile
+				</div>
+				<div class="btn" id="fb-res">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path
+							d="m10.24 3.957-8.422 14.06A1.989 1.989 0 0 0 3.518 21h16.845a1.989 1.989 0 0 0 1.7-2.983L13.64 3.957a1.989 1.989 0 0 0-3.4 0zM12 9v4M12 17h.01" />
+					</svg>
+					Reset NTP
+				</div>
+				<div class="btn theme-toggle">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="light-icon theme-icon">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path fill="currentColor" stroke="none"
+							d="M12 1.992a10 10 0 1 0 9.236 13.838c.341-.82-.476-1.644-1.298-1.31a6.5 6.5 0 0 1-6.864-10.787l.077-.08c.551-.63.113-1.653-.758-1.653h-.266l-.068-.006-.06-.002z" />
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="dark-icon theme-icon">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path fill="currentColor" stroke="none"
+							d="M12 19a1 1 0 0 1 .993.883L13 20v1a1 1 0 0 1-1.993.117L11 21v-1a1 1 0 0 1 1-1zM18.313 16.91l.094.083.7.7a1 1 0 0 1-1.32 1.497l-.094-.083-.7-.7a1 1 0 0 1 1.218-1.567l.102.07zM7.007 16.993a1 1 0 0 1 .083 1.32l-.083.094-.7.7a1 1 0 0 1-1.497-1.32l.083-.094.7-.7a1 1 0 0 1 1.414 0zM4 11a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11h1zM21 11a1 1 0 0 1 .117 1.993L21 13h-1a1 1 0 0 1-.117-1.993L20 11h1zM6.213 4.81l.094.083.7.7a1 1 0 0 1-1.32 1.497l-.094-.083-.7-.7A1 1 0 0 1 6.11 4.74l.102.07zM19.107 4.893a1 1 0 0 1 .083 1.32l-.083.094-.7.7a1 1 0 0 1-1.497-1.32l.083-.094.7-.7a1 1 0 0 1 1.414 0zM12 2a1 1 0 0 1 .993.883L13 3v1a1 1 0 0 1-1.993.117L11 4V3a1 1 0 0 1 1-1zM12 7a5 5 0 1 1-4.995 5.217L7 12l.005-.217A5 5 0 0 1 12 7z" />
+					</svg>
+					Switch Theme
+				</div>
+				<div class="btn" id="settings-btn" data-a11y-dialog-show="dlg_st">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path
+							d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37 1 .608 2.296.07 2.572-1.065z" />
+						<path d="M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0" />
+					</svg> Settings
+				</div>
+			</div>
+			<div class="btn flt_trg " id="fb-eg">
+				<svg xmlns="http://www.w3.org/2000/svg" class="close" width="24" height="24" fill="none"
+					stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+					<path stroke="none" d="M0 0h24v24H0z" />
+					<path d="M18 6 6 18M6 6l12 12" />
+				</svg>
+				<svg class="caret-up" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+					stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+					<path stroke="none" d="M0 0h24v24H0z" />
+					<path d="m6 15 6-6 6 6" />
+				</svg>
+
+			</div>
+		</div>
+	</div>
+	<div id="incognito" style="display: none;width: 100%;height: 100vh;background:black;">
+		<div style="text-align: center;padding-top:50px;">
+			<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<g clip-path="url(#clip0)">
+					<path fill-rule="evenodd" clip-rule="evenodd"
+						d="M95.1401 45.971C95.6219 45.8376 95.5659 45.1405 95.0664 45.1135C84.2323 44.5292 73.9953 47.3209 65.3757 52.5725C63.3585 53.8012 60.7588 53.5286 58.8027 52.2054C56.0758 50.3606 52.8477 49.179 49.3316 48.9094C38.5271 48.0815 29.0963 56.1822 28.2673 67.003C27.8345 72.6516 29.8311 77.9248 33.376 81.7929C34.8788 83.4332 35.5292 85.7751 34.8394 87.8901C32.8412 94.0187 32.3176 100.964 33.6483 108.062C37.3437 127.773 53.939 141.203 70.7144 138.058C87.4898 134.912 98.0933 116.384 94.3979 96.6726C91.6353 81.9384 81.6652 70.7141 69.7997 67.299C68.3793 66.8901 67.3087 65.678 66.9893 64.2347C66.7093 62.9704 67.0213 61.6294 67.9893 60.7692C75.7084 53.9099 84.9695 48.7876 95.1401 45.971ZM51.8323 64.3852C53.1378 64.4854 54.277 63.5082 54.3769 62.203C54.477 60.8975 53.4998 59.7582 52.1947 59.6584C50.8892 59.5582 49.7499 60.5354 49.6501 61.8406C49.5499 63.1461 50.5271 64.2854 51.8323 64.3852Z"
+						fill="#FCFCFC" />
+					<g clip-path="url(#clip1)">
+						<path fill-rule="evenodd" clip-rule="evenodd"
+							d="M28.585 128.374C20.8763 127.215 22.6562 112.624 33.9249 84.6006L25.001 74.0594L77.993 63.6002L76.713 77.6802L101.545 128.374C56.3708 128.502 32.0508 128.502 28.585 128.374Z"
+							fill="#282828" />
+						<path
+							d="M61.2577 54.8984C63.4052 58.3864 62.0174 63.0597 58.167 65.347C54.3054 67.6357 49.4483 66.6702 47.3057 63.1836L43.6911 65.329L37.6668 69.3039L36.3443 70.0942L34.4536 67.0145L59.8463 51.6531L62.6219 53.8723L61.2577 54.8984Z"
+							fill="#282828" />
+						<path
+							d="M25.5186 53.2518C25.5186 53.2518 23.2696 48.9387 27.8365 46.1888C28.6942 45.1947 36.5809 40.4399 38.0661 40.0177C42.6379 37.2615 45.8734 40.977 45.8734 40.977L50.0083 45.793L28.5036 58.7766L25.5186 53.2518Z"
+							fill="#282828" />
+						<path
+							d="M66.2943 44.2549L20.4111 72.8977C19.5555 73.4257 18.4751 73.2476 18 72.4949L28.5037 58.7766L48.3736 45.793L66.9405 41.9342C67.4407 42.6848 67.1388 43.7213 66.2943 44.2549Z"
+							fill="#282828" />
+						<path d="M28.752 58.1227C37.1993 55.1794 44.3979 50.1846 49.232 45.8347" stroke="white"
+							stroke-miterlimit="3" stroke-linecap="square" />
+					</g>
+				</g>
+				<defs>
+					<clipPath id="clip0">
+						<rect width="128" height="128" fill="white" />
+					</clipPath>
+					<clipPath id="clip1">
+						<rect width="128" height="128" fill="white" />
+					</clipPath>
+				</defs>
+			</svg>
+			<br />
+			<span style="color: #fff;">
+				<h2>Private mode</h2>
+			</span>
+		</div>
+	</div>
+</body>
+
+</html>

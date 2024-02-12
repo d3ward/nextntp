@@ -1,8 +1,8 @@
 export function pagesRoute() {
+  const t = this
   const link = Array.from(document.querySelectorAll('[topage]'))
-  if (link) {
-    const navigate = (id) => {
-      var activePage = document.querySelector('section.page-active')
+  t.navigate = (id) => {
+		var activePage = document.querySelector('section.page-active')
       var activeLink = document.querySelector('[topage].active')
       if (activePage) activePage.classList.remove('page-active')
       if (activeLink) activeLink.classList.remove('active')
@@ -10,11 +10,12 @@ export function pagesRoute() {
       var nextLink = document.querySelector("[topage='" + id + "']")
       if (nextPage) nextPage.classList.add('page-active')
       if (nextLink) nextLink.classList.add('active')
-    }
+	}
+  if (link) {
     link.forEach(function (page) {
       var id = page.getAttribute('topage')
       page.addEventListener('click', function () {
-        navigate(id)
+        t.navigate(id)
       })
     })
   }

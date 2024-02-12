@@ -1,0 +1,67 @@
+
+/* --------------- Toast Message -------------- */
+
+.toast
+	position: fixed
+	z-index: 9999
+	top: 0
+	padding: 0.5rem
+	display: flex
+	flex-direction: column-reverse
+	align-items: center
+	justify-content: center
+	gap: 0.5rem
+	width: 100%
+
+	&-item
+		max-inline-size: min(25ch, 90vw)
+		border-radius: var(--radius)
+		color: var(--toast-txt)
+		background: var(--toast-bg)
+		--toast-bg: var(--primary)
+		--_duration: 3s
+		--_travel-distance: -5vh
+		will-change: transform
+		display: flex
+		gap: 0.5rem
+		justify-content: center
+		align-items: center
+		flex: 1
+		padding: 1rem
+		box-shadow: var(--shadow)
+		-webkit-animation: toast-in 500ms ease forwards 1
+		animation: toast-in 500ms ease forwards 1
+
+	&-item.success
+		--toast-bg: var(--green)
+		--toast-txt: var(--c21)
+
+	&-item.error
+		--toast-bg: var(--red)
+		--toast-txt: var(--c20)
+
+	&-item.warn
+		--toast-bg: var(--yellow)
+		--toast-txt: var(--c21)
+
+	&-item.info
+		--toast-bg: var(--blue)
+		--toast-txt: var(--c20)
+
+	&-item-out
+		-webkit-animation: toast-out 0.3s ease
+		animation: toast-out 0.3s ease
+
+	&-item > svg
+		height: 20px
+		width: 20px
+
+@keyframes toast-out
+	to
+		transform: translateY(var(--_travel-distance))
+		opacity: 0
+
+@keyframes toast-in
+	from
+		transform: translateY(var(--_travel-distance))
+		opacity: 0
