@@ -1890,36 +1890,58 @@ if (is_incognito()) {
         }
         //Function to render news ( get news from gnews )
         function render_gnews(answer) {
-            let parser = new DOMParser();
-            const doc = parser.parseFromString(answer, 'text/html');
-            const articles = doc.querySelectorAll('article');
+            let parser = new DOMParser()
+            const doc = parser.parseFromString(answer, 'text/html')
+            const articles = doc.querySelectorAll('article')
             const urlChecklist = []
             var news_time = null
-            
-            articles.forEach(function(node) {
-                var item = parser.parseFromString(node.innerHTML, 'text/html');
+
+            articles.forEach(function (node) {
+                var item = parser.parseFromString(node.innerHTML, 'text/html')
                 news_time = {
-                    a: item
-                        .querySelector('.WW6dff')
-                        .getAttribute('datetime'),
+                    a: item.querySelector('.WW6dff').getAttribute('datetime'),
                     b: item.querySelector('.WW6dff').innerHTML
                 }
-                const link = (item.querySelector('a[href^="./article"]').href).replace('./', 'https://news.google.com/').replace('http://localhost:3000/','https://news.google.com/') || false
+                var link = item.querySelector('a[href^="./article"]').href
+                if (link)
+                    link = link.replace(
+                        window.location.origin,
+                        'https://news.google.com'
+                    )
                 link && urlChecklist.push(link)
                 console.log(link, link)
-                var image =item.querySelector('figure');
+                var image = item.querySelector('figure')
+                if (image.querySelector('img').src) {
+                    let imageSRC = image.querySelector('img').src
+
+                    if (imageSRC)
+                        imageSRC = imageSRC.replace(
+                            window.location.origin,
+                            'https://news.google.com'
+                        )
+                    console.log('imageSRC', imageSRC)
+                    image = imageSRC
+                }
                 const mainArticle = {
-                "title": item.querySelector('h4 a.DY5T1d').innerText,
-                "link": link,
-                "image":(image)?(image.querySelector('img').src).replace('./', 'https://news.google.com/').replace('http://localhost:3000/','https://news.google.com/') : false,
-                "source": (item.querySelector('div.wsLqz > a'))?item.querySelector('div.wsLqz > a').innerText: false,
-                "source_image": (item.querySelector('div.wsLqz > img'))?item.querySelector('div.wsLqz > img').src : false,
-                "time": (item.querySelector('time'))?item.querySelector('time').innerText :false,
-                
-                "related": []
+                    title: item.querySelector('h4')
+                        ? item.querySelector('h4').innerText
+                        : item.querySelector('h5')
+                        ? item.querySelector('h5').innerText
+                        : false,
+                    link: link,
+                    image: image,
+                    source: item.querySelector('a.wEwyrc')
+                        ? item.querySelector('a.wEwyrc').innerText
+                        : false,
+                    source_image: item.querySelector('div.wsLqz > img')
+                        ? item.querySelector('div.wsLqz > img').src
+                        : false,
+                    time: item.querySelector('time')
+                        ? item.querySelector('time').innerText
+                        : false
                 }
                 console.log(mainArticle)
-                if(mainArticle.title && mainArticle.link){
+                if (mainArticle.title && mainArticle.link) {
                     add_gnews(
                         mainArticle.title,
                         news_time,
@@ -1932,7 +1954,7 @@ if (is_incognito()) {
             })
             //el.baseURI = newsServer;
             loadingSVG.remove()
-            
+
             fc_ns() //Cache the news items
         }
         console.log('News locale is ' + localStorage.newsLe)
@@ -1952,7 +1974,7 @@ if (is_incognito()) {
                 try {
                     fetch(newsServer + localStorage.newsLe, {
                         method: 'GET',
-                        mode: 'cors',
+                        mode: 'cors'
                     })
                         .then(function (response) {
                             if (response.url.includes('&ceid=')) {
@@ -2383,11 +2405,11 @@ if (is_incognito()) {
     })
     dlg_color_picker.on('hide', () => {
         try {
-            picker.setColor('#00000000', true);
+            picker.setColor('#00000000', true)
         } catch (error) {
-            console.error(`Failed to reset color: ${error}`);
+            console.error(`Failed to reset color: ${error}`)
         }
-        current_color = initial_color;
+        current_color = initial_color
     })
 
     picker.onChange = (color) => {
@@ -2395,7 +2417,14 @@ if (is_incognito()) {
     }
     // Log the color value when clicking the OK button
     document.getElementById('cp_ok').addEventListener('click', () => {
-        console.log(' OK - cp_type : ', cp_type, ' cp number: ', cp_current_el, " color : ",current_color)
+        console.log(
+            ' OK - cp_type : ',
+            cp_type,
+            ' cp number: ',
+            cp_current_el,
+            ' color : ',
+            current_color
+        )
         if (cp_type == 'color_cl' || cp_type == 'color_cld') {
             ntp_bdy.style.setProperty(
                 '--c' + (cp_type == 'color_cl' ? 'l' : 'd') + cp_current_el,
