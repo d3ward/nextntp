@@ -1890,73 +1890,49 @@ if (is_incognito()) {
         }
         //Function to render news ( get news from gnews )
         function render_gnews(answer) {
-            var el = document.createElement('div')
-            el.style.display = 'none'
-            //el.baseURI = newsServer;
-            el.innerHTML = answer.replace(new RegExp('<img', 'gi'), '<source')
-            var articles = el.getElementsByTagName('article')
-            loadingSVG.remove()
-            for (var i = articles.length - 1; i > 0; i--) {
-                var article = articles[i]
-                var title = null
-                var link = null
-                var image = null
-                var source = null
-                var source_logo = null
-                var news_time = null
+            let parser = new DOMParser();
+            const doc = parser.parseFromString(answer, 'text/html');
+            const articles = doc.querySelectorAll('article');
+            const urlChecklist = []
+            var news_time = null
+            
+            articles.forEach(function(node) {
+                var item = parser.parseFromString(node.innerHTML, 'text/html');
                 news_time = {
-                    a: article
+                    a: item
                         .querySelector('.WW6dff')
                         .getAttribute('datetime'),
-                    b: article.querySelector('.WW6dff').innerHTML
+                    b: item.querySelector('.WW6dff').innerHTML
                 }
-                try {
-                    link = article.querySelector('a.VDXfz').href
-                    title = article.querySelector('h4 a.DY5T1d').innerText
-                } catch {
-                    ;(err) => {
-                        console.log(err)
-                    }
+                const link = (item.querySelector('a[href^="./article"]').href).replace('./', 'https://news.google.com/').replace('http://localhost:3000/','https://news.google.com/') || false
+                link && urlChecklist.push(link)
+                console.log(link, link)
+                var image =item.querySelector('figure');
+                const mainArticle = {
+                "title": item.querySelector('h4 a.DY5T1d').innerText,
+                "link": link,
+                "image":(image)?(image.querySelector('img').src).replace('./', 'https://news.google.com/').replace('http://localhost:3000/','https://news.google.com/') : false,
+                "source": (item.querySelector('div.wsLqz > a'))?item.querySelector('div.wsLqz > a').innerText: false,
+                "source_image": (item.querySelector('div.wsLqz > img'))?item.querySelector('div.wsLqz > img').src : false,
+                "time": (item.querySelector('time'))?item.querySelector('time').innerText :false,
+                
+                "related": []
                 }
-
-                if (article.querySelector('.QwxBBf')){
-                    let imageSRC = article.querySelector('.QwxBBf').src
-                    
-                    if (imageSRC)
-                    imageSRC = imageSRC.replace(
-                        window.location.origin,
-                        'https://news.google.com'
-                    )
-                    console.log("imageSRC",imageSRC)
-                    image = imageSRC
-                }
-                   
-                try {
-                    source = article.querySelector('a.wEwyrc').innerText
-                    source_logo = article.querySelector('.wsLqz source').src
-                } catch {
-                    ;(err) => {
-                        console.log(err)
-                    }
-                }
-
-                //if(image==null)image ="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIiBjbGFzcz0iaW1nLWZsdWlkIHJvdW5kZWQgbXgtYXV0byBkLWJsb2NrIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCI+CiAgICAgICAgICAgICAgICAgICAgPHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNjY2NjY2MiPjwvcmVjdD4KICAgICAgICAgICAgICAgICAgICA8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9Im1vbm9zcGFjZSIgZm9udC1zaXplPSIyNnB4IiBmaWxsPSIjMzMzMzMzIj5ub3QgZm91bmQ8L3RleHQ+ICAgCiAgICAgICAgICAgICAgICA8L3N2Zz4KICAgICAgICAgICAgICAgIDwhLS08YSBkb3dubG9hZD0iRklMRU5BTUUucG5nIiBocmVmPSJkYXRhOmltYWdlL3BuZztiYXNlNjQsYXNkYXNkLi4uIj5Eb3dubG9hZDwvYT4tLT4="
-                if (link)
-                    link = link.replace(
-                        /.+?(?=articles)/,
-                        'https://news.google.com/'
-                    )
-                if (link && image && title) {
+                console.log(mainArticle)
+                if(mainArticle.title && mainArticle.link){
                     add_gnews(
-                        title,
+                        mainArticle.title,
                         news_time,
-                        source,
-                        source_logo,
-                        link,
-                        image
+                        mainArticle.source,
+                        mainArticle.source_image,
+                        mainArticle.link,
+                        mainArticle.image
                     )
                 }
-            }
+            })
+            //el.baseURI = newsServer;
+            loadingSVG.remove()
+            
             fc_ns() //Cache the news items
         }
         console.log('News locale is ' + localStorage.newsLe)
@@ -1976,7 +1952,7 @@ if (is_incognito()) {
                 try {
                     fetch(newsServer + localStorage.newsLe, {
                         method: 'GET',
-                        mode: 'cors'
+                        mode: 'cors',
                     })
                         .then(function (response) {
                             if (response.url.includes('&ceid=')) {
