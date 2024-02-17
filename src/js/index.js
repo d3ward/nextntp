@@ -1910,17 +1910,17 @@ if (is_incognito()) {
                     )
                 link && urlChecklist.push(link)
                 console.log(link, link)
-                var image = item.querySelector('figure')
-                if (image.querySelector('img').src) {
-                    let imageSRC = image.querySelector('img').src
-
+                var imageSRC = null
+                const image = item.querySelector('figure> img')||item.querySelector('.Quavad')
+                console.log(image)
+                if (image) {
+                    imageSRC = image.src
                     if (imageSRC)
                         imageSRC = imageSRC.replace(
                             window.location.origin,
                             'https://news.google.com'
                         )
                     console.log('imageSRC', imageSRC)
-                    image = imageSRC
                 }
                 const mainArticle = {
                     title: item.querySelector('h4')
@@ -1929,7 +1929,7 @@ if (is_incognito()) {
                         ? item.querySelector('h5').innerText
                         : false,
                     link: link,
-                    image: image,
+                    image: imageSRC,
                     source: item.querySelector('a.wEwyrc')
                         ? item.querySelector('a.wEwyrc').innerText
                         : false,
