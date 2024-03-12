@@ -1,0 +1,4 @@
+{
+    "ntp_mtc": { "light": "#4ca3ef", "dark": "#4ca3ef" },
+    "ntp_bdy": "--tms0: 10px; --tms1: 10px; --tms2: 10px; --v0: 10px; --v2: 8px; --v3: 10px; --v1: 230px; --tile-n: 8; --tile-w: 64px; --tile-m: 10px; --tile-r: 32px; --bg-cw: 597.3333333333334px; --bg-ch: 319.3333333333333px; --bg-blur: 0px; --bg-dark: 100%; overflow: hidden;"
+}

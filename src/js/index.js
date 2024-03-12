@@ -87,11 +87,11 @@ const safeData = [
     'ntp_sb',
     'newsLe',
     'ntp_wdg',
-    'theme',
+    'ntp_theme',
     'ntp_bdy',
     'ntp_mtc'
 ]
-const safeDataT = ['theme', 'ntp_bdy', 'ntp_mtc']
+const safeDataT = ['ntp_theme', 'ntp_bdy', 'ntp_mtc']
 //Function to export NTP settings and widgets
 document.getElementById('export-data').onclick = function () {
     //Create a copy of localstorage
@@ -243,7 +243,7 @@ if (is_incognito()) {
     document.getElementById('incognito').style.display = 'inline'
     document.getElementById('ntp_cnt').style.display = 'none'
 } else {
-    var ntp_ver = '3.7.0'
+    var ntp_ver = '2.0.0'
     var orderListChanged = 0
     theme()
 

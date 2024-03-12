@@ -1,0 +1,6 @@
+<svg id="visual" viewBox="0 0 540 960" width="540" height="960"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+    <rect x="0" y="0" width="540" height="960" fill="#ECEFF4"></rect>
+    <path d="M0 832L60 856L120 806L180 633L240 720L300 708L360 820L420 835L480 883L540 622L540 961L480 961L420 961L360 961L300 961L240 961L180 961L120 961L60 961L0 961Z" fill="#3B4252"></path>
+</svg>

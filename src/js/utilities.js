@@ -15,10 +15,12 @@ export function ls_get(key) {
   try {
     return JSON.parse(value);
   } catch (error) {
+    if (value && typeof value === 'string') {
+        return value;
+    }
     console.error('Error parsing value from local storage:', error);
-    // Return the original string value if parsing fails
-    return value;
-  }
+    return null; // or some other default/fallback value
+}
 }
 //Function that return random gradient
 
