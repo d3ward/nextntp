@@ -129,8 +129,8 @@ body
 	--o4: 150px
 	/*  Tile label folder visibility		  */
 	--o5: inline-block
-	--o6: 'flex'
-	--o7: 'initial'
+	--o6: flex
+	--o7: true
 	/* Search Bar Radius */
 	--v0: 10px
 	/* Search Bar Logo Size */
@@ -262,13 +262,13 @@ html
 	padding: 0
 	height: 100%
 
-*,
-*::before,
-*::after 
-	animation: var(--o7) !important
-	animation-duration: var(--o7)!important
-	transition: var(--o7)!important
-	transition-duration: var(--o7)!important
+.no-animations *,
+.no-animations *::before,
+.no-animations *::after 
+	animation: none !important
+	animation-duration: none!important
+	transition: none!important
+	transition-duration: none!important
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none)
 	.wdg_ntp

@@ -357,20 +357,27 @@ if (is_incognito()) {
     //Config Settings page
 
     var targetBlank = getComputedStyle(ntp_bdy).getPropertyValue('--o2')
+    var disableAnimations = getComputedStyle(ntp_bdy).getPropertyValue('--o7')
     var pages = new pagesRoute()
 
-    ntp_bdy.classList.remove('op')
     //Load settings option status and value
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 8; i++) {
         var a = document.getElementById('stt_opt' + i)
         var b = getComputedStyle(ntp_bdy).getPropertyValue('--o' + i)
         if (i == 2) {
             var ar = document.getElementsByClassName('tile_target')
             for (var z = 0; z < ar.length; z++) ar[z].target = b
         }
+        if (i == 7) {
+            console.log(disableAnimations)
+            if (disableAnimations.toString() == 'true')
+                document.documentElement.classList.add('no-animations')
+            else document.documentElement.classList.remove('no-animations')
+        }
         if (f_trim(a.value.toString()) == f_trim(b.toString())) a.checked = true
         else a.checked = false
     }
+    ntp_bdy.classList.remove('op')
     //Function to set options with toggle
     function set_option_t(t, f, i) {
         //console.log('status :' +t.checked +' value : ' +t.value +' if false : ' +f +', index ' +i)
@@ -379,6 +386,16 @@ if (is_incognito()) {
         if (i == 2) {
             if (targetBlank == '_self') setTileTarget('_blank')
             else setTileTarget('_self')
+        }
+        if (i == 7) {
+            if (disableAnimations.toString() == 'true') {
+                document.documentElement.classList.remove('no-animations')
+                disableAnimations = false
+            } else {
+
+                document.documentElement.classList.add('no-animations')
+                disableAnimations = true
+            }
         }
         save_ntpbdy()
     }
@@ -405,7 +422,7 @@ if (is_incognito()) {
         set_option_t(this, 'flex', 6)
     })
     document.getElementById('stt_opt7').addEventListener('click', function () {
-        set_option_t(this, 'initial', 7)
+        set_option_t(this, false, 7)
     })
     //Font Changer
     const fs_value = getComputedStyle(ntp_bdy).getPropertyValue('--custom-font')
@@ -537,9 +554,12 @@ if (is_incognito()) {
         })
         f_cache_sb()
     }
-    document.getElementById('custom_sb_name').addEventListener("blur", function(){
-        document.getElementById('custom_sb_preview_i').placeholder = "Search with "+this.value
-    })
+    document
+        .getElementById('custom_sb_name')
+        .addEventListener('blur', function () {
+            document.getElementById('custom_sb_preview_i').placeholder =
+                'Search with ' + this.value
+        })
     sb_custom_submit.addEventListener('click', (e) => {
         var name = f_trim(document.getElementById('custom_sb_name').value)
         var query = f_trim(document.getElementById('custom_sb_query').value)
@@ -865,14 +885,16 @@ if (is_incognito()) {
             var reader = new FileReader()
             reader.onload = function (e) {
                 if (file.type === 'image/svg+xml') {
-                    console.log("type svg:" + e.target.result)
+                    console.log('type svg:' + e.target.result)
                     c_sb_value.value = '<img src="' + e.target.result + '"/>'
                     c_sb_preview.innerHTML = c_sb_value.value
                 } else if (file.type.match('image.*')) {
                     var img = new Image()
                     img.onload = function () {
                         if (img.width > 128 || img.height > 128) {
-                            alert('Image size should not exceed 128x128 pixels.')
+                            alert(
+                                'Image size should not exceed 128x128 pixels.'
+                            )
                             return
                         }
                         c_sb_value.value =
@@ -892,7 +914,7 @@ if (is_incognito()) {
 
     function f_custom_sb2() {
         var url = prompt('Enter URL of the icon', '')
-        if(!url) return
+        if (!url) return
         var img = new Image()
         img.crossOrigin = 'Anonymous'
         img.onload = function (e) {
@@ -932,7 +954,7 @@ if (is_incognito()) {
 
     function f_sb_lg2() {
         var url = prompt('Enter url of the wallpaper .', '')
-        if(!url) return
+        if (!url) return
         var img = new Image()
         img.crossOrigin = 'Anonymous'
         img.onload = function (e) {
@@ -2401,7 +2423,7 @@ if (is_incognito()) {
         dlg_color_picker.show()
     }
     function f_cp_sb() {
-        cp_type = 'sb_preview_c' 
+        cp_type = 'sb_preview_c'
         let color = getComputedStyle(ntp_bdy).getPropertyValue('--sb_preview_c')
         picker.setColor(color, true)
         dlg_color_picker.show()
@@ -2448,11 +2470,8 @@ if (is_incognito()) {
                 '--c' + (cp_type == 'color_cl' ? 'l' : 'd') + cp_current_el,
                 current_color
             )
-        } else if(cp_type == 'sb_preview_c'){
-            ntp_bdy.style.setProperty(
-                '--sb_preview_c',
-                current_color
-            )
+        } else if (cp_type == 'sb_preview_c') {
+            ntp_bdy.style.setProperty('--sb_preview_c', current_color)
         } else if (cp_type == 'bgcl' || cp_type == 'bgcd') {
             ntp_bdy.style.setProperty(
                 '--bg-img-' + (cp_type == 'bgcl' ? 'l' : 'd'),
@@ -2485,9 +2504,11 @@ if (is_incognito()) {
             else f_cp_mtc(s1[1])
         })
     })
-    document.querySelector('#sb_icon_preview_c').addEventListener('click', ()=>{
-        f_cp_sb()
-    })
+    document
+        .querySelector('#sb_icon_preview_c')
+        .addEventListener('click', () => {
+            f_cp_sb()
+        })
 
     const tg_r77 = document.getElementById('tg_r77')
     const tg_r77vs = document.getElementById('tg_r77v')
