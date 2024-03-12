@@ -401,6 +401,12 @@ if (is_incognito()) {
     document.getElementById('stt_opt2').addEventListener('click', function () {
         set_option_t(this, '_self', 2)
     })
+    document.getElementById('stt_opt6').addEventListener('click', function () {
+        set_option_t(this, 'flex', 6)
+    })
+    document.getElementById('stt_opt7').addEventListener('click', function () {
+        set_option_t(this, 'initial', 7)
+    })
     //Font Changer
     const fs_value = getComputedStyle(ntp_bdy).getPropertyValue('--custom-font')
     const font_selector = document.getElementById('font-selector')
@@ -859,6 +865,7 @@ if (is_incognito()) {
             var reader = new FileReader()
             reader.onload = function (e) {
                 if (file.type === 'image/svg+xml') {
+                    console.log("type svg:" + e.target.result)
                     c_sb_value.value = '<img src="' + e.target.result + '"/>'
                     c_sb_preview.innerHTML = c_sb_value.value
                 } else if (file.type.match('image.*')) {
@@ -884,13 +891,13 @@ if (is_incognito()) {
     }
 
     function f_custom_sb2() {
-        var url = prompt('Enter URL of the wallpaper.', '')
+        var url = prompt('Enter URL of the icon', '')
         if(!url) return
         var img = new Image()
         img.crossOrigin = 'Anonymous'
         img.onload = function (e) {
-            if (img.width > 48 || img.height > 48) {
-                alert('Image size should not exceed 48x48 pixels.')
+            if (img.width > 128 || img.height > 128) {
+                alert('Image size should not exceed 128x128 pixels.')
                 return
             }
             var canvas = document.createElement('canvas')
@@ -925,6 +932,7 @@ if (is_incognito()) {
 
     function f_sb_lg2() {
         var url = prompt('Enter url of the wallpaper .', '')
+        if(!url) return
         var img = new Image()
         img.crossOrigin = 'Anonymous'
         img.onload = function (e) {
@@ -934,7 +942,6 @@ if (is_incognito()) {
             var ctx = canvas.getContext('2d')
             ctx.drawImage(img, 0, 0)
             var dataURL = canvas.toDataURL('image/png')
-            dataURL.replace(/^data:image\/(png|jpg);base64,/, '')
             ntp_bdy.style.setProperty('--sb-img-l', 'url(' + dataURL + ')')
             ntp_bdy.style.setProperty('--sb-img-d', 'var(--sb-img-l)')
             save_ntpbdy()
