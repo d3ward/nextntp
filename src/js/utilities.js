@@ -66,6 +66,7 @@ export function get_root_domain(url) {
         .replace('https://', '')
         .replace('kiwi://', '')
         .replace('chrome://', '')
+        .replace('chrome-extension://')
         .replace('www.', '')
         .replace(':', '')
         .split(/[/?#]/)[0]
@@ -74,6 +75,7 @@ export function fixURL(value) {
     if (
         value.indexOf('kiwi://') < 0 &&
         value.indexOf('chrome://') < 0 &&
+        value.indexOf('chrome-extension://') < 0 &&
         value.indexOf('https://') < 0 &&
         value.indexOf('http://') < 0
     )
