@@ -5,7 +5,8 @@ const config = require('./config')
 module.exports = {
     context: config.src,
     entry: {
-        index: './js/index.js'
+        index: './js/index.js',
+        themes: './js/themes.js'
     },
     output: {
         filename: './js/[name].js',
@@ -31,6 +32,7 @@ module.exports = {
                 }
             ]
         }),
+       
         new MiniCssExtractPlugin({
             filename: './css/[name].css',
             chunkFilename: '[name].css'
@@ -41,7 +43,14 @@ module.exports = {
             sources: false,
             minify: false,
             chunks: ['index']
-        })
+        }),
+        new HTMLWebpackPlugin({
+          template: config.public + '/themes.html',
+          filename: 'themes.html',
+          sources: false,
+          minify: false,
+          chunks: ['themes']
+      })
     ],
     module: {
       rules: [
@@ -49,11 +58,6 @@ module.exports = {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
           type: 'asset/resource'
         },
-        {
-          test: /\.ejs$/i,
-          use: ['html-loader', 'template-ejs-loader']
-        },
-  
         {
           test: /\.js$/,
           exclude: /node_modules/,

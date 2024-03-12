@@ -226,7 +226,6 @@
 
 		</div>
 	</div>
-
 	<!-- --------- New Tile/Folder Modal --------- -->
 	<div class="dialog" id="dlg_new_tf" aria-labelledby="dlg_new_tf-title" aria-hidden="true">
 		<div class="dialog-overlay" data-a11y-dialog-hide></div>
@@ -293,9 +292,6 @@
 									Upload logo (max 128x128)
 								</label>
 							</div>
-
-
-
 						</div>
 						<div>
 							<label for="t_url">Website address</label>
@@ -305,9 +301,6 @@
 							<label for="t_lab">Tile Label</label>
 							<input id="t_lab" type="text" placeholder="Optional" />
 						</div>
-					</div>
-					<div class=" _f-center">
-
 					</div>
 				</div>
 			</section>
@@ -319,7 +312,6 @@
 			</footer>
 		</div>
 	</div>
-
 	<!-- ------------ Settings Modal ------------- -->
 	<div class="dialog" id="dlg_st" aria-hidden="true">
 		<div class="dialog-overlay" data-a11y-dialog-hide></div>
@@ -530,12 +522,12 @@
 										</div>
 										<div>
 											<button id="wllp_custom"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-												height="24" fill="none" stroke="currentColor" stroke-linecap="round"
-												stroke-linejoin="round" stroke-width="2">
-												<path stroke="none" d="M0 0h24v24H0z" />
-												<path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0" />
-												<path d="m9 12 2 2 4-4" />
-											</svg>Save custom value</button>
+													height="24" fill="none" stroke="currentColor" stroke-linecap="round"
+													stroke-linejoin="round" stroke-width="2">
+													<path stroke="none" d="M0 0h24v24H0z" />
+													<path d="M3 12a9 9 0 1 0 18 0 9 9 0 1 0-18 0" />
+													<path d="m9 12 2 2 4-4" />
+												</svg>Save custom value</button>
 										</div>
 										<div>
 											<div class="_2-col">
@@ -546,7 +538,7 @@
 														<path
 															d="M20 6a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5-5a1.5 1.5 0 0 1 0-2l5-5zM12 10l4 4m0-4-4 4" />
 													</svg>Clear</button>
-													
+
 												<button id="wllp_bg">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 														fill="none" stroke="currentColor" stroke-linecap="round"
@@ -764,48 +756,18 @@
 								</ul>
 							</div>
 							<div>
-								<form id="sb_custom_form" class="row flex-column" style="width: 100%;">
-									<div>
-										<h3>Want to add a custom one ?</h3>
-									</div>
-									<div>
-										<label for="custom_sb_name">Name</label>
-									</div>
-									<div>
-										<input type="text" id="custom_sb_name" placeholder="MyCustomSearch" required>
-									</div>
-									<div>
-										<label for="custom_sb_query">Search Query</label>
-									</div>
-									<div>
-										<input type="url" id="custom_sb_query"
-											placeholder="https://mycustomsearch.com/search?q=" required>
-									</div>
-									<div><label>Icon Preview</label></div>
-									
-									<div>
-										<div class="sb_item"><span id="custom_sb_preview" class="sb_icon" style="background: #FF0000;"> </span></div>
-									</div>
-									<div><textarea id="custom_sb_value" placeholder="<svg fill='#fff' ..."
-										required> </textarea></div>
-									<div class="_2-col">
-										<button id="custom_sb_link">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-												<path stroke="none" d="M0 0h24v24H0z"></path>
-												<path d="m9 15 6-6M11 6l.463-.536a5 5 0 0 1 7.071 7.072L18 13M13 18l-.397.534a5.068 5.068 0 0 1-7.127 0 4.972 4.972 0 0 1 0-7.071L6 11"></path>
-											</svg>
-											From Link</button>
-										<label class="btn"><input type="file" id="custom_sb_file" style="opacity: 0;position: absolute;z-index: -1;">
-											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-												<path stroke="none" d="M0 0h24v24H0z"></path>
-												<path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 9l5-5 5 5M12 4v12"></path>
-											</svg> From File
-										</label>
-									</div>
-									<div>
-										<button type="submit">Add Custom Search Engine</button>
-									</div>
-								</form>
+								<h3>Want to add a custom one ?</h3>
+							</div>
+							<div>
+								<div class="btn" id="sb_new_sb" data-a11y-dialog-show="dlg_sb">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke-width="2"
+										stroke="currentColor" fill="none" stroke-linecap="round"
+										stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+										<path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+										<path d="M21 21l-6 -6" />
+									</svg> Add new search engine
+								</div>
 							</div>
 
 						</div>
@@ -925,12 +887,15 @@
 								<input id="stt_opt4" class="toggle" type="checkbox" value="150px" />
 							</div>
 							<hr>
-							<div><button id="b_cfn" style="width:100%;"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clear-all" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-								<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-								<path d="M8 6h12"></path>
-								<path d="M6 12h12"></path>
-								<path d="M4 18h12"></path>
-							 </svg> Clean
+							<div><button id="b_cfn" style="width:100%;"><svg xmlns="http://www.w3.org/2000/svg"
+										class="icon icon-tabler icon-tabler-clear-all" width="24" height="24"
+										viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+										stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<path d="M8 6h12"></path>
+										<path d="M6 12h12"></path>
+										<path d="M4 18h12"></path>
+									</svg> Clean
 									Fetched News</button>
 							</div>
 						</div>
@@ -949,46 +914,65 @@
 							</div>
 							<div>
 								<button id="size_calc">
-									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-leak" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+									<svg xmlns="http://www.w3.org/2000/svg"
+										class="icon icon-tabler icon-tabler-database-leak" width="24" height="24"
+										viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+										stroke-linecap="round" stroke-linejoin="round">
 										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-										<path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3"></path>
+										<path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3">
+										</path>
 										<path d="M4 6v12c0 1.657 3.582 3 8 3s8 -1.343 8 -3v-12"></path>
-										<path d="M4 15a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1"></path>
-									 </svg>
+										<path
+											d="M4 15a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1">
+										</path>
+									</svg>
 									Calculate localStorage
 								</button>
 							</div>
 							<div>
 								<div class="_2-col">
 									<button id="export-data">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+											viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+											stroke-linecap="round" stroke-linejoin="round">
 											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-											<path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3"></path>
+											<path
+												d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3">
+											</path>
 											<path d="M4 6v6c0 1.657 3.582 3 8 3c1.118 0 2.183 -.086 3.15 -.241"></path>
 											<path d="M20 12v-6"></path>
 											<path d="M4 12v6c0 1.657 3.582 3 8 3c.157 0 .312 -.002 .466 -.005"></path>
 											<path d="M16 19h6"></path>
 											<path d="M19 16l3 3l-3 3"></path>
-										 </svg>
+										</svg>
 										Export</button>
 									<input type="file" name="file" id="import-data"
 										style="opacity: 0;position: absolute;z-index: -1;width: 1px;">
 									<label for="import-data" class="btn">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+											viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+											stroke-linecap="round" stroke-linejoin="round">
 											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-											<path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3"></path>
-											<path d="M4 6v6c0 1.657 3.582 3 8 3c.856 0 1.68 -.05 2.454 -.144m5.546 -2.856v-6"></path>
+											<path
+												d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3">
+											</path>
+											<path
+												d="M4 6v6c0 1.657 3.582 3 8 3c.856 0 1.68 -.05 2.454 -.144m5.546 -2.856v-6">
+											</path>
 											<path d="M4 12v6c0 1.657 3.582 3 8 3c.171 0 .341 -.002 .51 -.006"></path>
 											<path d="M19 22v-6"></path>
 											<path d="M22 19l-3 -3l-3 3"></path>
-										 </svg>Import</label>
-									<button type="submit" id="btn-res" class="btn-red"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-										<path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"></path>
-										<path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"></path>
-										<path d="M12 9l0 3"></path>
-										<path d="M12 15l.01 0"></path>
-									 </svg>Reset</button>
+										</svg>Import</label>
+									<button type="submit" id="btn-res" class="btn-red"><svg
+											xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+											viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+											stroke-linecap="round" stroke-linejoin="round">
+											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+											<path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"></path>
+											<path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"></path>
+											<path d="M12 9l0 3"></path>
+											<path d="M12 15l.01 0"></path>
+										</svg>Reset</button>
 
 								</div>
 
@@ -1001,7 +985,9 @@
 							<div>
 								<div class="_2-col">
 									<button id="export-theme">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+											viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+											stroke-linecap="round" stroke-linejoin="round">
 											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 											<path d="M12 21l-8 -4.5v-9l8 -4.5l8 4.5v4.5"></path>
 											<path d="M12 12l8 -4.5"></path>
@@ -1009,12 +995,14 @@
 											<path d="M12 12l-8 -4.5"></path>
 											<path d="M15 18h7"></path>
 											<path d="M19 15l3 3l-3 3"></path>
-										 </svg>
+										</svg>
 										Export theme</button>
 									<input type="file" name="file" id="import-theme"
 										style="opacity: 0;position: absolute;z-index: -1;width: 1px;">
 									<label for="import-theme" class="btn">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+											viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+											stroke-linecap="round" stroke-linejoin="round">
 											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 											<path d="M12 21l-8 -4.5v-9l8 -4.5l8 4.5v4.5"></path>
 											<path d="M12 12l8 -4.5"></path>
@@ -1022,7 +1010,7 @@
 											<path d="M12 12l-8 -4.5"></path>
 											<path d="M22 18h-7"></path>
 											<path d="M18 15l-3 3l3 3"></path>
-										 </svg> Import theme</label>
+										</svg> Import theme</label>
 								</div>
 							</div>
 
@@ -1041,18 +1029,22 @@
 							<div>
 								<div class="_2-col">
 									<button id="b_codec">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+											viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+											stroke-linecap="round" stroke-linejoin="round">
 											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 											<path d="M8 6h12"></path>
 											<path d="M6 12h12"></path>
 											<path d="M4 18h12"></path>
-										 </svg>Clean</button>
+										</svg>Clean</button>
 									<button id="b_codee">
-										<svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+											viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+											stroke-linecap="round" stroke-linejoin="round">
 											<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 											<path d="M7 4v16l13 -8z"></path>
-										 </svg>
-										 Execute</button>
+										</svg>
+										Execute</button>
 								</div>
 							</div>
 						</div>
@@ -1082,7 +1074,7 @@
 							</div>
 							<hr>
 							<div class="_ta-center">
-								<span>Version 1.0.4</span><br><br>
+								<span>Version 2.0.0</span><br><br>
 								<a href="https://github.com/d3ward/nextntp" class="btn" target="_blank">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
 										stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -1101,7 +1093,97 @@
 					</section>
 				</div>
 			</section>
-			
+
+		</div>
+	</div>
+	<div class="dialog" id="dlg_sb" aria-labelledby="dlg_new_sb-title" aria-hidden="true">
+		<div class="dialog-overlay" data-a11y-dialog-hide></div>
+		<div class="dialog-content">
+			<header>
+				<h3 id="dlg_new_sb-title"> Search Engine</h3>
+				<button data-a11y-dialog-hide>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path d="M18 6 6 18M6 6l12 12" />
+					</svg>
+				</button>
+			</header>
+			<section>
+				<div id="sb_custom_form" class="row flex-column" style="width: 100%;">
+					
+					<div class="_f-center">
+						<label for="custom_sb_preview">Preview</label>
+						<div class="sb_wrap">
+							<span id="custom_sb_preview" class="sb_icon" style="border: 1px solid var(--c20);"></span>
+							<input name="sb_input" type="text" id="custom_sb_preview_i" size="50" spellcheck="false"
+								placeholder="Search with MyCustomSearch" style="box-shadow: none;" disabled>
+						</div>
+					</div>
+					<div>
+						<label for="custom_sb_name">Name</label>
+					</div>
+					<div>
+						<input type="text" id="custom_sb_name" placeholder="MyCustomSearch" required>
+					</div>
+					<div>
+						<label for="custom_sb_query">Search Query</label>
+					</div>
+					<div>
+						<input type="url" id="custom_sb_query" placeholder="https://mycustomsearch.com/search?q="
+							required>
+					</div>
+					<div class="row flex-column flex-sb">
+						<div>
+							<label>Icon Background Color</label>
+							<div class="stt_clfrt not_stt" id="sb_icon_preview_c"></div>
+						</div>
+					</div>
+					<div><textarea id="custom_sb_value" placeholder="<svg fill='#fff' ..." required> </textarea>
+						<sub>Paste SVG code or edit value</sub>
+					</div>
+					<div class="_2-col">
+						<button id="custom_sb_link">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+								stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+								<path stroke="none" d="M0 0h24v24H0z"></path>
+								<path
+									d="m9 15 6-6M11 6l.463-.536a5 5 0 0 1 7.071 7.072L18 13M13 18l-.397.534a5.068 5.068 0 0 1-7.127 0 4.972 4.972 0 0 1 0-7.071L6 11">
+								</path>
+							</svg>
+							From Link</button>
+						<label class="btn"><input type="file" id="custom_sb_file"
+								style="opacity: 0;position: absolute;z-index: -1;">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+								stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+								<path stroke="none" d="M0 0h24v24H0z"></path>
+								<path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 9l5-5 5 5M12 4v12"></path>
+							</svg> From File
+						</label>
+						<sub>Max 128x128</sub>
+					</div>
+				</div>
+			</section>
+			<footer class="_f-center">
+				
+				<button data-a11y-dialog-hide>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path d="M18 6 6 18M6 6l12 12" />
+					</svg>
+					Close
+				</button>
+				<button id="sb_custom_submit" class="btn-green">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+					stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+						<path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+						<path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+						<path d="M14 4l0 4l-6 0l0 -4" />
+					  </svg>
+					Save</button>
+			</footer>
 		</div>
 	</div>
 	<!-- ---------- Color Picker Modal ----------- -->
@@ -1112,10 +1194,10 @@
 				<h3 id="dlg_clvn-title"> Color Picker </h3>
 				<button data-a11y-dialog-hide>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
-					stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-					<path stroke="none" d="M0 0h24v24H0z" />
-					<path d="M18 6 6 18M6 6l12 12" />
-				</svg>
+						stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+						<path stroke="none" d="M0 0h24v24H0z" />
+						<path d="M18 6 6 18M6 6l12 12" />
+					</svg>
 				</button>
 			</header>
 			<section>

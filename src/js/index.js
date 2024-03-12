@@ -1,12 +1,8 @@
-/* -------------------------------------------- */
-/*                          COMPONENTS                             */
-/* -------------------------------------------- */
 import Sortable from 'sortablejs'
 import Croppie from 'croppie'
 import Picker from 'vanilla-picker'
 import A11yDialog from 'a11y-dialog'
 import '../sass/index.sass'
-import { modal } from './modal'
 import { se_data } from './se_data'
 import { toast } from './toast'
 import { pagesRoute } from './pagesRoute'
@@ -26,6 +22,7 @@ import {
 var needReload = false
 const dlg_color_picker = new A11yDialog(document.querySelector('#dlg_clvn'))
 const dlg_st = new A11yDialog(document.querySelector('#dlg_st'))
+const dlg_sb = new A11yDialog(document.querySelector('#dlg_sb'))
 const lrt_fl = new A11yDialog(document.querySelector('#lrt_fl'))
 const dlg_new_tf = new A11yDialog(document.querySelector('#dlg_new_tf'))
 lrt_fl
@@ -427,7 +424,7 @@ if (is_incognito()) {
     //Get SearchBar saved preferences
     const sb_dropdown_menu = document.getElementById('sb_icon_menu')
     const sb_icon_default = document.getElementById('sb_icon_default')
-    const sb_custom_form = document.getElementById('sb_custom_form')
+    const sb_custom_submit = document.getElementById('sb_custom_submit')
     var ntp_sb = ls_get('ntp_sb')
     if (
         ntp_sb == undefined ||
@@ -534,18 +531,23 @@ if (is_incognito()) {
         })
         f_cache_sb()
     }
-    sb_custom_form.addEventListener('submit', (e) => {
+    document.getElementById('custom_sb_name').addEventListener("blur", function(){
+        document.getElementById('custom_sb_preview_i').placeholder = "Search with "+this.value
+    })
+    sb_custom_submit.addEventListener('click', (e) => {
         var name = f_trim(document.getElementById('custom_sb_name').value)
         var query = f_trim(document.getElementById('custom_sb_query').value)
-        var color = f_trim(document.getElementById('custom_sb_color').value)
+        var color = '#fff'
+        //f_trim(document.getElementById('custom_sb_color').value)
         var value = document.getElementById('custom_sb_value').value
+
         if (
-            name.length < 1 &&
-            query.length < 1 &&
-            color.length < 1 &&
+            name.length < 1 ||
+            query.length < 1 ||
+            color.length < 1 ||
             value.length < 1
         ) {
-            ntoast.error('You need to complete all the rquired fields ')
+            ntoast.error('You need to complete all the required fields ')
         } else {
             ntp_sb.se[name] = true
             ntp_sb.custom_se[name] = { color: color, icon: value, query: query }
@@ -553,10 +555,8 @@ if (is_incognito()) {
             f_setup_sb()
             render_se_list()
             ntoast.success('Custom Search Engine added !')
-            sb_custom_form.reset()
+            dlg_sb.hide()
         }
-        e.preventDefault()
-        return false
     })
 
     function render_se_list() {
@@ -610,7 +610,7 @@ if (is_incognito()) {
                     toggle_se_status(el)
                 }
             } else {
-                se_custom = ntp_sb.custom_se[el]
+                let se_custom = ntp_sb.custom_se[el]
                 if (se_custom != undefined) {
                     var setChecked = se_status == true ? 'checked' : ''
                     var li = document.createElement('li')
@@ -622,9 +622,9 @@ if (is_incognito()) {
                         se_custom.icon +
                         '</span>' +
                         el +
-                        '</div><svg onclick="sb_delete_se(\'' +
+                        '</div><svg id="sbdse' +
                         el +
-                        '\')" class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg><input ' +
+                        '" class="_icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg><input ' +
                         'class="toggle" type="checkbox" id="tg_se' +
                         el +
                         '" ' +
@@ -634,6 +634,11 @@ if (is_incognito()) {
                     document.getElementById('tg_se' + el).onchange = () => {
                         toggle_se_status(el)
                     }
+                    document
+                        .getElementById('sbdse' + el)
+                        .addEventListener('click', () => {
+                            sb_delete_se(el)
+                        })
                 } else {
                     console.log(se_custom, el)
                 }
@@ -750,7 +755,7 @@ if (is_incognito()) {
     )
     tg_r5vs.innerText = tg_r5v
     if (isNaN(tg_r5v)) {
-        tg_r5v = 8
+        tg_r5v = 10
         tg_r5vs.innerText = tg_r5v
         ntp_bdy.style.setProperty('--v0', tg_r5v + 'px')
         save_ntpbdy()
@@ -855,19 +860,21 @@ if (is_incognito()) {
             reader.onload = function (e) {
                 if (file.type === 'image/svg+xml') {
                     c_sb_value.value = '<img src="' + e.target.result + '"/>'
+                    c_sb_preview.innerHTML = c_sb_value.value
                 } else if (file.type.match('image.*')) {
                     var img = new Image()
                     img.onload = function () {
-                        if (img.width > 48 || img.height > 48) {
-                            alert('Image size should not exceed 48x48 pixels.')
+                        if (img.width > 128 || img.height > 128) {
+                            alert('Image size should not exceed 128x128 pixels.')
                             return
                         }
                         c_sb_value.value =
                             '<img src="' + e.target.result + '"/>'
+                        c_sb_preview.innerHTML = c_sb_value.value
                     }
                     img.src = e.target.result
                 } else {
-                    alert(
+                    ntoast.error(
                         'Unsupported file format. Please choose an image or SVG file.'
                     )
                 }
@@ -878,6 +885,7 @@ if (is_incognito()) {
 
     function f_custom_sb2() {
         var url = prompt('Enter URL of the wallpaper.', '')
+        if(!url) return
         var img = new Image()
         img.crossOrigin = 'Anonymous'
         img.onload = function (e) {
@@ -885,7 +893,6 @@ if (is_incognito()) {
                 alert('Image size should not exceed 48x48 pixels.')
                 return
             }
-
             var canvas = document.createElement('canvas')
             canvas.width = img.width
             canvas.height = img.height
@@ -895,18 +902,23 @@ if (is_incognito()) {
             c_sb_value.value = '<img src="' + dataURL + '"/>'
         }
         img.onerror = function () {
-            fetch(url)
-                .then((response) => response.text())
-                .then((svgData) => {
-                    if (svgData.startsWith('<svg')) {
-                        c_sb_value.value = svgData
-                    } else {
-                        alert('Invalid image URL or SVG format not supported.')
-                    }
-                })
-                .catch((error) => {
-                    alert('Error loading the image or SVG file.')
-                })
+            console.log(url)
+            if (url) {
+                fetch(url)
+                    .then((response) => response.text())
+                    .then((svgData) => {
+                        if (svgData.startsWith('<svg')) {
+                            c_sb_value.value = svgData
+                        } else {
+                            alert(
+                                'Invalid image URL or SVG format not supported.'
+                            )
+                        }
+                    })
+                    .catch((error) => {
+                        alert('Error loading the image or SVG file.')
+                    })
+            }
         }
         img.src = url
     }
@@ -935,11 +947,7 @@ if (is_incognito()) {
         .getElementById('custom_sb_link')
         .addEventListener('click', f_custom_sb2)
     c_sb_file.addEventListener('change', f_custom_sb1)
-    document
-        .getElementById('sb_custom_form')
-        .addEventListener('submit', function () {
-            return false
-        })
+
     //End of Search Bar Settings Config
     function f_cache_sb() {
         const y = ntp_sett.order[0]
@@ -1865,7 +1873,7 @@ if (is_incognito()) {
                 imgrender =
                     '<img src="' +
                     image +
-                    '" class="news_img" alt="Article Source" />'
+                    '" class="news_img" alt="Article Source" onerror="this.remove();" />'
             innerDiv.innerHTML =
                 imgrender +
                 '<div class="news_cnt">' +
@@ -1909,10 +1917,10 @@ if (is_incognito()) {
                         'https://news.google.com'
                     )
                 link && urlChecklist.push(link)
-                console.log(link, link)
                 var imageSRC = null
-                const image = item.querySelector('figure> img')||item.querySelector('.Quavad')
-                console.log(image)
+                const image =
+                    item.querySelector('figure> img') ||
+                    item.querySelector('.Quavad')
                 if (image) {
                     imageSRC = image.src
                     if (imageSRC)
@@ -1920,7 +1928,6 @@ if (is_incognito()) {
                             window.location.origin,
                             'https://news.google.com'
                         )
-                    console.log('imageSRC', imageSRC)
                 }
                 const mainArticle = {
                     title: item.querySelector('h4')
@@ -1940,7 +1947,6 @@ if (is_incognito()) {
                         ? item.querySelector('time').innerText
                         : false
                 }
-                console.log(mainArticle)
                 if (mainArticle.title && mainArticle.link) {
                     add_gnews(
                         mainArticle.title,
@@ -1954,7 +1960,6 @@ if (is_incognito()) {
             })
             //el.baseURI = newsServer;
             loadingSVG.remove()
-
             fc_ns() //Cache the news items
         }
         console.log('News locale is ' + localStorage.newsLe)
@@ -2388,6 +2393,12 @@ if (is_incognito()) {
         save_ntpbdy()
         dlg_color_picker.show()
     }
+    function f_cp_sb() {
+        cp_type = 'sb_preview_c' 
+        let color = getComputedStyle(ntp_bdy).getPropertyValue('--sb_preview_c')
+        picker.setColor(color, true)
+        dlg_color_picker.show()
+    }
 
     function f_cp_rgb(type, number) {
         cp_current_el = number
@@ -2430,6 +2441,11 @@ if (is_incognito()) {
                 '--c' + (cp_type == 'color_cl' ? 'l' : 'd') + cp_current_el,
                 current_color
             )
+        } else if(cp_type == 'sb_preview_c'){
+            ntp_bdy.style.setProperty(
+                '--sb_preview_c',
+                current_color
+            )
         } else if (cp_type == 'bgcl' || cp_type == 'bgcd') {
             ntp_bdy.style.setProperty(
                 '--bg-img-' + (cp_type == 'bgcl' ? 'l' : 'd'),
@@ -2453,7 +2469,7 @@ if (is_incognito()) {
         dlg_color_picker.hide()
     })
 
-    var stt_cl = document.querySelectorAll('.stt_clfrt')
+    var stt_cl = document.querySelectorAll('.stt_clfrt:not(.not_stt)')
     stt_cl.forEach((el) => {
         var s = el.id
         var s1 = s.split('_')
@@ -2461,6 +2477,9 @@ if (is_incognito()) {
             if (s1[2]) f_cp_rgb(s1[1], parseInt(s1[2]))
             else f_cp_mtc(s1[1])
         })
+    })
+    document.querySelector('#sb_icon_preview_c').addEventListener('click', ()=>{
+        f_cp_sb()
     })
 
     const tg_r77 = document.getElementById('tg_r77')

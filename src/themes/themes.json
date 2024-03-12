@@ -3,15 +3,31 @@
         "title" : "NextNTP",
     	"author": "d3ward",   
         "description": "Simple theme , default of nextntp",
-        "preview" :"default.png",
+        "preview" :"p-nextntp.jpeg",
         "screenshots" :["default.png"],
-        "file": "nextntp_standard.json"
+        "file": "nextntp.json"
     },
-    "materiall": {
+    "material-google": {
         "title" : "Material",
         "author": "d3ward",   
         "description": "Material clean theme. Google style ",
-        "preview" :"material.png",
-        "file": "nextntp_material.json"
+        "preview" :"p-material-google.jpeg",
+        "file": "material-google.json"
+    },
+    "dracula-purple": {
+        "title" : "Dracula (Purple)",
+        "author": "d3ward",  
+        "credits": "https://draculatheme.com", 
+        "description": "Dracula inspired theme ",
+        "preview" :"p-dracula-purple.jpeg",
+        "file": "dracula-purple.json"
+    },
+    "nord-frost": {
+        "title" : "Nord Frost",
+        "author": "d3ward",  
+        "credits": "https://nordtheme.com", 
+        "description": "Nord inspired theme ",
+        "preview" :"p-nord-frost.png",
+        "file": "nord-frost.json"
     }
 }
