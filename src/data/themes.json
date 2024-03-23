@@ -2,7 +2,7 @@
     "nextntp": {
         "title": "NextNTP",
         "author": "d3ward",
-        "description": "Default theme for NextNTP ",
+        "description": "Kiwi inspired theme. Default for NextNTP ",
         "palette":["#4ca3e2","#f2f4f7ff","#dde2eaff","#14191fff","#242e37ff"]
     },
     "dracula-purple": {

@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <title> NextNTP Themes</title>
-    <link rel="shortcut icon" href="./assets/nextntp_logo.svg" type="image/x-icon">
-    <meta name="description" content="Next NTP Themse">
-    <meta name="keywords" content="Startpage,homepage,ntp">
-    <meta name="author" content="Eduard Ursu">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</head>
+    <%- include('partials/head.ejs', { 
+        page: 'themes' , 
+        title:'Themes - NextNTP', 
+        description:"",
+	    url: 'd3ward.github.io/nextntp/themes' ,
+	keywords:'d3ward,portfolio,projects,github,css,js,kiwi,html,extensions' }) %>
 
 <body>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="_float-top wave" preserveaspectratio="none">
         <defs>
             <linearGradient id="gradient1" x1="0%" y1="0%" x2="50%" y2="100%">
-                <stop offset="0%" style="stop-color:rgb(35,203,247);" />
+                <stop offset="0%" style="stop-color:#4ca3e2;" />
                 <stop offset="100%" style="stop-color:var(--primary);" />
             </linearGradient>
         </defs>
@@ -31,37 +26,15 @@
         <!-- Header -->
         <div class="hero">
             <div class="_aos-top">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 128 128"><path fill="#4ca3e2" d="M107.56 29.568c-6.779.104-44.793.122-66.682.105-7.229-.124-7.203 13.1 0 13.21h46.223c8.324-.022 8.232 14.42 0 14.598H63.18c-6.287.152-6.345 12.704 0 12.972h11.758c3.85 0 5.982 3 6.4 6.317.088 4.545-2.599 8.586-6.4 8.687H63.179c-7.083-.133-7.403 12.677 0 12.975h17.76c4.808.034 6.475-2.638 7.362-4.216 8.345-17.716 16.58-36.007 24.461-54.175.503-1.203 1.082-2.072 1.238-3.865 0-3.65-2.883-6.61-6.44-6.608zM36.821 57.48c-8.11.133-7.603 12.909 0 12.972h12.165c7.797 0 7.51-13.021 0-12.972zm-17.84 27.976c-6.768.109-6.514 12.75 0 12.975h30.005c7.105.018 6.902-12.953 0-12.975z"/></svg>
+                </div>
                 <h3><strong>Next NTP Themes</strong></h3>
                 <div>
-                    <a class="btn">Submit new theme</a>
-                    <div class="_d-flex">
-                        <span>
-
-                      
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
-                            <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                        </svg>
-                    
-                    Settings
-                    ->  </span>
-                    <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
-                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                        <path stroke="none" d="M0 0h24v24H0z" />
-                        <path d="M4 6a8 3 0 1 0 16 0A8 3 0 1 0 4 6" />
-                        <path d="M4 6v6a8 3 0 0 0 16 0V6" />
-                        <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
-                    </svg>
-                    Backup Data & Theme
-                    -> </span>
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-package-import"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 21l-8 -4.5v-9l8 -4.5l8 4.5v4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12v9" /><path d="M12 12l-8 -4.5" /><path d="M22 18h-7" /><path d="M18 15l-3 3l3 3" /></svg>
-                    Import theme
-                    </div>
+                    <a class="btn">
+                        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M21 12.5v-4.509a1.98 1.98 0 0 0 -1 -1.717l-7 -4.008a2.016 2.016 0 0 0 -2 0l-7 4.007c-.619 .355 -1 1.01 -1 1.718v8.018c0 .709 .381 1.363 1 1.717l7 4.008a2.016 2.016 0 0 0 2 0" /><path d="M12 22v-10" /><path d="M12 12l8.73 -5.04" /><path d="M3.27 6.96l8.73 5.04" /><path d="M16 19h6" /><path d="M19 16v6" /></svg>
+                        Submit new theme</a>
+                  
                 </div>
                 
             </div>
@@ -119,7 +92,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave" preserveaspectratio="none" style="margin-bottom:-7px;margin-top:2rem;">
         <defs>
             <linearGradient id="gradient2" x1="50%" y1="0%" x2="50%" y2="100%">
-                <stop offset="0%" style="stop-color:rgb(35,203,247);" />
+                <stop offset="0%" style="stop-color:#4ca3e2;" />
                 <stop offset="100%" style="stop-color:var(--primary);" />
             </linearGradient>
         </defs>
