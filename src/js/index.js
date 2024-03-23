@@ -3,9 +3,9 @@ import Croppie from 'croppie'
 import Picker from 'vanilla-picker'
 import A11yDialog from 'a11y-dialog'
 import '../sass/index.sass'
-import { se_data } from './se_data'
-import { toast } from './toast'
-import { pagesRoute } from './pagesRoute'
+import { se_data } from './components/se_data'
+import { toast } from './components/toast'
+import { pagesRoute } from './components/pagesRoute'
 import {
     get_root_domain,
     fixURL,
@@ -18,33 +18,30 @@ import {
     random_gradient,
     getNewsServer,
     wait
-} from './utilities'
-var needReload = false
+} from './components/utilities'
+var newsServer = getNewsServer(),
+    ntp_theme,
+    ntp_bdy = document.body,
+    pages = new pagesRoute(),
+    needReload = false
+//Get cached ntp_bdystyle
+if (localStorage.ntp_bdy != undefined)
+    ntp_bdy.setAttribute('style', localStorage.ntp_bdy.replace('"', ''))
+
 const dlg_color_picker = new A11yDialog(document.querySelector('#dlg_clvn'))
 const dlg_st = new A11yDialog(document.querySelector('#dlg_st'))
 const dlg_sb = new A11yDialog(document.querySelector('#dlg_sb'))
 const lrt_fl = new A11yDialog(document.querySelector('#lrt_fl'))
 const dlg_new_tf = new A11yDialog(document.querySelector('#dlg_new_tf'))
-lrt_fl
-    .on('show', () => (document.documentElement.style.overflowY = 'hidden'))
-    .on('hide', () => (document.documentElement.style.overflowY = ''))
-dlg_st
-    .on('show', () => (document.documentElement.style.overflowY = 'hidden'))
-    .on('hide', () => {
+
+lrt_fl.on('show', () => (document.documentElement.style.overflowY = 'hidden'))
+lrt_fl.on('hide', () => (document.documentElement.style.overflowY = ''))
+dlg_st.on('show', () => (document.documentElement.style.overflowY = 'hidden'))
+dlg_st.on('hide', () => {
         document.documentElement.style.overflowY = ''
         if (needReload) window.location.reload()
         pages.navigate('#p-home')
     })
-var newsServer = getNewsServer(),
-    ntp_theme,
-    ntp_bdy = document.body
-
-//Set floating menu listeners
-document.getElementById('btn-res').addEventListener('click', reset_page)
-document.getElementById('fb-res').addEventListener('click', reset_page)
-document.getElementById('fb-eg').addEventListener('click', () => {
-    document.getElementById('flt_btn').classList.toggle('open')
-})
 
 //Load Meta Theme Color
 var metaTColor = document.querySelector('meta[name=theme-color]')
@@ -52,21 +49,22 @@ var mtc
 try {
     mtc = ls_get('ntp_mtc')
     if (mtc == undefined || mtc.light == undefined) {
-        mtc = { light: '#4ca3ef', dark: '#4ca3ef' }
+        mtc = { light: '#4ca3e2', dark: '#4ca3e2' }
         ls_set('ntp_mtc', mtc)
     }
 } catch {
     mtc = {
-        light: '#4ca3ef',
-        dark: '#4ca3ef'
+        light: '#4ca3e2',
+        dark: '#4ca3e2'
     }
     ls_set('ntp_mtc', mtc)
 }
-
-//Get cached ntp_bdystyle
-if (localStorage.ntp_bdy != undefined)
-    ntp_bdy.setAttribute('style', localStorage.ntp_bdy.replace('"', ''))
-
+//Set floating menu listeners
+document.getElementById('btn-res').addEventListener('click', reset_page)
+document.getElementById('fb-res').addEventListener('click', reset_page)
+document.getElementById('fb-eg').addEventListener('click', () => {
+    document.getElementById('flt_btn').classList.toggle('open')
+})
 //Setup code executer
 const code_f = document.getElementById('code_f')
 function f_codef_e() {
@@ -275,7 +273,7 @@ if (is_incognito()) {
                 break
             case 1:
                 chd =
-                    '<div id="tlg"> <div class="tlg_item folder"> <div class="tlg_img tlg_fld"></div><span class="tlg_title">Folder</span></div><div class="tlg_item"> <a class="tile_target" href="https://kiwibrowser.com" rel="noreferrer"> <img class="tlg_img" src="https://logos.kiwibrowser.com/kiwibrowser.com" alt=""> <span class="tlg_title">Kiwi Browser</span> </a> </div></div>'
+                    '<div id="tlg"><div class="tlg_item folder"><div class="tlg_img tlg_fld"><div class="tlg_item"><a class="tile_target" href="https://d3ward.github.io/toolz" rel="noreferrer"><img class="tlg_img" src="https://logos.kiwibrowser.com/toolz"/><span class="tlg_title">Toolz</span></a></div></div><span class="tlg_title">Folder</span></div><div class="tlg_item"><a class="tile_target" href="https://d3ward.github.io/" rel="noreferrer"><img class="tlg_img" src="https://logos.kiwibrowser.com/d3ward.github.io"/><span class="tlg_title">d3ward</span></a></div><div class="tlg_item"> <a class="tile_target" href="https://kiwibrowser.com" rel="noreferrer" > <img class="tlg_img" src="https://logos.kiwibrowser.com/kiwibrowser.com" alt=""/> <span class="tlg_title">Kiwi Browser</span></a></div><div class="tlg_item"><a class="tile_target" href="https://github.io/d3ward/nextntp" rel="noreferrer"><img class="tlg_img" src="https://logos.kiwibrowser.com/github.io"/><span class="tlg_title">NextNTP</span></a></div></div>'
                 break
             case 2:
                 chd =
@@ -358,7 +356,7 @@ if (is_incognito()) {
 
     var targetBlank = getComputedStyle(ntp_bdy).getPropertyValue('--o2')
     var disableAnimations = getComputedStyle(ntp_bdy).getPropertyValue('--o7')
-    var pages = new pagesRoute()
+    
 
     //Load settings option status and value
     for (var i = 0; i < 8; i++) {
@@ -392,7 +390,6 @@ if (is_incognito()) {
                 document.documentElement.classList.remove('no-animations')
                 disableAnimations = false
             } else {
-
                 document.documentElement.classList.add('no-animations')
                 disableAnimations = true
             }
@@ -525,6 +522,7 @@ if (is_incognito()) {
                     var sei = se_data[event.target.innerText]
                     if (sei == undefined)
                         sei = ntp_sb.custom_se[event.target.innerText]
+                    if (sei.color == undefined) sei.color = '#fff'
                     document.getElementById('sb_input').placeholder =
                         ntp_sb.placeholder + ' ' + event.target.innerText
                     sb_icon_default.style.background = sei.color
@@ -563,7 +561,7 @@ if (is_incognito()) {
     sb_custom_submit.addEventListener('click', (e) => {
         var name = f_trim(document.getElementById('custom_sb_name').value)
         var query = f_trim(document.getElementById('custom_sb_query').value)
-        var color = '#fff'
+        var color = getComputedStyle(ntp_bdy).getPropertyValue('--sb_preview_c')
         //f_trim(document.getElementById('custom_sb_color').value)
         var value = document.getElementById('custom_sb_value').value
 
@@ -977,7 +975,6 @@ if (is_incognito()) {
         .addEventListener('click', f_custom_sb2)
     c_sb_file.addEventListener('change', f_custom_sb1)
 
-    //End of Search Bar Settings Config
     function f_cache_sb() {
         const y = ntp_sett.order[0]
         ntp_wdg[0].cached = document.getElementById('wdg_' + y).innerHTML
@@ -1120,10 +1117,8 @@ if (is_incognito()) {
             b_add.style.display = 'inline'
             b_add2.style.display = 'none'
             b_save.style.display = 'none'
+            window.clearTimeout(timeoutVariable)
         })
-        function f_dlg_close() {
-            dlg_new_tf.hide()
-        }
 
         document.getElementById('b_newf').addEventListener('click', () => {
             f_dlg(2)
@@ -1143,7 +1138,7 @@ if (is_incognito()) {
                     '</span>'
                 tlg.appendChild(div)
                 f_setup_gtiles()
-                f_dlg_close()
+                dlg_new_tf.hide()
             } else {
                 ntoast.error('Folder name cannot be empty')
             }
@@ -1162,7 +1157,7 @@ if (is_incognito()) {
                 newt['title'] = title
                 newt['imgSrc'] = p_tile.src
                 f_attg(newt) //Create new tile and add to grid
-                f_dlg_close()
+                dlg_new_tf.hide()
             } else {
                 ntoast.error('Tile url cannot be empty')
             }
@@ -1188,6 +1183,7 @@ if (is_incognito()) {
                 i_url.value = img
                 t_url.value = url
                 t_lab.value = title
+                f_spti()
                 f_dlg(1)
             }
         }
@@ -1213,27 +1209,22 @@ if (is_incognito()) {
         }
         //Toggle auto/custom mode of icon tile
         function f_sac() {
+            console.log('f_sac i_url' + i_url.disabled)
             if (i_url.disabled) {
                 t_ac.checked = false
-                i_url.value = ''
                 i_url.disabled = false
                 i_url.select()
                 i_url.focus()
+                f_spti()
             } else {
                 t_ac.checked = true
-                var iUrl =
-                    'https://logos.kiwibrowser.com/' +
-                    get_root_domain(t_url.value)
-                window.clearTimeout(timeoutVariable)
-                timeoutVariable = setTimeout(function () {
-                    p_tile.src = iUrl
-                }, 1000)
-                i_url.value = iUrl
                 i_url.disabled = true
+                f_sptt()
             }
         }
         t_ac.addEventListener('change', f_sac)
         i_url.addEventListener('paste', f_spti)
+        i_url.addEventListener('keyup', f_spti)
         i_url.addEventListener('blur', f_sptt)
         t_url.addEventListener('keyup', f_sptt)
 
@@ -1251,7 +1242,7 @@ if (is_incognito()) {
                 item.children[1].innerHTML = ft_lab.value
             }
             f_cache_tl()
-            f_dlg_close()
+            dlg_new_tf.hide()
         }
         //Fallback image
         document.getElementById('p_tile').onerror = () => {

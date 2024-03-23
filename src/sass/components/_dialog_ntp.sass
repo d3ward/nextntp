@@ -1,3 +1,4 @@
+
 .dialog,.dialog-overlay
 	position: fixed
 	top: 0
@@ -25,20 +26,23 @@
 	width: 100%
 	max-width: 42rem
 	overflow: hidden
-	background: var(--bg)
+	color: var(--c20)
+	background: var(--c21)
 	*
 		margin: 0
 	>*
 		padding: 1rem
 	>footer
-		border-top: 1px solid var(--brd)
 		display: flex
 		gap: .5rem
+		width: 100%
 	>header
-		border-bottom: 1px solid var(--brd)
 		display: flex
 		align-items: center
+		width: 100%
 		justify-content: space-between
+		> button
+			min-width: unset
 	>section
 		width: 100%
 @keyframes dialog-fade-in

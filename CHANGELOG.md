@@ -1,5 +1,6 @@
 
 # Next NTP v2.0.0
+- Themes ! Share and import themes
 - General improvements of the core code 
 - Changed icon collection to Tabler
 - Add reset default background image for light/dark

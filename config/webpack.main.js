@@ -2,11 +2,14 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const config = require('./config')
+const pages = config.pages
 module.exports = {
     context: config.src,
     entry: {
-        index: './js/index.js',
-        themes: './js/themes.js'
+      ...pages.reduce((acc, page) => {
+        acc[page] = `./js/${page}.js`
+        return acc
+      }, {}),
     },
     output: {
         filename: './js/[name].js',
@@ -29,7 +32,11 @@ module.exports = {
                         ]
                     },
                     noErrorOnMissing: true
-                }
+                },
+                {
+                  from: './themes',
+                  to: 'themes'
+                },
             ]
         }),
        
@@ -37,20 +44,16 @@ module.exports = {
             filename: './css/[name].css',
             chunkFilename: '[name].css'
         }),
-        new HTMLWebpackPlugin({
-            template: config.public + '/index.html',
-            filename: 'index.html',
-            sources: false,
-            minify: false,
-            chunks: ['index']
-        }),
-        new HTMLWebpackPlugin({
-          template: config.public + '/themes.html',
-          filename: 'themes.html',
-          sources: false,
-          minify: false,
-          chunks: ['themes']
-      })
+        ...pages.map(
+          (page) =>
+            new HTMLWebpackPlugin({
+              template: `./${page}.ejs`,
+              filename: `${page}.html`,
+              chunks: [page],
+              minify: false,
+              sources: false,
+            }),
+        ),
     ],
     module: {
       rules: [
@@ -58,6 +61,11 @@ module.exports = {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
           type: 'asset/resource'
         },
+        {
+          test: /\.ejs$/i,
+          use: ['html-loader', 'template-ejs-loader']
+        },
+  
         {
           test: /\.js$/,
           exclude: /node_modules/,

@@ -119,3 +119,15 @@ export function wait(ms) {
         end = new Date().getTime()
     }
 }
+
+export function getEventListeners() {
+	const isTouchDevice = 'ontouchstart' in window
+
+	const events = {
+		start: isTouchDevice ? 'touchstart' : 'mousedown',
+		move: isTouchDevice ? 'touchmove' : 'mousemove',
+		end: isTouchDevice ? 'touchend' : 'mouseup',
+	}
+
+	return events
+}

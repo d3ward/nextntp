@@ -1,0 +1,26 @@
+{
+    "nextntp": {
+        "title": "NextNTP",
+        "author": "d3ward",
+        "description": "Default theme for NextNTP ",
+        "palette":["#4ca3e2","#f2f4f7ff","#dde2eaff","#14191fff","#242e37ff"]
+    },
+    "dracula-purple": {
+        "title": "Dracula (Purple)",
+        "author": "d3ward",
+        "credits": "https://draculatheme.com",
+        "description": "Dracula inspired theme ",
+        "palette": ["#282a36", "#44475a", "#44475a", "#f8f8f2", "#bd93f9"],
+        "onetheme":true
+    },
+    "nord-frost": {
+        "title": "Nord Frost",
+        "author": "d3ward",
+        "credits": "https://nordtheme.com",
+        "description": "Nord inspired theme ",
+        "palette": [
+            "#2E3440","#3B4252","#434C5E","#4C566A",
+            "#D8DEE9","#E5E9F0","#ECEFF4","#88C0D0"
+        ]
+    }
+}

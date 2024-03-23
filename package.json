@@ -1,6 +1,6 @@
 {
   "name": "NextNTP",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Default new tab page for Kiwi Browser",
   "scripts": {
     "dev": "webpack serve --config config/webpack.dev.js",
@@ -43,6 +43,7 @@
     "fs-extra": "11.1.1",
     "html-loader": "4.2.0",
     "html-webpack-plugin": "5.5.3",
+    "template-ejs-loader": "^0.9.4",
     "style-loader": "3.3.3",
     "url-loader": "^4.1.1",
     "webpack": "5.88.2",

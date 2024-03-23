@@ -4,5 +4,6 @@ module.exports = {
 	build: path.resolve(__dirname, '../dist'),
 	ext: path.resolve(__dirname, '../dist-ext'),
 	public: path.resolve(__dirname, '../src'),
+	pages: ["index","themes"]
 
 }

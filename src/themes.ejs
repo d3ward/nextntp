@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title> NextNTP Themes</title>
+    <link rel="shortcut icon" href="./assets/nextntp_logo.svg" type="image/x-icon">
+    <meta name="description" content="Next NTP Themse">
+    <meta name="keywords" content="Startpage,homepage,ntp">
+    <meta name="author" content="Eduard Ursu">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="_float-top wave" preserveaspectratio="none">
+        <defs>
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(35,203,247);" />
+                <stop offset="100%" style="stop-color:var(--primary);" />
+            </linearGradient>
+        </defs>
+        <path fill="url(#gradient1)"
+            d="M0,224L26.7,208C53.3,192,107,160,160,144C213.3,128,267,128,320,133.3C373.3,139,427,149,480,170.7C533.3,192,587,224,640,208C693.3,192,747,128,800,133.3C853.3,139,907,213,960,229.3C1013.3,245,1067,203,1120,192C1173.3,181,1227,203,1280,213.3C1333.3,224,1387,224,1413,224L1440,224L1440,0L1413.3,0C1386.7,0,1333,0,1280,0C1226.7,0,1173,0,1120,0C1066.7,0,1013,0,960,0C906.7,0,853,0,800,0C746.7,0,693,0,640,0C586.7,0,533,0,480,0C426.7,0,373,0,320,0C266.7,0,213,0,160,0C106.7,0,53,0,27,0L0,0Z">
+        </path>
+    </svg>
+    <%- include('partials/header.ejs', {page:'index'}) %>
+    <%- include('partials/support_me.ejs') %>
+    <main>
+
+        <!-- Header -->
+        <div class="hero">
+            <div class="_aos-top">
+                <h3><strong>Next NTP Themes</strong></h3>
+                <div>
+                    <a class="btn">Submit new theme</a>
+                    <div class="_d-flex">
+                        <span>
+
+                      
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+                            <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                        </svg>
+                    
+                    Settings
+                    ->  </span>
+                    <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <path d="M4 6a8 3 0 1 0 16 0A8 3 0 1 0 4 6" />
+                        <path d="M4 6v6a8 3 0 0 0 16 0V6" />
+                        <path d="M4 12v6a8 3 0 0 0 16 0v-6" />
+                    </svg>
+                    Backup Data & Theme
+                    -> </span>
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-package-import"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 21l-8 -4.5v-9l8 -4.5l8 4.5v4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12v9" /><path d="M12 12l-8 -4.5" /><path d="M22 18h-7" /><path d="M18 15l-3 3l3 3" /></svg>
+                    Import theme
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <section>
+            <% const themes=require('./data/themes.json') %>
+            <div class="grid" id="themeItems">
+                <% for (let key in themes) { %>
+                    <%  value=themes[key] 
+                        palette = value.palette
+
+                    %>
+                        <% if (key !='default' && !value.hide) { %>
+                            <div class="col-6">
+                                <div class="card _aos-bottom">
+                                    <div><span><b><%= value.title %></b></span><span> by <%= value.author %></span></div>
+                                    <p> <%= value.description %></p>
+                                    <% if (palette) { %>
+                                    <div><div class="_mb-05" >Palette : </div>
+                                        <div class="palette">
+                                            <% palette.forEach(function(p) { %>
+                                                <span style="background:<%= p %>"></span>
+                                             <% }); %> 
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                    <div>
+                                        <button class="preview-btn" data-id="<%= key %>"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M11.102 17.957c-3.204 -.307 -5.904 -2.294 -8.102 -5.957c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6a19.5 19.5 0 0 1 -.663 1.032" /><path d="M15 19l2 2l4 -4" /></svg> Preview</button>
+                                        <a class="btn" href="./themes/<%= key%>.json" download="<%=key%>.json"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 11l5 5l5 -5" /><path d="M12 4l0 12" /></svg> Download</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                <% } %>
+            </div>
+            <div id="pt" class="bottom-sheet">
+                <div class="bs-scrim"></div>
+                <div class="bs-sheet">
+                    <div class="bs-handle">
+                        <span></span>
+                    </div>
+                    <div class="bs-cnt grid">
+                        <div id="pt_cnt">
+                        </div>
+                    </div>
+                    <div class="bs-footer">
+                        Close
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="wave" preserveaspectratio="none" style="margin-bottom:-7px;margin-top:2rem;">
+        <defs>
+            <linearGradient id="gradient2" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(35,203,247);" />
+                <stop offset="100%" style="stop-color:var(--primary);" />
+            </linearGradient>
+        </defs>
+        <path fill="url(#gradient2)"
+            d="M0,256L26.7,245.3C53.3,235,107,213,160,197.3C213.3,181,267,171,320,186.7C373.3,203,427,245,480,234.7C533.3,224,587,160,640,133.3C693.3,107,747,117,800,144C853.3,171,907,213,960,202.7C1013.3,192,1067,128,1120,101.3C1173.3,75,1227,85,1280,101.3C1333.3,117,1387,139,1413,149.3L1440,160L1440,320L1413.3,320C1386.7,320,1333,320,1280,320C1226.7,320,1173,320,1120,320C1066.7,320,1013,320,960,320C906.7,320,853,320,800,320C746.7,320,693,320,640,320C586.7,320,533,320,480,320C426.7,320,373,320,320,320C266.7,320,213,320,160,320C106.7,320,53,320,27,320L0,320Z">
+        </path>
+    </svg>
+    <%- include('partials/footer.ejs') %>
+    <%- include('partials/gotop.ejs') %>
+</body>
+
+</html>
