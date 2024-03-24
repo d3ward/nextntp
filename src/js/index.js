@@ -24,6 +24,7 @@ var newsServer = getNewsServer(),
     ntp_bdy = document.body,
     pages = new pagesRoute(),
     needReload = false
+const ch_dialog = new A11yDialog(document.querySelector('#dlg_changelog'))
 //Get cached ntp_bdystyle
 if (localStorage.ntp_bdy != undefined)
     ntp_bdy.setAttribute('style', localStorage.ntp_bdy.replace('"', ''))
@@ -241,12 +242,19 @@ if (is_incognito()) {
     document.getElementById('incognito').style.display = 'inline'
     document.getElementById('ntp_cnt').style.display = 'none'
 } else {
-    var ntp_ver = '2.0.0'
+    var ntp_ver =  __VERSION__
     var orderListChanged = 0
+    document.getElementById("vLabel").innerText ="NextNTP v"+ntp_ver
+    const dialog_support = new A11yDialog(
+		document.querySelector('#dlg_support')
+	)
     theme()
+    console.log('Version:', ntp_ver);
 
     //Check ntp_ver and show changelog
     if (localStorage.ntp_ver != ntp_ver || !localStorage.ntp_ver) {
+        //Show changelog
+        ch_dialog.show()
         //localStorage.clear()
         localStorage.ntp_ver = ntp_ver
     }
