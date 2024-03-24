@@ -4,6 +4,8 @@ const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const config = require('./config')
+const webpack = require('webpack')
+const packageJson = require('../package.json')
 module.exports = {
     context: config.src,
     mode: 'production',
@@ -34,7 +36,9 @@ module.exports = {
         new CopyPlugin({
             patterns: [{ from: 'manifest.json', to: 'manifest.json' }]
         }),
-        new CleanWebpackPlugin()
+		new webpack.DefinePlugin({
+            __VERSION__: JSON.stringify(packageJson.version)
+        })
     ],
     module: {
         rules: [
