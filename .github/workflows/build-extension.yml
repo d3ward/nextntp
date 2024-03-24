@@ -53,6 +53,7 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           draft: true
+          name: "NextNTP v${{ env.VERSION }}"
           tag: v${{ env.VERSION }}
           artifacts: "nextntp_${{ env.VERSION }}.crx,nextntp_${{ env.VERSION }}.zip"
           bodyFile: "CHANGELOG.md"
