@@ -33,7 +33,7 @@ jobs:
         run: npm install -g crx
 
       - name: Build the CRX version of NextNTP
-        run: crx pack ./dist-ext -o ./build/nextntp_${{ env.VERSION }}.crx -p nextntp.pem
+        run: crx pack ./dist-ext -o ./nextntp_${{ env.VERSION }}.crx -p nextntp.pem
 
       - name: Update manifest with public key
         run: >
