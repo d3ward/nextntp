@@ -9,7 +9,7 @@ jobs:
   build-extension:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Install dependencies
         run: npm install
@@ -43,9 +43,16 @@ jobs:
         run: zip -r nextntp_${{ env.VERSION }}.zip ./dist-ext
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: extension-files
           path: |
             ./nextntp_${{ env.VERSION }}.crx
             ./nextntp_${{ env.VERSION }}.zip
+				
+			- uses: ncipollo/release-action@v1
+				with:
+					draft: true
+					tag: v${{ env.VERSION }}
+					artifacts: "nextntp_${{ env.VERSION }}.crx,nextntp_${{ env.VERSION }}.zip"
+					bodyFile: "CHANGELOG.md"
