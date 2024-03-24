@@ -29,8 +29,6 @@ jobs:
             echo "Individual file sizes in /dist:"
             find ./dist -type f -exec du -h {} +
             
-        - name: Purge
-          run: npm run purge
             
         - name: deploy
           uses: peaceiris/actions-gh-pages@v3.9.3
