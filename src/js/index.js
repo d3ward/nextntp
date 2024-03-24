@@ -39,10 +39,10 @@ lrt_fl.on('show', () => (document.documentElement.style.overflowY = 'hidden'))
 lrt_fl.on('hide', () => (document.documentElement.style.overflowY = ''))
 dlg_st.on('show', () => (document.documentElement.style.overflowY = 'hidden'))
 dlg_st.on('hide', () => {
-        document.documentElement.style.overflowY = ''
-        if (needReload) window.location.reload()
-        pages.navigate('#p-home')
-    })
+    document.documentElement.style.overflowY = ''
+    if (needReload) window.location.reload()
+    pages.navigate('#p-home')
+})
 
 //Load Meta Theme Color
 var metaTColor = document.querySelector('meta[name=theme-color]')
@@ -242,14 +242,14 @@ if (is_incognito()) {
     document.getElementById('incognito').style.display = 'inline'
     document.getElementById('ntp_cnt').style.display = 'none'
 } else {
-    var ntp_ver =  __VERSION__
+    var ntp_ver = __VERSION__
     var orderListChanged = 0
-    document.getElementById("vLabel").innerText ="NextNTP v"+ntp_ver
+    document.getElementById('vLabel').innerText = 'NextNTP v' + ntp_ver
     const dialog_support = new A11yDialog(
-		document.querySelector('#dlg_support')
-	)
+        document.querySelector('#dlg_support')
+    )
     theme()
-    console.log('Version:', ntp_ver);
+    console.log('Version:', ntp_ver)
 
     //Check ntp_ver and show changelog
     if (localStorage.ntp_ver != ntp_ver || !localStorage.ntp_ver) {
@@ -364,7 +364,6 @@ if (is_incognito()) {
 
     var targetBlank = getComputedStyle(ntp_bdy).getPropertyValue('--o2')
     var disableAnimations = getComputedStyle(ntp_bdy).getPropertyValue('--o7')
-    
 
     //Load settings option status and value
     for (var i = 0; i < 8; i++) {
@@ -1107,10 +1106,10 @@ if (is_incognito()) {
                 view == 0
                     ? 'New Tile'
                     : view == 1
-                    ? 'Edit Tile'
-                    : view == 2
-                    ? 'New Folder'
-                    : 'Edit Folder'
+                      ? 'Edit Tile'
+                      : view == 2
+                        ? 'New Folder'
+                        : 'Edit Folder'
             //Open Settings
             dlg_new_tf.show()
             document.getElementById('flt_btn').classList.remove('open')
@@ -1961,8 +1960,8 @@ if (is_incognito()) {
                     title: item.querySelector('h4')
                         ? item.querySelector('h4').innerText
                         : item.querySelector('h5')
-                        ? item.querySelector('h5').innerText
-                        : false,
+                          ? item.querySelector('h5').innerText
+                          : false,
                     link: link,
                     image: imageSRC,
                     source: item.querySelector('a.wEwyrc')

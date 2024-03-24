@@ -1,5 +1,9 @@
 export function reset_page() {
-    if (confirm('This will restore NextNTP to default theme and delete all data. Are you sure you want to proceed?')) {
+    if (
+        confirm(
+            'This will restore NextNTP to default theme and delete all data. Are you sure you want to proceed?'
+        )
+    ) {
         localStorage.clear()
         location.reload()
     }
@@ -10,17 +14,17 @@ export function ls_set(key, obj) {
     return window.localStorage.setItem(key, JSON.stringify(obj))
 }
 export function ls_get(key) {
-    const value = window.localStorage.getItem(key);
+    const value = window.localStorage.getItem(key)
 
-  try {
-    return JSON.parse(value);
-  } catch (error) {
-    if (value && typeof value === 'string') {
-        return value;
+    try {
+        return JSON.parse(value)
+    } catch (error) {
+        if (value && typeof value === 'string') {
+            return value
+        }
+        console.error('Error parsing value from local storage:', error)
+        return null // or some other default/fallback value
     }
-    console.error('Error parsing value from local storage:', error);
-    return null; // or some other default/fallback value
-}
 }
 //Function that return random gradient
 
@@ -121,13 +125,13 @@ export function wait(ms) {
 }
 
 export function getEventListeners() {
-	const isTouchDevice = 'ontouchstart' in window
+    const isTouchDevice = 'ontouchstart' in window
 
-	const events = {
-		start: isTouchDevice ? 'touchstart' : 'mousedown',
-		move: isTouchDevice ? 'touchmove' : 'mousemove',
-		end: isTouchDevice ? 'touchend' : 'mouseup',
-	}
+    const events = {
+        start: isTouchDevice ? 'touchstart' : 'mousedown',
+        move: isTouchDevice ? 'touchmove' : 'mousemove',
+        end: isTouchDevice ? 'touchend' : 'mouseup'
+    }
 
-	return events
+    return events
 }
