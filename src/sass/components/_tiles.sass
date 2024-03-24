@@ -1,0 +1,143 @@
+
+/* ---------------- Tiles Grid ---------------- */
+
+#tlg,
+#lrt_bfl
+    width: var(--content-width)
+    margin: auto
+    min-height: 100px
+    display: flex
+    flex-wrap: wrap
+
+.srtb_ghost
+    border-color: red
+
+.hidden2
+    display: none
+
+.hidden
+    visibility: hidden
+
+.tlg_item a,
+.folder
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+.tlg_item
+    width: var(--tile-w)
+    margin: calc(var(--tile-m) / 2)
+    font-size: var(--tile-txt-s)
+    overflow: hidden
+    text-align: center
+    display: flex
+    align-items: center
+    justify-content: center
+
+.tlg_title
+    width: var(--tile-w)
+    background: var(--c10)
+    border-radius: 5px
+    margin-top: 2px
+    padding: 3px
+    white-space: nowrap
+    overflow: hidden !important
+    text-overflow: ellipsis
+
+    #tlg &
+        display: var(--o3)
+
+    #lrt_bfl &
+        display: var(--o5)
+
+.tlg_fld
+    display: flex
+
+    & .tlg_item
+        transform: scale(0.7)
+        position: absolute
+        pointer-events: none
+        display: none
+        margin: 1px
+        overflow: unset
+        width: calc((var(--tile-w) - 8px) / 2)
+        height: calc((var(--tile-w) - 8px) / 2)
+
+    & .tlg_item:nth-child(1)
+        display: flex
+        right: 45%
+        bottom: 45%
+
+    & .tlg_item:nth-child(2)
+        display: flex
+        left: 45%
+        bottom: 45%
+
+    & .tlg_item:nth-child(3)
+        display: flex
+        right: 45%
+        top: 45%
+
+    & .tlg_item:nth-child(4)
+        display: flex
+        left: 45%
+        top: 45%
+
+    & .tlg_img
+        border: none
+        width: calc((var(--tile-w) - 8px) / 2)
+        height: calc((var(--tile-w) - 8px) / 2)
+
+    & .tlg_title
+        display: none !important
+
+.tlg_item a
+    text-decoration: none
+    color: var(--c9)
+
+.tlg_img
+    position: relative
+    border-radius: var(--tile-r)
+    height: calc(var(--tile-w) - 4px)
+    width: calc(var(--tile-w) - 4px)
+    background: var(--c7)
+    border: 2px solid var(--c8)
+    object-fit: contain
+
+    .folder &
+        background: var(--c11) !important
+        border-color: var(--c12) !important
+
+.folder .tlg_title
+    background: var(--c14) !important
+    color: var(--c13) !important
+
+#lrt_fl .dialog-content
+    min-height: 64px
+    background: var(--c15)
+
+#tlg_editA,
+#fld_editA,
+#tlg_sldr
+    display: none
+    background: var(--c21)
+    border-radius: 10px
+    color: var(--c20)
+    box-shadow: var(--o0)
+    width: 100%
+
+#tlg_editA .tlg_item,
+#fld_editA .tlg_item
+    display: none
+    opacity: 0
+
+#tlg_editA div,
+#fld_editA div
+    width: 50%
+    margin: 4px
+    height: 70px
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 10px

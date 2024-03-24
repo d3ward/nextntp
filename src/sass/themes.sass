@@ -1,0 +1,70 @@
+@charset "utf-8"
+@import "./settings/_variables"
+@import "./theme/light"
+@import "./theme/dark"
+
+@import "./base/basic"
+@import "./base/settings"
+
+@import "./layout/navbar"
+@import "./layout/header"
+@import "./layout/container"
+@import "./layout/grid"
+@import "./layout/footer"
+
+@import "./elements/button"
+@import "./elements/typography"
+@import "./components/card"
+@import "./elements/form"
+@import "./components/dialog"
+@import "./components/toast"
+@import "./components/gotop_link"
+@import "./extra/wave"
+@import "./extra/bottomsheet"
+@import "./utilities/alignment"
+@import "./utilities/background"
+@import "./utilities/position"
+@import "./utilities/border"
+@import "./utilities/display"
+@import "./utilities/margin"
+@import "./utilities/general"
+@import "./utilities/padding"
+@import "./utilities/spacer"
+@import "./utilities/text"
+
+._float-top
+  position: absolute
+  top: 0
+main
+  margin-top: 8rem
+
+.palette
+  display: flex
+  gap: .3rem
+  padding: 0.5rem
+  background: var(--bg3)
+  width: fit-content
+  border-radius: 4px
+  > span
+    height: 24px
+    width: 24px
+    border-radius: 4px
+    border: 1px solid var(--txt)
+#pt_cnt
+  width: 100%
+.pi
+  display: flex
+  flex-direction: column
+  width: 100%
+  align-items: center
+  img
+    max-height: 50vh
+    height: 100%
+    width: fit-content
+  div
+    display: flex
+    align-items: center
+    width: 100%
+    >span
+      width: 100%
+      text-align: center
