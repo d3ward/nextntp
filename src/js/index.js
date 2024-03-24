@@ -2484,8 +2484,13 @@ if (is_incognito()) {
             document.getElementById('sett_' + cp_type).style.background =
                 current_color
             mtc[cp_type == 'mtcl' ? 'light' : 'dark'] = current_color
-            if((cp_type == 'mtcl' && ntp_theme == 'light')  || (cp_type == 'mtcd' && ntp_theme == 'dark') )
-                document.querySelector('meta[name=theme-color]').setAttribute('content', current_color)
+            if (
+                (cp_type == 'mtcl' && ntp_theme == 'light') ||
+                (cp_type == 'mtcd' && ntp_theme == 'dark')
+            )
+                document
+                    .querySelector('meta[name=theme-color]')
+                    .setAttribute('content', current_color)
             ls_set('ntp_mtc', mtc)
         }
         save_ntpbdy()

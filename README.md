@@ -45,7 +45,6 @@ News are fetched from a proxy server of Kiwi Browser
 
 If you have a suggestion or want to report a bug feel free to share it by opening an issue
 
-
 ## Integrated Tools & Open-Source Libraries
 
 -   (Tabler Icons)[https://tabler.io/icons] (MIT License)[https://raw.githubusercontent.com/tabler/tabler-icons/main/LICENSE] | A set of over 5200 free MIT-licensed high-quality SVG icons for you to use in your web projects

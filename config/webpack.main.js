@@ -3,8 +3,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const config = require('./config')
 const pages = config.pages
-const webpack = require('webpack');
-const packageJson = require('../package.json');
+const webpack = require('webpack')
+const packageJson = require('../package.json')
 
 module.exports = {
     context: config.src,
@@ -58,8 +58,8 @@ module.exports = {
                 })
         ),
         new webpack.DefinePlugin({
-          __VERSION__: JSON.stringify(packageJson.version),
-      }),
+            __VERSION__: JSON.stringify(packageJson.version)
+        })
     ],
     module: {
         rules: [
