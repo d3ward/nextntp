@@ -2438,9 +2438,6 @@ if (is_incognito()) {
         dlg_color_picker.show()
     }
 
-    dlg_color_picker.on('show', () => {
-        document.body.style.overflow = 'hidden'
-    })
     dlg_color_picker.on('hide', () => {
         try {
             picker.setColor('#00000000', true)

@@ -11,6 +11,12 @@
             "#242e37ff"
         ]
     },
+    "googly": {
+        "title": "Googly",
+        "author": "d3ward",
+        "description": "Google inspired theme ",
+        "palette": ["#fff","#f1f3f5ff", "#e9eceeff", "#161a1dff", "#262a2dff", "#474d52"]
+    },
     "dracula-purple": {
         "title": "Dracula (Purple)",
         "author": "d3ward",
