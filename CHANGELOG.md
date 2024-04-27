@@ -1,7 +1,7 @@
 ## Changelog 27/04/2024 - v2.0.1
 -   Fix Search Bar issues with custom engines
 -   Fix Search Bar icon size
--   Fix Search Bar dropdown after neew se added
+-   Fix Search Bar dropdown after new se added
 -   Improve loading speed of custom background 
 
 ## Changelog 23/03/2024 - v2.0.0
