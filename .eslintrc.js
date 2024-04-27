@@ -14,6 +14,7 @@ module.exports = {
         sourceType: 'module'
     },
     rules: {
+        'no-inner-declarations': 'off',
         'prettier/prettier': 'error',
         'no-unused-vars': 0,
         'no-undef': 0

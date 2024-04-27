@@ -17,7 +17,8 @@ import {
     ls_set,
     random_gradient,
     getNewsServer,
-    wait
+    wait,
+    f_dwdg
 } from './components/utilities'
 var newsServer = getNewsServer(),
     ntp_theme,
@@ -25,7 +26,17 @@ var newsServer = getNewsServer(),
     pages = new pagesRoute(),
     needReload = false
 const ch_dialog = new A11yDialog(document.querySelector('#dlg_changelog'))
+//Save user preferences for theme
+function save_ntpbdy() {
+    try {
+        localStorage.ntp_bdy = ntp_bdy.getAttribute('style')
+    } catch (err) {
+        ntoast.error('Something gone wrong ! Info _:' + err.message)
+    }
+}
 //Get cached ntp_bdystyle
+ntp_bdy.style.setProperty('--bg-img-l', "url('../assets/nextntpbg.svg')")
+ntp_bdy.style.setProperty('--bg-img-d', "url('../assets/nextntpbg_d.svg')")
 if (localStorage.ntp_bdy != undefined)
     ntp_bdy.setAttribute('style', localStorage.ntp_bdy.replace('"', ''))
 
@@ -258,38 +269,11 @@ if (is_incognito()) {
         //localStorage.clear()
         localStorage.ntp_ver = ntp_ver
     }
-    //Save user preferences for theme
-    function save_ntpbdy() {
-        try {
-            localStorage.ntp_bdy = ntp_bdy.getAttribute('style')
-        } catch (err) {
-            ntoast.error('Something gone wrong ! Info _:' + err.message)
-        }
-    }
+
     /* ---------------- Toast Alert --------------- */
     var ntoast = new toast({
         timeout: 2000
     })
-    //Function to get default widgets
-    function f_dwdg(i) {
-        var chd
-        switch (i) {
-            case 0:
-                chd =
-                    '<div id="sb_r"><img id="sb_logo" alt=""><div class="sb_wrap"><span id="sb_icon_default"></span><ul id="sb_icon_menu"> </ul>' +
-                    '<input name="sb_input" type="text" id="sb_input" size="50" spellcheck="false" ></div></div>'
-                break
-            case 1:
-                chd =
-                    '<div id="tlg"><div class="tlg_item folder"><div class="tlg_img tlg_fld"><div class="tlg_item"><a class="tile_target" href="https://d3ward.github.io/toolz" rel="noreferrer"><img class="tlg_img" src="https://logos.kiwibrowser.com/toolz"/><span class="tlg_title">Toolz</span></a></div></div><span class="tlg_title">Folder</span></div><div class="tlg_item"><a class="tile_target" href="https://d3ward.github.io/" rel="noreferrer"><img class="tlg_img" src="https://logos.kiwibrowser.com/d3ward.github.io"/><span class="tlg_title">d3ward</span></a></div><div class="tlg_item"> <a class="tile_target" href="https://kiwibrowser.com" rel="noreferrer" > <img class="tlg_img" src="https://logos.kiwibrowser.com/kiwibrowser.com" alt=""/> <span class="tlg_title">Kiwi Browser</span></a></div><div class="tlg_item"><a class="tile_target" href="https://github.com/d3ward/nextntp" rel="noreferrer"><img class="tlg_img" src="https://logos.kiwibrowser.com/github.io"/><span class="tlg_title">NextNTP</span></a></div></div>'
-                break
-            case 2:
-                chd =
-                    '<div id="newsS"><div id="news"></div><div id="newsMore"></div></div>'
-                break
-        }
-        return chd
-    }
     //Get cached widgets
     var ntp_wdg = ls_get('ntp_wdg')
     if (ntp_wdg == undefined) {
@@ -480,21 +464,28 @@ if (is_incognito()) {
         }
         ls_set('ntp_sb', ntp_sb)
     }
+    function hide_dropdown() {
+        sb_dropdown_menu.classList.remove('active')
+        document.removeEventListener('click', hide_dropdown)
+    }
+    function sb_handle_menu_click(e) {
+        console.log('clicked', sb_dropdown_menu.classList.contains('active'))
+        if (sb_dropdown_menu.classList.contains('active')) {
+            console.log('remove')
+            sb_dropdown_menu.classList.remove('active')
+        } else {
+            console.log('add')
+            sb_dropdown_menu.classList.add('active')
+            e.stopPropagation()
+            document.addEventListener('click', hide_dropdown)
+        }
+    }
     function f_setup_sb() {
         console.log('Config setup sB')
-        function hide_dropdown() {
-            sb_dropdown_menu.classList.remove('active')
-            document.removeEventListener('click', hide_dropdown)
-        }
-        sb_icon_default.addEventListener('click', (e) => {
-            if (sb_dropdown_menu.classList.contains('active')) {
-                sb_dropdown_menu.classList.remove('active')
-            } else {
-                sb_dropdown_menu.classList.add('active')
-                e.stopPropagation()
-                document.addEventListener('click', hide_dropdown)
-            }
-        })
+        // First, remove the listener to prevent duplication
+        sb_icon_default.removeEventListener('click', sb_handle_menu_click)
+        sb_icon_default.addEventListener('click', sb_handle_menu_click)
+
         if (sb_icon_default == undefined) {
             const y = ntp_sett.order[0]
             customInner(document.getElementById('wdg_' + y), f_dwdg(0))
@@ -505,7 +496,6 @@ if (is_incognito()) {
             document.getElementById('sb_input').style.boxShadow =
                 'var(--sb-shadow)'
         }
-
         function removeShadow() {
             document.getElementById('sb_input').style.boxShadow = 'none'
         }
@@ -583,10 +573,10 @@ if (is_incognito()) {
             ntp_sb.se[name] = true
             ntp_sb.custom_se[name] = { color: color, icon: value, query: query }
             ls_set('ntp_sb', ntp_sb)
-            f_setup_sb()
             render_se_list()
             ntoast.success('Custom Search Engine added !')
             dlg_sb.hide()
+            f_setup_sb()
         }
     })
 
@@ -616,8 +606,8 @@ if (is_incognito()) {
             const se_status = ntp_sb.se[el]
             var se_item = se_data[el]
             if (se_item != undefined) {
-                var setChecked = se_status == true ? 'checked' : ''
-                var li = document.createElement('li')
+                let setChecked = se_status == true ? 'checked' : ''
+                let li = document.createElement('li')
                 var noshadow = ''
                 if (se_item.color == '#ffffff') noshadow = 'box-shadow:none;'
                 li.innerHTML =
@@ -643,8 +633,8 @@ if (is_incognito()) {
             } else {
                 let se_custom = ntp_sb.custom_se[el]
                 if (se_custom != undefined) {
-                    var setChecked = se_status == true ? 'checked' : ''
-                    var li = document.createElement('li')
+                    let setChecked = se_status == true ? 'checked' : ''
+                    let li = document.createElement('li')
                     li.innerHTML =
                         '<svg class="_icon stt_selisth" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>' +
                         '<div class="sb_item"><span class="sb_icon" style="background: ' +
@@ -934,6 +924,7 @@ if (is_incognito()) {
             ctx.drawImage(img, 0, 0)
             var dataURL = canvas.toDataURL('image/png')
             c_sb_value.value = '<img src="' + dataURL + '"/>'
+            c_sb_preview.innerHTML = c_sb_value.value
         }
         img.onerror = function () {
             console.log(url)
@@ -1011,9 +1002,10 @@ if (is_incognito()) {
             var key = sb_dropdown_menu
                 .querySelector('li.active_sb')
                 .getAttribute('data-se')
-            console.log(key)
-            var query = se_data[key].query
-            if (query == undefined) query = ntp_sb.custom_se[key].query
+            console.log(key, se_data)
+            let query
+            if (se_data[key] == undefined) query = ntp_sb.custom_se[key].query
+            else query = se_data[key].query
             window.location = query + text
         }
         f_setup_sb()
@@ -1178,12 +1170,14 @@ if (is_incognito()) {
             if (currentEditedTile.classList.contains('folder')) {
                 try {
                     var img = item.querySelector('.tlg-img').backgroundImage
-                } catch {}
+                } catch {
+                    console.log('something when wrong there ')
+                }
                 ft_lab.value = title
                 f_dlg(3)
             } else {
-                var url = item.querySelector('.tile_target').href
-                var img = item.querySelector('.tile_target > img').src
+                let url = item.querySelector('.tile_target').href
+                let img = item.querySelector('.tile_target > img').src
                 t_ac.checked = false
                 i_url.disabled = false
                 p_tile.src = img
@@ -1241,7 +1235,7 @@ if (is_incognito()) {
 
             if (!currentEditedTile.classList.contains('folder')) {
                 item.querySelector('.tile_target').href = t_url.value
-                const title = t_lab.value
+                let title = t_lab.value
                 if (title == '') title = get_root_domain(newt['url'])
                 item.children[0].children[1].innerHTML = title
                 item.children[0].children[0].src = p_tile.src
@@ -1610,7 +1604,7 @@ if (is_incognito()) {
                 animation: 150,
                 handle: '.handle',
                 onAdd: function (evt) {
-                    var itemEl = evt.item
+                    let itemEl = evt.item
                     itemEl.parentNode.removeChild(itemEl)
                     itemEl = evt.clone
                     itemEl.parentNode.removeChild(itemEl)
@@ -1632,9 +1626,9 @@ if (is_incognito()) {
                 animation: 150,
                 handle: '.handle',
                 onAdd: function (evt) {
-                    var itemEl = evt.clone
+                    let itemEl = evt.clone
                     f_etfg(itemEl)
-                    var itemEl = evt.item
+                    itemEl = evt.item
                     itemEl.parentNode.removeChild(itemEl)
                     document.getElementById('edit_pencil').style.background =
                         'transparent'
@@ -1713,9 +1707,9 @@ if (is_incognito()) {
                 animation: 150,
                 handle: '.handle',
                 onAdd: function (evt) {
-                    var itemEl = evt.clone
+                    let itemEl = evt.clone
                     f_etfg(itemEl)
-                    var itemEl = evt.item
+                    itemEl = evt.item
                     itemEl.parentNode.removeChild(itemEl)
                     edit_p2.style.background = 'transparent'
                     f_evl_gtiles()
@@ -2581,7 +2575,7 @@ if (is_incognito()) {
             _xLen,
             _x
         for (_x in localStorage) {
-            if (!localStorage.hasOwnProperty(_x)) {
+            if (!Object.prototype.hasOwnProperty.call(localStorage, _x)) {
                 continue
             }
             _xLen = (localStorage[_x].length + _x.length) * 2

@@ -135,3 +135,24 @@ export function getEventListeners() {
 
     return events
 }
+
+//Function to get default widgets
+export function f_dwdg(i) {
+    var chd
+    switch (i) {
+        case 0:
+            chd =
+                '<div id="sb_r"><img id="sb_logo" alt=""><div class="sb_wrap"><span id="sb_icon_default"></span><ul id="sb_icon_menu"> </ul>' +
+                '<input name="sb_input" type="text" id="sb_input" size="50" spellcheck="false" ></div></div>'
+            break
+        case 1:
+            chd =
+                '<div id="tlg"><div class="tlg_item folder"><div class="tlg_img tlg_fld"><div class="tlg_item"><a class="tile_target" href="https://d3ward.github.io/toolz" rel="noreferrer"><img class="tlg_img" src="https://logos.kiwibrowser.com/toolz"/><span class="tlg_title">Toolz</span></a></div></div><span class="tlg_title">Folder</span></div><div class="tlg_item"><a class="tile_target" href="https://d3ward.github.io/" rel="noreferrer"><img class="tlg_img" src="https://logos.kiwibrowser.com/d3ward.github.io"/><span class="tlg_title">d3ward</span></a></div><div class="tlg_item"> <a class="tile_target" href="https://kiwibrowser.com" rel="noreferrer" > <img class="tlg_img" src="https://logos.kiwibrowser.com/kiwibrowser.com" alt=""/> <span class="tlg_title">Kiwi Browser</span></a></div><div class="tlg_item"><a class="tile_target" href="https://github.com/d3ward/nextntp" rel="noreferrer"><img class="tlg_img" src="https://logos.kiwibrowser.com/github.io"/><span class="tlg_title">NextNTP</span></a></div></div>'
+            break
+        case 2:
+            chd =
+                '<div id="newsS"><div id="news"></div><div id="newsMore"></div></div>'
+            break
+    }
+    return chd
+}
