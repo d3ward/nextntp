@@ -8,3 +8,4 @@
 .env
 .env.local
 .env.development
+nextntp.pem
