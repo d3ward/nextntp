@@ -3,7 +3,19 @@
         "title": "NextNTP",
         "author": "d3ward",
         "description": "Kiwi inspired theme. Default for NextNTP ",
-        "palette":["#4ca3e2","#f2f4f7ff","#dde2eaff","#14191fff","#242e37ff"]
+        "palette": [
+            "#4ca3e2",
+            "#f2f4f7ff",
+            "#dde2eaff",
+            "#14191fff",
+            "#242e37ff"
+        ]
+    },
+    "googly": {
+        "title": "Googly",
+        "author": "d3ward",
+        "description": "Google inspired theme ",
+        "palette": ["#fff","#f1f3f5ff", "#e9eceeff", "#161a1dff", "#262a2dff", "#474d52"]
     },
     "dracula-purple": {
         "title": "Dracula (Purple)",
@@ -11,7 +23,7 @@
         "credits": "https://draculatheme.com",
         "description": "Dracula inspired theme ",
         "palette": ["#282a36", "#44475a", "#44475a", "#f8f8f2", "#bd93f9"],
-        "onetheme":true
+        "onetheme": true
     },
     "nord-frost": {
         "title": "Nord Frost",
@@ -19,8 +31,14 @@
         "credits": "https://nordtheme.com",
         "description": "Nord inspired theme ",
         "palette": [
-            "#2E3440","#3B4252","#434C5E","#4C566A",
-            "#D8DEE9","#E5E9F0","#ECEFF4","#88C0D0"
+            "#2E3440",
+            "#3B4252",
+            "#434C5E",
+            "#4C566A",
+            "#D8DEE9",
+            "#E5E9F0",
+            "#ECEFF4",
+            "#88C0D0"
         ]
     }
 }

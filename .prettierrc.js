@@ -4,5 +4,19 @@ module.exports = {
     singleQuote: true,
     tabWidth: 4,
     trailingComma: 'none',
-    useTabs: false
-  }
+    useTabs: false,
+    overrides: [
+        {
+            files: '*.yml',
+            options: {
+                tabWidth: 2
+            }
+        },
+        {
+            files: '*.yaml',
+            options: {
+                tabWidth: 2
+            }
+        }
+    ]
+}
