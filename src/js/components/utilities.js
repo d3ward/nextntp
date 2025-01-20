@@ -57,12 +57,12 @@ export function getNewsServer() {
                     }
                 }
             }
-            return 'https://chromecontentsuggestions-pa.kiwibrowser.com/testnews/?'
+            return 'https://chromecontentsuggestions-pa.kiwibrowser.com/testnews/'
         } else {
             return 'https://news.google.com/'
         }
     } catch (error) {
-        return 'https://chromecontentsuggestions-pa.kiwibrowser.com/testnews/?'
+        return 'https://chromecontentsuggestions-pa.kiwibrowser.com/testnews/'
     }
 }
 

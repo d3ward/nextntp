@@ -1917,71 +1917,148 @@ if (is_incognito()) {
                 '</span></a></div>'
             document.getElementById('news').prepend(innerDiv)
         }
-        //Function to render news ( get news from gnews )
         function render_gnews(answer) {
             let parser = new DOMParser()
             const doc = parser.parseFromString(answer, 'text/html')
             const articles = doc.querySelectorAll('article')
             const urlChecklist = []
-            var news_time = null
+
+            function fixImageUrl(url) {
+                if (!url) return null
+
+                // Remove any localhost references
+                url = url.replace(/http:\/\/localhost:3000/, '')
+
+                // If it's already an absolute URL, return it
+                if (url.startsWith('http://') || url.startsWith('https://')) {
+                    return url
+                }
+
+                // Remove any double slashes (except for protocol)
+                url = url.replace(/([^:]\/)\/+/g, '$1')
+
+                // For /api/attachments paths, use the direct path
+                if (url.includes('/api/attachments/')) {
+                    return `https://news.google.com${url}`
+                }
+
+                // For relative paths
+                if (url.startsWith('./')) {
+                    return `https://news.google.com${url.substring(1)}`
+                }
+
+                if (url.startsWith('/')) {
+                    return `https://news.google.com${url}`
+                }
+
+                return `https://news.google.com/${url}`
+            }
 
             articles.forEach(function (node) {
-                var item = parser.parseFromString(node.innerHTML, 'text/html')
-                news_time = {
-                    a: item.querySelector('.WW6dff').getAttribute('datetime'),
-                    b: item.querySelector('.WW6dff').innerHTML
-                }
-                var link = item.querySelector('a[href^="./article"]').href
-                if (link)
-                    link = link.replace(
-                        window.location.origin,
-                        'https://news.google.com'
+                try {
+                    var item = parser.parseFromString(
+                        node.innerHTML,
+                        'text/html'
                     )
-                link && urlChecklist.push(link)
-                var imageSRC = null
-                const image =
-                    item.querySelector('figure> img') ||
-                    item.querySelector('.Quavad')
-                if (image) {
-                    imageSRC = image.src
-                    if (imageSRC)
-                        imageSRC = imageSRC.replace(
-                            window.location.origin,
-                            'https://news.google.com'
+
+                    // Get time
+                    const timeElement =
+                        item.querySelector('time') ||
+                        item.querySelector('.WW6dff')
+                    const news_time = timeElement
+                        ? {
+                              a: timeElement.getAttribute('datetime') || '',
+                              b:
+                                  timeElement.innerHTML ||
+                                  timeElement.textContent
+                          }
+                        : null
+
+                    // Get link
+                    const linkElement =
+                        item.querySelector('a[href*="article"]') ||
+                        item.querySelector('h3 a') ||
+                        item.querySelector('h4 a') ||
+                        item.querySelector('a[href*="news"]')
+
+                    var link = linkElement?.href || null
+                    if (link) {
+                        // Make sure link is absolute
+                        link = fixImageUrl(link)
+                        urlChecklist.push(link)
+                    }
+
+                    // Get image
+                    var imageSRC = null
+                    const image =
+                        item.querySelector('img[src*="article"]') ||
+                        item.querySelector('figure img') ||
+                        item.querySelector('.Quavad') ||
+                        item.querySelector('img')
+
+                    if (image?.src) {
+                        imageSRC = fixImageUrl(image.src)
+                    }
+
+                    // Get source image
+                    let sourceImage =
+                        item.querySelector('img[src*="favicon"]')?.src ||
+                        item.querySelector('div.wsLqz > img')?.src ||
+                        false
+
+                    if (sourceImage) {
+                        sourceImage = fixImageUrl(sourceImage)
+                    }
+
+                    // Get title
+                    const titleElement =
+                        item.querySelector('h3') ||
+                        item.querySelector('h4') ||
+                        item.querySelector('h5') ||
+                        item.querySelector('.DY5T1d')
+
+                    const mainArticle = {
+                        title:
+                            titleElement?.innerText ||
+                            titleElement?.textContent ||
+                            false,
+                        link: link,
+                        image: imageSRC,
+                        source:
+                            item.querySelector('a.wEwyrc')?.innerText ||
+                            item.querySelector('.UPsHc')?.innerText ||
+                            item.querySelector('.MgUUmf')?.innerText ||
+                            false,
+                        source_image: sourceImage,
+                        time: news_time?.b || false
+                    }
+
+                    // Only add complete articles
+                    if (mainArticle.title && mainArticle.link && news_time) {
+                        add_gnews(
+                            mainArticle.title,
+                            news_time,
+                            mainArticle.source,
+                            mainArticle.source_image,
+                            mainArticle.link,
+                            mainArticle.image
                         )
-                }
-                const mainArticle = {
-                    title: item.querySelector('h4')
-                        ? item.querySelector('h4').innerText
-                        : item.querySelector('h5')
-                          ? item.querySelector('h5').innerText
-                          : false,
-                    link: link,
-                    image: imageSRC,
-                    source: item.querySelector('a.wEwyrc')
-                        ? item.querySelector('a.wEwyrc').innerText
-                        : false,
-                    source_image: item.querySelector('div.wsLqz > img')
-                        ? item.querySelector('div.wsLqz > img').src
-                        : false,
-                    time: item.querySelector('time')
-                        ? item.querySelector('time').innerText
-                        : false
-                }
-                if (mainArticle.title && mainArticle.link) {
-                    add_gnews(
-                        mainArticle.title,
-                        news_time,
-                        mainArticle.source,
-                        mainArticle.source_image,
-                        mainArticle.link,
-                        mainArticle.image
-                    )
+                    }
+                } catch (error) {
+                    console.warn('Failed to parse article:', error)
                 }
             })
-            //el.baseURI = newsServer;
-            loadingSVG.remove()
-            fc_ns() //Cache the news items
+
+            // Cleanup
+            const loadingSVG = document.querySelector('.loading-svg')
+            if (loadingSVG) {
+                loadingSVG.remove()
+            }
+
+            // Cache if function exists
+            if (typeof fc_ns === 'function') {
+                fc_ns()
+            }
         }
         console.log('News locale is ' + localStorage.newsLe)
         //Function to load news
